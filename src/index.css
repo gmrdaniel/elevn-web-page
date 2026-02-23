@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Elevn — Paleta cyberpunk/futurista (azul + cyan, violet, magenta) */
+:root {
+  --elevn-primary: #2563eb;
+  --elevn-electric: #0ea5e9;
+  --elevn-cyan: #06b6d4;
+  --elevn-violet: #8b5cf6;
+  --elevn-magenta: #d946ef;
+  --elevn-dark: #0a0e1a;
+  --elevn-surface: #151b2d;
+  --elevn-ice: #e0f2fe;
+  --elevn-gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 25%, #06b6d4 50%, #8b5cf6 75%, #d946ef 100%);
+  --elevn-gradient-text: linear-gradient(135deg, #22d3ee 0%, #06b6d4 35%, #8b5cf6 70%, #d946ef 100%);
+
+  --background: var(--elevn-dark);
+  --foreground: var(--elevn-ice);
+  --card: var(--elevn-surface);
+  --card-foreground: var(--elevn-ice);
+  --popover: var(--elevn-surface);
+  --popover-foreground: var(--elevn-ice);
+  --primary: var(--elevn-primary);
+  --primary-foreground: var(--elevn-ice);
+  --secondary: var(--elevn-cyan);
+  --secondary-foreground: var(--elevn-dark);
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: var(--elevn-cyan);
+  --accent-foreground: var(--elevn-dark);
+  --destructive: #ef4444;
+  --destructive-foreground: #fff;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: #1e293b;
+  --ring: var(--elevn-cyan);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: var(--elevn-dark);
+  --foreground: var(--elevn-ice);
+  --card: var(--elevn-surface);
+  --card-foreground: var(--elevn-ice);
+  --primary: var(--elevn-cyan);
+  --primary-foreground: var(--elevn-dark);
+  --accent: var(--elevn-violet);
+  --accent-foreground: var(--elevn-ice);
+  --border: rgba(255, 255, 255, 0.08);
+  --ring: var(--elevn-violet);
+}
+
+/* Títulos con splitText (Anime.js) */
+.anime-title [data-word] {
+  white-space: nowrap;
+}
+
+/* Hero: gradiente en las últimas palabras — nueva paleta */
+.anime-title .title-gradient {
+  color: transparent;
+  background: var(--elevn-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Navegación por scroll */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Tema claro por defecto; tema oscuro guardado bajo .dark */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-family: "Montserrat", system-ui, sans-serif;
+  }
+  html.dark body {
+    @apply bg-elevn-dark text-elevn-ice;
+  }
+}
+
+/* InsightsCarousel: tema oscuro (solo cuando .dark) */
+html.dark .insights-carousel-card {
+  background: linear-gradient(135deg, rgba(21, 27, 45, 0.9) 0%, rgba(10, 14, 26, 0.95) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 60px -20px rgba(6, 182, 212, 0.15);
+}
+html.dark .insights-carousel-footer {
+  background: linear-gradient(180deg, rgba(10, 14, 26, 0.6) 0%, rgba(21, 27, 45, 0.8) 100%);
+}
