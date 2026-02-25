@@ -1,14 +1,17 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { SectionTransition } from "@/components/ui/SectionTransition";
+import { motion, useInView } from "framer-motion";
+//import { useScroll, useTransform } from "framer-motion";
+//import { SectionTransition } from "@/components/ui/SectionTransition";
 import {
   HiBriefcase,
   HiAcademicCap,
   HiChatBubbleLeftRight,
   HiHeart,
+  HiBolt,
 } from "react-icons/hi2";
+import { Button } from "@/components/ui/button";
 
 const CREATOR_BEATS = [
   {
@@ -173,16 +176,16 @@ function BeatStrip({
   );
 }
 
-export function ForCreatorsSection() {
+export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
+  //const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const headerY = useTransform(scrollYProgress, [0, 0.25], [32, 0]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  //const { scrollYProgress } = useScroll({
+  //  target: sectionRef,
+  //  offset: ["start end", "end start"],
+  //});
+  //const headerY = useTransform(scrollYProgress, [0, 0.25], [32, 0]);
+  //const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   return (
     <section
@@ -192,8 +195,8 @@ export function ForCreatorsSection() {
       aria-labelledby="for-creators-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionTransition inView={sectionInView} className="mb-0" />
-
+      {/*<SectionTransition inView={sectionInView} className="mb-0" />
+      
       <motion.div
         style={{ y: headerY, opacity: headerOpacity }}
         className="relative border-b border-slate-200 bg-white/95 px-6 py-20 backdrop-blur-sm dark:border-white/10 dark:bg-elevn-surface/60 md:px-10 md:py-28 lg:px-12 xl:px-16 2xl:px-20"
@@ -210,15 +213,30 @@ export function ForCreatorsSection() {
             Your creator career, taken to the next level
           </h2>
           <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-950 md:text-xl dark:text-elevn-ice/90">
-            You deserve a platform that turns your effort into a sustainable career. Built for those ready to go pro.
+            You deserve a platform that turns your effort into a sustainable career. Built for you—ready to go pro.
           </p>
         </div>
       </motion.div>
-
+      */}
       <div className="relative">
         {CREATOR_BEATS.map((beat, index) => (
           <BeatStripWrapper key={beat.id} beat={beat} index={index} />
         ))}
+      </div>
+
+      <div className="relative border-t border-slate-200 bg-white/80 px-6 py-12 text-center dark:border-white/10 dark:bg-elevn-surface/60 md:py-16">
+        <p className="mx-auto max-w-xl text-base font-semibold text-slate-700 dark:text-elevn-ice/90">
+          Ready to level up? Join the platform built for professional creators.
+        </p>
+        <Button
+          type="button"
+          size="lg"
+          onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
+          className="mt-6 bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+        >
+          <HiBolt className="mr-2 text-xl" aria-hidden />
+          Join Our Creator Community
+        </Button>
       </div>
     </section>
   );

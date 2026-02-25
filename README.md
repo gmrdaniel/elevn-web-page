@@ -76,4 +76,4 @@ El proyecto ya incluye `components.json` y el alias `@/` configurado.
 
 ---
 
-Launch: April 2026
+Launch: Próximamente (Coming Soon)

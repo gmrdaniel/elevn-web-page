@@ -17,6 +17,7 @@ import {
 } from "@/types/join";
 import { cn } from "@/lib/utils";
 import { submitToGoogleForms } from "@/lib/googleFormsSubmit";
+import { validatePhoneNumber, normalizePhoneInput } from "@/lib/phoneValidation";
 import { HiArrowRight, HiArrowLeft, HiCheck, HiXMark, HiBolt } from "react-icons/hi2";
 import { FaYoutube, FaInstagram, FaTiktok, FaFacebook, FaTwitch, FaLink, FaKickstarterK  } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -25,6 +26,8 @@ import { FaXTwitter } from "react-icons/fa6";
 const TOTAL_STEPS = 5;
 const MESSAGE_MAX_LENGTH = 500;
 const NICHE_MAX = 3;
+/** Max digits for national number input (E.164 allows 15 total including country code). */
+const PHONE_NATIONAL_MAX_DIGITS = 15;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -58,6 +61,13 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
     };
   }, [onClose]);
 
+  // Cuando se borra la URL de YouTube, quitar la respuesta de monetización
+  useEffect(() => {
+    if (!data.platforms.youtube.url.trim()) {
+      setData((prev) => (prev.youtubeMonetized === null ? prev : { ...prev, youtubeMonetized: null }));
+    }
+  }, [data.platforms.youtube.url]);
+
   const update = useCallback(<K extends keyof JoinFormData>(field: K, value: JoinFormData[K]) => {
     setData((prev) => ({ ...prev, [field]: value }));
     setErrors((e) => {
@@ -90,6 +100,10 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
     if (!data.fullName.trim()) e.fullName = "Full name is required.";
     if (!data.email.trim()) e.email = "Email is required.";
     else if (!EMAIL_REGEX.test(data.email)) e.email = "Please enter a valid email.";
+    if (data.phoneNumber.trim()) {
+      const result = validatePhoneNumber(data.phoneCountryCode, data.phoneNumber);
+      if (!result.valid && result.error) e.phoneNumber = result.error;
+    }
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -344,6 +358,7 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
                   data={data}
                   errors={errors}
                   setPlatform={setPlatform}
+                  onYoutubeMonetizedChange={(value) => update("youtubeMonetized", value)}
                   goNext={goNext}
                   goBack={goBack}
                 />
@@ -446,7 +461,20 @@ function StepPersonal({
         {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
       </div>
       <div>
-        <InputLabel>Phone (optional)</InputLabel>
+        <InputLabel htmlFor="countryOfResidence">Country of residence</InputLabel>
+        <input
+          id="countryOfResidence"
+          type="text"
+          value={data.countryOfResidence}
+          onChange={(e) => update("countryOfResidence", e.target.value)}
+          className={cn(inputBase, errors.countryOfResidence ? inputError : inputNormal)}
+          placeholder="e.g. Mexico, Spain, Colombia"
+          autoComplete="country-name"
+        />
+        {errors.countryOfResidence && <p className="mt-1 text-xs text-red-500">{errors.countryOfResidence}</p>}
+      </div>
+      <div>
+        <InputLabel>Phone </InputLabel>
         <p className="mb-1.5 text-xs text-slate-500 dark:text-elevn-ice/60">
           Country code + number.
         </p>
@@ -454,7 +482,7 @@ function StepPersonal({
           <select
             value={data.phoneCountryCode}
             onChange={(e) => update("phoneCountryCode", e.target.value)}
-            className={cn(inputBase, "w-28 shrink-0", inputNormal)}
+            className={cn(inputBase, "w-28 shrink-0", errors.phoneNumber ? inputError : inputNormal)}
           >
             {COUNTRY_CODES.map(({ value, label }) => (
               <option key={value || "other"} value={value}>{label}</option>
@@ -462,13 +490,15 @@ function StepPersonal({
           </select>
           <input
             type="tel"
+            inputMode="numeric"
             value={data.phoneNumber}
-            onChange={(e) => update("phoneNumber", e.target.value)}
-            className={cn(inputBase, "flex-1", inputNormal)}
-            placeholder="123 456 7890"
+            onChange={(e) => update("phoneNumber", normalizePhoneInput(e.target.value).slice(0, PHONE_NATIONAL_MAX_DIGITS))}
+            className={cn(inputBase, "flex-1", errors.phoneNumber ? inputError : inputNormal)}
+            placeholder="1234567890"
             autoComplete="tel-national"
           />
         </div>
+        {errors.phoneNumber && <p className="mt-1 text-xs text-red-500">{errors.phoneNumber}</p>}
       </div>
       <div className="flex gap-3 pt-2">
         <Button type="button" variant="outline" onClick={goBack} className="border-slate-200 dark:border-white/15">
@@ -559,12 +589,14 @@ function StepPlatforms({
   data,
   errors,
   setPlatform,
+  onYoutubeMonetizedChange,
   goNext,
   goBack,
 }: {
   data: JoinFormData;
   errors: Record<string, string>;
   setPlatform: (key: PlatformKey, url: string, followers: string) => void;
+  onYoutubeMonetizedChange: (value: boolean | null) => void;
   goNext: () => void;
   goBack: () => void;
 }) {
@@ -614,7 +646,7 @@ function StepPlatforms({
                     type="url"
                     value={entry.url}
                     onChange={(e) => setPlatform(key, e.target.value, entry.followers)}
-                    placeholder={`${PLATFORM_LABELS[key]} URL (optional)`}
+                    placeholder={`${PLATFORM_LABELS[key]} URL `}
                     className={cn(
                       "mt-1 w-full border-0 bg-transparent px-0 py-2 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-0 dark:text-elevn-ice dark:placeholder-elevn-ice/50",
                       urlError && "placeholder-red-400"
@@ -626,24 +658,59 @@ function StepPlatforms({
                 </div>
               </div>
               {hasUrl && (
-                <div className="border-t border-slate-100 px-3 pb-3 pt-2 dark:border-white/5">
-                  <label className="mb-1 block text-xs font-semibold text-slate-600 dark:text-elevn-ice/80">
-                    Follower count <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={entry.followers}
-                    onChange={(e) => setPlatform(key, entry.url, e.target.value)}
-                    placeholder="e.g. 15000"
-                    className={cn(
-                      inputBase,
-                      followersError ? inputError : inputNormal
-                    )}
-                  />
-                  {followersError && (
-                    <p className="mt-0.5 text-xs text-red-500">{followersError}</p>
+                <div className="space-y-3 border-t border-slate-100 px-3 pb-3 pt-2 dark:border-white/5">
+                  {key === "youtube" && (
+                    <div>
+                      <p className="mb-2 text-xs font-semibold text-slate-600 dark:text-elevn-ice/80">
+                        Do you monetize on YouTube?
+                      </p>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => onYoutubeMonetizedChange(true)}
+                          className={cn(
+                            "flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
+                            data.youtubeMonetized === true
+                              ? "border-elevn-cyan bg-elevn-cyan/15 text-elevn-cyan dark:border-elevn-cyan dark:bg-elevn-cyan/20 dark:text-elevn-cyan"
+                              : "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-elevn-ice/80 dark:hover:bg-white/10"
+                          )}
+                        >
+                          Yes
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => onYoutubeMonetizedChange(false)}
+                          className={cn(
+                            "flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
+                            data.youtubeMonetized === false
+                              ? "border-elevn-cyan bg-elevn-cyan/15 text-elevn-cyan dark:border-elevn-cyan dark:bg-elevn-cyan/20 dark:text-elevn-cyan"
+                              : "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-elevn-ice/80 dark:hover:bg-white/10"
+                          )}
+                        >
+                          No
+                        </button>
+                      </div>
+                    </div>
                   )}
+                  <div>
+                    <label className="mb-1 block text-xs font-semibold text-slate-600 dark:text-elevn-ice/80">
+                      Follower count <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={entry.followers}
+                      onChange={(e) => setPlatform(key, entry.url, e.target.value)}
+                      placeholder="e.g. 15000"
+                      className={cn(
+                        inputBase,
+                        followersError ? inputError : inputNormal
+                      )}
+                    />
+                    {followersError && (
+                      <p className="mt-0.5 text-xs text-red-500">{followersError}</p>
+                    )}
+                  </div>
                 </div>
               )}
             </div>

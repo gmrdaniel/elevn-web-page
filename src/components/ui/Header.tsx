@@ -9,11 +9,11 @@ const LOGO_URL =
   "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
 
 const NAV_ITEMS = [
-  { label: "About", href: "#about", id: "about" },
-  { label: "For Creators", href: "#creators", id: "creators" },
+  { label: "About", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
   { label: "Benefits", href: "#benefits", id: "benefits" },
-  { label: "How it works", href: "#how-it-works", id: "how-it-works" },
   { label: "Opportunities", href: "#opportunities", id: "opportunities" },
+  { label: "Elevn Studio", href: "#elevn-studio", id: "elevn-studio" },
+  { label: "Events", href: "#events-calendar", id: "events-calendar" },
 ] as const;
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
@@ -73,10 +73,10 @@ function NavLinks({
               isActive
                 ? scrolled
                   ? "bg-elevn-primary/10 text-elevn-primary dark:bg-elevn-primary/20 dark:text-elevn-cyan"
-                  : "bg-white/25 text-slate-900 dark:bg-white/20 dark:text-elevn-ice"
+                  : "bg-white/20 text-elevn-ice hover:bg-white/25"
                 : scrolled
                   ? "text-slate-900 hover:bg-slate-200/70 dark:text-elevn-dark/85 dark:hover:bg-elevn-dark/10 dark:hover:text-elevn-dark"
-                  : "text-slate-900 hover:bg-white/20 hover:text-slate-900 dark:text-elevn-ice/90 dark:hover:bg-white/10 dark:hover:text-elevn-ice"
+                  : "text-elevn-ice/95 hover:bg-white/15 hover:text-elevn-ice"
             }`}
             aria-current={isActive ? "location" : undefined}
           >
@@ -118,7 +118,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
             className={`flex items-center rounded-lg border px-2.5 py-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 ${
               scrolled
                 ? "border-slate-200 bg-white focus-visible:ring-offset-white dark:border-elevn-dark/10 dark:bg-elevn-ice dark:focus-visible:ring-offset-white"
-                : "border-slate-200/80 bg-white/95 focus-visible:ring-offset-slate-50 dark:border-white/15 dark:bg-elevn-ice dark:focus-visible:ring-offset-elevn-dark"
+                : "border-white/20 bg-white/10 focus-visible:ring-offset-elevn-dark"
             }`}
             aria-label="Elevn – Home"
           >
@@ -169,7 +169,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
             className={`flex h-10 w-10 items-center justify-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan md:hidden ${
               scrolled
                 ? "text-slate-900 hover:bg-slate-200/70 dark:text-elevn-dark dark:hover:bg-elevn-dark/10"
-                : "text-slate-900 hover:bg-white/20 dark:text-elevn-ice dark:hover:bg-white/10"
+                : "text-elevn-ice hover:bg-white/15"
             }`}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

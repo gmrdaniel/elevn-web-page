@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionTransition } from "@/components/ui/SectionTransition";
 import { Card, CardContent } from "@/components/ui/card";
-import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+import { Button } from "@/components/ui/button";
+import { HiArrowTopRightOnSquare, HiBolt } from "react-icons/hi2";
 
 const OPPORTUNITIES = [
   {
@@ -47,7 +48,7 @@ const OPPORTUNITIES = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export function ActiveOpportunitiesSection() {
+export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
 
@@ -72,16 +73,16 @@ export function ActiveOpportunitiesSection() {
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
-            Active opportunities
+          Discover what Elevn has for you—new opportunities every day
           </p>
           <h2
             id="opportunities-heading"
             className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
-            Collaborations available now
+            Active opportunities
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg font-semibold leading-relaxed text-slate-950 md:text-xl dark:text-elevn-ice/90">
-            Although we officially launch in April 2026, we are already connecting select creators with active opportunities from brands that trust Elevn. These are real, compensated, and ready-to-run collaborations.
+            These opportunities are already live and waiting for creators like you to make the most of them. Real briefs, real pay, ready to run. Register now and get in.
           </p>
         </motion.div>
 
@@ -136,14 +137,25 @@ export function ActiveOpportunitiesSection() {
           ))}
         </div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: sectionInView ? 1 : 0 }}
           transition={{ duration: 0.32, delay: 0.12, ease }}
-          className="mt-10 text-center text-sm font-semibold text-slate-950 dark:text-elevn-ice/80"
+          className="mt-10 flex flex-col items-center gap-6 text-center"
         >
-          More opportunities added regularly. Apply through Elevn to get access.
-        </motion.p>
+          <p className="text-sm font-semibold text-slate-950 dark:text-elevn-ice/80">
+            More opportunities added regularly. Apply through Elevn and get access.
+          </p>
+          <Button
+            type="button"
+            size="lg"
+            onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
+            className="bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+          >
+            <HiBolt className="mr-2 text-xl" aria-hidden />
+            Apply for the Creator Ecosystem
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

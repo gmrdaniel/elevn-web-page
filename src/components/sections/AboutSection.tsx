@@ -62,6 +62,10 @@ export function AboutSection() {
     return () => clearInterval(t);
   }, []);
 
+  // Section hidden: equivalent "about" content is only in FinalCTASection (lines 26-65). Set SHOW_ABOUT_SECTION to true to restore.
+  const SHOW_ABOUT_SECTION = false;
+  if (!SHOW_ABOUT_SECTION) return null;
+
   return (
     <section
       id="about"
@@ -151,7 +155,7 @@ export function AboutSection() {
               transition={{ duration: 0.35, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
               className="mt-3 max-w-sm text-base font-semibold leading-relaxed text-white/95 dark:text-elevn-ice/90"
             >
-              A curated space where creators and brands meet. Quality first—for everyone.
+              A curated space where you and brands meet. Quality first—built for you.
             </motion.p>
           </div>
         </div>

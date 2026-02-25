@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { animate, stagger } from "animejs";
 import { Button } from "@/components/ui/button";
-import { InsightsCarousel } from "./InsightsCarousel";
+//import { InsightsCarousel } from "./InsightsCarousel";
 import { useAnimeTitle } from "@/hooks/useAnimeTitle";
 
 const HERO_VIDEO_SRC = "/assets/videos/domain_the_feed.mp4";
@@ -50,7 +50,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
   return (
     <section
       id="hero"
-      className="relative grid min-h-screen w-full overflow-hidden bg-slate-100 dark:bg-elevn-dark lg:grid-cols-12"
+      className="relative grid min-h-screen w-full overflow-hidden bg-elevn-dark lg:grid-cols-12"
       aria-label="Hero"
     >
       {/* Background video */}
@@ -68,26 +68,27 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
           </video>
         </div>
       )}
-      {/* Mesh */}
+      {/* Mesh: siempre oscuro para evitar fondo gris/claro */}
       <div
-        className={`pointer-events-none absolute inset-0 z-[1] bg-elevn-mesh-light ${showVideo ? "opacity-60" : "opacity-100"} dark:hidden`}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] hidden bg-elevn-mesh dark:block"
+        className="pointer-events-none absolute inset-0 z-[1] bg-elevn-mesh"
         style={{ opacity: showVideo ? 0.4 : 0.9 }}
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-0 top-0 bottom-0 z-[1] w-px bg-gradient-to-b from-transparent via-slate-200 to-slate-300 dark:via-elevn-cyan/60 dark:to-elevn-magenta/40"
+        className="pointer-events-none absolute left-0 top-0 bottom-0 z-[1] w-px bg-gradient-to-b from-transparent via-elevn-cyan/60 to-elevn-magenta/40"
         aria-hidden
       />
 
-      {/* Left: content panel */}
+      {/* Left: content panel — overlay azul oscuro Elevn para legibilidad */}
       <div className="relative z-20 flex flex-col justify-between px-6 pt-24 pb-10 lg:col-span-5 lg:min-h-screen lg:px-12 lg:pt-36 lg:pb-14 xl:px-16 xl:pt-40">
-        {/* Overlay */}
+        {/* Overlay: azul oscuro Elevn (#0a0e1a) para legibilidad, sin gris/claro */}
         <div
-          className="absolute inset-0 z-0 bg-white/15 backdrop-blur-sm dark:bg-gradient-to-b dark:from-elevn-dark/35 dark:to-elevn-dark/30 dark:backdrop-blur-none dark:lg:from-elevn-dark/35 dark:lg:to-elevn-dark/25"
+          className="absolute inset-0 z-0 bg-gradient-to-b from-[#0a0e1a]/95 to-[#0a0e1a]/90 backdrop-blur-sm"
+          aria-hidden
+        />
+        {/* Gradiente suave hacia el video */}
+        <div
+          className="absolute inset-0 z-0 bg-gradient-to-r from-[#0a0e1a]/70 via-[#0a0e1a]/20 to-transparent pointer-events-none"
           aria-hidden
         />
 
@@ -96,7 +97,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
           className="relative z-10 flex flex-col gap-8 lg:gap-10"
         >
           <div className="hero-anime-el inline-flex opacity-0">
-            <span className="rounded-lg border border-white/40 bg-white/30 px-4 py-2.5 shadow-sm backdrop-blur-md dark:border-elevn-cyan/20 dark:bg-elevn-ice/95 dark:shadow-elevn-card">
+            <span className="rounded-lg border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md">
               <img
                 src={LOGO_URL}
                 alt="Elevn"
@@ -108,9 +109,9 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
           </div>
 
           <div className="space-y-5 lg:space-y-6">
-            <h1 className="max-w-lg text-4xl font-bold leading-[1.08] tracking-tight text-slate-900 dark:text-elevn-ice md:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="max-w-lg text-4xl font-bold leading-[1.08] tracking-tight text-elevn-ice md:text-5xl lg:text-6xl xl:text-7xl">
               <span ref={heroTitleRef} className="anime-title block leading-tight">
-                Designed and built for{" "}
+              Designed and built for{" "}
               </span>
               <motion.span
                 className="block -mt-0.5 bg-clip-text font-bold leading-tight"
@@ -130,22 +131,45 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
                 professional creators
               </motion.span>
             </h1>
-            <p className="hero-anime-el max-w-md text-base font-semibold leading-relaxed text-slate-950 opacity-0 dark:text-elevn-ice/95 md:text-lg">
-              Access real branding opportunities, professional support, and the
-              tools you need to grow your business as a creator — all in one place.
+            <p className="hero-anime-el max-w-md text-base font-semibold leading-relaxed text-elevn-ice/95 opacity-0 md:text-lg">
+            Elevn is your direct access to premium campaigns, elite training, and the most powerful creator community in the region. If you take your content seriously, you belong here.
             </p>
-            <p className="hero-anime-el text-sm font-bold uppercase tracking-wider text-cyan-800 opacity-0 dark:text-elevn-cyan/90">
-              Your content has value. We connect you with brands that see it.
+            <p className="hero-anime-el max-w-lg opacity-0">
+              <span className="block text-lg font-bold leading-snug tracking-tight text-elevn-ice md:text-xl">
+                This isn&apos;t just another marketplace.
+              </span>
+              <span
+                className="mt-1 block text-lg font-extrabold leading-snug tracking-tight md:text-xl lg:text-2xl"
+                style={{
+                  background: GRADIENT_TITLE,
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                It&apos;s your next step as a professional creator.
+              </span>
             </p>
           </div>
 
           <div className="hero-anime-el flex flex-wrap items-center gap-3 opacity-0">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/30 px-4 py-2 text-sm font-medium text-slate-900 backdrop-blur-md dark:border-elevn-cyan/30 dark:bg-elevn-surface/60 dark:text-elevn-ice/90">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-elevn-cyan opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-elevn-cyan" />
+            <span className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/40 bg-elevn-surface/80 px-5 py-2.5 text-sm font-semibold backdrop-blur-md shadow-[0_0_20px_-5px_rgba(6,182,212,0.25)] dark:border-elevn-cyan/50 dark:bg-elevn-surface/70 dark:shadow-[0_0_24px_-4px_rgba(6,182,212,0.35)]">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-elevn-cyan opacity-80" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-elevn-cyan shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
               </span>
-              Launch: April 2026
+              <span className="flex items-baseline gap-2">
+                <span className="text-elevn-ice/90 uppercase tracking-wider">Launch</span>
+                <span
+                  className="font-bold tracking-tight"
+                  style={{
+                    background: GRADIENT_TITLE,
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  Coming Soon
+                </span>
+              </span>
             </span>
           </div>
 
@@ -158,7 +182,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
                 className="group relative w-full max-w-sm overflow-hidden rounded-xl border border-elevn-primary/30 bg-elevn-primary py-6 text-base font-semibold text-white shadow-lg transition hover:bg-elevn-primary/90 hover:shadow-elevn-glow lg:w-auto lg:px-10 dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-ice dark:shadow-elevn-neon dark:hover:border-elevn-cyan dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-100 dark:from-elevn-primary/20 dark:via-elevn-cyan/20 dark:to-elevn-violet/20" />
-                <span className="relative">Be one of the first to join</span>
+                <span className="relative">Join Our Creator Community</span>
               </Button>
             ) : (
               <Button
@@ -168,30 +192,30 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
               >
                 <a href="#join">
                   <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-100 dark:from-elevn-primary/20 dark:via-elevn-cyan/20 dark:to-elevn-violet/20" />
-                  <span className="relative">Be one of the first to join</span>
+                  <span className="relative">Join Our Creator Community</span>
                 </a>
               </Button>
             )}
-            <p className="text-xs font-semibold text-slate-950 dark:text-elevn-ice/80">Free to join. Pre-register and get early access.</p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-white/30 pt-4 text-xs font-semibold text-slate-950 dark:border-white/10 dark:text-elevn-ice/80">
+            <p className="text-xs font-semibold text-elevn-ice/85">Free to join. Pre-register and get early access.</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-white/20 pt-4 text-xs font-semibold text-elevn-ice/80">
               <span>Verified opportunities</span>
-              <span className="font-bold text-slate-800 dark:text-elevn-ice/50">·</span>
+              <span className="font-bold text-elevn-ice/50">·</span>
               <span>Clear briefs</span>
-              <span className="font-bold text-slate-800 dark:text-elevn-ice/50">·</span>
+              <span className="font-bold text-elevn-ice/50">·</span>
               <span>On-time payments</span>
             </div>
           </div>
         </motion.div>
 
-        <div className="hero-anime-el relative z-10 mt-8 hidden border-l-2 border-white/40 pl-4 opacity-0 lg:block dark:border-elevn-cyan/50">
-          <p className="text-xs font-medium uppercase tracking-widest text-slate-900 dark:text-elevn-ice/50">
-            For creators & UGC who take it seriously
+        <div className="hero-anime-el relative z-10 mt-8 hidden border-l-2 border-white/30 pl-4 opacity-0 lg:block dark:border-elevn-cyan/50">
+          <p className="text-xs font-medium uppercase tracking-widest text-elevn-ice/60">
+            For you: creators & UGC who take it seriously
           </p>
         </div>
       </div>
 
       {/* Right */}
-      <div className="relative z-10 flex min-h-[50vh] flex-col lg:col-span-7 lg:min-h-screen">
+      {/*<div className="relative z-10 flex min-h-[50vh] flex-col lg:col-span-7 lg:min-h-screen">
         <div className="absolute inset-0 clip-hero-video" aria-hidden>
           <div
             className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-transparent dark:from-elevn-dark/70 dark:via-elevn-dark/20 dark:to-transparent"
@@ -207,7 +231,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
             <InsightsCarousel />
           </div>
         </div>
-      </div>
+      </div>*/}
 
       {/* Diagonal seam */}
       <div

@@ -81,10 +81,14 @@ export interface PlatformEntry {
 export interface JoinFormData {
   fullName: string;
   email: string;
+  /** Country of residence */
+  countryOfResidence: string;
   phoneCountryCode: string;
   phoneNumber: string;
   niches: NicheOption[];
   platforms: Record<PlatformKey, PlatformEntry>;
+  /** Only relevant when platforms.youtube.url is set. Sí = true, No = false. */
+  youtubeMonetized: boolean | null;
   message: string;
 }
 
@@ -131,9 +135,11 @@ export function createInitialPlatforms(): Record<PlatformKey, PlatformEntry> {
 export const INITIAL_JOIN_FORM_DATA: JoinFormData = {
   fullName: "",
   email: "",
+  countryOfResidence: "",
   phoneCountryCode: "+52",
   phoneNumber: "",
   niches: [],
   platforms: createInitialPlatforms(),
+  youtubeMonetized: null,
   message: "",
 };

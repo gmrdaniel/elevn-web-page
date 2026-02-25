@@ -13,8 +13,10 @@ const GOOGLE_FORM_ACTION =
 const ENTRIES = {
   fullName: "1103653316",
   email: "897863050",
+  countryOfResidence: "225585772",
   phoneCountryCode: "1518684820",
   phoneNumber: "252542750",
+  youtubeMonetization: "550737544",
   niches: "803721215",
   youtubeUrl: "529637677",
   youtubeFollowers: "1600138093",
@@ -77,6 +79,7 @@ function buildPayload(data: JoinFormData): Array<{ name: string; value: string }
 
   pairs.push({ name: `entry.${ENTRIES.fullName}`, value: data.fullName.trim() });
   pairs.push({ name: `entry.${ENTRIES.email}`, value: data.email.trim() });
+  pairs.push({ name: `entry.${ENTRIES.countryOfResidence}`, value: data.countryOfResidence.trim() });
 
   const countryLabel =
       COUNTRY_CODE_TO_GOOGLE[data.phoneCountryCode] ?? (data.phoneCountryCode || "Otro");
@@ -86,6 +89,13 @@ function buildPayload(data: JoinFormData): Array<{ name: string; value: string }
   data.niches.forEach((n) => {
     pairs.push({ name: `entry.${ENTRIES.niches}`, value: nicheToGoogle(n) });
   });
+
+  if (data.platforms.youtube.url.trim() && data.youtubeMonetized !== null) {
+    pairs.push({
+      name: `entry.${ENTRIES.youtubeMonetization}`,
+      value: data.youtubeMonetized ? "Yes" : "No",
+    });
+  }
 
   const platformEntryKeys: Record<Exclude<PlatformKey, "other">, { url: keyof typeof ENTRIES; followers: keyof typeof ENTRIES }> = {
     youtube: { url: "youtubeUrl", followers: "youtubeFollowers" },
