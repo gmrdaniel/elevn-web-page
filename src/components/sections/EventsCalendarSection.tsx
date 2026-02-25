@@ -65,6 +65,9 @@ const ALL_EVENTS: EventItem[] = [
 ];
 
 // Special opportunities — only in week 3 of March (15–21)
+const GYRE_OPPORTUNITY_URL = "https://laneta-portal.netlify.app/opportunities/gyre";
+const AIR_OPPORTUNITY_URL = "https://laneta-portal.netlify.app/opportunities/air";
+
 const GYRE_EVENT: EventItem = {
   id: "special-gyre",
   title: "Opportunity: Gyre",
@@ -72,7 +75,7 @@ const GYRE_EVENT: EventItem = {
     "Exclusive collaboration with Gyre. Create authentic content that aligns with their brand vision. Selected creators get long-term partnership and premium rates.",
   duration: "Application window · Week 3",
   image: "public/assets/images/gyre.png",
-  url: "#",
+  url: GYRE_OPPORTUNITY_URL,
   gradient: "from-elevn-violet to-elevn-magenta",
 };
 
@@ -83,7 +86,7 @@ const AIR_EVENT: EventItem = {
     "Partner with Air for their next campaign. UGC and short-form content for global reach. Open to creators in lifestyle, travel, and tech.",
   duration: "Application window · Week 3",
   image: "public/assets/images/air.png",
-  url: "#",
+  url: AIR_OPPORTUNITY_URL,
   gradient: "from-elevn-cyan to-elevn-violet",
 };
 
@@ -373,8 +376,17 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                     Stay connected; new opportunities arise every minute.
                   </p>
                   <p className="mt-2 max-w-md text-sm font-medium text-slate-600 dark:text-elevn-ice/80">
-                    No events this day—but the next workshop or collaboration could drop anytime. Keep your profile updated and check back often.
+                    No events this day—but the next workshop or collaboration could drop anytime. Register so you don&apos;t miss out.
                   </p>
+                  <Button
+                    type="button"
+                    size="lg"
+                    onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
+                    className="mt-6 bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+                  >
+                    <HiBolt className="mr-2 text-xl" aria-hidden />
+                    Join Our Creator Community
+                  </Button>
                 </motion.div>
               )}
             </motion.div>
