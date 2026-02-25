@@ -2,14 +2,14 @@
 
 const LOGO_URL =
   "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
-const CTA_URL = "https://laneta-portal.netlify.app/";
 
 const FOOTER_LINKS = [
-  { label: "About", href: "#about" },
+  { label: "About", href: "#elevn-is-your-space" },
   { label: "For Creators", href: "#creators" },
   { label: "Benefits", href: "#benefits" },
-  { label: "How it works", href: "#how-it-works" },
   { label: "Opportunities", href: "#opportunities" },
+  { label: "Elevn Studio", href: "#elevn-studio" },
+  { label: "Events", href: "#events-calendar" },
 ] as const;
 
 export function Footer() {
@@ -50,9 +50,7 @@ export function Footer() {
               </a>
             ))}
             <a
-              href={CTA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#join"
               className="text-sm font-semibold text-elevn-cyan transition-colors hover:text-elevn-cyan/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
             >
               Join
