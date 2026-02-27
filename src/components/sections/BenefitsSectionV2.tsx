@@ -41,7 +41,7 @@ const BENEFITS_DETAIL = [
   {
     number: "03",
     title: "Professional credibility",
-    body: "Being part of a verified ecosystem changes how brands see you. When you apply through Elevn, they know they're looking at a creator validated by a professional platform. That opens doors to better opportunities.",
+    body: "Being part of a verified ecosystem changes how brands see you. When you apply through ELEVN, they know they're looking at a creator validated by a professional platform. That opens doors to better opportunities.",
     gradient: "from-elevn-violet to-elevn-magenta",
     icon: HiShieldCheck,
   },
@@ -87,7 +87,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           transition={{ duration: 0.32, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
           className="mt-3 text-center text-base font-semibold text-slate-950 dark:text-elevn-ice md:text-lg"
         >
-          What awaits creators at Elevn
+          What awaits creators at ELEVN
         </motion.p>
 
         {/* ——— Above the fold: condensed value prop + CTA ——— */}
@@ -105,7 +105,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
               id="benefits-heading"
               className="mt-4 text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl dark:text-elevn-ice"
             >
-              What you&apos;ll find on Elevn
+              What you&apos;ll find on ELEVN
             </h2>
             <ul className="mt-8 space-y-4 max-[400px]:mt-6 sm:mt-10 sm:space-y-5 md:space-y-6">
               {VALUE_BULLETS.map((line, i) => (
@@ -187,7 +187,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
             Why creators choose our platform
           </h3>
           <p className="mt-3 max-w-2xl text-base font-medium text-slate-700 dark:text-elevn-ice/85 md:text-lg">
-            Professionalizing your career as a creator requires access to the tools, opportunities, and resources that turn your audience into a sustainable business. Here&apos;s how Elevn supports you.
+            Professionalizing your career as a creator requires access to the tools, opportunities, and resources that turn your audience into a sustainable business. Here&apos;s how ELEVN supports you.
           </p>
 
           <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-14 md:grid-cols-2 lg:mt-16 lg:gap-10">

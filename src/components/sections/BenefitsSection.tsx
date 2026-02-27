@@ -31,7 +31,7 @@ const BENEFITS = [
   {
     number: "03",
     title: "Professional credibility",
-    body: "Being part of a verified ecosystem changes how brands see you. When you apply through Elevn, they know they're looking at a creator validated by a professional platform. That opens doors to better opportunities.",
+    body: "Being part of a verified ecosystem changes how brands see you. When you apply through ELEVN, they know they're looking at a creator validated by a professional platform. That opens doors to better opportunities.",
     gradient: "from-elevn-violet to-elevn-magenta",
     icon: HiShieldCheck,
   },
@@ -156,7 +156,7 @@ export function BenefitsSection() {
               <p className="text-sm font-medium leading-[1.7] text-slate-950 max-[400px]:text-xs max-[400px]:leading-[1.65] sm:text-base sm:leading-[1.75] md:text-lg md:leading-[1.8] dark:text-elevn-ice/90">
                 Professionalizing your career as a creator requires more than an audience. It requires access to the tools, opportunities, and resources that turn that audience into a sustainable business.{" "}
                 <span className="font-semibold text-slate-950 dark:text-elevn-ice">
-                  Elevn provides that in one place
+                  ELEVN provides that in one place
                 </span>{" "}
                 so you can focus on what you do best: creating.
               </p>

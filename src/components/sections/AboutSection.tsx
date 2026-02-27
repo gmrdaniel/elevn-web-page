@@ -94,7 +94,7 @@ export function AboutSection() {
           <span
             className="bg-elevn-gradient bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl lg:text-5xl"
           >
-            Elevn
+            ELEVN
           </span>
         </motion.h2>
         <motion.p

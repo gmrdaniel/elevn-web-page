@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { label: "About", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
   { label: "Benefits", href: "#benefits", id: "benefits" },
   { label: "Opportunities", href: "#opportunities", id: "opportunities" },
-  { label: "Elevn Studio", href: "#elevn-studio", id: "elevn-studio" },
+  { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
   { label: "Events", href: "#events-calendar", id: "events-calendar" },
 ] as const;
 
@@ -120,11 +120,11 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 ? "border-slate-200 bg-white focus-visible:ring-offset-white dark:border-elevn-dark/10 dark:bg-elevn-ice dark:focus-visible:ring-offset-white"
                 : "border-white/20 bg-white/10 focus-visible:ring-offset-elevn-dark"
             }`}
-            aria-label="Elevn – Home"
+            aria-label="ELEVN – Home"
           >
             <img
               src={LOGO_URL}
-              alt="Elevn"
+              alt="ELEVN"
               className="h-8 w-auto object-contain md:h-9"
               width={100}
               height={36}

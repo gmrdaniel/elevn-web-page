@@ -12,7 +12,7 @@ const GRADIENT_TITLE =
 
 const PILLARS = [
   {
-    label: "On Elevn",
+    label: "On ELEVN",
     title: "Your space",
     line: "Verified opportunities and a community of creators who take the craft seriously.",
     icon: HiCheckBadge,
@@ -30,7 +30,7 @@ const PILLARS = [
   {
     label: "Our promise",
     title: "A real ecosystem",
-    line: "Creativity and creators deserve more. Elevn is here to make it happen.",
+    line: "Creativity and creators deserve more. ELEVN is here to make it happen.",
     icon: HiHeart,
     gradient: "from-elevn-magenta to-elevn-violet",
     borderHover: "hover:border-elevn-magenta/50",
@@ -77,7 +77,7 @@ export function ElevnIsYourSpaceSection() {
             id="elevn-is-your-space-heading"
             className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 max-[400px]:text-3xl sm:text-5xl md:text-6xl lg:text-6xl dark:text-elevn-ice"
           >
-            <span className="block">Elevn is</span>
+            <span className="block">ELEVN is</span>
             <span
               className="mt-1 block bg-clip-text font-extrabold text-transparent"
               style={{

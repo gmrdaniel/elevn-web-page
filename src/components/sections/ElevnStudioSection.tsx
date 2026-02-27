@@ -69,10 +69,10 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             id="elevn-studio-heading"
             className="mt-3 text-2xl font-bold tracking-tight text-slate-950 max-[400px]:mt-2 max-[400px]:text-xl sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
-            Elevn Studio
+            ELEVN Studio
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-relaxed text-slate-700 md:text-lg dark:text-elevn-ice/90">
-            Unlock exclusive access to our educational hub. Join the Elevn Creator Network for a constantly updated calendar of workshops, live events, and strategic training. Master new formats, optimize your metrics, and stay ahead.
+            Unlock exclusive access to our educational hub. Join the ELEVN Creator Network for a constantly updated calendar of workshops, live events, and strategic training. Master new formats, optimize your metrics, and stay ahead.
           </p>
         </motion.div>
 
@@ -200,7 +200,7 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             Unlock Free Creator Courses
           </Button>
           <p className="mt-4 text-sm font-semibold text-slate-600 dark:text-elevn-ice/80">
-            Join the Elevn Creator Network to get access
+            Join the ELEVN Creator Network to get access
           </p>
         </motion.div>
       </div>
