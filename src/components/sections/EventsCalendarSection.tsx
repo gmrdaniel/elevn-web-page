@@ -214,14 +214,13 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
           </p>
         </motion.div>
 
-        {/* Full month grid: 7 columns (Sun–Sat) + 5 rows */}
+        {/* Full month grid: 7 columns (Sun–Sat) + 5 rows — COMMENTED OUT
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
           transition={{ duration: 0.4, delay: 0.08, ease }}
           className="mt-10 overflow-hidden rounded-2xl border-2 border-slate-200 bg-white shadow-xl dark:border-white/10 dark:bg-elevn-surface/60 sm:mt-12"
         >
-          {/* Day headers */}
           <div className="grid grid-cols-7 border-b border-slate-200 dark:border-white/10">
             {DAY_NAMES.map((name) => (
               <div
@@ -232,7 +231,6 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
               </div>
             ))}
           </div>
-          {/* Day cells */}
           <div className="grid grid-cols-7">
             {calendarGrid.map((date, index) => {
               if (date === null) {
@@ -283,8 +281,9 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
             })}
           </div>
         </motion.div>
+        */}
 
-        {/* Expandable detail panel */}
+        {/* Expandable detail panel — COMMENTED OUT
         <AnimatePresence mode="wait">
           {selectedDay ? (
             <motion.div
@@ -402,6 +401,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
             </motion.p>
           )}
         </AnimatePresence>
+        */}
       </div>
     </section>
   );
