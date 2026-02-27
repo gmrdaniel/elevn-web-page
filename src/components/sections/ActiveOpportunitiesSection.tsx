@@ -73,7 +73,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
-          Discover what Elevn has for you—new opportunities every day
+          Discover what ELEVN has for you—new opportunities every day
           </p>
           <h2
             id="opportunities-heading"
@@ -144,7 +144,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           className="mt-10 flex flex-col items-center gap-6 text-center"
         >
           <p className="text-sm font-semibold text-slate-950 dark:text-elevn-ice/80">
-            More opportunities added regularly. Apply through Elevn and get access.
+            More opportunities added regularly. Apply through ELEVN and get access.
           </p>
           <Button
             type="button"

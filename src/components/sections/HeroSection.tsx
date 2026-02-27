@@ -100,7 +100,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
             <span className="rounded-lg border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md">
               <img
                 src={LOGO_URL}
-                alt="Elevn"
+                alt="ELEVN"
                 className="h-11 w-auto object-contain object-center md:h-12"
                 width={130}
                 height={48}
@@ -132,7 +132,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
               </motion.span>
             </h1>
             <p className="hero-anime-el max-w-md text-base font-semibold leading-relaxed text-elevn-ice/95 opacity-0 md:text-lg">
-            Elevn is your direct access to premium campaigns, elite training, and the most powerful creator community in the region. If you take your content seriously, you belong here.
+            ELEVN is your direct access to premium campaigns, elite training, and the most powerful creator community in the region. If you take your content seriously, you belong here.
             </p>
             <p className="hero-anime-el max-w-lg opacity-0">
               <span className="block text-lg font-bold leading-snug tracking-tight text-elevn-ice md:text-xl">

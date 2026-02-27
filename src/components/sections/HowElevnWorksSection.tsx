@@ -70,7 +70,7 @@ export function HowElevnWorksSection() {
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
-            How Elevn works
+            How ELEVN works
           </p>
           <h2
             id="how-it-works-heading"
