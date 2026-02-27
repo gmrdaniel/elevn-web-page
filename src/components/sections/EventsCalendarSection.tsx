@@ -1,14 +1,14 @@
 "use client";
 
-import { useRef, useState, useMemo } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 //import { SectionTransition } from "@/components/ui/SectionTransition";
-import { Button } from "@/components/ui/button";
-import { HiArrowTopRightOnSquare, HiSparkles, HiBolt } from "react-icons/hi2";
+//import { Button } from "@/components/ui/button";
+//import { HiArrowTopRightOnSquare, HiSparkles, HiBolt } from "react-icons/hi2";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+// const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 type EventItem = {
   id: string;
@@ -121,63 +121,63 @@ EVENTS_BY_DATE[gyreKey].push(GYRE_EVENT);
 if (!EVENTS_BY_DATE[airKey]) EVENTS_BY_DATE[airKey] = [];
 EVENTS_BY_DATE[airKey].push(AIR_EVENT);
 
-/** Returns a 35-cell grid (5 rows × 7 days) for March 2026. March 1, 2026 = Sunday. */
-function getMarch2026CalendarGrid(): (Date | null)[] {
-  const grid: (Date | null)[] = [];
-  const year = 2026;
-  const month = 2; // 0-indexed: March = 2
-  for (let i = 1; i <= 31; i++) {
-    grid.push(new Date(year, month, i));
-  }
-  while (grid.length < 35) grid.push(null);
-  return grid;
-}
+// /** Returns a 35-cell grid (5 rows × 7 days) for March 2026. March 1, 2026 = Sunday. */
+// function getMarch2026CalendarGrid(): (Date | null)[] {
+//   const grid: (Date | null)[] = [];
+//   const year = 2026;
+//   const month = 2; // 0-indexed: March = 2
+//   for (let i = 1; i <= 31; i++) {
+//     grid.push(new Date(year, month, i));
+//   }
+//   while (grid.length < 35) grid.push(null);
+//   return grid;
+// }
 
-function dateKey(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
+// function dateKey(date: Date): string {
+//   const y = date.getFullYear();
+//   const m = String(date.getMonth() + 1).padStart(2, "0");
+//   const d = String(date.getDate()).padStart(2, "0");
+//   return `${y}-${m}-${d}`;
+// }
 
-function getEventsForDay(date: Date): EventItem[] {
-  return EVENTS_BY_DATE[dateKey(date)] ?? [];
-}
+// function getEventsForDay(date: Date): EventItem[] {
+//   return EVENTS_BY_DATE[dateKey(date)] ?? [];
+// }
 
-function formatDayNum(d: Date): string {
-  return d.getDate().toString();
-}
+// function formatDayNum(d: Date): string {
+//   return d.getDate().toString();
+// }
 
-/** Renders event image with gradient fallback when the image fails to load (e.g. missing file). */
-function EventImage({ src, gradient }: { src: string; gradient: string }) {
-  const [failed, setFailed] = useState(false);
-  if (failed) {
-    return (
-      <div
-        className={`h-full w-full bg-gradient-to-br ${gradient} opacity-80`}
-        aria-hidden
-      />
-    );
-  }
-  return (
-    <img
-      src={src}
-      alt=""
-      className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-105"
-      onError={() => setFailed(true)}
-    />
-  );
-}
+// /** Renders event image with gradient fallback when the image fails to load (e.g. missing file). */
+// function EventImage({ src, gradient }: { src: string; gradient: string }) {
+//   const [failed, setFailed] = useState(false);
+//   if (failed) {
+//     return (
+//       <div
+//         className={`h-full w-full bg-gradient-to-br ${gradient} opacity-80`}
+//         aria-hidden
+//       />
+//     );
+//   }
+//   return (
+//     <img
+//       src={src}
+//       alt=""
+//       className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-105"
+//       onError={() => setFailed(true)}
+//     />
+//   );
+// }
 
-export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
+export function EventsCalendarSection({ /* onOpenJoinForm */ }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.05 });
-  const [selectedDay, setSelectedDay] = useState<Date | null>(null);
+  // const [selectedDay, setSelectedDay] = useState<Date | null>(null);
 
-  const calendarGrid = useMemo(() => getMarch2026CalendarGrid(), []);
+  // const calendarGrid = useMemo(() => getMarch2026CalendarGrid(), []);
 
-  const selectedEvents = selectedDay ? getEventsForDay(selectedDay) : [];
-  const hasEvents = selectedEvents.length > 0;
+  // const selectedEvents = selectedDay ? getEventsForDay(selectedDay) : [];
+  // const hasEvents = selectedEvents.length > 0;
 
   return (
     <section
