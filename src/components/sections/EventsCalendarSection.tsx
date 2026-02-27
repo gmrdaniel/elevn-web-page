@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 //import { SectionTransition } from "@/components/ui/SectionTransition";
 //import { Button } from "@/components/ui/button";
 //import { HiArrowTopRightOnSquare, HiSparkles, HiBolt } from "react-icons/hi2";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+// const ease = [0.22, 1, 0.36, 1] as const;
 
 // const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -171,7 +171,7 @@ EVENTS_BY_DATE[airKey].push(AIR_EVENT);
 
 export function EventsCalendarSection({ /* onOpenJoinForm */ }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, amount: 0.05 });
+  useInView(sectionRef, { once: true, amount: 0.05 });
   // const [selectedDay, setSelectedDay] = useState<Date | null>(null);
 
   // const calendarGrid = useMemo(() => getMarch2026CalendarGrid(), []);
@@ -194,6 +194,7 @@ export function EventsCalendarSection({ /* onOpenJoinForm */ }: { onOpenJoinForm
       {/*<SectionTransition inView={sectionInView} className="mb-0" />*/}
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-12 lg:py-28">
+        {/* Calendar heading — COMMENTED OUT
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 20 }}
@@ -213,6 +214,7 @@ export function EventsCalendarSection({ /* onOpenJoinForm */ }: { onOpenJoinForm
             Click a day to see events. New opportunities every week.
           </p>
         </motion.div>
+        */}
 
         {/* Full month grid: 7 columns (Sun–Sat) + 5 rows — COMMENTED OUT
         <motion.div
