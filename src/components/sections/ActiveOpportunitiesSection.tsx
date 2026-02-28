@@ -10,7 +10,7 @@ import { HiArrowTopRightOnSquare, HiBolt } from "react-icons/hi2";
 const OPPORTUNITIES = [
   {
     id: "meta",
-    title: "META Breakthrough Bonus Program",
+    title: "Meta's New Creator Program",
     description:
       "Identify and support emerging creators with significant growth potential. Direct financial bonuses, META training resources, and increased visibility.",
     image: "/assets/images/META.png",
