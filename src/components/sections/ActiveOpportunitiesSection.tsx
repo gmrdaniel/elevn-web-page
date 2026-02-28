@@ -13,7 +13,7 @@ const OPPORTUNITIES = [
     title: "Meta's New Creator Program",
     description:
       "Identify and support emerging creators with significant growth potential. Direct financial bonuses, META training resources, and increased visibility.",
-    image: "/assets/images/META.png",
+    image: "/assets/images/META_2.png",
     url: "https://laneta-portal.netlify.app/opportunities/meta?open=connect_new_opportunities",
     gradient: "from-elevn-primary to-elevn-cyan",
   },
