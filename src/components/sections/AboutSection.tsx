@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { SectionTransition } from "@/components/ui/SectionTransition";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { HiGlobeAlt, HiDocumentText, HiShieldCheck, HiChartBar } from "react-icons/hi2";
 
 const CREATOR_IMAGES = [
@@ -62,7 +62,6 @@ export function AboutSection() {
     return () => clearInterval(t);
   }, []);
 
-  // Section hidden: equivalent "about" content is only in FinalCTASection (lines 26-65). Set SHOW_ABOUT_SECTION to true to restore.
   const SHOW_ABOUT_SECTION = false;
   if (!SHOW_ABOUT_SECTION) return null;
 
@@ -75,7 +74,7 @@ export function AboutSection() {
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-40 dark:bg-elevn-mesh dark:opacity-30" aria-hidden />
 
-      <SectionTransition inView={sectionInView} className="mb-0" />
+      <SectionDivider className="mb-0" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.h2
@@ -94,7 +93,7 @@ export function AboutSection() {
           <span
             className="bg-elevn-gradient bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl lg:text-5xl"
           >
-            Elevn
+            ELEVN
           </span>
         </motion.h2>
         <motion.p
@@ -269,7 +268,7 @@ export function AboutSection() {
             </p>
           </motion.div>
 
-          {/* Why Elevn */}
+          {/* Why ELEVN */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {WHY_ELEVN_ITEMS.map((text, i) => {
               const [title, ...rest] = text.split(": ");

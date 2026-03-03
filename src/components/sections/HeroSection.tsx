@@ -68,7 +68,6 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
           </video>
         </div>
       )}
-      {/* Mesh: siempre oscuro para evitar fondo gris/claro */}
       <div
         className="pointer-events-none absolute inset-0 z-[1] bg-elevn-mesh"
         style={{ opacity: showVideo ? 0.4 : 0.9 }}
@@ -79,14 +78,12 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
         aria-hidden
       />
 
-      {/* Left: content panel — overlay azul oscuro Elevn para legibilidad */}
+      {/* Left: content */}
       <div className="relative z-20 flex flex-col justify-between px-6 pt-24 pb-10 lg:col-span-5 lg:min-h-screen lg:px-12 lg:pt-36 lg:pb-14 xl:px-16 xl:pt-40">
-        {/* Overlay: azul oscuro Elevn (#0a0e1a) para legibilidad, sin gris/claro */}
         <div
           className="absolute inset-0 z-0 bg-gradient-to-b from-[#0a0e1a]/95 to-[#0a0e1a]/90 backdrop-blur-sm"
           aria-hidden
         />
-        {/* Gradiente suave hacia el video */}
         <div
           className="absolute inset-0 z-0 bg-gradient-to-r from-[#0a0e1a]/70 via-[#0a0e1a]/20 to-transparent pointer-events-none"
           aria-hidden
@@ -100,7 +97,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
             <span className="rounded-lg border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md">
               <img
                 src={LOGO_URL}
-                alt="Elevn"
+                alt="ELEVN"
                 className="h-11 w-auto object-contain object-center md:h-12"
                 width={130}
                 height={48}
@@ -132,7 +129,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
               </motion.span>
             </h1>
             <p className="hero-anime-el max-w-md text-base font-semibold leading-relaxed text-elevn-ice/95 opacity-0 md:text-lg">
-            Elevn is your direct access to premium campaigns, elite training, and the most powerful creator community in the region. If you take your content seriously, you belong here.
+            ELEVN is your direct access to premium campaigns, elite training, and the most powerful creator community in the region. If you take your content seriously, you belong here.
             </p>
             <p className="hero-anime-el max-w-lg opacity-0">
               <span className="block text-lg font-bold leading-snug tracking-tight text-elevn-ice md:text-xl">

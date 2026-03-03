@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { SectionTransition } from "@/components/ui/SectionTransition";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { HiUserCircle, HiDocumentText, HiClipboardDocumentCheck, HiRocketLaunch } from "react-icons/hi2";
 
 const STAIR_STEPS = [
@@ -53,11 +53,11 @@ export function HowElevnWorksSection() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="how-it-works-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionTransition inView={sectionInView} className="mb-0" />
+      <SectionDivider className="mb-0" />
 
       <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
@@ -70,7 +70,7 @@ export function HowElevnWorksSection() {
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
-            How Elevn works
+            How ELEVN works
           </p>
           <h2
             id="how-it-works-heading"

@@ -1,5 +1,5 @@
 /**
- * Paleta Elevn — cyberpunk/futurista (azul + cyan, violet, magenta)
+ * Paleta ELEVN — cyberpunk/futurista (azul + cyan, violet, magenta)
  */
 
 import { createTheme, alpha } from "@mui/material/styles";

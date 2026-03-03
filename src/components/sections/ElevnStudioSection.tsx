@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { SectionTransition } from "@/components/ui/SectionTransition";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiAcademicCap, HiBookOpen, HiVideoCamera, HiUserGroup, HiBolt } from "react-icons/hi2";
 
@@ -49,11 +49,11 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
     <section
       id="elevn-studio"
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="elevn-studio-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionTransition inView={sectionInView} className="mb-0" />
+      <SectionDivider className="mb-0" />
 
       <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
@@ -69,10 +69,10 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             id="elevn-studio-heading"
             className="mt-3 text-2xl font-bold tracking-tight text-slate-950 max-[400px]:mt-2 max-[400px]:text-xl sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
-            Elevn Studio
+            ELEVN Studio
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-relaxed text-slate-700 md:text-lg dark:text-elevn-ice/90">
-            Unlock exclusive access to our educational hub. Join the Elevn Creator Network for a constantly updated calendar of workshops, live events, and strategic training. Master new formats, optimize your metrics, and stay ahead.
+            Unlock exclusive access to our educational hub. Join the ELEVN Creator Network for a constantly updated calendar of workshops, live events, and strategic training. Master new formats, optimize your metrics, and stay ahead.
           </p>
         </motion.div>
 
@@ -200,7 +200,7 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             Unlock Free Creator Courses
           </Button>
           <p className="mt-4 text-sm font-semibold text-slate-600 dark:text-elevn-ice/80">
-            Join the Elevn Creator Network to get access
+            Join the ELEVN Creator Network to get access
           </p>
         </motion.div>
       </div>

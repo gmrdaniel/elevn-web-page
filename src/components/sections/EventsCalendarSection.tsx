@@ -1,244 +1,201 @@
 "use client";
 
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-//import { SectionTransition } from "@/components/ui/SectionTransition";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
-import { HiArrowTopRightOnSquare, HiSparkles, HiBolt } from "react-icons/hi2";
+import { HiSparkles, HiBolt, HiCalendarDays, HiVideoCamera, HiArrowTopRightOnSquare } from "react-icons/hi2";
+import { fetchCalendarEvents, dateKey, type CalendarEvent } from "@/lib/calendar";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
 const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const URL_REGEX = /(https?:\/\/[^\s<>\[\]()]+)/gi;
 
-type EventItem = {
-  id: string;
-  title: string;
-  description: string;
-  duration: string;
-  image: string;
-  url: string;
-  gradient: string;
-};
-
-// Dummy data — replace with real events when ready. Events are distributed on random March 2026 dates.
-const ALL_EVENTS: EventItem[] = [
-  {
-    id: "dummy-1",
-    title: "Workshop: Content Strategy & Brand Fit",
-    description:
-      "A live session on how to align your content with brand briefs and increase your acceptance rate. Tips from top creators and brand managers.",
-    duration: "2h · 4:00 PM EST",
-    image: "",
-    url: "#",
-    gradient: "from-elevn-violet to-elevn-magenta",
-  },
-  {
-    id: "dummy-2",
-    title: "Masterclass: UGC Scripting & Performance",
-    description:
-      "Step-by-step techniques for UGC that converts. Learn scripting frameworks, hooks, and what platforms are prioritizing right now.",
-    duration: "1h 30m · 11:00 AM EST",
-    image: "",
-    url: "#",
-    gradient: "from-elevn-magenta to-elevn-primary",
-  },
-  {
-    id: "dummy-3",
-    title: "Live Q&A: Algorithm Updates & Monetization",
-    description:
-      "Join our experts for a real-time Q&A on the latest algorithm changes and monetization opportunities. Bring your questions.",
-    duration: "1h · 3:00 PM EST",
-    image: "",
-    url: "#",
-    gradient: "from-elevn-cyan to-elevn-violet",
-  },
-  {
-    id: "dummy-4",
-    title: "Live Q&A: Algorithm Updates & Monetization",
-    description:
-      "Join our experts for a real-time Q&A on the latest algorithm changes and monetization opportunities. Bring your questions.",
-    duration: "1h · 3:00 PM EST",
-    image: "",
-    url: "#",
-    gradient: "from-elevn-cyan to-elevn-violet",
-  },
-];
-
-// Special opportunities — only in week 3 of March (15–21)
-const GYRE_OPPORTUNITY_URL = "https://laneta-portal.netlify.app/opportunities/gyre";
-const AIR_OPPORTUNITY_URL = "https://laneta-portal.netlify.app/opportunities/air";
-
-const GYRE_EVENT: EventItem = {
-  id: "special-gyre",
-  title: "Opportunity: Gyre",
-  description:
-    "Exclusive collaboration with Gyre. Create authentic content that aligns with their brand vision. Selected creators get long-term partnership and premium rates.",
-  duration: "Application window · Week 3",
-  image: "public/assets/images/gyre.png",
-  url: GYRE_OPPORTUNITY_URL,
-  gradient: "from-elevn-violet to-elevn-magenta",
-};
-
-const AIR_EVENT: EventItem = {
-  id: "special-air",
-  title: "Opportunity: Air",
-  description:
-    "Partner with Air for their next campaign. UGC and short-form content for global reach. Open to creators in lifestyle, travel, and tech.",
-  duration: "Application window · Week 3",
-  image: "public/assets/images/air.png",
-  url: AIR_OPPORTUNITY_URL,
-  gradient: "from-elevn-cyan to-elevn-violet",
-};
-
-const WEEK_3_MARCH_2026 = [15, 16, 17, 18, 19, 20, 21]; // March 15–21
-const GYRE_DAY = WEEK_3_MARCH_2026[1]; // 16
-const AIR_DAY = WEEK_3_MARCH_2026[4];   // 19
-
-/** Picks n distinct random days in 1..max (inclusive). */
-function pickRandomDays(n: number, max: number): number[] {
-  const arr = Array.from({ length: max }, (_, i) => i + 1);
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr.slice(0, n);
+function linkifySegments(text: string): { type: "text" | "url"; value: string }[] {
+  return text
+    .split(URL_REGEX)
+    .filter((value) => value.length > 0)
+    .map((value) => ({ type: /^https?:\/\//i.test(value) ? "url" : "text", value }));
 }
 
-const EVENT_DAYS = pickRandomDays(ALL_EVENTS.length, 31);
-const EVENTS_BY_DATE: Record<string, EventItem[]> = {};
-ALL_EVENTS.forEach((event, i) => {
-  const day = EVENT_DAYS[i];
-  const key = `2026-03-${day.toString().padStart(2, "0")}`;
-  if (!EVENTS_BY_DATE[key]) EVENTS_BY_DATE[key] = [];
-  EVENTS_BY_DATE[key].push(event);
-});
-
-// Add special Gyre & Air events only in week 3 of March
-const gyreKey = `2026-03-${String(GYRE_DAY).padStart(2, "0")}`;
-const airKey = `2026-03-${String(AIR_DAY).padStart(2, "0")}`;
-if (!EVENTS_BY_DATE[gyreKey]) EVENTS_BY_DATE[gyreKey] = [];
-EVENTS_BY_DATE[gyreKey].push(GYRE_EVENT);
-if (!EVENTS_BY_DATE[airKey]) EVENTS_BY_DATE[airKey] = [];
-EVENTS_BY_DATE[airKey].push(AIR_EVENT);
-
-/** Returns a 35-cell grid (5 rows × 7 days) for March 2026. March 1, 2026 = Sunday. */
-function getMarch2026CalendarGrid(): (Date | null)[] {
+function getMonthGrid(date: Date): (Date | null)[] {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const first = new Date(year, month, 1);
+  const last = new Date(year, month + 1, 0);
+  const startPad = first.getDay();
+  const days = last.getDate();
   const grid: (Date | null)[] = [];
-  const year = 2026;
-  const month = 2; // 0-indexed: March = 2
-  for (let i = 1; i <= 31; i++) {
-    grid.push(new Date(year, month, i));
-  }
-  while (grid.length < 35) grid.push(null);
+  for (let i = 0; i < startPad; i++) grid.push(null);
+  for (let d = 1; d <= days; d++) grid.push(new Date(year, month, d));
+  const total = grid.length;
+  const remainder = total % 7;
+  if (remainder) for (let i = 0; i < 7 - remainder; i++) grid.push(null);
   return grid;
 }
 
-function dateKey(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
+function formatMonthYear(d: Date): string {
+  return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
-function getEventsForDay(date: Date): EventItem[] {
-  return EVENTS_BY_DATE[dateKey(date)] ?? [];
-}
-
-function formatDayNum(d: Date): string {
-  return d.getDate().toString();
-}
-
-/** Renders event image with gradient fallback when the image fails to load (e.g. missing file). */
-function EventImage({ src, gradient }: { src: string; gradient: string }) {
-  const [failed, setFailed] = useState(false);
-  if (failed) {
-    return (
-      <div
-        className={`h-full w-full bg-gradient-to-br ${gradient} opacity-80`}
-        aria-hidden
-      />
-    );
+function isGoogleMeetUrl(url: string): boolean {
+  try {
+    const u = new URL(url);
+    return u.hostname === "meet.google.com";
+  } catch {
+    return false;
   }
-  return (
-    <img
-      src={src}
-      alt=""
-      className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-105"
-      onError={() => setFailed(true)}
-    />
-  );
+}
+
+function isSameCalendarDay(d1: Date, d2: Date): boolean {
+  return d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
+}
+
+function isWithinEventTimeRange(event: CalendarEvent): boolean {
+  const now = new Date().getTime();
+  return now >= event.start.getTime() && now <= event.end.getTime();
+}
+
+function isMeetLinkInDescription(url: string): boolean {
+  if (isGoogleMeetUrl(url)) return true;
+  return /google\s*meet|meet\.google/i.test(url);
 }
 
 export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.05 });
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [viewDate, setViewDate] = useState(() => new Date());
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
 
-  const calendarGrid = useMemo(() => getMarch2026CalendarGrid(), []);
+  const rawUrl = typeof import.meta !== "undefined" && import.meta.env?.VITE_CALENDAR_ICS_URL;
+  const icsUrl = import.meta.env.DEV
+    ? "/api/calendar.ics"
+    : (typeof rawUrl === "string" && rawUrl.trim() ? rawUrl.trim() : undefined);
 
-  const selectedEvents = selectedDay ? getEventsForDay(selectedDay) : [];
+  useEffect(() => {
+    const y = viewDate.getFullYear();
+    const m = viewDate.getMonth();
+    const start = new Date(y, m - 1, 1, 0, 0, 0, 0);
+    const end = new Date(y, m + 2, 0, 23, 59, 59, 999);
+    setLoading(true);
+    fetchCalendarEvents(icsUrl, start, end)
+      .then(setEvents)
+      .catch(() => setEvents([]))
+      .finally(() => setLoading(false));
+  }, [viewDate, icsUrl]);
+
+  const eventsByDate = useMemo(() => {
+    const map: Record<string, CalendarEvent[]> = {};
+    events.forEach((ev) => {
+      const key = dateKey(ev.start);
+      if (!map[key]) map[key] = [];
+      map[key].push(ev);
+    });
+    return map;
+  }, [events]);
+
+  const calendarGrid = useMemo(() => getMonthGrid(viewDate), [viewDate]);
+  const selectedEvents = selectedDay ? eventsByDate[dateKey(selectedDay)] ?? [] : [];
   const hasEvents = selectedEvents.length > 0;
 
   return (
     <section
       id="events-calendar"
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="events-calendar-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-elevn-primary/5 to-transparent dark:via-elevn-cyan/5"
-        aria-hidden
-      />
-      {/*<SectionTransition inView={sectionInView} className="mb-0" />*/}
-
-      <div className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-12 lg:py-28">
+      <SectionDivider className="mb-0" />
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-14 pb-20 max-[400px]:px-3 max-[400px]:pt-12 sm:px-6 sm:pt-16 sm:pb-24 md:px-10 md:pt-18 md:pb-28 lg:max-w-[1600px] lg:px-12 lg:pt-20 lg:pb-32 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 20 }}
-          transition={{ duration: 0.35, ease }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 16 }}
+          transition={{ duration: 0.32, ease }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan sm:text-sm">
-            Calendar
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
+            Events
           </p>
           <h2
             id="events-calendar-heading"
-            className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl md:text-5xl dark:text-elevn-ice"
+            className="mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
           >
-            March 2026
+            <span className="bg-elevn-gradient bg-clip-text text-transparent">Workshops & opportunities</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base font-semibold text-slate-600 dark:text-elevn-ice/85">
-            Click a day to see events. New opportunities every week.
+          <p className="mx-auto mt-3 max-w-xl text-sm font-medium text-slate-600 dark:text-elevn-ice/85 md:text-base">
+            Live sessions, masterclasses, and application windows. Pick a day to see what’s on.
           </p>
         </motion.div>
 
-        {/* Full month grid: 7 columns (Sun–Sat) + 5 rows */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
-          transition={{ duration: 0.4, delay: 0.08, ease }}
-          className="mt-10 overflow-hidden rounded-2xl border-2 border-slate-200 bg-white shadow-xl dark:border-white/10 dark:bg-elevn-surface/60 sm:mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 20 }}
+          transition={{ duration: 0.35, delay: 0.06, ease }}
+          className="mt-10 overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-br from-white/95 via-elevn-cyan/5 to-elevn-violet/5 shadow-[0_18px_55px_rgba(15,23,42,0.2)] backdrop-blur-xl dark:border-white/10 dark:bg-gradient-to-br dark:from-elevn-surface/95 dark:via-elevn-cyan/10 dark:to-elevn-violet/15 dark:shadow-elevn-neon/20 sm:mt-12"
         >
-          {/* Day headers */}
-          <div className="grid grid-cols-7 border-b border-slate-200 dark:border-white/10">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/70 bg-white/60 px-4 py-4 dark:border-white/10 dark:bg-elevn-surface/80 sm:px-6">
+            <div className="flex items-center gap-2 text-slate-950 dark:text-elevn-ice">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-elevn-cyan/10 text-elevn-cyan shadow-[0_0_18px_rgba(34,211,238,0.5)]">
+                <HiCalendarDays className="text-lg" aria-hidden />
+              </span>
+              <div className="flex flex-col text-left">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 dark:text-elevn-ice/60">
+                  Creator agenda
+                </span>
+                <span className="text-lg font-bold tracking-tight">{formatMonthYear(viewDate)}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="h-8 rounded-full border border-transparent bg-white/70 px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-elevn-cyan/60 hover:bg-white dark:bg-elevn-surface/80 dark:text-elevn-ice/80"
+                onClick={() => setViewDate(new Date())}
+              >
+                Today
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                className="h-8 w-8 rounded-full border-slate-200 bg-white/70 text-slate-700 hover:border-elevn-cyan/70 hover:bg-elevn-cyan/5 dark:border-white/20 dark:bg-elevn-surface/80 dark:text-elevn-ice/80"
+                onClick={() => setViewDate((d) => new Date(d.getFullYear(), d.getMonth() - 1))}
+              >
+                <span className="sr-only">Previous month</span>
+                ‹
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                className="h-8 w-8 rounded-full border-slate-200 bg-white/70 text-slate-700 hover:border-elevn-cyan/70 hover:bg-elevn-cyan/5 dark:border-white/20 dark:bg-elevn-surface/80 dark:text-elevn-ice/80"
+                onClick={() => setViewDate((d) => new Date(d.getFullYear(), d.getMonth() + 1))}
+              >
+                <span className="sr-only">Next month</span>
+                ›
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-7 border-b border-slate-200/80 dark:border-white/10">
             {DAY_NAMES.map((name) => (
               <div
                 key={name}
-                className="py-2 text-center text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-elevn-ice/70 sm:py-3 sm:text-sm"
+                className="py-2 text-center text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-elevn-ice/70 sm:text-xs"
               >
                 {name}
               </div>
             ))}
           </div>
-          {/* Day cells */}
           <div className="grid grid-cols-7">
             {calendarGrid.map((date, index) => {
               if (date === null) {
-                return <div key={`empty-${index}`} className="min-h-[80px] sm:min-h-[96px]" />;
+                return <div key={`e-${index}`} className="min-h-[72px] sm:min-h-[80px]" />;
               }
-              const events = getEventsForDay(date);
+              const dayEvents = eventsByDate[dateKey(date)];
               const isSelected = selectedDay?.toDateString() === date.toDateString();
 
               return (
@@ -248,43 +205,37 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                   onClick={() => setSelectedDay((prev) => (prev?.toDateString() === date.toDateString() ? null : date))}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: sectionInView ? 1 : 0 }}
-                  transition={{ duration: 0.25, delay: 0.05 + index * 0.01, ease }}
-                  className={`flex min-h-[80px] flex-col items-start justify-start border-b border-slate-200/80 p-2 transition-all duration-200 dark:border-white/10 sm:min-h-[96px] sm:p-3 ${
-                    index % 7 < 6 ? "border-r border-slate-200/80 dark:border-white/10" : ""
-                  } ${
+                  transition={{ duration: 0.2, delay: index * 0.008, ease }}
+                  className={`relative flex min-h-[72px] flex-col items-start justify-start border-b border-r border-slate-200/80 p-2 transition-all duration-200 dark:border-white/10 sm:min-h-[80px] sm:p-2.5 ${
                     isSelected
-                      ? "bg-elevn-cyan/15 ring-2 ring-inset ring-elevn-cyan dark:bg-elevn-cyan/20"
-                      : "hover:bg-slate-50 dark:hover:bg-elevn-surface/80"
+                      ? "bg-elevn-cyan/15 ring-2 ring-elevn-cyan/80 shadow-[0_0_0_1px_rgba(34,211,238,0.4),0_0_32px_rgba(34,211,238,0.65)] dark:bg-elevn-cyan/20"
+                      : "hover:bg-slate-50/80 hover:shadow-[0_0_0_1px_rgba(148,163,184,0.45)] dark:hover:bg-elevn-surface/80"
                   }`}
                 >
-                  <span className="text-sm font-bold tabular-nums text-slate-950 dark:text-elevn-ice sm:text-base">
-                    {formatDayNum(date)}
+                  <span className="text-sm font-bold tabular-nums text-slate-950 dark:text-elevn-ice">
+                    {date.getDate()}
                   </span>
-                  {events.length > 0 ? (
-                    <div className="mt-1.5 flex w-full min-w-0 flex-col gap-0.5">
-                      <div className="flex items-center gap-1">
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-elevn-cyan" aria-hidden />
-                        <p className="line-clamp-2 min-w-0 flex-1 text-[10px] font-semibold leading-tight text-slate-700 dark:text-elevn-ice/90 sm:text-xs" title={events[0].title}>
-                          {events[0].title}
+                  {dayEvents && dayEvents.length > 0 && (
+                    <>
+                      <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-elevn-cyan shadow-[0_0_12px_rgba(34,211,238,0.9)]" aria-hidden />
+                      <div className="mt-1 flex w-full min-w-0 flex-col gap-0.5">
+                        <p className="line-clamp-2 min-w-0 text-[10px] font-semibold leading-tight text-slate-700 dark:text-elevn-ice/90" title={dayEvents[0].title}>
+                          {dayEvents[0].title}
                         </p>
+                        {dayEvents.length > 1 && (
+                          <p className="text-[9px] font-medium text-elevn-cyan dark:text-elevn-cyan/90">
+                            +{dayEvents.length - 1} more
+                          </p>
+                        )}
                       </div>
-                      <p className="text-[9px] font-medium text-elevn-cyan dark:text-elevn-cyan/90 sm:text-[10px]">
-                        {events[0].duration}
-                      </p>
-                      {events.length > 1 && (
-                        <p className="text-[9px] font-medium text-slate-500 dark:text-elevn-ice/60">
-                          +{events.length - 1} more
-                        </p>
-                      )}
-                    </div>
-                  ) : null}
+                    </>
+                  )}
                 </motion.button>
               );
             })}
           </div>
         </motion.div>
 
-        {/* Expandable detail panel */}
         <AnimatePresence mode="wait">
           {selectedDay ? (
             <motion.div
@@ -292,71 +243,124 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease }}
+              transition={{ duration: 0.35, ease }}
               className="mt-8 overflow-hidden"
             >
-              {hasEvents ? (
+              {loading ? (
+                <div className="flex items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 py-16 dark:border-white/10 dark:bg-elevn-surface/60">
+                  <p className="text-sm font-semibold text-slate-500 dark:text-elevn-ice/70">Loading events…</p>
+                </div>
+              ) : hasEvents ? (
                 <div className="space-y-6">
-                  {selectedEvents.slice(0, 4).map((event, i) => (
+                  {selectedEvents.slice(0, 6).map((event, i) => (
                     <motion.article
                       key={event.id + i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.35, delay: 0.05 * i, ease }}
-                      className="group relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-white shadow-xl dark:border-white/10 dark:bg-elevn-surface/80 dark:shadow-elevn-neon/20"
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.04 * i, ease }}
+                      className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 shadow-[0_14px_40px_rgba(15,23,42,0.1)] dark:border-white/10 dark:bg-elevn-surface/90 dark:shadow-elevn-neon/15"
                     >
-                      <div
-                        className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${event.gradient}`}
-                        aria-hidden
-                      />
+                      <div className={`absolute left-0 top-0 bottom-0 z-10 w-1.5 bg-gradient-to-b ${event.gradient} opacity-90`} aria-hidden />
                       <div className="flex flex-col sm:flex-row">
-                        <div className="relative h-40 w-full shrink-0 overflow-hidden bg-slate-100 sm:h-auto sm:w-56 dark:bg-elevn-surface">
-                          {event.image ? (
-                            <EventImage src={event.image} gradient={event.gradient} />
-                          ) : (
-                            <div
-                              className={`h-full w-full bg-gradient-to-br ${event.gradient} opacity-80`}
-                              aria-hidden
+                        <div
+                          className={`relative h-40 w-full shrink-0 overflow-hidden bg-gradient-to-br ${event.gradient} sm:h-auto sm:w-80`}
+                          aria-hidden
+                        >
+                          {event.imageUrl ? (
+                            <img
+                              src={
+                                import.meta.env.DEV && event.imageUrl.startsWith("https://drive.google.com/")
+                                  ? `/api/image?url=${encodeURIComponent(event.imageUrl)}`
+                                  : event.imageUrl
+                              }
+                              alt=""
+                              className="absolute inset-0 h-full w-full object-cover object-center"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.currentTarget.style.display = "none";
+                              }}
                             />
-                          )}
-                          <div
-                            className={`absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 transition group-hover:opacity-100 dark:from-elevn-dark/60`}
-                            aria-hidden
-                          />
+                          ) : null}
                         </div>
-                        <div className="flex flex-1 flex-col justify-center p-6 sm:p-8">
-                          <h3 className="text-xl font-bold tracking-tight text-slate-950 sm:text-2xl dark:text-elevn-ice">
+                        <div className="flex flex-1 flex-col justify-center p-5 sm:p-6">
+                          <h3 className="text-lg font-bold tracking-tight text-slate-950 sm:text-xl dark:text-elevn-ice">
                             {event.title}
                           </h3>
-                          <p className="mt-1.5 text-sm font-semibold text-elevn-cyan dark:text-elevn-cyan/90">
-                            {event.duration}
+                          <p className="mt-1 text-xs font-semibold text-elevn-cyan dark:text-elevn-cyan/90">
+                            {event.startLabel}{event.endLabel ? ` – ${event.endLabel}` : ""}
                           </p>
-                          <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/90 sm:text-base">
-                            {event.description}
-                          </p>
-                          <div className="mt-6 flex flex-wrap items-center gap-3">
-                            <Button
-                              asChild
-                              size="lg"
-                              className="w-fit bg-elevn-gradient px-6 py-5 text-sm font-semibold text-white shadow-lg dark:text-elevn-ice"
-                            >
-                              <a
-                                href={event.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <HiArrowTopRightOnSquare className="mr-2 text-lg" aria-hidden />
-                                View opportunity
-                              </a>
-                            </Button>
+                          {event.description && (
+                            <p className="mt-3 max-h-[20rem] overflow-y-auto text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/85 whitespace-pre-line">
+                              {linkifySegments(event.description).map((seg, i) => {
+                                if (seg.type !== "url") return <span key={i}>{seg.value}</span>;
+                                const isMeet = isMeetLinkInDescription(seg.value);
+                                const sameDay = isSameCalendarDay(event.start, new Date());
+                                const withinTime = isWithinEventTimeRange(event);
+                                const meetLinkActive = isMeet && sameDay && withinTime;
+                                if (isMeet && !meetLinkActive) {
+                                  return (
+                                    <span
+                                      key={i}
+                                      className="break-all font-semibold text-slate-500 dark:text-elevn-ice/60 cursor-default select-all"
+                                      title="Meet link is only active on the event day during the scheduled time"
+                                    >
+                                      {seg.value}
+                                    </span>
+                                  );
+                                }
+                                return (
+                                  <a
+                                    key={i}
+                                    href={seg.value}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="break-all font-semibold text-elevn-cyan underline decoration-elevn-cyan/70 underline-offset-2 hover:decoration-elevn-cyan dark:text-elevn-cyan dark:decoration-elevn-cyan/70"
+                                  >
+                                    {seg.value}
+                                  </a>
+                                );
+                              })}
+                            </p>
+                          )}
+                          {event.url && !isGoogleMeetUrl(event.url) && (
+                            <p className="mt-3 text-xs font-semibold text-slate-500 dark:text-elevn-ice/70">
+                              Application link (open on your phone for best experience):
+                            </p>
+                          )}
+                          <div className="mt-4 flex flex-wrap items-center gap-3">
+                            {event.url && (
+                              isGoogleMeetUrl(event.url) ? (
+                                isSameCalendarDay(event.start, new Date()) && isWithinEventTimeRange(event) ? (
+                                  <Button asChild size="sm" className="bg-elevn-gradient text-white shadow-md dark:text-elevn-ice">
+                                    <a href={event.url} target="_blank" rel="noopener noreferrer">
+                                      <HiVideoCamera className="mr-2 text-base" aria-hidden />
+                                      Join the meeting in a new tab
+                                    </a>
+                                  </Button>
+                                ) : (
+                                  <Button size="sm" disabled className="cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-white/10 dark:text-elevn-ice/60">
+                                    <HiVideoCamera className="mr-2 text-base" aria-hidden />
+                                    Join the meeting in a new tab
+                                  </Button>
+                                )
+                              ) : (
+                                <Button asChild size="sm" className="bg-elevn-gradient text-white shadow-md dark:text-elevn-ice">
+                                  <a href={event.url} target="_blank" rel="noopener noreferrer">
+                                    <HiArrowTopRightOnSquare className="mr-2 text-base" aria-hidden />
+                                    Open event link
+                                  </a>
+                                </Button>
+                              )
+                            )}
                             <Button
                               type="button"
-                              size="lg"
+                              size="sm"
+                              variant="outline"
                               onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                              className="w-fit border-2 border-elevn-cyan bg-transparent px-6 py-5 text-sm font-semibold text-cyan-700 hover:bg-elevn-cyan/15 hover:text-cyan-800 dark:border-elevn-cyan dark:bg-transparent dark:text-elevn-cyan dark:hover:bg-elevn-cyan/20 dark:hover:text-elevn-ice"
+                              className="border-elevn-cyan/60 bg-elevn-cyan/5 text-elevn-cyan hover:bg-elevn-cyan/10 hover:border-elevn-cyan/80 dark:border-elevn-cyan dark:bg-transparent dark:text-elevn-cyan dark:hover:bg-elevn-cyan/10"
                             >
-                              <HiBolt className="mr-2 text-lg" aria-hidden />
-                              Explore the Community
+                              <HiBolt className="mr-2 text-base" aria-hidden />
+                              Join community
                             </Button>
                           </div>
                         </div>
@@ -368,21 +372,21 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease }}
-                  className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-white/80 px-8 py-14 text-center dark:border-white/20 dark:bg-elevn-surface/60"
+                  transition={{ duration: 0.3, ease }}
+                  className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200/80 bg-white/80 px-6 py-12 text-center dark:border-white/15 dark:bg-elevn-surface/60"
                 >
-                  <HiSparkles className="mb-4 text-4xl text-elevn-cyan" aria-hidden />
-                  <p className="text-lg font-bold text-slate-950 dark:text-elevn-ice">
-                    Stay connected; new opportunities arise every minute.
+                  <HiSparkles className="mb-3 text-3xl text-elevn-cyan" aria-hidden />
+                  <p className="text-base font-bold text-slate-950 dark:text-elevn-ice">
+                    Nothing scheduled this day
                   </p>
-                  <p className="mt-2 max-w-md text-sm font-medium text-slate-600 dark:text-elevn-ice/80">
-                    No events this day—but the next workshop or collaboration could drop anytime. Register so you don&apos;t miss out.
+                  <p className="mt-2 max-w-sm text-sm font-medium text-slate-600 dark:text-elevn-ice/80">
+                    New workshops and opportunities are added regularly. Join so you don’t miss them.
                   </p>
                   <Button
                     type="button"
                     size="lg"
                     onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                    className="mt-6 bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+                    className="mt-6 bg-elevn-gradient px-6 py-5 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
                   >
                     <HiBolt className="mr-2 text-xl" aria-hidden />
                     Join Our Creator Community
@@ -392,13 +396,13 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
             </motion.div>
           ) : (
             <motion.p
-              key="placeholder"
+              key="hint"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="mt-8 text-center text-sm font-semibold text-slate-500 dark:text-elevn-ice/60"
             >
-              Click a day above to see events
+              Click a day to see events
             </motion.p>
           )}
         </AnimatePresence>

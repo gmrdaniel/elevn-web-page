@@ -26,7 +26,7 @@ const INSIGHTS_SLIDES: {
     metric: "100%",
     metricLabel: "verified",
     impact: "No sketchy DMs. Just real briefs from brands looking for talent like you.",
-    copy: "Every opportunity on Elevn goes through verification. You know what they want, what they pay, and who you're working with. Your time matters.",
+    copy: "Every opportunity on ELEVN goes through verification. You know what they want, what they pay, and who you're working with. Your time matters.",
   },
   {
     icon: HiDocumentText,
@@ -34,7 +34,7 @@ const INSIGHTS_SLIDES: {
     metric: "0",
     metricLabel: "surprises along the way",
     impact: "You know exactly what to deliver and when you get paid.",
-    copy: "No back-and-forth. On Elevn the brief is set: deliverables, deadlines, and compensation. You focus on creating.",
+    copy: "No back-and-forth. On ELEVN the brief is set: deliverables, deadlines, and compensation. You focus on creating.",
   },
   {
     icon: HiBanknotes,
@@ -42,7 +42,7 @@ const INSIGHTS_SLIDES: {
     metric: "On-time",
     metricLabel: "payments",
     impact: "Stop chasing payments. Clear contracts and payouts that land when they should.",
-    copy: "Elevn standardizes timelines and payment terms. Less stress, more time for what matters: your content.",
+    copy: "ELEVN standardizes timelines and payment terms. Less stress, more time for what matters: your content.",
   },
   {
     icon: HiUserGroup,
@@ -50,7 +50,7 @@ const INSIGHTS_SLIDES: {
     metric: "1",
     metricLabel: "ecosystem",
     impact: "Creators like you who take what they do seriously.",
-    copy: "On Elevn you're not alone. You're with people who live the same reality: opportunities, learnings, and support when you need it.",
+    copy: "On ELEVN you're not alone. You're with people who live the same reality: opportunities, learnings, and support when you need it.",
   },
   {
     icon: HiGlobeAlt,
@@ -58,7 +58,7 @@ const INSIGHTS_SLIDES: {
     metric: "15+",
     metricLabel: "countries",
     impact: "Global opportunities without hunting each one down yourself.",
-    copy: "Elevn connects with brands that already trust the ecosystem. You show up on their radar with a profile that speaks for itself.",
+    copy: "ELEVN connects with brands that already trust the ecosystem. You show up on their radar with a profile that speaks for itself.",
   },
   {
     icon: HiArrowTrendingUp,
@@ -66,7 +66,7 @@ const INSIGHTS_SLIDES: {
     metric: "Training",
     metricLabel: "and real support",
     impact: "Learn what actually works today. No outdated theory.",
-    copy: "Elevn has training built for creators: monetization, negotiation, metrics. And support when you need it.",
+    copy: "ELEVN has training built for creators: monetization, negotiation, metrics. And support when you need it.",
   },
 ];
 
@@ -130,7 +130,7 @@ export function InsightsCarousel() {
     >
       <div className="flex flex-col gap-3 border-b border-slate-200 px-4 py-3 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-6 sm:py-4 md:px-8 md:py-5">
         <h2 className="min-w-0 shrink-0 text-base font-bold text-slate-900 dark:text-elevn-ice sm:text-lg md:text-xl lg:text-2xl">
-          What you get with Elevn
+          What you get with ELEVN
         </h2>
         <div className="flex shrink-0 items-center gap-2">
           <button

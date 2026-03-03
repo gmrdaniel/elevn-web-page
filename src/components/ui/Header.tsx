@@ -9,11 +9,13 @@ const LOGO_URL =
   "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
 
 const NAV_ITEMS = [
-  { label: "About", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
+  { label: "ELEVN", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
   { label: "Benefits", href: "#benefits", id: "benefits" },
+  { label: "Community", href: "#community", id: "community" },
   { label: "Opportunities", href: "#opportunities", id: "opportunities" },
-  { label: "Elevn Studio", href: "#elevn-studio", id: "elevn-studio" },
+  { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
   { label: "Events", href: "#events-calendar", id: "events-calendar" },
+  { label: "FAQs", href: "#faq", id: "faq" },
 ] as const;
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
@@ -69,14 +71,14 @@ function NavLinks({
             key={item.href}
             href={item.href}
             onClick={onNavigate}
-            className={`rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-offset-elevn-dark ${
+            className={`rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-offset-white ${
               isActive
                 ? scrolled
-                  ? "bg-elevn-primary/10 text-elevn-primary dark:bg-elevn-primary/20 dark:text-elevn-cyan"
-                  : "bg-white/20 text-elevn-ice hover:bg-white/25"
+                  ? "bg-elevn-primary/10 text-elevn-primary dark:bg-elevn-primary/15 dark:text-elevn-primary"
+                  : "bg-slate-900/5 text-slate-900 hover:bg-slate-900/8 dark:bg-elevn-primary/15 dark:text-elevn-primary dark:hover:bg-elevn-primary/20"
                 : scrolled
-                  ? "text-slate-900 hover:bg-slate-200/70 dark:text-elevn-dark/85 dark:hover:bg-elevn-dark/10 dark:hover:text-elevn-dark"
-                  : "text-elevn-ice/95 hover:bg-white/15 hover:text-elevn-ice"
+                  ? "text-slate-900 hover:bg-slate-200/70 dark:text-slate-900 dark:hover:bg-slate-200/70 dark:hover:text-slate-900"
+                  : "text-slate-800 hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-900 dark:hover:bg-slate-200/70 dark:hover:text-slate-900"
             }`}
             aria-current={isActive ? "location" : undefined}
           >
@@ -105,59 +107,43 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-40 transition-[background-color,box-shadow,color] duration-300 ${
-          scrolled
-            ? "bg-white/95 shadow-md shadow-slate-200/80 backdrop-blur-sm dark:bg-gradient-to-r dark:from-white dark:via-elevn-ice/95 dark:to-white dark:shadow-black/10"
-            : "bg-white/10 backdrop-blur-md dark:bg-transparent"
-        }`}
+        className="fixed left-0 right-0 top-0 z-40 bg-white/95 shadow-md shadow-slate-200/80 backdrop-blur-sm transition-[box-shadow] duration-300 dark:bg-gradient-to-r dark:from-white dark:via-elevn-ice/95 dark:to-white dark:shadow-black/10"
         aria-label="Site header"
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
           <a
             href="#hero"
-            className={`flex items-center rounded-lg border px-2.5 py-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 ${
-              scrolled
-                ? "border-slate-200 bg-white focus-visible:ring-offset-white dark:border-elevn-dark/10 dark:bg-elevn-ice dark:focus-visible:ring-offset-white"
-                : "border-white/20 bg-white/10 focus-visible:ring-offset-elevn-dark"
-            }`}
-            aria-label="Elevn – Home"
+            className="flex items-center rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-200/80 dark:bg-white/95 dark:focus-visible:ring-offset-white"
+            aria-label="ELEVN – Home"
           >
             <img
               src={LOGO_URL}
-              alt="Elevn"
+              alt="ELEVN"
               className="h-8 w-auto object-contain md:h-9"
               width={100}
               height={36}
             />
           </a>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 min-[1140px]:flex">
             <NavLinks scrolled={scrolled} activeId={activeId} />
             {onOpenJoinForm ? (
               <Button
                 size="sm"
                 type="button"
                 onClick={onOpenJoinForm}
-                className={`ml-2 font-semibold hover:opacity-95 ${
-                  scrolled
-                    ? "bg-elevn-primary text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
-                    : "bg-elevn-primary text-white hover:bg-elevn-primary/90 dark:bg-elevn-gradient dark:text-elevn-ice"
-                }`}
+                className="ml-2 font-semibold bg-elevn-primary text-white hover:opacity-95 hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
               >
-                Join
+                Secure your spot
               </Button>
             ) : (
               <Button
                 size="sm"
-                className={`ml-2 font-semibold hover:opacity-95 ${
-                  scrolled
-                    ? "bg-elevn-primary text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
-                    : "bg-elevn-primary text-white hover:bg-elevn-primary/90 dark:bg-elevn-gradient dark:text-elevn-ice"
-                }`}
+                className="ml-2 font-semibold bg-elevn-primary text-white hover:opacity-95 hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                 asChild
               >
                 <a href="https://laneta-portal.netlify.app/" target="_blank" rel="noopener noreferrer">
-                  Join
+                Secure your spot
                 </a>
               </Button>
             )}
@@ -166,11 +152,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
           <button
             type="button"
             onClick={() => setMobileOpen((o) => !o)}
-            className={`flex h-10 w-10 items-center justify-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan md:hidden ${
-              scrolled
-                ? "text-slate-900 hover:bg-slate-200/70 dark:text-elevn-dark dark:hover:bg-elevn-dark/10"
-                : "text-elevn-ice hover:bg-white/15"
-            }`}
+            className="flex h-10 w-10 items-center justify-center rounded-md text-slate-900 hover:bg-slate-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan min-[1140px]:hidden dark:text-slate-900 dark:hover:bg-slate-200/70"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label="Toggle menu"
@@ -197,7 +179,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 top-16 z-30 bg-slate-900/20 backdrop-blur-sm md:hidden dark:bg-elevn-dark/95 dark:backdrop-blur-md"
+              className="fixed inset-0 top-16 z-30 bg-slate-900/20 backdrop-blur-sm min-[1140px]:hidden dark:bg-elevn-dark/95 dark:backdrop-blur-md"
               onClick={closeMobile}
             />
             <motion.div
@@ -205,7 +187,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
-              className="fixed left-0 right-0 top-16 z-30 border-b border-slate-200 bg-white px-4 py-6 shadow-lg md:hidden dark:border-white/10 dark:bg-elevn-dark dark:shadow-none"
+              className="fixed left-0 right-0 top-16 z-30 border-b border-slate-200 bg-white px-4 py-6 shadow-lg min-[1140px]:hidden dark:border-white/10 dark:bg-elevn-dark dark:shadow-none"
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="flex flex-col gap-1" aria-label="Main">
@@ -231,9 +213,9 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                   <button
                     type="button"
                     onClick={() => { onOpenJoinForm(); closeMobile(); }}
-                    className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-gradient dark:text-elevn-ice"
+                    className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                   >
-                    Join
+                    Secure your spot
                   </button>
                 ) : (
                   <a
@@ -241,9 +223,9 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMobile}
-                    className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-gradient dark:text-elevn-ice"
+                    className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                   >
-                    Join
+                    Secure your spot
                   </a>
                 )}
               </nav>

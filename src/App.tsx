@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { HeroSection } from "@/components/sections/HeroSection";
 import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceSection";
-import { AboutSection } from "@/components/sections/AboutSection";
+import { SocialProofBannerSection } from "@/components/sections/SocialProofBannerSection";
 import { ForCreatorsSection } from "@/components/sections/ForCreatorsSection";
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
 import { EventsCalendarSection } from "@/components/sections/EventsCalendarSection";
-// Legacy: import { HowElevnWorksSection } from "@/components/sections/HowElevnWorksSection";
+import { CommunitySection } from "@/components/sections/CommunitySection";
 import { ActiveOpportunitiesSection } from "@/components/sections/ActiveOpportunitiesSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Footer } from "@/components/ui/Footer";
@@ -25,18 +24,17 @@ function App() {
       <ScrollNav />
       <ThemeSwitch />
       <Header onOpenJoinForm={() => setShowJoinForm(true)} />
-      <HeroSection onOpenJoinForm={() => setShowJoinForm(true)} />
-      <ElevnIsYourSpaceSection />
-      <AboutSection />
+      {/* Legacy hero: <HeroSection /> */}
+      <ElevnIsYourSpaceSection onOpenJoinForm={() => setShowJoinForm(true)} />
+      <SocialProofBannerSection />
       <ForCreatorsSection onOpenJoinForm={() => setShowJoinForm(true)} />
-      {/* Benefits: V2 = bullets + CTA above fold, detail below. Legacy: <BenefitsSection /> */}
       <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
+      <CommunitySection />
       <ActiveOpportunitiesSection onOpenJoinForm={() => setShowJoinForm(true)} />
-      {/* Learning hub: Elevn Studio. Legacy: <HowElevnWorksSection /> */}
       <ElevnStudioSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <EventsCalendarSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <FinalCTASection onOpenJoinForm={() => setShowJoinForm(true)} />
-      <Footer />
+      <Footer onOpenJoinForm={() => setShowJoinForm(true)} />
       <AnimatePresence>
         {showJoinForm && (
           <JoinForm key="join-form" onClose={() => setShowJoinForm(false)} />

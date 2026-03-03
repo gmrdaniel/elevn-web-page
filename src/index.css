@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Elevn — Paleta cyberpunk/futurista (azul + cyan, violet, magenta) */
+/* ELEVN — Paleta cyberpunk/futurista (azul + cyan, violet, magenta) */
 :root {
   --elevn-primary: #2563eb;
   --elevn-electric: #0ea5e9;
