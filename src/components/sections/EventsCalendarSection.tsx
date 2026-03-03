@@ -69,10 +69,8 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
   const [viewDate, setViewDate] = useState(() => new Date());
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
 
-  const rawUrl = typeof import.meta !== "undefined" && import.meta.env?.VITE_CALENDAR_ICS_URL;
-  const icsUrl = import.meta.env.DEV
-    ? "/api/calendar.ics"
-    : (typeof rawUrl === "string" && rawUrl.trim() ? rawUrl.trim() : undefined);
+  // Always go through our `/api/calendar.ics` proxy so the browser never hits Google Calendar directly.
+  const icsUrl = "/api/calendar.ics";
 
   useEffect(() => {
     const y = viewDate.getFullYear();
