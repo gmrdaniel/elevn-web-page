@@ -43,14 +43,14 @@ export function SocialProofBannerSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="relative mx-auto flex w-full max-w-7xl flex-col items-stretch gap-8 px-4 py-12 sm:px-6 sm:py-14 md:flex-row md:items-center md:gap-12 md:px-10 lg:py-16 lg:px-12 xl:max-w-[1600px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20"
+        className="relative mx-auto flex w-full max-w-6xl flex-col-reverse items-stretch gap-8 px-4 py-10 sm:px-6 sm:py-12 md:flex-row md:flex-row-reverse md:items-center md:gap-10 md:px-8 lg:max-w-7xl lg:py-14 lg:px-12 xl:max-w-[1500px] xl:px-16 2xl:max-w-[1800px] 2xl:px-20"
       >
         {/* Image banner */}
         <motion.div
           variants={itemVariants}
-          className="relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white/95 shadow-[0_20px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl dark:border-white/10 dark:bg-elevn-surface/90 dark:shadow-elevn-neon/25 md:w-1/2"
+          className="relative overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/95 shadow-[0_16px_50px_rgba(15,23,42,0.16)] backdrop-blur-xl dark:border-white/10 dark:bg-elevn-surface/90 dark:shadow-elevn-neon/25 md:w-[48%]"
         >
-          <div className="relative aspect-[16/10] w-full md:aspect-[5/3]">
+          <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] md:aspect-[5/3]">
             <img
               src={BANNER_IMAGE_SRC}
               alt="Creator collaborating with brands under ELEVN's safety guarantee"
@@ -64,11 +64,11 @@ export function SocialProofBannerSection() {
             />
 
             <div
-              className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-col items-start gap-2 sm:inset-x-8 sm:bottom-7"
+              className="pointer-events-none absolute inset-x-3 bottom-3 flex flex-col items-start gap-2 sm:inset-x-5 sm:bottom-5"
               role="group"
               aria-label="ELEVN safety, guarantee, and payment protection snapshot"
             >
-              <div className="pointer-events-auto flex max-w-xs flex-col gap-2 rounded-2xl bg-slate-950/85 px-3 py-2 text-[10px] text-slate-100 shadow-[0_14px_35px_rgba(15,23,42,0.85)] ring-1 ring-slate-800/80 backdrop-blur-2xl sm:max-w-none sm:px-4 sm:py-3 sm:text-[11px] sm:flex-row sm:items-center sm:justify-between">
+              <div className="pointer-events-auto flex max-w-[260px] flex-col gap-2 rounded-2xl bg-slate-950/85 px-3 py-2 text-[10px] text-slate-100 shadow-[0_12px_30px_rgba(15,23,42,0.85)] ring-1 ring-slate-800/80 backdrop-blur-2xl sm:max-w-sm sm:px-4 sm:py-3 sm:text-[11px] sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 text-[9px] font-semibold text-slate-950 shadow-[0_0_0_1px_rgba(15,23,42,0.9)] sm:h-8 sm:w-8 sm:text-[10px]">
                     SAFE
@@ -107,7 +107,7 @@ export function SocialProofBannerSection() {
         </motion.div>
 
         {/* Copy + stats */}
-        <motion.div variants={itemVariants} className="md:w-1/2">
+        <motion.div variants={itemVariants} className="md:w-[52%]">
           <p className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/30 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-elevn-cyan shadow-sm dark:border-elevn-cyan/40 dark:bg-elevn-surface/90 dark:text-elevn-cyan">
             <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
             Trusted by creators across the Americas
@@ -122,14 +122,14 @@ export function SocialProofBannerSection() {
             </span>
           </h2>
 
-          <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-slate-700 sm:text-[15px] dark:text-elevn-ice/85">
+          <p className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-slate-700 sm:text-[15px] dark:text-elevn-ice/85">
             No vanity metrics. ELEVN prioritizes verified campaigns, on-time
             payments, and long-term relationships between creators and brands.
             Every opportunity is designed to protect your work and your time.
           </p>
 
-          <div className="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200/90 bg-white px-4 py-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
+          <div className="mt-5 grid grid-cols-3 gap-3 sm:mt-6 sm:gap-4">
+            <div className="rounded-2xl border border-slate-200/90 bg-white px-3.5 py-3.5 shadow-[0_14px_35px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
               <p className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-elevn-ice">
                 15+
               </p>
@@ -137,7 +137,7 @@ export function SocialProofBannerSection() {
                 Active countries
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-200/90 bg-white px-4 py-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
+            <div className="rounded-2xl border border-slate-200/90 bg-white px-3.5 py-3.5 shadow-[0_14px_35px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
               <p className="text-2xl font-semibold tracking-tight text-emerald-300">
                 0
               </p>
@@ -145,7 +145,7 @@ export function SocialProofBannerSection() {
                 Late payments
               </p>
             </div>
-            <div className="rounded-2xl border border-slate-200/90 bg-white px-4 py-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:col-span-1 col-span-2 sm:col-auto dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
+            <div className="rounded-2xl border border-slate-200/90 bg-white px-3.5 py-3.5 shadow-[0_14px_35px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
               <p className="text-2xl font-semibold tracking-tight text-cyan-400 dark:text-cyan-300">
                 100%
               </p>
@@ -155,7 +155,7 @@ export function SocialProofBannerSection() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-[11px] text-slate-500 dark:text-elevn-ice/80">
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-[11px] text-slate-500 dark:text-elevn-ice/80">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 ring-1 ring-slate-200 dark:bg-elevn-surface/90 dark:ring-white/15">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.9)]" />
               Guaranteed by contract

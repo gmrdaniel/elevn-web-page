@@ -128,7 +128,6 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
             Live sessions, masterclasses, and application windows. Pick a day to see what’s on.
           </p>
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 20 }}
