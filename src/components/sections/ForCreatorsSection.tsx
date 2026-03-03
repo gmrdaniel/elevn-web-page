@@ -1,9 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 //import { useScroll, useTransform } from "framer-motion";
-//import { SectionTransition } from "@/components/ui/SectionTransition";
 import {
   HiBriefcase,
   HiAcademicCap,
@@ -34,7 +33,7 @@ const CREATOR_BEATS = [
     extra: "Stay ahead of algorithm changes and platform shifts with training that actually applies.",
     icon: HiAcademicCap,
     gradient: "from-elevn-cyan to-elevn-violet",
-    image: "/assets/images/geek_male.jpg",
+    image: "/assets/images/edition.jpg",
   },
   {
     id: "support",
@@ -62,181 +61,138 @@ const CREATOR_BEATS = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-function BeatStripWrapper({
-  beat,
-  index,
-}: {
-  beat: (typeof CREATOR_BEATS)[number];
-  index: number;
-}) {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: false, amount: 0.06 });
-  return (
-    <article ref={ref}>
-      <BeatStrip beat={beat} index={index} inView={inView} />
-    </article>
-  );
-}
-
-const SLIDE_OFFSET = 72;
-
-function BeatStrip({
-  beat,
-  index,
-  inView,
-}: {
-  beat: (typeof CREATOR_BEATS)[number];
-  index: number;
-  inView: boolean;
-}) {
-  const Icon = beat.icon;
-  const isImageRight = index % 2 === 0;
-  const contentFromX = isImageRight ? -SLIDE_OFFSET : SLIDE_OFFSET;
-  const imageFromX = isImageRight ? SLIDE_OFFSET : -SLIDE_OFFSET;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 32 }}
-      transition={{ duration: 0.32, ease }}
-      className={`relative flex flex-col overflow-hidden border-t border-slate-200 dark:border-white/5 ${
-        index % 2 === 0 ? "bg-slate-50 dark:bg-elevn-surface/40" : "bg-white dark:bg-elevn-dark"
-      }`}
-    >
-      <div
-        className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${beat.gradient} opacity-[0.04]`}
-        aria-hidden
-      />
-      <div
-        className={`relative mx-auto flex w-full max-w-7xl flex-col gap-0 lg:min-h-[420px] lg:flex-row lg:items-center lg:gap-0 ${
-          isImageRight ? "lg:flex-row" : "lg:flex-row-reverse"
-        }`}
-      >
-        {/* Content half */}
-        <motion.div
-          initial={{ opacity: 0, x: contentFromX }}
-          animate={{
-            opacity: inView ? 1 : 0,
-            x: inView ? 0 : contentFromX,
-          }}
-          transition={{ duration: 0.4, delay: 0.03, ease }}
-          className="flex flex-1 flex-col justify-center px-6 py-14 lg:min-w-0 lg:py-20 lg:px-14 xl:px-20"
-        >
-          <span
-            className={`inline-block text-5xl font-bold tabular-nums sm:text-6xl lg:text-7xl bg-gradient-to-r ${beat.gradient} bg-clip-text text-transparent`}
-          >
-            {beat.number}
-          </span>
-          <div className="mt-5 flex items-center gap-4">
-            <span
-              className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${beat.gradient} text-white shadow-elevn-neon dark:text-elevn-ice`}
-            >
-              <Icon className="text-2xl" aria-hidden />
-            </span>
-            <h3 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-elevn-ice sm:text-3xl lg:text-4xl">
-              {beat.title}
-            </h3>
-          </div>
-          <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-950 sm:text-xl dark:text-elevn-ice/95">
-            {beat.line}
-          </p>
-          <p className="mt-4 text-base font-medium leading-relaxed text-slate-950 sm:text-lg dark:text-elevn-ice/90">
-            {beat.detail}
-          </p>
-          <p className="mt-4 text-base font-semibold leading-relaxed text-cyan-800 sm:text-lg dark:text-elevn-cyan/90">
-            {beat.extra}
-          </p>
-        </motion.div>
-
-        {/* Image half */}
-        <motion.div
-          initial={{ opacity: 0, x: imageFromX }}
-          animate={{
-            opacity: inView ? 1 : 0,
-            x: inView ? 0 : imageFromX,
-          }}
-          transition={{ duration: 0.4, delay: 0.06, ease }}
-          className="relative w-full flex-shrink-0 lg:w-[48%]"
-        >
-          <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-[420px] lg:w-full">
-            <img
-              src={beat.image}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent lg:from-slate-900/20 dark:from-elevn-dark/50 dark:via-transparent dark:to-transparent dark:lg:from-elevn-dark/40"
-              aria-hidden
-            />
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-}
-
 export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
-  //const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
-
-  //const { scrollYProgress } = useScroll({
-  //  target: sectionRef,
-  //  offset: ["start end", "end start"],
-  //});
-  //const headerY = useTransform(scrollYProgress, [0, 0.25], [32, 0]);
-  //const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const containerVariants = {
+    hidden: { opacity: 0, y: 32 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease },
+    },
+  } as const;
 
   return (
     <section
       id="creators"
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="for-creators-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      {/*<SectionTransition inView={sectionInView} className="mb-0" />
-      
-      <motion.div
-        style={{ y: headerY, opacity: headerOpacity }}
-        className="relative border-b border-slate-200 bg-white/95 px-6 py-20 backdrop-blur-sm dark:border-white/10 dark:bg-elevn-surface/60 md:px-10 md:py-28 lg:px-12 xl:px-16 2xl:px-20"
-      >
-        <div className="pointer-events-none absolute inset-0 bg-elevn-mesh-light opacity-20 dark:bg-elevn-mesh dark:opacity-40" aria-hidden />
-        <div className="relative mx-auto max-w-4xl text-center lg:max-w-5xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
-            For Creators & UGC
+      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-18 md:px-10 md:py-22 lg:py-24 xl:max-w-[1600px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
+          A clear path to a
           </p>
           <h2
             id="for-creators-heading"
-            className="mt-4 bg-gradient-to-r from-slate-950 via-elevn-cyan to-slate-950 bg-clip-text text-4xl font-bold leading-[1.1] tracking-tight text-transparent dark:from-elevn-ice dark:via-elevn-cyan dark:to-elevn-ice md:text-5xl lg:text-6xl"
+            className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
           >
-            Your creator career, taken to the next level
+            <span className="ml-2 bg-elevn-gradient bg-clip-text text-transparent">
+              real creator career.
+            </span>
           </h2>
-          <p className="mt-6 text-lg font-semibold leading-relaxed text-slate-950 md:text-xl dark:text-elevn-ice/90">
-            You deserve a platform that turns your effort into a sustainable career. Built for you—ready to go pro.
+          <p className="mt-4 text-sm font-medium leading-relaxed text-slate-700 sm:text-base dark:text-elevn-ice/85">
+            No endless scrolling. No noise. Just the core pieces you need to grow: work, skills, support, and a
+            community that takes this as seriously as you do.
           </p>
-        </div>
-      </motion.div>
-      */}
-      <div className="relative">
-        {CREATOR_BEATS.map((beat, index) => (
-          <BeatStripWrapper key={beat.id} beat={beat} index={index} />
-        ))}
-      </div>
+        </motion.div>
 
-      <div className="relative border-t border-slate-200 bg-white/80 px-6 py-12 text-center dark:border-white/10 dark:bg-elevn-surface/60 md:py-16">
-        <p className="mx-auto max-w-xl text-base font-semibold text-slate-700 dark:text-elevn-ice/90">
-          Ready to level up? Join the platform built for professional creators.
-        </p>
-        <Button
-          type="button"
-          size="lg"
-          onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-          className="mt-6 bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+        {/* Benefit cards: 4x1 → 3x1 → 2x2 → 1x1 */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-10 grid gap-6 sm:mt-12 md:grid-cols-2 lg:mt-14 lg:gap-8 xl:grid-cols-3 2xl:grid-cols-4"
         >
-          <HiBolt className="mr-2 text-xl" aria-hidden />
-          Join Our Creator Community
-        </Button>
+          {CREATOR_BEATS.map((beat, index) => {
+            const Icon = beat.icon;
+            const objectPosition =
+              index === 0 ? "center 28%" : index === 1 ? "center 18%" : "center";
+            return (
+              <motion.article
+                key={beat.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.35, ease }}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-[0_24px_70px_rgba(15,23,42,0.24)] dark:border-white/10 dark:bg-elevn-surface/90 dark:shadow-elevn-neon/20 dark:hover:shadow-elevn-neon/35"
+              >
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${beat.gradient} opacity-[0.03] group-hover:opacity-[0.08]`}
+                  aria-hidden
+                />
+                {/* Image strip (decorative, slightly larger) */}
+                <div className="relative h-32 w-full overflow-hidden sm:h-36 md:h-32 lg:h-40">
+                  <img
+                    src={beat.image}
+                    alt={beat.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    style={{ objectPosition }}
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent dark:from-elevn-dark/80"
+                    aria-hidden
+                  />
+                  <div className="absolute left-2.5 top-2.5 flex items-center gap-2 rounded-full bg-slate-950/80 px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm ring-1 ring-white/15 dark:bg-elevn-dark/85">
+                    <span
+                      className={`flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-br ${beat.gradient} text-[9px] font-bold text-white`}
+                    >
+                      {beat.number}
+                    </span>
+                    <span className="truncate">{beat.title}</span>
+                  </div>
+                </div>
+
+                {/* Text content */}
+                <div className="relative flex flex-1 flex-col gap-3 p-5">
+                  <span
+                    className={`inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${beat.gradient} text-white shadow-elevn-neon ring-1 ring-white/40 dark:text-elevn-ice dark:ring-elevn-dark/60`}
+                  >
+                    <Icon className="text-sm" aria-hidden />
+                  </span>
+                  <h3 className="text-base font-bold tracking-tight text-slate-950 sm:text-lg dark:text-elevn-ice">
+                    {beat.title}
+                  </h3>
+                  <p className="text-xs font-medium leading-relaxed text-slate-700 sm:text-sm dark:text-elevn-ice/85">
+                    {beat.line}
+                  </p>
+                  <p className="text-[11px] font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/75">
+                    {beat.detail}
+                  </p>
+                  {beat.extra && (
+                    <p className="mt-1 text-[11px] font-semibold leading-relaxed text-elevn-cyan dark:text-elevn-cyan/90">
+                      {beat.extra}
+                    </p>
+                  )}
+                </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 text-center sm:mt-14">
+          <p className="mx-auto max-w-xl text-base font-semibold text-slate-700 dark:text-elevn-ice/90">
+            Ready to level up? Join the platform built for professional creators.
+          </p>
+          <Button
+            type="button"
+            size="lg"
+            onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
+            className="bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+          >
+            <HiBolt className="mr-2 text-xl" aria-hidden />
+            Join Our Creator Community
+          </Button>
+        </div>
       </div>
     </section>
   );

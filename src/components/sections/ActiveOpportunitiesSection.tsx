@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { SectionTransition } from "@/components/ui/SectionTransition";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HiArrowTopRightOnSquare, HiBolt } from "react-icons/hi2";
@@ -10,11 +10,11 @@ import { HiArrowTopRightOnSquare, HiBolt } from "react-icons/hi2";
 const OPPORTUNITIES = [
   {
     id: "meta",
-    title: "Meta's New Creator Program",
+    title: "META Creator Fast Track",
     description:
-      "Identify and support emerging creators with significant growth potential. Direct financial bonuses, META training resources, and increased visibility.",
-    image: "/assets/images/META_2.png",
-    url: "https://laneta-portal.netlify.app/opportunities/meta?open=connect_new_opportunities",
+      "It's a program designed to accelerate your growth on Facebook, giving you the tools and resources you need to succeed from day one. You'll gain increased visibility and generate a revenue stream that will continue to grow long after the program ends.",
+    image: "/assets/images/META.png",
+    url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track",
     gradient: "from-elevn-primary to-elevn-cyan",
   },
   {
@@ -56,11 +56,11 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
     <section
       id="opportunities"
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="opportunities-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionTransition inView={sectionInView} className="mb-0" />
+      <SectionDivider className="mb-0" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
@@ -73,6 +73,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
+          Discover what ELEVN has for you—new opportunities every day
           Discover what ELEVN has for you—new opportunities every day
           </p>
           <h2
@@ -144,6 +145,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           className="mt-10 flex flex-col items-center gap-6 text-center"
         >
           <p className="text-sm font-semibold text-slate-950 dark:text-elevn-ice/80">
+            More opportunities added regularly. Apply through ELEVN and get access.
             More opportunities added regularly. Apply through ELEVN and get access.
           </p>
           <Button

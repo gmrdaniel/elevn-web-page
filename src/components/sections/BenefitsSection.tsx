@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { SectionTransition } from "@/components/ui/SectionTransition";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   HiBriefcase,
@@ -123,20 +123,20 @@ export function BenefitsSection() {
     <section
       id="benefits"
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="benefits-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionTransition inView={sectionInView} className="mb-0" />
+      <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-10 pb-16 max-[400px]:px-3 max-[400px]:pt-8 max-[400px]:pb-12 sm:px-6 sm:pt-12 sm:pb-20 md:px-10 md:pt-14 md:pb-24 lg:max-w-[1600px] lg:px-12 lg:pt-16 lg:pb-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{
             opacity: sectionInView ? 1 : 0,
-            y: sectionInView ? 0 : 24,
+            y: sectionInView ? 0 : 12,
           }}
-          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
@@ -144,13 +144,13 @@ export function BenefitsSection() {
           </p>
           <h2
             id="benefits-heading"
-            className="mt-3 text-2xl font-bold tracking-tight text-slate-950 max-[400px]:mt-2 max-[400px]:text-xl sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl dark:text-elevn-ice"
+            className="mt-2 text-2xl font-bold tracking-tight text-slate-950 max-[400px]:mt-1.5 max-[400px]:text-xl sm:mt-3 sm:text-3xl md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
             Why creators choose our platform
           </h2>
         </motion.div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 max-[400px]:mt-8 max-[400px]:gap-5 lg:mt-20 lg:grid-cols-[1fr_4fr] lg:items-stretch lg:gap-12">
+        <div className="mt-8 grid grid-cols-1 gap-6 max-[400px]:mt-6 max-[400px]:gap-5 lg:mt-12 lg:grid-cols-[1fr_4fr] lg:items-stretch lg:gap-12">
           <div className="flex flex-col justify-center lg:pr-4">
             <div className="relative border-l-2 border-elevn-cyan/50 pl-4 max-[400px]:pl-3 sm:pl-6 md:pl-8">
               <p className="text-sm font-medium leading-[1.7] text-slate-950 max-[400px]:text-xs max-[400px]:leading-[1.65] sm:text-base sm:leading-[1.75] md:text-lg md:leading-[1.8] dark:text-elevn-ice/90">

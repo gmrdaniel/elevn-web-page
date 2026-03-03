@@ -1,4 +1,4 @@
-# Elevn — Sitio Web
+# ELEVN — Sitio Web
 
 **Designed and Built for Professional Creators**
 
@@ -12,9 +12,9 @@ Proyecto React + TypeScript con Vite. Espacio de trabajo configurado con las her
 | **Animaciones / UI** | Material UI, Shadcn/ui, Framer Motion, Anime.js |
 | **Gráficos / Dashboards** | MUI X Charts, Recharts, Chart.js |
 | **Navegación / Storytelling** | Anime.js + React, Shadcn |
-| **Estilos** | Tailwind CSS, CSS variables (paleta Elevn) |
+| **Estilos** | Tailwind CSS, CSS variables (paleta ELEVN) |
 
-## Paleta de colores (Elevn)
+## Paleta de colores (ELEVN)
 
 - `#318CE7` — Primary
 - `#0CB7F2` — Accent
@@ -53,7 +53,7 @@ src/
     ui/          # Shadcn (Button, etc.)
   lib/           # Utilidades (cn, etc.)
   theme/         # Tema MUI (elevnTheme)
-  index.css      # Tailwind + variables Elevn
+  index.css      # Tailwind + variables ELEVN
 ```
 
 ## Añadir componentes Shadcn
@@ -68,7 +68,7 @@ El proyecto ya incluye `components.json` y el alias `@/` configurado.
 
 ## Uso de librerías
 
-- **Material UI**: importar desde `@mui/material`; el tema Elevn se aplica en `main.tsx`.
+- **Material UI**: importar desde `@mui/material`; el tema ELEVN se aplica en `main.tsx`.
 - **Shadcn**: componentes en `src/components/ui/`; usar `cn()` de `@/lib/utils` para clases.
 - **Framer Motion**: `import { motion } from "framer-motion"`.
 - **Anime.js**: `import anime from "animejs"` en efectos o refs.
