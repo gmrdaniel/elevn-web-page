@@ -74,7 +74,6 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
           Discover what ELEVN has for you—new opportunities every day
-          Discover what ELEVN has for you—new opportunities every day
           </p>
           <h2
             id="opportunities-heading"
