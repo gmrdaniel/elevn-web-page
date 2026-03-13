@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2019 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="86.6986mm" height="86.6986mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 8669.86 8669.86"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:none}
+    .fil1 {fill:url(#id0)}
+    .fil2 {fill:url(#id1)}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="1313.94" y1="-631.65" x2="976.91" y2="9750.91">
+   <stop offset="0" style="stop-opacity:1; stop-color:#20CCE4"/>
+   <stop offset="0.290196" style="stop-opacity:1; stop-color:#2E7CC0"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#3C2B9B"/>
+  </linearGradient>
+  <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="4540.19" y1="-49.55" x2="2828.13" y2="5667.96">
+   <stop offset="0" style="stop-opacity:1; stop-color:#1D96C3"/>
+   <stop offset="0.619608" style="stop-opacity:1; stop-color:#2B5EAD"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#392596"/>
+  </linearGradient>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1944818957472">
+   <rect class="fil0" x="-6.13" y="6.11" width="8669.87" height="8669.87"/>
+   <g>
+    <path class="fil1" d="M210.49 981.98c0.01,-546.16 546.62,-981.98 1188.21,-981.98 778.76,0.84 1892.71,0 2671.19,0 276.8,0 501.18,192.61 501.18,430.21 0,269.26 -1791.73,2960.49 -2123.56,3692.43 -13.22,29.17 -21.03,56.02 -21.03,88.4 0,123.12 116.25,222.9 259.67,222.9l1803.65 0c181.85,0 267.46,76.18 195.38,199.14l-1779.53 3035.68c-309.55,528.08 -635.92,1001.11 -1407.14,1001.11 -805.7,0 -1286.51,-485.13 -1288.59,-1054.48 -8.08,-2210.63 0.44,-4422.62 0.57,-6633.41z"/>
+    <path class="fil2" d="M8459.37 7687.85c-0.05,546.17 -546.63,982.02 -1188.25,982.02l-4314.18 0 3600.01 -5004.45c18.95,-26.34 21.04,-56.02 21.04,-88.39 0,-123.13 -116.3,-222.9 -259.64,-222.9l-1857.73 0c-288.99,0 -162.55,-274.53 -106.08,-362.3l1583.4 -2461.05c243.66,-378.72 641.26,-530.78 1233.4,-530.78 805.69,0 1286.5,485.1 1288.58,1054.46 8.1,2210.65 -0.42,4422.6 -0.55,6633.39z"/>
+   </g>
+  </g>
+ </g>
+</svg>
