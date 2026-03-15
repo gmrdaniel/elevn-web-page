@@ -5,52 +5,27 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiBolt, HiChevronDown } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const GRADIENT_TITLE =
   "linear-gradient(135deg, #22d3ee 0%, #06b6d4 30%, #8b5cf6 65%, #d946ef 100%)";
 
-const FAQ_ITEMS = [
-  {
-    question: "What exactly is ELEVN?",
-    answer:
-      "ELEVN will be the ultimate marketplace connecting creators with top global brands. Coming soon, it will be your main hub to get direct access to paid campaigns, AI optimization tools, and exclusive monetization programs to scale your business.",
-  },
-  {
-    question: "How many followers do I need to join ELEVN?",
-    answer:
-      "You need at least 1,000 followers on one of your accounts (Instagram, TikTok, YouTube, etc.). Beyond that, we care about your talent and the quality of your content—any creator who meets that baseline can join, scale, and unlock real opportunities.",
-  },
-  {
-    question: "Is it free to join ELEVN?",
-    answer: "Yes. Creating your profile and accessing opportunities is 100% free.",
-  },
-  {
-    question: "What kind of brands will I work with?",
-    answer:
-      "You’ll get access to a premium portfolio. This includes global tech partners as well as massive consumer brands.",
-  },
-  {
-    question: "How does ELEVN match me with campaigns?",
-    answer:
-      "Campaigns are matched based on your niche, content style, target audience, and brand fit—not just your follower count. The goal is to pair you with briefs where you can genuinely perform and build long-term relationships.",
-  },
-  {
-    question: "Do I keep ownership of my content?",
-    answer:
-      "Yes. Unless a specific brief states otherwise, you keep ownership of your content and grant brands usage rights only for the agreed period and channels. ELEVN is built to protect creators and make terms crystal clear.",
-  },
-  {
-    question: "Which platforms does ELEVN focus on?",
-    answer:
-      "ELEVN is optimized for short-form and social video first: TikTok, Instagram Reels, YouTube Shorts, and UGC-style content for paid media. Over time, we’ll expand into more formats and platforms where creators can monetize.",
-  },
+const FAQ_KEYS = [
+  { qKey: "faq.q1", aKey: "faq.a1" },
+  { qKey: "faq.q2", aKey: "faq.a2" },
+  { qKey: "faq.q3", aKey: "faq.a3" },
+  { qKey: "faq.q4", aKey: "faq.a4" },
+  { qKey: "faq.q5", aKey: "faq.a5" },
+  { qKey: "faq.q6", aKey: "faq.a6" },
+  { qKey: "faq.q7", aKey: "faq.a7" },
 ] as const;
 
 export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -74,22 +49,22 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
         >
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
-              Frequently Asked Questions
+              {t("faq.label")}
             </p>
             <h3 className="mt-3 text-xl font-bold tracking-tight text-slate-950 sm:text-2xl md:text-3xl dark:text-elevn-ice">
-              Answers before you join
+              {t("faq.heading")}
             </h3>
             <p className="mx-auto mt-3 max-w-2xl text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80 md:text-base">
-              If you&apos;re wondering how ELEVN works, start here. Short answers now, full product very soon.
+              {t("faq.description")}
             </p>
           </div>
 
           <div className="mt-8 space-y-3 sm:mt-10">
-            {FAQ_ITEMS.map((item, index) => {
+            {FAQ_KEYS.map((item, index) => {
               const isOpen = openIndex === index;
               return (
                 <motion.div
-                  key={item.question}
+                  key={item.qKey}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 12 }}
                   transition={{ duration: 0.3, delay: 0.1 + index * 0.04, ease }}
@@ -109,7 +84,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                         {(index + 1).toString().padStart(2, "0")}
                       </span>
                       <span className="text-sm font-semibold text-slate-900 sm:text-base dark:text-elevn-ice">
-                        {item.question}
+                        {t(item.qKey)}
                       </span>
                     </div>
                     <HiChevronDown
@@ -129,7 +104,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                         transition={{ duration: 0.24, ease }}
                       >
                         <div className="px-4 pb-4 text-sm font-medium leading-relaxed text-slate-600 sm:px-5 sm:pb-5 dark:text-elevn-ice/85">
-                          {item.answer}
+                          {t(item.aKey)}
                         </div>
                       </motion.div>
                     )}
@@ -140,7 +115,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
           </div>
         </motion.div>
 
-        
+
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{
@@ -157,13 +132,13 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
             />
             <div className="relative text-center">
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-elevn-cyan">
-                Secure your spot
+                {t("finalCta.label")}
               </p>
               <h2
                 id="final-cta-heading"
                 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl lg:text-5xl dark:text-elevn-ice"
               >
-                ELEVN is almost here.{" "}
+                {t("finalCta.heading")}{" "}
                 <span
                   className="bg-clip-text font-extrabold"
                   style={{
@@ -172,14 +147,14 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                     color: "transparent",
                   }}
                 >
-                  Secure your spot.
+                  {t("finalCta.headingHighlight")}
                 </span>
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-lg font-semibold leading-relaxed text-slate-700 dark:text-elevn-ice/90 md:text-xl">
-                First in, first pick. Early members get priority access to the first brand campaigns of 2026.
+                {t("finalCta.description")}
               </p>
               <p className="mt-3 text-base font-bold text-slate-800 dark:text-elevn-ice/95">
-                Real deals, real people, real growth. One place to build what&apos;s next.
+                {t("finalCta.boldText")}
               </p>
               <Button
                 type="button"
@@ -188,10 +163,10 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                 onClick={onOpenJoinForm ?? (() => window.open("https://laneta-portal.netlify.app/", "_blank", "noopener,noreferrer"))}
               >
                 <HiBolt className="mr-2 text-2xl" aria-hidden />
-                Get early access
+                {t("finalCta.ctaButton")}
               </Button>
               <p className="mt-6 text-sm font-semibold text-slate-600 dark:text-elevn-ice/75">
-                Free to join. Access subject to profile validation.
+                {t("finalCta.ctaFooter")}
               </p>
             </div>
           </div>

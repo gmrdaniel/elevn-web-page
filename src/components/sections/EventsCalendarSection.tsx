@@ -6,9 +6,9 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiSparkles, HiBolt, HiCalendarDays, HiVideoCamera, HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { fetchCalendarEvents, dateKey, type CalendarEvent } from "@/lib/calendar";
+import { useTranslation } from "react-i18next";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const URL_REGEX = /(https?:\/\/[^\s<>\[\]()]+)/gi;
 
 function linkifySegments(text: string): { type: "text" | "url"; value: string }[] {
@@ -32,10 +32,6 @@ function getMonthGrid(date: Date): (Date | null)[] {
   const remainder = total % 7;
   if (remainder) for (let i = 0; i < 7 - remainder; i++) grid.push(null);
   return grid;
-}
-
-function formatMonthYear(d: Date): string {
-  return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
 function isGoogleMeetUrl(url: string): boolean {
@@ -68,6 +64,14 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
   const [loading, setLoading] = useState(true);
   const [viewDate, setViewDate] = useState(() => new Date());
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
+  const { t, i18n } = useTranslation();
+
+  const locale = i18n.language?.startsWith("es") ? "es" : "en";
+  const dayNames = t("dayNames", { returnObjects: true }) as string[];
+
+  const formatMonthYear = (d: Date): string => {
+    return d.toLocaleDateString(locale === "es" ? "es-ES" : "en-US", { month: "long", year: "numeric" });
+  };
 
   // Always go through our `/api/calendar.ics` proxy so the browser never hits Google Calendar directly.
   const icsUrl = "/api/calendar.ics";
@@ -114,16 +118,16 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
-            Events
+            {t("events.label")}
           </p>
           <h2
             id="events-calendar-heading"
             className="mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
           >
-            <span className="bg-elevn-gradient bg-clip-text text-transparent">Workshops & opportunities</span>
+            <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("events.heading")}</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm font-medium text-slate-600 dark:text-elevn-ice/85 md:text-base">
-            Live sessions, masterclasses, and application windows. Pick a day to see what’s on.
+            {t("events.description")}
           </p>
         </motion.div>
         <motion.div
@@ -139,7 +143,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
               </span>
               <div className="flex flex-col text-left">
                 <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 dark:text-elevn-ice/60">
-                  Creator agenda
+                  {t("events.creatorAgenda")}
                 </span>
                 <span className="text-lg font-bold tracking-tight">{formatMonthYear(viewDate)}</span>
               </div>
@@ -152,7 +156,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                 className="h-8 rounded-full border border-transparent bg-white/70 px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-elevn-cyan/60 hover:bg-white dark:bg-elevn-surface/80 dark:text-elevn-ice/80"
                 onClick={() => setViewDate(new Date())}
               >
-                Today
+                {t("events.today")}
               </Button>
               <Button
                 type="button"
@@ -161,7 +165,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                 className="h-8 w-8 rounded-full border-slate-200 bg-white/70 text-slate-700 hover:border-elevn-cyan/70 hover:bg-elevn-cyan/5 dark:border-white/20 dark:bg-elevn-surface/80 dark:text-elevn-ice/80"
                 onClick={() => setViewDate((d) => new Date(d.getFullYear(), d.getMonth() - 1))}
               >
-                <span className="sr-only">Previous month</span>
+                <span className="sr-only">{t("events.previousMonth")}</span>
                 ‹
               </Button>
               <Button
@@ -171,14 +175,14 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                 className="h-8 w-8 rounded-full border-slate-200 bg-white/70 text-slate-700 hover:border-elevn-cyan/70 hover:bg-elevn-cyan/5 dark:border-white/20 dark:bg-elevn-surface/80 dark:text-elevn-ice/80"
                 onClick={() => setViewDate((d) => new Date(d.getFullYear(), d.getMonth() + 1))}
               >
-                <span className="sr-only">Next month</span>
+                <span className="sr-only">{t("events.nextMonth")}</span>
                 ›
               </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-7 border-b border-slate-200/80 dark:border-white/10">
-            {DAY_NAMES.map((name) => (
+            {dayNames.map((name) => (
               <div
                 key={name}
                 className="py-2 text-center text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-elevn-ice/70 sm:text-xs"
@@ -221,7 +225,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                         </p>
                         {dayEvents.length > 1 && (
                           <p className="text-[9px] font-medium text-elevn-cyan dark:text-elevn-cyan/90">
-                            +{dayEvents.length - 1} more
+                            {t("events.more", { count: dayEvents.length - 1 })}
                           </p>
                         )}
                       </div>
@@ -245,7 +249,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
             >
               {loading ? (
                 <div className="flex items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 py-16 dark:border-white/10 dark:bg-elevn-surface/60">
-                  <p className="text-sm font-semibold text-slate-500 dark:text-elevn-ice/70">Loading events…</p>
+                  <p className="text-sm font-semibold text-slate-500 dark:text-elevn-ice/70">{t("events.loadingEvents")}</p>
                 </div>
               ) : hasEvents ? (
                 <div className="space-y-6">
@@ -321,7 +325,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                           )}
                           {event.url && !isGoogleMeetUrl(event.url) && (
                             <p className="mt-3 text-xs font-semibold text-slate-500 dark:text-elevn-ice/70">
-                              Application link (open on your phone for best experience):
+                              {t("events.applicationLink")}
                             </p>
                           )}
                           <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -331,20 +335,20 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                                   <Button asChild size="sm" className="bg-elevn-gradient text-white shadow-md dark:text-elevn-ice">
                                     <a href={event.url} target="_blank" rel="noopener noreferrer">
                                       <HiVideoCamera className="mr-2 text-base" aria-hidden />
-                                      Join the meeting in a new tab
+                                      {t("events.joinMeeting")}
                                     </a>
                                   </Button>
                                 ) : (
                                   <Button size="sm" disabled className="cursor-not-allowed bg-slate-200 text-slate-500 dark:bg-white/10 dark:text-elevn-ice/60">
                                     <HiVideoCamera className="mr-2 text-base" aria-hidden />
-                                    Join the meeting in a new tab
+                                    {t("events.joinMeeting")}
                                   </Button>
                                 )
                               ) : (
                                 <Button asChild size="sm" className="bg-elevn-gradient text-white shadow-md dark:text-elevn-ice">
                                   <a href={event.url} target="_blank" rel="noopener noreferrer">
                                     <HiArrowTopRightOnSquare className="mr-2 text-base" aria-hidden />
-                                    Open event link
+                                    {t("events.openEventLink")}
                                   </a>
                                 </Button>
                               )
@@ -357,7 +361,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                               className="border-elevn-cyan/60 bg-elevn-cyan/5 text-elevn-cyan hover:bg-elevn-cyan/10 hover:border-elevn-cyan/80 dark:border-elevn-cyan dark:bg-transparent dark:text-elevn-cyan dark:hover:bg-elevn-cyan/10"
                             >
                               <HiBolt className="mr-2 text-base" aria-hidden />
-                              Join community
+                              {t("events.joinCommunity")}
                             </Button>
                           </div>
                         </div>
@@ -374,10 +378,10 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                 >
                   <HiSparkles className="mb-3 text-3xl text-elevn-cyan" aria-hidden />
                   <p className="text-base font-bold text-slate-950 dark:text-elevn-ice">
-                    Nothing scheduled this day
+                    {t("events.nothingScheduled")}
                   </p>
                   <p className="mt-2 max-w-sm text-sm font-medium text-slate-600 dark:text-elevn-ice/80">
-                    New workshops and opportunities are added regularly. Join so you don’t miss them.
+                    {t("events.nothingScheduledDesc")}
                   </p>
                   <Button
                     type="button"
@@ -386,7 +390,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                     className="mt-6 bg-elevn-gradient px-6 py-5 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
                   >
                     <HiBolt className="mr-2 text-xl" aria-hidden />
-                    Join Our Creator Community
+                    {t("events.joinCreatorCommunity")}
                   </Button>
                 </motion.div>
               )}
@@ -399,7 +403,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
               exit={{ opacity: 0 }}
               className="mt-8 text-center text-sm font-semibold text-slate-500 dark:text-elevn-ice/60"
             >
-              Click a day to see events
+              {t("events.clickDay")}
             </motion.p>
           )}
         </AnimatePresence>

@@ -5,32 +5,20 @@ import { motion, useInView } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiBolt, HiCheckCircle } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
-const VALUE_BULLETS = [
-  "Verified campaigns with real budgets and clear contracts.",
-  "Opportunities delivered to you—no more cold DMs or hunting.",
-  "Training, support, and a serious creator community in one place.",
-] as const;
+const BULLET_KEYS = ["benefits.bullet1", "benefits.bullet2", "benefits.bullet3"] as const;
 
-/* What makes ELEVN different vs other platforms */
-const DIFFERENTIATORS = [
-  {
-    title: "Verified, not volume",
-    body: "We don’t flood you with random briefs. Every campaign is vetted for fit, budget, and timing—quality over quantity.",
-  },
-  {
-    title: "Creator-first economics",
-    body: "Clear rates, clear scope, clear timelines. No surprise clauses, no hidden fees, and on‑time payments as a standard.",
-  },
-  {
-    title: "Human support on every deal",
-    body: "Behind the platform there’s a team that answers, negotiates, and helps you grow. Not just an inbox of automated messages.",
-  },
+const DIFF_KEYS = [
+  { titleKey: "benefits.diff1Title", bodyKey: "benefits.diff1Body" },
+  { titleKey: "benefits.diff2Title", bodyKey: "benefits.diff2Body" },
+  { titleKey: "benefits.diff3Title", bodyKey: "benefits.diff3Body" },
 ] as const;
 
 export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
+  const { t } = useTranslation();
 
   return (
     <section
@@ -51,7 +39,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           className="text-center text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:text-4xl md:text-5xl dark:text-elevn-ice"
         >
-          <span className="bg-elevn-gradient bg-clip-text text-transparent">Why ELEVN is different</span>
+          <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("benefits.sectionTitle")}</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 8 }}
@@ -59,7 +47,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           transition={{ duration: 0.32, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
           className="mt-3 text-center text-base font-semibold text-slate-700 dark:text-elevn-ice/85 md:text-lg"
         >
-          Not just another creator marketplace. A system designed to protect your work and unlock better campaigns.
+          {t("benefits.sectionSubtitle")}
         </motion.p>
 
         {/* Condensed value prop + CTA */}
@@ -71,35 +59,35 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
         >
           <div className="flex flex-col">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan sm:text-base">
-              In plain terms
+              {t("benefits.inPlainTerms")}
             </p>
             <h2
               id="benefits-heading"
               className="mt-4 text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl dark:text-elevn-ice"
             >
-              What you actually get on ELEVN
+              {t("benefits.whatYouGet")}
             </h2>
             <ul className="mt-8 space-y-4 max-[400px]:mt-6 sm:mt-8 sm:space-y-4 md:space-y-5">
-              {VALUE_BULLETS.map((line, i) => (
+              {BULLET_KEYS.map((key, i) => (
                 <li key={i} className="flex items-start gap-4 text-slate-950 dark:text-elevn-ice/95">
                   <HiCheckCircle className="mt-0.5 h-7 w-7 shrink-0 text-elevn-cyan max-[400px]:h-6 max-[400px]:w-6 sm:h-8 sm:w-8" aria-hidden />
-                  <span className="text-base font-semibold leading-snug sm:text-lg md:text-xl">{line}</span>
+                  <span className="text-base font-semibold leading-snug sm:text-lg md:text-xl">{t(key)}</span>
                 </li>
               ))}
             </ul>
             <p className="mt-7 text-base font-semibold text-slate-800 dark:text-elevn-ice/85 sm:mt-9 md:text-lg">
-              Campaigns are already live. Apply once, stay in the loop.
+              {t("benefits.campaignsLive")}
             </p>
             <div className="mt-5 space-y-3 text-left text-xs font-medium text-slate-600 sm:text-sm dark:text-elevn-ice/80">
-              {DIFFERENTIATORS.map((item) => (
-                <div key={item.title} className="flex items-start gap-3">
+              {DIFF_KEYS.map((item) => (
+                <div key={item.titleKey} className="flex items-start gap-3">
                   <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-elevn-cyan shadow-[0_0_10px_rgba(6,182,212,0.7)]" />
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-[11px]">
-                      {item.title}
+                      {t(item.titleKey)}
                     </p>
                     <p className="mt-1 text-[11px] leading-relaxed sm:text-xs">
-                      {item.body}
+                      {t(item.bodyKey)}
                     </p>
                   </div>
                 </div>
@@ -117,33 +105,32 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                     <HiBolt className="text-3xl" aria-hidden />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-elevn-cyan">Stop chasing briefs</p>
+                    <p className="text-sm font-semibold uppercase tracking-wider text-elevn-cyan">{t("benefits.stopChasing")}</p>
                     <h3 className="text-xl font-extrabold tracking-tight text-slate-950 sm:text-2xl dark:text-elevn-ice">
-                      Let the right ones find you
+                      {t("benefits.letRightOnes")}
                     </h3>
                   </div>
                 </div>
                 <p className="relative mt-4 text-sm font-medium leading-snug text-slate-700 dark:text-elevn-ice/90">
-                  ELEVN matches you with campaigns that fit your niche, audience size, and rates—so you spend less time pitching and more time creating. Free to apply.
+                  {t("benefits.ctaDescription")}
                 </p>
                 <ul className="relative mt-4 space-y-1.5 text-xs font-semibold text-slate-600 dark:text-elevn-ice/85">
                   <li className="flex items-center gap-2">
                     <HiCheckCircle className="h-4 w-4 shrink-0 text-elevn-cyan" aria-hidden />
-                    One profile, multiple campaigns over time
+                    {t("benefits.checkItem1")}
                   </li>
                   <li className="flex items-center gap-2">
                     <HiCheckCircle className="h-4 w-4 shrink-0 text-elevn-cyan" aria-hidden />
-                    No cold outreach. No guessing if a brief is real
+                    {t("benefits.checkItem2")}
                   </li>
                 </ul>
                 <div className="relative mt-6 border-t border-slate-200/80 pt-5 dark:border-white/15 sm:mt-8">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-elevn-cyan/90">Why it&apos;s different</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-elevn-cyan/90">{t("benefits.whyDifferent")}</p>
                   <p className="mt-2 text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80">
-                    Other platforms optimize for volume. ELEVN optimizes for fit: fewer, better campaigns where both sides
-                    are protected.
+                    {t("benefits.whyDifferentP1")}
                   </p>
                   <p className="mt-2 text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80">
-                    You keep control of your rates, brand, and time. We handle verification, context, and support.
+                    {t("benefits.whyDifferentP2")}
                   </p>
                 </div>
                 <div className="relative mt-auto flex-1 min-h-4" />
@@ -155,7 +142,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                 className="relative mt-6 w-full bg-elevn-gradient py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
               >
                 <HiBolt className="mr-2 text-2xl" aria-hidden />
-                Apply once. Let us handle the rest.
+                {t("benefits.ctaButton")}
               </Button>
             </div>
           </div>

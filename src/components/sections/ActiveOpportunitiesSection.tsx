@@ -6,44 +6,13 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HiArrowTopRightOnSquare, HiBolt } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
-const OPPORTUNITIES = [
-  {
-    id: "meta",
-    title: "META Creator Fast Track",
-    description:
-      "It's a program designed to accelerate your growth on Facebook, giving you the tools and resources you need to succeed from day one. You'll gain increased visibility and generate a revenue stream that will continue to grow long after the program ends.",
-    image: "/assets/images/META.png",
-    url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track",
-    gradient: "from-elevn-primary to-elevn-cyan",
-  },
-  {
-    id: "gyre",
-    title: "Gyre 24/7: Pre-Recorded Streaming for YouTube",
-    description:
-      "Partnership model for pre-recorded streams on YouTube—streaming technology, technical support, and performance-based monetization.",
-    image: "/assets/images/GYRE.png",
-    url: "https://laneta-portal.netlify.app/opportunities/gyre",
-    gradient: "from-elevn-cyan to-elevn-violet",
-  },
-  {
-    id: "tubi",
-    title: "Tubi: Mystery and Thriller Content",
-    description:
-      "Exclusive opportunity for creators specializing in mystery and thriller. Develop content for Tubi's audience with licensing and recognition potential.",
-    image: "/assets/images/TUBI.png",
-    url: "https://laneta-portal.netlify.app/opportunities/tubi",
-    gradient: "from-elevn-violet to-elevn-magenta",
-  },
-  {
-    id: "air",
-    title: "Air Media Tech: Your Content, Every Language",
-    description:
-      "Expand reach through content localization—dubbing, subtitling, and distribution in international markets while retaining full ownership.",
-    image: "/assets/images/AIR.png",
-    url: "https://laneta-portal.netlify.app/opportunities/air-media-msn",
-    gradient: "from-elevn-magenta to-elevn-primary",
-  },
+const OPP_STYLES = [
+  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/META.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
+  { id: "gyre", titleKey: "opportunities.gyreTitle", descKey: "opportunities.gyreDesc", image: "/assets/images/GYRE.png", url: "https://laneta-portal.netlify.app/opportunities/gyre", gradient: "from-elevn-cyan to-elevn-violet" },
+  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/TUBI.png", url: "https://laneta-portal.netlify.app/opportunities/tubi", gradient: "from-elevn-violet to-elevn-magenta" },
+  { id: "air", titleKey: "opportunities.airTitle", descKey: "opportunities.airDesc", image: "/assets/images/AIR.png", url: "https://laneta-portal.netlify.app/opportunities/air-media-msn", gradient: "from-elevn-magenta to-elevn-primary" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -51,6 +20,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
+  const { t } = useTranslation();
 
   return (
     <section
@@ -73,21 +43,21 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
-          Discover what ELEVN has for you—new opportunities every day
+            {t("opportunities.topLabel")}
           </p>
           <h2
             id="opportunities-heading"
             className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
-            Active opportunities
+            {t("opportunities.heading")}
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg font-semibold leading-relaxed text-slate-950 md:text-xl dark:text-elevn-ice/90">
-            These opportunities are already live and waiting for creators like you to make the most of them. Real briefs, real pay, ready to run. Register now and get in.
+            {t("opportunities.description")}
           </p>
         </motion.div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:mt-20 lg:gap-10 xl:gap-12">
-          {OPPORTUNITIES.map((opp, i) => (
+          {OPP_STYLES.map((opp, i) => (
             <motion.article
               key={opp.id}
               initial={{ opacity: 0, y: 24 }}
@@ -121,13 +91,13 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
                   </div>
                   <CardContent className="flex flex-1 flex-col p-6 md:p-7">
                     <h3 className="text-xl font-bold tracking-tight text-slate-950 md:text-2xl dark:text-elevn-ice">
-                      {opp.title}
+                      {t(opp.titleKey)}
                     </h3>
                     <p className="mt-3 flex-1 text-sm font-medium leading-relaxed text-slate-950 md:text-base dark:text-elevn-ice/90">
-                      {opp.description}
+                      {t(opp.descKey)}
                     </p>
                     <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-md border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-950 transition-colors group-hover:bg-slate-200 group-hover:text-slate-950 dark:border-white/20 dark:bg-white/5 dark:text-elevn-ice dark:group-hover:bg-white/10 dark:group-hover:text-elevn-ice">
-                      View opportunity
+                      {t("opportunities.viewOpportunity")}
                       <HiArrowTopRightOnSquare className="text-base" aria-hidden />
                     </span>
                   </CardContent>
@@ -144,8 +114,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           className="mt-10 flex flex-col items-center gap-6 text-center"
         >
           <p className="text-sm font-semibold text-slate-950 dark:text-elevn-ice/80">
-            More opportunities added regularly. Apply through ELEVN and get access.
-            More opportunities added regularly. Apply through ELEVN and get access.
+            {t("opportunities.moreOpportunities")}
           </p>
           <Button
             type="button"
@@ -154,7 +123,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
             className="bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
-            Apply for the Creator Ecosystem
+            {t("opportunities.ctaButton")}
           </Button>
         </motion.div>
       </div>
