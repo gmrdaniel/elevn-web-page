@@ -111,7 +111,7 @@ export function ElevnIsYourSpaceSection({
           </p>
 
           <p className="mt-5 text-sm font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 sm:text-base">
-            ELEVN is your gateway to vetted brand deals, real training, and a community built for professional creators.
+            ELEVN is a creator ecosystem launching very soon. A space where you'll find real brand opportunities, courses and live events to grow professionally, and a community of creators from different verticals and regions to connect with. We're glad you're here, and we can't wait to show you what's coming.
             Apply once, unlock ongoing opportunities, and grow a career where your work and time are respected.
           </p>
 
@@ -139,7 +139,7 @@ export function ElevnIsYourSpaceSection({
         >
           <div className="flex flex-col gap-4 border-b border-slate-200/80 pb-4 sm:flex-row sm:items-center sm:justify-between dark:border-white/10">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-elevn-ice/60">
-              What you can expect on ELEVN
+              WHAT YOU'LL FIND ON ELEVN
             </p>
             <p className="text-sm font-medium text-slate-500 dark:text-elevn-ice/70">
               Designed for creators who treat content as a serious business.
