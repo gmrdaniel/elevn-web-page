@@ -142,7 +142,7 @@ export function ElevnIsYourSpaceSection({
               WHAT YOU'LL FIND ON ELEVN
             </p>
             <p className="text-sm font-medium text-slate-500 dark:text-elevn-ice/70">
-              Designed for creators who treat content as a serious business.
+              Built for creators at every stage.
             </p>
           </div>
           <div className="mt-6 grid gap-5 xl:grid-cols-2 2xl:grid-cols-3">
