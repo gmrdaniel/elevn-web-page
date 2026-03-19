@@ -107,7 +107,7 @@ export function ElevnIsYourSpaceSection({
           </div>
 
           <p className="mt-5 text-base font-semibold uppercase tracking-[0.22em] text-slate-600 dark:text-elevn-ice/70 sm:text-sm">
-            The platform where creators meet brands, scale fast, and own the industry.
+            Everything a creator actually needs in one place.
           </p>
 
           <p className="mt-5 text-sm font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 sm:text-base">
