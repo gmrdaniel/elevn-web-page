@@ -16,8 +16,8 @@ const LOGO_URL = "/assets/images/elevn.png";
 const PILLARS = [
   {
     label: "Verified opportunities",
-    title: "Apply with confidence",
-    line: "Every brief on ELEVN is vetted. Clear scope, budgets, and timelines so you know exactly what you’re saying yes to.",
+    title: "Work with brands that fit you",
+    line: "Every brief is reviewed before it reaches you. Clear scope, timeline, and budget - so you know exactly what you’re saying yes to.",
     icon: HiCheckBadge,
     gradient: "from-elevn-cyan to-elevn-primary",
     borderHover: "hover:border-elevn-cyan/50",
