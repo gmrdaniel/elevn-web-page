@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceSection";
-import { SocialProofBannerSection } from "@/components/sections/SocialProofBannerSection";
+
 import { ForCreatorsSection } from "@/components/sections/ForCreatorsSection";
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
@@ -26,7 +26,7 @@ function App() {
       <Header onOpenJoinForm={() => setShowJoinForm(true)} />
       {/* Legacy hero: <HeroSection /> */}
       <ElevnIsYourSpaceSection onOpenJoinForm={() => setShowJoinForm(true)} />
-      <SocialProofBannerSection />
+
       <ForCreatorsSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
       <CommunitySection />
