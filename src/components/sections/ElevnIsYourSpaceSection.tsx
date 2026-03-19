@@ -23,9 +23,9 @@ const PILLARS = [
     borderHover: "hover:border-elevn-cyan/50",
   },
   {
-    label: "Professional growth",
-    title: "Create at a higher level",
-    line: "Training, tools, and feedback designed for serious creators who want to turn content into a real business.",
+    label: "Industry education",
+    title: "Weekly events and courses",
+    line: "Real sessions with real professionals. Built to help you understand the industry, negotiate better, and keep growing.",
     icon: HiScale,
     gradient: "from-elevn-violet to-elevn-cyan",
     borderHover: "hover:border-elevn-violet/50",
