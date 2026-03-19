@@ -31,9 +31,9 @@ const PILLARS = [
     borderHover: "hover:border-elevn-violet/50",
   },
   {
-    label: "Real ecosystem",
-    title: "Earn and build long-term",
-    line: "A creator-first network where collaborations are fair, transparent, and built for repeat work—not one-offs.",
+    label: "Creator community",
+    title: "People who get it",
+    line: "A network of creators from different verticals and regions. Connect, collaborate, and share what's actually working.",
     icon: HiHeart,
     gradient: "from-elevn-magenta to-elevn-violet",
     borderHover: "hover:border-elevn-magenta/50",
