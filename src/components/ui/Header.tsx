@@ -11,7 +11,7 @@ const LOGO_URL =
 const NAV_ITEMS = [
   { label: "ELEVN", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
   { label: "Benefits", href: "#benefits", id: "benefits" },
-  { label: "Community", href: "#community", id: "community" },
+
   { label: "Opportunities", href: "#opportunities", id: "opportunities" },
   { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
   { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
