@@ -2,12 +2,12 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceSection";
 
-import { ForCreatorsSection } from "@/components/sections/ForCreatorsSection";
+
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
 import { EventsCalendarSection } from "@/components/sections/EventsCalendarSection";
-import { CommunitySection } from "@/components/sections/CommunitySection";
+
 import { ActiveOpportunitiesSection } from "@/components/sections/ActiveOpportunitiesSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Footer } from "@/components/ui/Footer";
@@ -27,9 +27,7 @@ function App() {
       {/* Legacy hero: <HeroSection /> */}
       <ElevnIsYourSpaceSection onOpenJoinForm={() => setShowJoinForm(true)} />
 
-      <ForCreatorsSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
-      <CommunitySection />
       <ActiveOpportunitiesSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <ElevnStudioSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <EventsCalendarSection onOpenJoinForm={() => setShowJoinForm(true)} />
