@@ -357,7 +357,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                               className="border-elevn-cyan/60 bg-elevn-cyan/5 text-elevn-cyan hover:bg-elevn-cyan/10 hover:border-elevn-cyan/80 dark:border-elevn-cyan dark:bg-transparent dark:text-elevn-cyan dark:hover:bg-elevn-cyan/10"
                             >
                               <HiBolt className="mr-2 text-base" aria-hidden />
-                              Join community
+                              Register here
                             </Button>
                           </div>
                         </div>
