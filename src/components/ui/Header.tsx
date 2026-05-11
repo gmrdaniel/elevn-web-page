@@ -15,7 +15,6 @@ const NAV_ITEMS = [
   { label: "Opportunities", href: "#opportunities", id: "opportunities" },
   { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
   { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
-  { label: "Events", href: "#events-calendar", id: "events-calendar" },
   { label: "FAQs", href: "#faq", id: "faq" },
 ] as const;
 
