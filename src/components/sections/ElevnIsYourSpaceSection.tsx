@@ -111,8 +111,7 @@ export function ElevnIsYourSpaceSection({
           </p>
 
           <p className="mt-5 text-sm font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 sm:text-base">
-            ELEVN is a creator ecosystem launching very soon. A space where you'll find real brand opportunities, courses and live events to grow professionally, and a community of creators from different verticals and regions to connect with. We're glad you're here, and we can't wait to show you what's coming.
-            Apply once, unlock ongoing opportunities, and grow a career where your work and time are respected.
+            ELEVN is a creator ecosystem launching very soon. A space where you'll find real brand opportunities, courses and live events to grow professionally, and a community of creators from different verticals and regions to connect with.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-center lg:justify-start">
