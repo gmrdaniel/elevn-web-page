@@ -188,7 +188,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                 onClick={onOpenJoinForm ?? (() => window.open("https://laneta-portal.netlify.app/", "_blank", "noopener,noreferrer"))}
               >
                 <HiBolt className="mr-2 text-2xl" aria-hidden />
-                Get early access
+                Join for free
               </Button>
               <p className="mt-6 text-sm font-semibold text-slate-600 dark:text-elevn-ice/75">
                 Free to join. Access subject to profile validation.

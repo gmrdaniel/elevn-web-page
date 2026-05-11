@@ -122,7 +122,7 @@ export function ElevnIsYourSpaceSection({
               onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
               className="w-full max-w-xs bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
             >
-              Be one of the first to join
+              Join for free
             </Button>
             <p className="text-xs font-semibold text-slate-500 dark:text-elevn-ice/70">
               Free to apply. Limited early spots for serious creators.

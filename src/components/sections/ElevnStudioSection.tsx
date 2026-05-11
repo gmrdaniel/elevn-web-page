@@ -197,7 +197,7 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             className="w-full max-w-sm bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
-            Unlock Free Creator Courses
+            Join for free
           </Button>
           <p className="mt-4 text-sm font-semibold text-slate-600 dark:text-elevn-ice/80">
             Join the ELEVN Creator Network to get access

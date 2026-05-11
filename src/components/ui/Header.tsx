@@ -134,7 +134,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 onClick={onOpenJoinForm}
                 className="ml-2 font-semibold bg-elevn-primary text-white hover:opacity-95 hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
               >
-                Secure your spot
+                Join for free
               </Button>
             ) : (
               <Button
@@ -143,7 +143,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 asChild
               >
                 <a href="https://laneta-portal.netlify.app/" target="_blank" rel="noopener noreferrer">
-                Secure your spot
+                Join for free
                 </a>
               </Button>
             )}
@@ -215,7 +215,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     onClick={() => { onOpenJoinForm(); closeMobile(); }}
                     className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                   >
-                    Secure your spot
+                    Join for free
                   </button>
                 ) : (
                   <a
@@ -225,7 +225,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     onClick={closeMobile}
                     className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                   >
-                    Secure your spot
+                    Join for free
                   </a>
                 )}
               </nav>

@@ -155,7 +155,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                 className="relative mt-6 w-full bg-elevn-gradient py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
               >
                 <HiBolt className="mr-2 text-2xl" aria-hidden />
-                Apply once. Let us handle the rest.
+                Join for free
               </Button>
             </div>
           </div>
