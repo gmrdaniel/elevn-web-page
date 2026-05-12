@@ -11,90 +11,19 @@ import {
   HiFilm,
   HiBolt,
 } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
 const DISCORD_ONBOARDING_URL = "https://discord.gg/bTUEWVjz";
 
-const COMMUNITY_LINKS = [
-  {
-    label: "Beauty creator?",
-    description: "Join beauty creators shaping the next wave with ELEVN’s community.",
-    href: "#community-beauty",
-    image: "/assets/images/makeup.jpg",
-    imageFocus: "50% 40%",
-    icon: HiSparkles,
-    gradient: "from-elevn-magenta to-elevn-primary",
-    glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "DIY creator?",
-    description: "Share builds and tutorials with DIY-first creators and brands.",
-    href: "#community-diy",
-    image: "/assets/images/DIY.jpg",
-    imageFocus: "50% 45%",
-    icon: HiWrenchScrewdriver,
-    gradient: "from-elevn-primary to-elevn-cyan",
-    glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "Food creator?",
-    description: "Serve recipes and tastings with food lovers and partner brands.",
-    href: "#community-food",
-    image: "/assets/images/cooking.jpg",
-    imageFocus: "50% 35%",
-    icon: HiCircleStack,
-    gradient: "from-elevn-cyan to-elevn-violet",
-    glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "Entertainment creator?",
-    description: "Stream, play, and perform with creators who live your world.",
-    href: "#community-entertainment",
-    image: "/assets/images/streaming.jpg",
-    imageFocus: "50% 50%",
-    icon: HiFilm,
-    gradient: "from-elevn-violet to-elevn-magenta",
-    glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "Sports creator?",
-    description: "Train, compete, and create content with brands that move with you.",
-    href: "#community-sports",
-    image: "/assets/images/sports.jpg",
-    imageFocus: "50% 70%",
-    icon: HiBolt,
-    gradient: "from-elevn-cyan to-elevn-primary",
-    glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "Fashion creator?",
-    description: "Show looks, trends, and shoots with fashion-first brands and audiences.",
-    href: "#community-fashion",
-    image: "/assets/images/infuencer_male.jpg",
-    imageFocus: "50% 35%",
-    icon: HiSparkles,
-    gradient: "from-elevn-magenta to-elevn-cyan",
-    glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "UGC creator?",
-    description: "Create UGC that converts for brands: short-form, agile, and platform-native.",
-    href: "#community-ugc",
-    image: "/assets/images/dancer.jpg",
-    imageFocus: "50% 45%",
-    icon: HiFilm,
-    gradient: "from-elevn-primary to-elevn-violet",
-    glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
-  {
-    label: "Travel creator?",
-    description: "Share trips, stays, and experiences with travel lovers and tourism brands.",
-    href: "#community-travel",
-    image: "/assets/images/travel.jpg",
-    imageFocus: "50% 50%",
-    icon: HiCircleStack,
-    gradient: "from-elevn-cyan to-elevn-primary",
-    glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20",
-  },
+const COMMUNITY_ITEMS = [
+  { labelKey: "community.beauty", descKey: "community.beautyDesc", href: "#community-beauty", image: "/assets/images/makeup.jpg", imageFocus: "50% 40%", icon: HiSparkles, gradient: "from-elevn-magenta to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.diy", descKey: "community.diyDesc", href: "#community-diy", image: "/assets/images/DIY.jpg", imageFocus: "50% 45%", icon: HiWrenchScrewdriver, gradient: "from-elevn-primary to-elevn-cyan", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.food", descKey: "community.foodDesc", href: "#community-food", image: "/assets/images/cooking.jpg", imageFocus: "50% 35%", icon: HiCircleStack, gradient: "from-elevn-cyan to-elevn-violet", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.entertainment", descKey: "community.entertainmentDesc", href: "#community-entertainment", image: "/assets/images/streaming.jpg", imageFocus: "50% 50%", icon: HiFilm, gradient: "from-elevn-violet to-elevn-magenta", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.sports", descKey: "community.sportsDesc", href: "#community-sports", image: "/assets/images/sports.jpg", imageFocus: "50% 70%", icon: HiBolt, gradient: "from-elevn-cyan to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.fashion", descKey: "community.fashionDesc", href: "#community-fashion", image: "/assets/images/infuencer_male.jpg", imageFocus: "50% 35%", icon: HiSparkles, gradient: "from-elevn-magenta to-elevn-cyan", glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.ugc", descKey: "community.ugcDesc", href: "#community-ugc", image: "/assets/images/dancer.jpg", imageFocus: "50% 45%", icon: HiFilm, gradient: "from-elevn-primary to-elevn-violet", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+  { labelKey: "community.travel", descKey: "community.travelDesc", href: "#community-travel", image: "/assets/images/travel.jpg", imageFocus: "50% 50%", icon: HiCircleStack, gradient: "from-elevn-cyan to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -102,6 +31,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function CommunitySection() {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: false, amount: 0.4 });
+  const { t } = useTranslation();
 
   return (
     <section
@@ -129,21 +59,19 @@ export function CommunitySection() {
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
-            Community
+            {t("community.label")}
           </p>
           <h2
             id="community-heading"
             className="mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
           >
-            Find your people · Encuentra tu comunidad
+            {t("community.heading")}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/85 md:text-lg">
-            Your niche has a room on Discord. Jump in, meet fellow creators, and be the first to hear about new opportunities, collabs, and everything happening inside ELEVN.{" "}
-            Tu nicho tiene su propio espacio en Discord: conéctate, conoce a otros creadores y entérate primero de lo que pasa en ELEVN.
+            {t("community.description")}
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-medium text-slate-500 dark:text-elevn-ice/75 md:text-base">
-            Each community has its own channel: exclusive briefs, peer support, and early announcements. Pick yours below and join in one click.{" "}
-            Cada comunidad tiene su canal: oportunidades exclusivas, soporte entre pares y anuncios tempranos.
+            {t("community.subDescription")}
           </p>
         </motion.div>
 
@@ -159,7 +87,7 @@ export function CommunitySection() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-elevn-cyan via-elevn-violet to-elevn-magenta px-7 py-2.5 text-sm font-semibold text-elevn-ice shadow-lg shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:focus-visible:ring-offset-elevn-dark"
           >
-            Join ELEVN on Discord · Únete a ELEVN en Discord
+            {t("community.discordButton")}
             <HiArrowRight className="h-4 w-4" aria-hidden />
           </a>
         </motion.div>
@@ -180,19 +108,19 @@ export function CommunitySection() {
                   : { duration: 0 }
               }
             >
-              {[...COMMUNITY_LINKS, ...COMMUNITY_LINKS].map((item, index) => {
+              {[...COMMUNITY_ITEMS, ...COMMUNITY_ITEMS].map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <div
-                    key={`${item.label}-${index}`}
+                    key={`${item.labelKey}-${index}`}
                     className="relative flex h-[220px] min-w-[170px] max-w-[190px] flex-col overflow-hidden rounded-2xl bg-slate-950/90 text-slate-50 shadow-[0_14px_40px_rgba(15,23,42,0.6)] sm:h-[260px] sm:min-w-[200px] sm:max-w-[220px]"
-                    aria-label={item.label}
+                    aria-label={t(item.labelKey)}
                   >
                     <div className="relative h-full w-full">
                       <img
                         src={item.image}
-                        alt={item.label}
+                        alt={t(item.labelKey)}
                         className="h-full w-full object-cover"
                         style={{ objectPosition: item.imageFocus }}
                         loading="lazy"
@@ -204,10 +132,10 @@ export function CommunitySection() {
                       <div className="absolute inset-x-3 bottom-3 flex flex-col gap-1.5">
                         <span className="inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold text-slate-900 shadow-sm">
                           <Icon className="h-3 w-3" aria-hidden />
-                          {item.label}
+                          {t(item.labelKey)}
                         </span>
                         <p className="text-[11px] font-medium leading-snug text-slate-100">
-                          {item.description}
+                          {t(item.descKey)}
                         </p>
                       </div>
                     </div>
@@ -234,8 +162,7 @@ export function CommunitySection() {
           className="mt-8 text-center text-[11px] font-medium text-slate-500 dark:text-elevn-ice/70 sm:text-xs"
         >
           <p>
-            Complete your onboarding and choose your community space inside ELEVN. / Completa tu onboarding y elige tu
-            espacio dentro de la comunidad ELEVN.
+            {t("community.footerNote")}
           </p>
         </motion.div>
       </div>

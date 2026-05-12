@@ -3,22 +3,21 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { HiBars3, HiXMark } from "react-icons/hi2";
+import { HiBars3, HiXMark, HiGlobeAlt } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
 const LOGO_URL =
   "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
 
-const NAV_ITEMS = [
-  { label: "ELEVN", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
-  { label: "Benefits", href: "#benefits", id: "benefits" },
-
-  { label: "Opportunities", href: "#opportunities", id: "opportunities" },
-  { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
-  { label: "ELEVN Studio", href: "#elevn-studio", id: "elevn-studio" },
-  { label: "FAQs", href: "#faq", id: "faq" },
+const NAV_KEYS = [
+  { key: "nav.elevn", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
+  { key: "nav.benefits", href: "#benefits", id: "benefits" },
+  { key: "nav.opportunities", href: "#opportunities", id: "opportunities" },
+  { key: "nav.elevnStudio", href: "#elevn-studio", id: "elevn-studio" },
+  { key: "nav.faqs", href: "#faq", id: "faq" },
 ] as const;
 
-const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
+const SECTION_IDS = NAV_KEYS.map((item) => item.id);
 const ACTIVATION_OFFSET = 120; // px from top of viewport
 
 /** Detects which section id is currently in view (active) based on scroll position. */
@@ -53,6 +52,28 @@ function useActiveSection() {
   return activeId;
 }
 
+function LanguageToggle() {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language?.startsWith("es") ? "es" : "en";
+
+  const toggleLanguage = () => {
+    const newLang = currentLang === "en" ? "es" : "en";
+    i18n.changeLanguage(newLang);
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition-colors hover:border-elevn-cyan/60 hover:bg-white dark:border-white/20 dark:bg-elevn-surface/80 dark:text-elevn-ice/80 dark:hover:border-elevn-cyan/60"
+      aria-label={currentLang === "en" ? "Cambiar a español" : "Switch to English"}
+    >
+      <HiGlobeAlt className="text-sm text-elevn-cyan" aria-hidden />
+      <span>{currentLang === "en" ? "EN" : "ES"}</span>
+    </button>
+  );
+}
+
 function NavLinks({
   onNavigate,
   scrolled,
@@ -62,9 +83,11 @@ function NavLinks({
   scrolled?: boolean;
   activeId?: string | null;
 }) {
+  const { t } = useTranslation();
+
   return (
     <nav className="flex items-center gap-1" aria-label="Main">
-      {NAV_ITEMS.map((item) => {
+      {NAV_KEYS.map((item) => {
         const isActive = activeId === item.id;
         return (
           <a
@@ -82,7 +105,7 @@ function NavLinks({
             }`}
             aria-current={isActive ? "location" : undefined}
           >
-            {item.label}
+            {t(item.key)}
           </a>
         );
       })}
@@ -94,6 +117,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activeId = useActiveSection();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -127,6 +151,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
 
           <div className="hidden items-center gap-2 min-[1140px]:flex">
             <NavLinks scrolled={scrolled} activeId={activeId} />
+            <LanguageToggle />
             {onOpenJoinForm ? (
               <Button
                 size="sm"
@@ -134,7 +159,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 onClick={onOpenJoinForm}
                 className="ml-2 font-semibold bg-elevn-primary text-white hover:opacity-95 hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
               >
-                Join for free
+                {t("nav.secureYourSpot")}
               </Button>
             ) : (
               <Button
@@ -143,26 +168,29 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 asChild
               >
                 <a href="https://laneta-portal.netlify.app/" target="_blank" rel="noopener noreferrer">
-                Join for free
+                {t("nav.secureYourSpot")}
                 </a>
               </Button>
             )}
           </div>
 
-          <button
-            type="button"
-            onClick={() => setMobileOpen((o) => !o)}
-            className="flex h-10 w-10 items-center justify-center rounded-md text-slate-900 hover:bg-slate-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan min-[1140px]:hidden dark:text-slate-900 dark:hover:bg-slate-200/70"
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <HiXMark className="text-2xl" aria-hidden />
-            ) : (
-              <HiBars3 className="text-2xl" aria-hidden />
-            )}
-          </button>
+          <div className="flex items-center gap-2 min-[1140px]:hidden">
+            <LanguageToggle />
+            <button
+              type="button"
+              onClick={() => setMobileOpen((o) => !o)}
+              className="flex h-10 w-10 items-center justify-center rounded-md text-slate-900 hover:bg-slate-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan dark:text-slate-900 dark:hover:bg-slate-200/70"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? (
+                <HiXMark className="text-2xl" aria-hidden />
+              ) : (
+                <HiBars3 className="text-2xl" aria-hidden />
+              )}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -191,7 +219,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="flex flex-col gap-1" aria-label="Main">
-                {NAV_ITEMS.map((item) => {
+                {NAV_KEYS.map((item) => {
                   const isActive = activeId === item.id;
                   return (
                     <a
@@ -205,7 +233,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                       }`}
                       aria-current={isActive ? "location" : undefined}
                     >
-                      {item.label}
+                      {t(item.key)}
                     </a>
                   );
                 })}
@@ -215,7 +243,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     onClick={() => { onOpenJoinForm(); closeMobile(); }}
                     className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                   >
-                    Join for free
+                    {t("nav.secureYourSpot")}
                   </button>
                 ) : (
                   <a
@@ -225,7 +253,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     onClick={closeMobile}
                     className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
                   >
-                    Join for free
+                    {t("nav.secureYourSpot")}
                   </a>
                 )}
               </nav>

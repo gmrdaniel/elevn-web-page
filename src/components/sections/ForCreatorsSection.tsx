@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-//import { useScroll, useTransform } from "framer-motion";
 import {
   HiBriefcase,
   HiAcademicCap,
@@ -11,58 +10,28 @@ import {
   HiBolt,
 } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
-const CREATOR_BEATS = [
-  {
-    id: "opportunities",
-    number: "01",
-    title: "Verified opportunities",
-    line: "Direct access to brand campaigns. Clear briefs. Transparent budgets.",
-    detail: "No more chasing DMs or guessing if an opportunity is real. Every campaign is verified and fairly compensated.",
-    extra: "Your time goes into creating, not into filtering sketchy offers.",
-    icon: HiBriefcase,
-    gradient: "from-elevn-primary to-elevn-cyan",
-    image: "/assets/images/influencer_famel.jpg",
-  },
-  {
-    id: "development",
-    number: "02",
-    title: "Professional development",
-    line: "Courses and masterclasses that work today.",
-    detail: "Monetization, contract negotiation, personal branding—learning designed for today's digital ecosystem, not outdated theory.",
-    extra: "Stay ahead of algorithm changes and platform shifts with training that actually applies.",
-    icon: HiAcademicCap,
-    gradient: "from-elevn-cyan to-elevn-violet",
-    image: "/assets/images/edition.jpg",
-  },
-  {
-    id: "support",
-    number: "03",
-    title: "Strategic support",
-    line: "Mentors who get your niche. Guidance that's not generic—and not automated.",
-    detail: "Connect with professionals who understand your goals and the unique challenges of your career stage.",
-    extra: "From contract negotiations to reputation moments, you have someone in your corner.",
-    icon: HiChatBubbleLeftRight,
-    gradient: "from-elevn-violet to-elevn-magenta",
-    image: "/assets/images/bloguer.jpg",
-  },
-  {
-    id: "community",
-    number: "04",
-    title: "A community that gets it",
-    line: "Share, celebrate, and grow.",
-    detail: "A space to exchange learnings, celebrate wins, and build lasting relationships with people on the same path. You're not alone.",
-    extra: "Collaborate instead of compete—with creators who take the craft as seriously as you do.",
-    icon: HiHeart,
-    gradient: "from-elevn-magenta to-elevn-primary",
-    image: "/assets/images/lifestyle.jpg",
-  },
+const BEAT_ICONS = [HiBriefcase, HiAcademicCap, HiChatBubbleLeftRight, HiHeart] as const;
+const BEAT_STYLES = [
+  { id: "opportunities", number: "01", gradient: "from-elevn-primary to-elevn-cyan", image: "/assets/images/influencer_famel.jpg" },
+  { id: "development", number: "02", gradient: "from-elevn-cyan to-elevn-violet", image: "/assets/images/edition.jpg" },
+  { id: "support", number: "03", gradient: "from-elevn-violet to-elevn-magenta", image: "/assets/images/bloguer.jpg" },
+  { id: "community", number: "04", gradient: "from-elevn-magenta to-elevn-primary", image: "/assets/images/lifestyle.jpg" },
+] as const;
+
+const BEAT_KEYS = [
+  { titleKey: "forCreators.beat1Title", lineKey: "forCreators.beat1Line", detailKey: "forCreators.beat1Detail", extraKey: "forCreators.beat1Extra" },
+  { titleKey: "forCreators.beat2Title", lineKey: "forCreators.beat2Line", detailKey: "forCreators.beat2Detail", extraKey: "forCreators.beat2Extra" },
+  { titleKey: "forCreators.beat3Title", lineKey: "forCreators.beat3Line", detailKey: "forCreators.beat3Detail", extraKey: "forCreators.beat3Extra" },
+  { titleKey: "forCreators.beat4Title", lineKey: "forCreators.beat4Line", detailKey: "forCreators.beat4Detail", extraKey: "forCreators.beat4Extra" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
   const containerVariants = {
     hidden: { opacity: 0, y: 32 },
     show: {
@@ -88,23 +57,21 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
           className="mx-auto max-w-3xl text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
-          A clear path to a
+            {t("forCreators.tagline")}
           </p>
           <h2
             id="for-creators-heading"
             className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
           >
             <span className="ml-2 bg-elevn-gradient bg-clip-text text-transparent">
-              real creator career.
+              {t("forCreators.heading")}
             </span>
           </h2>
           <p className="mt-4 text-sm font-medium leading-relaxed text-slate-700 sm:text-base dark:text-elevn-ice/85">
-            No endless scrolling. No noise. Just the core pieces you need to grow: work, skills, support, and a
-            community that takes this as seriously as you do.
+            {t("forCreators.description")}
           </p>
         </motion.div>
 
-        {/* Benefit cards: 4x1 → 3x1 → 2x2 → 1x1 */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -112,8 +79,9 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
           viewport={{ once: true, margin: "-80px" }}
           className="mt-10 grid gap-6 sm:mt-12 md:grid-cols-2 lg:mt-14 lg:gap-8 xl:grid-cols-3 2xl:grid-cols-4"
         >
-          {CREATOR_BEATS.map((beat, index) => {
-            const Icon = beat.icon;
+          {BEAT_STYLES.map((beat, index) => {
+            const Icon = BEAT_ICONS[index];
+            const keys = BEAT_KEYS[index];
             const objectPosition =
               index === 0 ? "center 28%" : index === 1 ? "center 18%" : "center";
             return (
@@ -129,11 +97,10 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${beat.gradient} opacity-[0.03] group-hover:opacity-[0.08]`}
                   aria-hidden
                 />
-                {/* Image strip (decorative, slightly larger) */}
                 <div className="relative h-32 w-full overflow-hidden sm:h-36 md:h-32 lg:h-40">
                   <img
                     src={beat.image}
-                    alt={beat.title}
+                    alt={t(keys.titleKey)}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     style={{ objectPosition }}
@@ -148,11 +115,10 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
                     >
                       {beat.number}
                     </span>
-                    <span className="truncate">{beat.title}</span>
+                    <span className="truncate">{t(keys.titleKey)}</span>
                   </div>
                 </div>
 
-                {/* Text content */}
                 <div className="relative flex flex-1 flex-col gap-3 p-5">
                   <span
                     className={`inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${beat.gradient} text-white shadow-elevn-neon ring-1 ring-white/40 dark:text-elevn-ice dark:ring-elevn-dark/60`}
@@ -160,19 +126,17 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
                     <Icon className="text-sm" aria-hidden />
                   </span>
                   <h3 className="text-base font-bold tracking-tight text-slate-950 sm:text-lg dark:text-elevn-ice">
-                    {beat.title}
+                    {t(keys.titleKey)}
                   </h3>
                   <p className="text-xs font-medium leading-relaxed text-slate-700 sm:text-sm dark:text-elevn-ice/85">
-                    {beat.line}
+                    {t(keys.lineKey)}
                   </p>
                   <p className="text-[11px] font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/75">
-                    {beat.detail}
+                    {t(keys.detailKey)}
                   </p>
-                  {beat.extra && (
-                    <p className="mt-1 text-[11px] font-semibold leading-relaxed text-elevn-cyan dark:text-elevn-cyan/90">
-                      {beat.extra}
-                    </p>
-                  )}
+                  <p className="mt-1 text-[11px] font-semibold leading-relaxed text-elevn-cyan dark:text-elevn-cyan/90">
+                    {t(keys.extraKey)}
+                  </p>
                 </div>
               </motion.article>
             );
@@ -181,7 +145,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 text-center sm:mt-14">
           <p className="mx-auto max-w-xl text-base font-semibold text-slate-700 dark:text-elevn-ice/90">
-            Ready to level up? Join the platform built for professional creators.
+            {t("forCreators.ctaText")}
           </p>
           <Button
             type="button"
@@ -190,7 +154,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             className="bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
-            Join Our Creator Community
+            {t("forCreators.ctaButton")}
           </Button>
         </div>
       </div>

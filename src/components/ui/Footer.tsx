@@ -1,18 +1,22 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 const LOGO_URL =
   "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
 
-const FOOTER_LINKS = [
-  { label: "ELEVN", href: "#elevn-is-your-space" },
-  { label: "Benefits", href: "#benefits" },
-  { label: "Community", href: "#community" },
-  { label: "Opportunities", href: "#opportunities" },
-  { label: "ELEVN Studio", href: "#elevn-studio" },
-  { label: "Events", href: "#events-calendar" },
+const FOOTER_LINK_KEYS = [
+  { key: "nav.elevn", href: "#elevn-is-your-space" },
+  { key: "nav.benefits", href: "#benefits" },
+  { key: "nav.community", href: "#community" },
+  { key: "nav.opportunities", href: "#opportunities" },
+  { key: "nav.elevnStudio", href: "#elevn-studio" },
+  { key: "nav.events", href: "#events-calendar" },
 ] as const;
 
 export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
+  const { t } = useTranslation();
+
   return (
     <footer
       className="relative border-t border-white/10 bg-elevn-surface/60"
@@ -36,17 +40,17 @@ export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
               />
             </a>
             <p className="max-w-xs text-sm text-elevn-ice/70">
-              The professional ecosystem for creators. Opportunities, community, and growth in one place.
+              {t("footer.description")}
             </p>
           </div>
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 md:gap-x-8" aria-label="Footer">
-            {FOOTER_LINKS.map((item) => (
+            {FOOTER_LINK_KEYS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 className="text-sm font-medium text-elevn-ice/85 transition-colors hover:text-elevn-ice focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
               >
-                {item.label}
+                {t(item.key)}
               </a>
             ))}
             {onOpenJoinForm ? (
@@ -55,24 +59,24 @@ export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 onClick={onOpenJoinForm}
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-elevn-cyan via-elevn-violet to-elevn-magenta px-5 py-2 text-xs font-semibold text-elevn-ice shadow-md shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
               >
-                Secure Your Spot
+                {t("nav.secureYourSpot")}
               </button>
             ) : (
               <a
                 href="#join"
                 className="text-sm font-semibold text-elevn-cyan transition-colors hover:text-elevn-cyan/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
               >
-                Secure Your Spot
+                {t("nav.secureYourSpot")}
               </a>
             )}
           </nav>
         </div>
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between md:gap-0">
           <p className="text-xs text-elevn-ice/50">
-            © {new Date().getFullYear()} ELEVN. Part of the La Neta ecosystem.
+            {t("footer.copyright", { year: new Date().getFullYear() })}
           </p>
           <p className="text-xs text-elevn-ice/40">
-            Free registration. Access is subject to profile validation.
+            {t("footer.disclaimer")}
           </p>
         </div>
       </div>

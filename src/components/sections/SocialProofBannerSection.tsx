@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
+import { useTranslation } from "react-i18next";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -28,6 +29,7 @@ const itemVariants = {
 
 export function SocialProofBannerSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -75,29 +77,29 @@ export function SocialProofBannerSection() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[9px] uppercase tracking-[0.22em] text-slate-400 sm:text-[10px] sm:tracking-[0.26em]">
-                      ELEVN Safety Guarantee
+                      {t("socialProof.safetyGuarantee")}
                     </span>
                     <span className="text-[10px] text-slate-100/90 sm:text-[11px]">
-                      Clear terms, protected work, and secure payouts every time.
+                      {t("socialProof.safetyDescription")}
                     </span>
                   </div>
                 </div>
                 <div className="mt-1 flex items-center gap-3 sm:gap-4 sm:mt-0">
                   <div className="flex flex-col text-right">
                     <span className="text-[9px] uppercase tracking-[0.18em] text-slate-400 sm:text-[10px] sm:tracking-[0.2em]">
-                      On-time payments
+                      {t("socialProof.onTimePayments")}
                     </span>
                     <span className="text-[11px] font-semibold text-emerald-300">
-                      100% guaranteed
+                      {t("socialProof.guaranteed")}
                     </span>
                   </div>
                   <div className="h-8 w-px bg-slate-800/80" />
                   <div className="flex flex-col text-right">
                     <span className="text-[9px] uppercase tracking-[0.18em] text-slate-400 sm:text-[10px] sm:tracking-[0.2em]">
-                      Your work
+                      {t("socialProof.yourWork")}
                     </span>
                     <span className="text-[11px] font-semibold">
-                      Always protected
+                      {t("socialProof.alwaysProtected")}
                     </span>
                   </div>
                 </div>
@@ -110,47 +112,45 @@ export function SocialProofBannerSection() {
         <motion.div variants={itemVariants} className="md:w-[52%]">
           <p className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/30 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-elevn-cyan shadow-sm dark:border-elevn-cyan/40 dark:bg-elevn-surface/90 dark:text-elevn-cyan">
             <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
-            Trusted by creators across the Americas
+            {t("socialProof.badge")}
           </p>
           <h2
             id="social-proof-heading"
             className="mt-4 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
           >
-            Social proof that protects
+            {t("socialProof.heading")}
             <span className="relative ml-2 inline-flex bg-gradient-to-r from-cyan-300 via-sky-400 to-emerald-300 bg-clip-text text-transparent">
-              your work.
+              {t("socialProof.headingHighlight")}
             </span>
           </h2>
 
           <p className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-slate-700 sm:text-[15px] dark:text-elevn-ice/85">
-            No vanity metrics. ELEVN prioritizes verified campaigns, on-time
-            payments, and long-term relationships between creators and brands.
-            Every opportunity is designed to protect your work and your time.
+            {t("socialProof.description")}
           </p>
 
           <div className="mt-5 grid grid-cols-3 gap-3 sm:mt-6 sm:gap-4">
             <div className="rounded-2xl border border-slate-200/90 bg-white px-3.5 py-3.5 shadow-[0_14px_35px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
               <p className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-elevn-ice">
-                15+
+                {t("socialProof.stat1Value")}
               </p>
               <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-elevn-ice/70">
-                Active countries
+                {t("socialProof.stat1Label")}
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200/90 bg-white px-3.5 py-3.5 shadow-[0_14px_35px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
               <p className="text-2xl font-semibold tracking-tight text-emerald-300">
-                0
+                {t("socialProof.stat2Value")}
               </p>
               <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-elevn-ice/70">
-                Late payments
+                {t("socialProof.stat2Label")}
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200/90 bg-white px-3.5 py-3.5 shadow-[0_14px_35px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-elevn-surface/95 dark:shadow-elevn-neon/20">
               <p className="text-2xl font-semibold tracking-tight text-cyan-400 dark:text-cyan-300">
-                100%
+                {t("socialProof.stat3Value")}
               </p>
               <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-elevn-ice/70">
-                Verified briefs
+                {t("socialProof.stat3Label")}
               </p>
             </div>
           </div>
@@ -158,14 +158,13 @@ export function SocialProofBannerSection() {
           <div className="mt-5 flex flex-wrap items-center gap-3 text-[11px] text-slate-500 dark:text-elevn-ice/80">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 ring-1 ring-slate-200 dark:bg-elevn-surface/90 dark:ring-white/15">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.9)]" />
-              Guaranteed by contract
+              {t("socialProof.guaranteedByContract")}
             </span>
             <span className="h-3 w-px bg-slate-200 dark:bg-white/30" />
-            <span>Human support on every campaign.</span>
+            <span>{t("socialProof.humanSupport")}</span>
           </div>
         </motion.div>
       </motion.div>
     </section>
   );
 }
-

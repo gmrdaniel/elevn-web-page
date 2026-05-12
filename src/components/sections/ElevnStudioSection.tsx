@@ -5,29 +5,19 @@ import { motion, useInView } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiAcademicCap, HiBookOpen, HiVideoCamera, HiUserGroup, HiBolt } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
-const STUDIO_STEPS = [
-  {
-    number: "01",
-    title: "Strategic Masterclasses",
-    body: "Step-by-step courses on algorithmic growth, retention tactics, and advanced UGC scripting. Learn what brands are buying right now.",
-    icon: HiBookOpen,
-    gradient: "from-elevn-primary to-elevn-cyan",
-  },
-  {
-    number: "02",
-    title: "Live Interactive Workshops",
-    body: "Real-time virtual sessions with industry experts, platform strategists, and top-performing creators. Refine your production skills.",
-    icon: HiVideoCamera,
-    gradient: "from-elevn-cyan to-elevn-violet",
-  },
-  {
-    number: "03",
-    title: "Industry Pulse & Networking Events",
-    body: "Exclusive panels and community networking. Stay updated on digital trends, platform updates, and monetization shifts.",
-    icon: HiUserGroup,
-    gradient: "from-elevn-violet to-elevn-magenta",
-  },
+const STEP_ICONS = [HiBookOpen, HiVideoCamera, HiUserGroup] as const;
+const STEP_STYLES = [
+  { number: "01", gradient: "from-elevn-primary to-elevn-cyan" },
+  { number: "02", gradient: "from-elevn-cyan to-elevn-violet" },
+  { number: "03", gradient: "from-elevn-violet to-elevn-magenta" },
+] as const;
+
+const STEP_KEYS = [
+  { titleKey: "studio.step1Title", bodyKey: "studio.step1Body" },
+  { titleKey: "studio.step2Title", bodyKey: "studio.step2Body" },
+  { titleKey: "studio.step3Title", bodyKey: "studio.step3Body" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -37,6 +27,7 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
   const [allowOffsetX, setAllowOffsetX] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const check = () => setAllowOffsetX(window.innerWidth >= STEPS_OFFSET_BREAKPOINT);
@@ -63,16 +54,16 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
-            Continuous learning & performance acceleration
+            {t("studio.label")}
           </p>
           <h2
             id="elevn-studio-heading"
             className="mt-3 text-2xl font-bold tracking-tight text-slate-950 max-[400px]:mt-2 max-[400px]:text-xl sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
-            ELEVN Studio
+            {t("studio.heading")}
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-relaxed text-slate-700 md:text-lg dark:text-elevn-ice/90">
-            Unlock exclusive access to our educational hub. Join the ELEVN Creator Network for a constantly updated calendar of workshops, live events, and strategic training. Master new formats, optimize your metrics, and stay ahead.
+            {t("studio.description")}
           </p>
         </motion.div>
 
@@ -88,10 +79,10 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             </span>
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-elevn-cyan max-[400px]:text-[10px] max-[400px]:tracking-[0.2em]">
-                For creators
+                {t("studio.forCreators")}
               </p>
               <h3 className="text-lg font-bold text-slate-950 max-[400px]:text-base md:text-xl dark:text-elevn-ice">
-                Learn, grow, and accelerate
+                {t("studio.learnGrowAccelerate")}
               </h3>
             </div>
           </motion.div>
@@ -119,8 +110,9 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
               transition={{ duration: 0.45, ease }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              {STUDIO_STEPS.map((step, i) => {
-                const Icon = step.icon;
+              {STEP_STYLES.map((step, i) => {
+                const Icon = STEP_ICONS[i];
+                const keys = STEP_KEYS[i];
                 const stepDelay = 0.2 + i * 0.14;
                 const depth = i * -80;
                 const offsetX = allowOffsetX ? i * 40 : 0;
@@ -163,10 +155,10 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
                     </div>
                     <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 max-[400px]:px-3 max-[400px]:py-3 max-[650px]:px-5 max-[650px]:py-5 md:px-8 md:py-7">
                       <h4 className="text-base font-bold tracking-tight text-slate-950 max-[400px]:text-sm max-[650px]:text-lg md:text-xl dark:text-elevn-ice">
-                        {step.title}
+                        {t(keys.titleKey)}
                       </h4>
                       <p className="mt-1.5 min-w-0 max-w-full text-xs font-medium leading-[1.65] text-slate-950 max-[400px]:mt-1 max-[400px]:leading-[1.6] max-[650px]:mt-2 max-[650px]:text-sm max-[650px]:leading-[1.7] md:text-base md:leading-[1.75] dark:text-elevn-ice/90">
-                        {step.body}
+                        {t(keys.bodyKey)}
                       </p>
                     </div>
                   </motion.div>
@@ -197,10 +189,10 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             className="w-full max-w-sm bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
-            Join for free
+            {t("studio.ctaButton")}
           </Button>
           <p className="mt-4 text-sm font-semibold text-slate-600 dark:text-elevn-ice/80">
-            Join the ELEVN Creator Network to get access
+            {t("studio.ctaHelper")}
           </p>
         </motion.div>
       </div>
