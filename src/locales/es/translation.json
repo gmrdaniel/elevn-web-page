@@ -7,14 +7,14 @@
     "elevnStudio": "ELEVN Studio",
     "events": "Eventos",
     "faqs": "Preguntas frecuentes",
-    "secureYourSpot": "Reserva tu lugar"
+    "secureYourSpot": "Únete gratis"
   },
   "hero": {
     "comingSoon": "Muy pronto",
     "headline": "Postula. Crea. Gana.",
     "tagline": "La plataforma donde los creadores conectan con marcas, escalan r\u00e1pido y lideran la industria.",
     "description": "ELEVN es tu puerta de entrada a acuerdos verificados con marcas, formaci\u00f3n real y una comunidad creada para creadores profesionales. Postula una vez, desbloquea oportunidades continuas y construye una carrera donde tu trabajo y tu tiempo sean respetados.",
-    "cta": "S\u00e9 de los primeros en unirte",
+    "cta": "\u00danete gratis",
     "ctaHelper": "Registro gratuito. Cupos limitados para creadores serios.",
     "expectTitle": "Qu\u00e9 puedes esperar en ELEVN",
     "expectSubtitle": "Dise\u00f1ado para creadores que tratan el contenido como un negocio serio.",
@@ -69,7 +69,7 @@
     "beat4Detail": "Un espacio para intercambiar aprendizajes, celebrar logros y construir relaciones duraderas con personas en el mismo camino. No est\u00e1s solo.",
     "beat4Extra": "Colabora en lugar de competir, con creadores que se toman el oficio tan en serio como t\u00fa.",
     "ctaText": "\u00bfListo para subir de nivel? \u00danete a la plataforma creada para creadores profesionales.",
-    "ctaButton": "\u00danete a nuestra comunidad de creadores"
+    "ctaButton": "\u00danete gratis"
   },
   "benefits": {
     "sectionTitle": "Por qu\u00e9 ELEVN es diferente",
@@ -94,7 +94,7 @@
     "whyDifferent": "Por qu\u00e9 es diferente",
     "whyDifferentP1": "Otras plataformas optimizan por volumen. ELEVN optimiza por ajuste: menos campa\u00f1as, mejores, donde ambas partes est\u00e1n protegidas.",
     "whyDifferentP2": "T\u00fa mantienes el control de tus tarifas, tu marca y tu tiempo. Nosotros nos encargamos de la verificaci\u00f3n, el contexto y el soporte.",
-    "ctaButton": "Postula una vez. Nosotros nos encargamos del resto."
+    "ctaButton": "Únete gratis"
   },
   "community": {
     "label": "Comunidad",
@@ -126,7 +126,7 @@
     "description": "Estas oportunidades ya est\u00e1n activas y esperando creadores como t\u00fa para aprovecharlas al m\u00e1ximo. Briefs reales, pago real, listos para empezar. Reg\u00edstrate ahora.",
     "viewOpportunity": "Ver oportunidad",
     "moreOpportunities": "Se agregan m\u00e1s oportunidades regularmente. Postula a trav\u00e9s de ELEVN y obt\u00e9n acceso.",
-    "ctaButton": "Postula al ecosistema de creadores",
+    "ctaButton": "Únete gratis",
     "metaTitle": "META Creator Fast Track",
     "metaDesc": "Es un programa dise\u00f1ado para acelerar tu crecimiento en Facebook, d\u00e1ndote las herramientas y recursos que necesitas para triunfar desde el primer d\u00eda. Ganar\u00e1s mayor visibilidad y generar\u00e1s un flujo de ingresos que seguir\u00e1 creciendo mucho despu\u00e9s de que termine el programa.",
     "gyreTitle": "Gyre 24/7: Streaming pregrabado para YouTube",
@@ -148,7 +148,7 @@
     "step2Body": "Sesiones virtuales en tiempo real con expertos de la industria, estrategas de plataformas y creadores top. Perfecciona tus habilidades de producci\u00f3n.",
     "step3Title": "Pulso de la industria y eventos de networking",
     "step3Body": "Paneles exclusivos y networking comunitario. Mantente actualizado sobre tendencias digitales, actualizaciones de plataformas y cambios de monetizaci\u00f3n.",
-    "ctaButton": "Desbloquea cursos gratuitos para creadores",
+    "ctaButton": "Únete gratis",
     "ctaHelper": "\u00danete a la Red de Creadores ELEVN para obtener acceso"
   },
   "events": {
@@ -195,7 +195,7 @@
     "headingHighlight": "Reserva tu lugar.",
     "description": "Los primeros en llegar, los primeros en elegir. Los miembros tempranos obtienen acceso prioritario a las primeras campa\u00f1as de marcas de 2026.",
     "boldText": "Acuerdos reales, personas reales, crecimiento real. Un solo lugar para construir lo que sigue.",
-    "ctaButton": "Obt\u00e9n acceso anticipado",
+    "ctaButton": "\u00danete gratis",
     "ctaFooter": "Registro gratuito. Acceso sujeto a validaci\u00f3n de perfil."
   },
   "footer": {

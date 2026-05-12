@@ -292,6 +292,17 @@ const FALLBACK_EVENTS: CalendarEvent[] = [
     endLabel: "4:00 PM",
     gradient: "from-elevn-cyan to-elevn-violet",
   },
+  {
+    id: "fb-4",
+    title: "Creator Fast Track | Live Session with Meta",
+    description: "This is a firsthand opportunity to get the full picture directly from Meta: program structure, eligibility, and earnings. The session will close with an open Q&A.",
+    start: new Date(2026, 2, 25, 15, 0),
+    end: new Date(2026, 2, 25, 16, 0),
+    duration: "1h · 3:00 PM EST",
+    startLabel: "Mar 25, 2026, 3:00 PM",
+    endLabel: "4:00 PM",
+    gradient: "from-elevn-primary to-elevn-cyan",
+  },
 ];
 
 export async function fetchCalendarEvents(icsUrl: string | undefined, rangeStart: Date, rangeEnd: Date): Promise<CalendarEvent[]> {

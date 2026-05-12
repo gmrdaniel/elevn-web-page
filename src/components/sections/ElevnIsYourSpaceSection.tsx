@@ -76,7 +76,7 @@ export function ElevnIsYourSpaceSection({
             </div>
             <h1
               id="elevn-is-your-space-heading"
-              className="text-4xl font-extrabold tracking-tight text-slate-950 max-[400px]:text-3xl sm:text-5xl md:text-6xl dark:text-elevn-ice"
+              className="text-3xl font-extrabold tracking-tight text-slate-950 max-[400px]:text-2xl sm:text-4xl md:text-5xl dark:text-elevn-ice"
             >
               <span
                 className="block bg-clip-text text-transparent"

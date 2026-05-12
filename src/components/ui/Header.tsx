@@ -12,10 +12,8 @@ const LOGO_URL =
 const NAV_KEYS = [
   { key: "nav.elevn", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
   { key: "nav.benefits", href: "#benefits", id: "benefits" },
-  { key: "nav.community", href: "#community", id: "community" },
   { key: "nav.opportunities", href: "#opportunities", id: "opportunities" },
   { key: "nav.elevnStudio", href: "#elevn-studio", id: "elevn-studio" },
-  { key: "nav.events", href: "#events-calendar", id: "events-calendar" },
   { key: "nav.faqs", href: "#faq", id: "faq" },
 ] as const;
 

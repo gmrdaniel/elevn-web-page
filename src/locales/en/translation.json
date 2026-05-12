@@ -7,14 +7,14 @@
     "elevnStudio": "ELEVN Studio",
     "events": "Events",
     "faqs": "FAQs",
-    "secureYourSpot": "Secure your spot"
+    "secureYourSpot": "Join for free"
   },
   "hero": {
     "comingSoon": "Coming Soon",
     "headline": "Apply. Create. Earn.",
     "tagline": "The platform where creators meet brands, scale fast, and own the industry.",
     "description": "ELEVN is your gateway to vetted brand deals, real training, and a community built for professional creators. Apply once, unlock ongoing opportunities, and grow a career where your work and time are respected.",
-    "cta": "Be one of the first to join",
+    "cta": "Join for free",
     "ctaHelper": "Free to apply. Limited early spots for serious creators.",
     "expectTitle": "What you can expect on ELEVN",
     "expectSubtitle": "Designed for creators who treat content as a serious business.",
@@ -69,7 +69,7 @@
     "beat4Detail": "A space to exchange learnings, celebrate wins, and build lasting relationships with people on the same path. You're not alone.",
     "beat4Extra": "Collaborate instead of compete—with creators who take the craft as seriously as you do.",
     "ctaText": "Ready to level up? Join the platform built for professional creators.",
-    "ctaButton": "Join Our Creator Community"
+    "ctaButton": "Join for free"
   },
   "benefits": {
     "sectionTitle": "Why ELEVN is different",
@@ -94,7 +94,7 @@
     "whyDifferent": "Why it's different",
     "whyDifferentP1": "Other platforms optimize for volume. ELEVN optimizes for fit: fewer, better campaigns where both sides are protected.",
     "whyDifferentP2": "You keep control of your rates, brand, and time. We handle verification, context, and support.",
-    "ctaButton": "Apply once. Let us handle the rest."
+    "ctaButton": "Join for free"
   },
   "community": {
     "label": "Community",
@@ -126,7 +126,7 @@
     "description": "These opportunities are already live and waiting for creators like you to make the most of them. Real briefs, real pay, ready to run. Register now and get in.",
     "viewOpportunity": "View opportunity",
     "moreOpportunities": "More opportunities added regularly. Apply through ELEVN and get access.",
-    "ctaButton": "Apply for the Creator Ecosystem",
+    "ctaButton": "Join for free",
     "metaTitle": "META Creator Fast Track",
     "metaDesc": "It's a program designed to accelerate your growth on Facebook, giving you the tools and resources you need to succeed from day one. You'll gain increased visibility and generate a revenue stream that will continue to grow long after the program ends.",
     "gyreTitle": "Gyre 24/7: Pre-Recorded Streaming for YouTube",
@@ -148,7 +148,7 @@
     "step2Body": "Real-time virtual sessions with industry experts, platform strategists, and top-performing creators. Refine your production skills.",
     "step3Title": "Industry Pulse & Networking Events",
     "step3Body": "Exclusive panels and community networking. Stay updated on digital trends, platform updates, and monetization shifts.",
-    "ctaButton": "Unlock Free Creator Courses",
+    "ctaButton": "Join for free",
     "ctaHelper": "Join the ELEVN Creator Network to get access"
   },
   "events": {
@@ -195,7 +195,7 @@
     "headingHighlight": "Secure your spot.",
     "description": "First in, first pick. Early members get priority access to the first brand campaigns of 2026.",
     "boldText": "Real deals, real people, real growth. One place to build what's next.",
-    "ctaButton": "Get early access",
+    "ctaButton": "Join for free",
     "ctaFooter": "Free to join. Access subject to profile validation."
   },
   "footer": {

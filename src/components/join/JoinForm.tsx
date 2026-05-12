@@ -100,7 +100,10 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
     if (!data.fullName.trim()) e.fullName = "Full name is required.";
     if (!data.email.trim()) e.email = "Email is required.";
     else if (!EMAIL_REGEX.test(data.email)) e.email = "Please enter a valid email.";
-    if (data.phoneNumber.trim()) {
+    if (!data.countryOfResidence.trim()) e.countryOfResidence = "Country of residence is required.";
+    if (!data.phoneNumber.trim()) {
+      e.phoneNumber = "Phone number is required.";
+    } else {
       const result = validatePhoneNumber(data.phoneCountryCode, data.phoneNumber);
       if (!result.valid && result.error) e.phoneNumber = result.error;
     }
@@ -461,7 +464,7 @@ function StepPersonal({
         {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
       </div>
       <div>
-        <InputLabel htmlFor="countryOfResidence">Country of residence</InputLabel>
+        <InputLabel htmlFor="countryOfResidence">Country of residence <span className="text-red-500">*</span></InputLabel>
         <input
           id="countryOfResidence"
           type="text"
@@ -474,7 +477,7 @@ function StepPersonal({
         {errors.countryOfResidence && <p className="mt-1 text-xs text-red-500">{errors.countryOfResidence}</p>}
       </div>
       <div>
-        <InputLabel>Phone </InputLabel>
+        <InputLabel>Phone <span className="text-red-500">*</span></InputLabel>
         <p className="mb-1.5 text-xs text-slate-500 dark:text-elevn-ice/60">
           Country code + number.
         </p>
