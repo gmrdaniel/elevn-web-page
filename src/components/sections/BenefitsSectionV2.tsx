@@ -9,10 +9,10 @@ import { useTranslation } from "react-i18next";
 
 const BULLET_KEYS = ["benefits.bullet1", "benefits.bullet2", "benefits.bullet3"] as const;
 
-const DIFF_KEYS = [
-  { titleKey: "benefits.diff1Title", bodyKey: "benefits.diff1Body" },
-  { titleKey: "benefits.diff2Title", bodyKey: "benefits.diff2Body" },
-  { titleKey: "benefits.diff3Title", bodyKey: "benefits.diff3Body" },
+const BULLET_ICON_GRADIENTS = [
+  "from-elevn-cyan to-elevn-primary",
+  "from-elevn-violet to-elevn-cyan",
+  "from-elevn-magenta to-elevn-violet",
 ] as const;
 
 export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
@@ -37,7 +37,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 16 }}
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:text-4xl md:text-5xl dark:text-elevn-ice"
+          className="text-center text-4xl font-bold tracking-tight text-slate-950 max-[400px]:text-3xl sm:text-5xl md:text-6xl dark:text-elevn-ice"
         >
           <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("benefits.sectionTitle")}</span>
         </motion.h2>
@@ -55,49 +55,41 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
           transition={{ duration: 0.32, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-16"
+          className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:gap-12 xl:gap-16"
         >
           <div className="flex flex-col">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan sm:text-base">
+            <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan sm:text-base">
               {t("benefits.inPlainTerms")}
             </p>
             <h2
               id="benefits-heading"
-              className="mt-4 text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl dark:text-elevn-ice"
+              className="mt-4 text-center text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl dark:text-elevn-ice"
             >
               {t("benefits.whatYouGet")}
             </h2>
-            <ul className="mt-8 space-y-4 max-[400px]:mt-6 sm:mt-8 sm:space-y-4 md:space-y-5">
+            <ul className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 gap-4 max-[400px]:mt-6 sm:mt-8 sm:grid-cols-3 sm:gap-5 md:gap-6">
               {BULLET_KEYS.map((key, i) => (
-                <li key={i} className="flex items-start gap-4 text-slate-950 dark:text-elevn-ice/95">
-                  <HiCheckCircle className="mt-0.5 h-7 w-7 shrink-0 text-elevn-cyan max-[400px]:h-6 max-[400px]:w-6 sm:h-8 sm:w-8" aria-hidden />
+                <li
+                  key={i}
+                  className="relative flex items-center justify-start gap-4 overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] p-5 text-left text-slate-950 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] transition-[transform,box-shadow] duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_40px_-2px_rgba(64,49,175,0.55),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:text-elevn-ice/95 dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)]"
+                >
+                  <span
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br sm:h-12 sm:w-12 ${BULLET_ICON_GRADIENTS[i]} text-white shadow-md dark:text-elevn-ice`}
+                  >
+                    <HiCheckCircle className="text-2xl sm:text-3xl" aria-hidden />
+                  </span>
                   <span className="text-base font-semibold leading-snug sm:text-lg md:text-xl">{t(key)}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-7 text-base font-semibold text-slate-800 dark:text-elevn-ice/85 sm:mt-9 md:text-lg">
+            <p className="mt-7 text-center text-base font-semibold text-slate-800 dark:text-elevn-ice/85 sm:mt-9 md:text-lg">
               {t("benefits.campaignsLive")}
             </p>
-            <div className="mt-5 space-y-3 text-left text-xs font-medium text-slate-600 sm:text-sm dark:text-elevn-ice/80">
-              {DIFF_KEYS.map((item) => (
-                <div key={item.titleKey} className="flex items-start gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-elevn-cyan shadow-[0_0_10px_rgba(6,182,212,0.7)]" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-[11px]">
-                      {t(item.titleKey)}
-                    </p>
-                    <p className="mt-1 text-[11px] leading-relaxed sm:text-xs">
-                      {t(item.bodyKey)}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* CTA: Get opportunities instantly */}
-          <div className="flex flex-col lg:h-full lg:min-h-0">
-            <div className="relative flex min-h-[420px] w-full max-w-full flex-col overflow-hidden rounded-3xl border-2 border-elevn-cyan/40 bg-white p-8 shadow-xl dark:border-elevn-cyan/50 dark:bg-elevn-surface/90 dark:shadow-[0_0_40px_-8px_rgba(6,182,212,0.4)] sm:p-10 lg:h-full lg:min-h-0">
+          <div className="flex flex-col">
+            <div className="relative flex min-h-[420px] w-full max-w-full flex-col overflow-hidden rounded-3xl border-2 border-elevn-cyan/40 bg-white p-8 shadow-xl dark:border-elevn-cyan/50 dark:bg-elevn-surface/90 dark:shadow-[0_0_40px_-8px_rgba(6,182,212,0.4)] sm:p-10">
               <div className="absolute inset-0 bg-gradient-to-br from-elevn-primary/5 via-transparent to-elevn-cyan/5 dark:from-elevn-cyan/10 dark:to-elevn-violet/5" aria-hidden />
               <div className="relative flex flex-1 flex-col">
                 <div className="flex items-center gap-4">
@@ -139,7 +131,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                 type="button"
                 size="lg"
                 onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                className="relative mt-6 w-full bg-elevn-gradient py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
+                className="relative mt-6 w-full bg-gradient-to-br from-[#1d96c3] to-[#393da3] py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
               >
                 <HiBolt className="mr-2 text-2xl" aria-hidden />
                 {t("benefits.ctaButton")}

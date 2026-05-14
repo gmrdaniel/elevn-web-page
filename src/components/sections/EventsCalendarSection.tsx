@@ -332,7 +332,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                             {event.url && (
                               isGoogleMeetUrl(event.url) ? (
                                 isSameCalendarDay(event.start, new Date()) && isWithinEventTimeRange(event) ? (
-                                  <Button asChild size="sm" className="bg-elevn-gradient text-white shadow-md dark:text-elevn-ice">
+                                  <Button asChild size="sm" className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] text-white shadow-md dark:text-elevn-ice">
                                     <a href={event.url} target="_blank" rel="noopener noreferrer">
                                       <HiVideoCamera className="mr-2 text-base" aria-hidden />
                                       {t("events.joinMeeting")}
@@ -345,7 +345,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                                   </Button>
                                 )
                               ) : (
-                                <Button asChild size="sm" className="bg-elevn-gradient text-white shadow-md dark:text-elevn-ice">
+                                <Button asChild size="sm" className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] text-white shadow-md dark:text-elevn-ice">
                                   <a href={event.url} target="_blank" rel="noopener noreferrer">
                                     <HiArrowTopRightOnSquare className="mr-2 text-base" aria-hidden />
                                     {t("events.openEventLink")}
@@ -387,7 +387,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                     type="button"
                     size="lg"
                     onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                    className="mt-6 bg-elevn-gradient px-6 py-5 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+                    className="mt-6 bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-6 py-5 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
                   >
                     <HiBolt className="mr-2 text-xl" aria-hidden />
                     {t("events.joinCreatorCommunity")}
