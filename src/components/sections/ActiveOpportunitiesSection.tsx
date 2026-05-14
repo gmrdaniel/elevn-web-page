@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,14 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const labelOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+  const labelY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
+  const headingOpacity = useTransform(scrollYProgress, [0.08, 0.24], [0, 1]);
+  const headingY = useTransform(scrollYProgress, [0.08, 0.24], [30, 0]);
   const { t } = useTranslation();
 
   return (
@@ -33,28 +41,24 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
       <SectionDivider className="mb-0" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{
-            opacity: sectionInView ? 1 : 0,
-            y: sectionInView ? 0 : 24,
-          }}
-          transition={{ duration: 0.32, ease }}
-          className="text-center"
-        >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
+        <div className="text-center">
+          <motion.p
+            style={{ opacity: labelOpacity, y: labelY }}
+            className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan"
+          >
             {t("opportunities.topLabel")}
-          </p>
-          <h2
+          </motion.p>
+          <motion.h2
             id="opportunities-heading"
+            style={{ opacity: headingOpacity, y: headingY }}
             className="mt-4 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl dark:text-elevn-ice"
           >
             {t("opportunities.heading")}
-          </h2>
+          </motion.h2>
           <p className="mx-auto mt-6 max-w-5xl text-balance text-lg font-semibold leading-relaxed text-slate-950 md:text-xl dark:text-elevn-ice/90">
             {t("opportunities.description")}
           </p>
-        </motion.div>
+        </div>
 
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-6">
           {OPP_STYLES.map((opp, i) => (

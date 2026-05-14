@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
@@ -21,20 +21,11 @@ const STEP_KEYS = [
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const STEPS_OFFSET_BREAKPOINT = 560;
 
 export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
-  const [allowOffsetX, setAllowOffsetX] = useState(false);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const check = () => setAllowOffsetX(window.innerWidth >= STEPS_OFFSET_BREAKPOINT);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
 
   return (
     <section
@@ -87,61 +78,27 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             </div>
           </motion.div>
 
-          <div
-            className="relative mx-auto w-full max-w-4xl pb-16 pt-2 max-[400px]:pb-12 max-[400px]:pt-1 max-[650px]:pb-20 md:max-w-5xl md:pb-32 md:pt-4 lg:max-w-6xl xl:max-w-[1400px]"
-            style={{ perspective: "1400px" }}
-          >
-            <div
-              className="pointer-events-none absolute inset-0 blur-3xl"
-              style={{
-                background:
-                  "linear-gradient(to bottom right, transparent, rgba(37, 99, 235, 0.06), transparent)",
-              }}
-              aria-hidden
-            />
+          <div className="relative mx-auto w-full max-w-4xl pb-10 pt-2 max-[400px]:pb-8 max-[400px]:pt-1 md:max-w-5xl md:pb-16 md:pt-4 lg:max-w-6xl xl:max-w-[1400px]">
             <motion.div
-              className="relative mx-auto w-full max-w-4xl space-y-5 max-[400px]:space-y-4 max-[650px]:space-y-7 md:max-w-5xl md:space-y-14 lg:max-w-6xl xl:max-w-[1400px]"
-              initial={{ rotateX: 0, rotateZ: 0, opacity: 0.85 }}
-              animate={{
-                rotateX: sectionInView ? 12 : 0,
-                rotateZ: sectionInView ? -2 : 0,
-                opacity: 1,
-              }}
+              className="relative mx-auto w-full max-w-4xl space-y-5 max-[400px]:space-y-4 max-[650px]:space-y-7 md:max-w-5xl md:space-y-8 lg:max-w-6xl xl:max-w-[1400px]"
+              initial={{ opacity: 0.85 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.45, ease }}
-              style={{ transformStyle: "preserve-3d" }}
             >
               {STEP_STYLES.map((step, i) => {
                 const Icon = STEP_ICONS[i];
                 const keys = STEP_KEYS[i];
                 const stepDelay = 0.2 + i * 0.14;
-                const depth = i * -80;
-                const offsetX = allowOffsetX ? i * 40 : 0;
-                const offsetY = i * -10;
-                const scale = 1 - i * 0.04;
                 return (
                   <motion.div
                     key={step.number}
-                    initial={{
-                      opacity: 0,
-                      x: offsetX,
-                      y: offsetY + 56,
-                      z: -260,
-                      scale: scale * 0.9,
-                    }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={{
                       opacity: sectionInView ? 1 : 0,
-                      x: offsetX,
-                      y: offsetY,
-                      z: sectionInView ? depth : -260,
-                      scale: sectionInView ? scale : scale * 0.9,
+                      y: sectionInView ? 0 : 24,
                     }}
                     transition={{ duration: 0.4, delay: stepDelay * 0.4, ease }}
-                    className="flex overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md max-[400px]:rounded-md dark:border-white/10 dark:bg-elevn-surface/60 dark:shadow-none md:rounded-xl dark:backdrop-blur-sm"
-                    style={{
-                      transformStyle: "preserve-3d",
-                      backfaceVisibility: "hidden",
-                      boxShadow: `0 ${12 + i * 6}px ${30 + i * 14}px -10px rgba(0,0,0,0.45)`,
-                    }}
+                    className="relative flex overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)]"
                   >
                     <div
                       className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-4 max-[400px]:w-16 max-[400px]:py-3 max-[650px]:py-5 md:w-28 md:gap-1 md:py-9`}
