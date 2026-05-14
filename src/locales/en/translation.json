@@ -170,6 +170,10 @@
     "openEventLink": "Open event link",
     "joinCommunity": "Join community"
   },
+  "about": {
+    "heading": "About ELEVN",
+    "description": "ELEVN is a premier talent management and brand agency that connects top-tier creators with global brands. We specialize in strategic partnerships and content innovation to build authentic influence. Our mission is to scale digital voices and create lasting impact within the creator economy."
+  },
   "faq": {
     "label": "Frequently Asked Questions",
     "heading": "Answers before you join",

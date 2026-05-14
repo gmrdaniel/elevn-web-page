@@ -78,14 +78,34 @@ export function ElevnIsYourSpaceSection({
               id="elevn-is-your-space-heading"
               className="text-5xl font-extrabold tracking-tight text-slate-950 max-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl dark:text-elevn-ice"
             >
-              <span
-                className="block bg-clip-text text-transparent"
-                style={{
-                  background: GRADIENT_TITLE,
-                  WebkitBackgroundClip: "text",
-                }}
-              >
-                {t("hero.headline")}
+              <span className="block">
+                {/* gradient applied per-word */}
+                {t("hero.headline").split(" ").map((word, i, arr) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block bg-clip-text"
+                    style={{
+                      background: GRADIENT_TITLE,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      color: "transparent",
+                    }}
+                    initial={{ opacity: 0, y: 16, filter: "blur(3px)" }}
+                    animate={{
+                      opacity: sectionInView ? 1 : 0,
+                      y: sectionInView ? 0 : 16,
+                      filter: sectionInView ? "blur(0px)" : "blur(3px)",
+                    }}
+                    transition={{
+                      duration: 1.1,
+                      delay: 0.25 + i * 0.28,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    {word}
+                    {i < arr.length - 1 ? " " : ""}
+                  </motion.span>
+                ))}
               </span>
             </h1>
           </div>

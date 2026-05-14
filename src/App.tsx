@@ -29,37 +29,31 @@ function App() {
     a.playbackRate = 0.6;
     b.playbackRate = 0.6;
 
-    const CROSSFADE = 1.2;
+    const CROSSFADE = 2.0;
     let aSwitched = false;
     let bSwitched = false;
+    let rafId: number;
 
-    const onATime = () => {
-      if (!a.duration) return;
-      if (a.duration - a.currentTime <= CROSSFADE && !aSwitched) {
+    const tick = () => {
+      if (!a.paused && a.duration && a.duration - a.currentTime <= CROSSFADE && !aSwitched) {
         aSwitched = true;
         bSwitched = false;
         b.currentTime = 0;
-        b.play();
+        b.play().catch(() => {});
         setActiveVideo("B");
       }
-    };
-    const onBTime = () => {
-      if (!b.duration) return;
-      if (b.duration - b.currentTime <= CROSSFADE && !bSwitched) {
+      if (!b.paused && b.duration && b.duration - b.currentTime <= CROSSFADE && !bSwitched) {
         bSwitched = true;
         aSwitched = false;
         a.currentTime = 0;
-        a.play();
+        a.play().catch(() => {});
         setActiveVideo("A");
       }
+      rafId = requestAnimationFrame(tick);
     };
+    rafId = requestAnimationFrame(tick);
 
-    a.addEventListener("timeupdate", onATime);
-    b.addEventListener("timeupdate", onBTime);
-    return () => {
-      a.removeEventListener("timeupdate", onATime);
-      b.removeEventListener("timeupdate", onBTime);
-    };
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   return (
@@ -68,20 +62,20 @@ function App() {
         <video
           ref={videoARef}
           autoPlay
-          loop
           muted
           playsInline
-          className={`absolute inset-0 h-full w-full object-cover blur-md brightness-75 transition-opacity duration-[1200ms] ${activeVideo === "A" ? "opacity-100" : "opacity-0"}`}
+          preload="auto"
+          className={`absolute inset-0 h-full w-full object-cover blur-md brightness-75 transition-opacity duration-[3000ms] ease-in-out ${activeVideo === "A" ? "opacity-100" : "opacity-0"}`}
           aria-hidden
         >
           <source src="/assets/videos/videofondo.mp4" type="video/mp4" />
         </video>
         <video
           ref={videoBRef}
-          loop
           muted
           playsInline
-          className={`absolute inset-0 h-full w-full object-cover blur-md brightness-75 transition-opacity duration-[1200ms] ${activeVideo === "B" ? "opacity-100" : "opacity-0"}`}
+          preload="auto"
+          className={`absolute inset-0 h-full w-full object-cover blur-md brightness-75 transition-opacity duration-[3000ms] ease-in-out ${activeVideo === "B" ? "opacity-100" : "opacity-0"}`}
           aria-hidden
         >
           <source src="/assets/videos/videofondo.mp4" type="video/mp4" />
