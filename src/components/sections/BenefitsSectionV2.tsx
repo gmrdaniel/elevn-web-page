@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiBolt, HiCheckCircle } from "react-icons/hi2";
@@ -18,33 +18,40 @@ const BULLET_ICON_GRADIENTS = [
 export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const headingOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+  const headingY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
+  const subtitleOpacity = useTransform(scrollYProgress, [0.08, 0.24], [0, 1]);
+  const subtitleY = useTransform(scrollYProgress, [0.08, 0.24], [20, 0]);
   const { t } = useTranslation();
 
   return (
     <section
       id="benefits"
       ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
+      className="relative overflow-hidden"
       aria-labelledby="benefits-section-title"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pt-16 pb-20 max-[400px]:px-3 max-[400px]:pt-12 max-[400px]:pb-14 sm:px-6 sm:pt-18 sm:pb-24 md:px-10 md:pt-20 md:pb-26 lg:max-w-[1600px] lg:px-12 lg:pt-22 lg:pb-30 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <motion.div
+        style={{ y: parallaxY }}
+        className="relative mx-auto w-full max-w-7xl px-4 pt-16 pb-20 max-[400px]:px-3 max-[400px]:pt-12 max-[400px]:pb-14 sm:px-6 sm:pt-18 sm:pb-24 md:px-10 md:pt-20 md:pb-26 lg:max-w-[1600px] lg:px-12 lg:pt-22 lg:pb-30 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         {/* Section title */}
         <motion.h2
           id="benefits-section-title"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 16 }}
-          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+          style={{ opacity: headingOpacity, y: headingY }}
           className="text-center text-4xl font-bold tracking-tight text-slate-950 max-[400px]:text-3xl sm:text-5xl md:text-6xl dark:text-elevn-ice"
         >
           <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("benefits.sectionTitle")}</span>
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 8 }}
-          transition={{ duration: 0.32, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
+          style={{ opacity: subtitleOpacity, y: subtitleY }}
           className="mt-3 text-center text-base font-semibold text-slate-700 dark:text-elevn-ice/85 md:text-lg"
         >
           {t("benefits.sectionSubtitle")}
@@ -124,7 +131,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           </div>
         </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

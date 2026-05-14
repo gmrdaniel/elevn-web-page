@@ -40,16 +40,11 @@ export function ElevnIsYourSpaceSection({
     <section
       id="elevn-is-your-space"
       ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
+      className="relative overflow-hidden"
       aria-labelledby="elevn-is-your-space-heading"
     >
       <SectionDivider className="mb-0" />
-      <div
-        className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-10 dark:opacity-15"
-        style={{ backgroundImage: "url(/assets/images/imagee1.png)" }}
-        aria-hidden
-      />
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 max-[400px]:px-3 max-[400px]:py-14 sm:px-6 sm:py-24 md:px-10 md:py-28 lg:flex lg:max-w-[1600px] lg:items-center lg:justify-center lg:gap-16 lg:px-12 lg:py-32 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-4 py-20 max-[400px]:px-3 max-[400px]:py-14 sm:px-6 sm:py-24 md:px-10 md:py-28 lg:flex lg:max-w-[1600px] lg:items-center lg:justify-center lg:gap-16 lg:px-12 lg:py-32 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
@@ -140,7 +135,7 @@ export function ElevnIsYourSpaceSection({
               return (
                 <div
                   key={item.labelKey}
-                  className="relative flex h-full flex-col gap-3 rounded-2xl bg-gradient-to-br from-[#1b6afe]/60 to-[#2a12e1]/60 p-4 shadow-sm ring-1 ring-white/20 transition-transform duration-300 ease-out hover:scale-[1.02] dark:from-elevn-surface/90 dark:to-elevn-dark/80 dark:ring-white/10"
+                  className="relative flex h-full flex-col gap-3 rounded-2xl bg-gradient-to-br from-[#1b6afe]/60 to-[#2a12e1]/60 p-4 shadow-sm ring-1 ring-white/20 transition-transform duration-300 ease-out hover:scale-[1.02] dark:from-elevn-surface/40 dark:to-elevn-dark/30 dark:ring-white/10"
                 >
                   <div className="flex items-center gap-3">
                     <span

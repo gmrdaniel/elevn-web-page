@@ -40,7 +40,7 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
     <section
       id="elevn-studio"
       ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
+      className="relative overflow-hidden"
       aria-labelledby="elevn-studio-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />

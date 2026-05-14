@@ -31,7 +31,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
     <section
       id="join"
       ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark scroll-mt-24"
+      className="relative overflow-hidden scroll-mt-24"
       aria-labelledby="final-cta-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-25" aria-hidden />
