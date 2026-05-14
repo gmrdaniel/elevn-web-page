@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
-import { HiAcademicCap, HiBookOpen, HiVideoCamera, HiUserGroup, HiBolt } from "react-icons/hi2";
+import { HiAcademicCap, HiBookOpen, HiVideoCamera, HiUserGroup } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
 const STEP_ICONS = [HiBookOpen, HiVideoCamera, HiUserGroup] as const;
@@ -145,7 +145,6 @@ export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
             className="w-full max-w-sm bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
           >
-            <HiBolt className="mr-2 text-xl" aria-hidden />
             {t("studio.ctaButton")}
           </Button>
           <p className="mt-4 text-sm font-semibold text-slate-600 dark:text-elevn-ice/80">

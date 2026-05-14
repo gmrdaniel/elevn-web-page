@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes elevn-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
 /* ELEVN — Paleta cyberpunk/futurista (azul + cyan, violet, magenta) */
 :root {
   --elevn-primary: #2563eb;

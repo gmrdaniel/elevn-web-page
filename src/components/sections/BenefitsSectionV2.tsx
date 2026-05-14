@@ -23,10 +23,10 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
     offset: ["start end", "end start"],
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const headingOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
-  const headingY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
-  const subtitleOpacity = useTransform(scrollYProgress, [0.08, 0.24], [0, 1]);
-  const subtitleY = useTransform(scrollYProgress, [0.08, 0.24], [20, 0]);
+  const plainTermsOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+  const plainTermsY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
+  const whatYouGetOpacity = useTransform(scrollYProgress, [0.08, 0.24], [0, 1]);
+  const whatYouGetY = useTransform(scrollYProgress, [0.08, 0.24], [30, 0]);
   const { t } = useTranslation();
 
   return (
@@ -34,7 +34,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
       id="benefits"
       ref={sectionRef}
       className="relative overflow-hidden"
-      aria-labelledby="benefits-section-title"
+      aria-labelledby="benefits-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
@@ -42,21 +42,6 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
       <motion.div
         style={{ y: parallaxY }}
         className="relative mx-auto w-full max-w-7xl px-4 pt-16 pb-20 max-[400px]:px-3 max-[400px]:pt-12 max-[400px]:pb-14 sm:px-6 sm:pt-18 sm:pb-24 md:px-10 md:pt-20 md:pb-26 lg:max-w-[1600px] lg:px-12 lg:pt-22 lg:pb-30 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
-        {/* Section title */}
-        <motion.h2
-          id="benefits-section-title"
-          style={{ opacity: headingOpacity, y: headingY }}
-          className="text-center text-4xl font-bold tracking-tight text-slate-950 max-[400px]:text-3xl sm:text-5xl md:text-6xl dark:text-elevn-ice"
-        >
-          <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("benefits.sectionTitle")}</span>
-        </motion.h2>
-        <motion.p
-          style={{ opacity: subtitleOpacity, y: subtitleY }}
-          className="mt-3 text-center text-base font-semibold text-slate-700 dark:text-elevn-ice/85 md:text-lg"
-        >
-          {t("benefits.sectionSubtitle")}
-        </motion.p>
-
         {/* Condensed value prop + CTA */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -65,15 +50,19 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:gap-12 xl:gap-16"
         >
           <div className="flex flex-col">
-            <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan sm:text-base">
-              {t("benefits.inPlainTerms")}
-            </p>
-            <h2
-              id="benefits-heading"
-              className="mt-4 text-center text-3xl font-bold tracking-tight text-slate-950 max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl dark:text-elevn-ice"
+            <motion.p
+              style={{ opacity: plainTermsOpacity, y: plainTermsY }}
+              className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-white sm:text-base"
             >
-              {t("benefits.whatYouGet")}
-            </h2>
+              {t("benefits.inPlainTerms")}
+            </motion.p>
+            <motion.h2
+              id="benefits-heading"
+              style={{ opacity: whatYouGetOpacity, y: whatYouGetY }}
+              className="mt-4 text-center text-3xl font-bold tracking-tight max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl"
+            >
+              <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("benefits.whatYouGet")}</span>
+            </motion.h2>
             <ul className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 gap-4 max-[400px]:mt-6 sm:mt-8 sm:grid-cols-3 sm:gap-5 md:gap-6">
               {BULLET_KEYS.map((key, i) => (
                 <li
@@ -124,7 +113,6 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                 onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
                 className="relative mt-5 w-full bg-gradient-to-br from-[#1d96c3] to-[#393da3] py-5 text-base font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
               >
-                <HiBolt className="mr-2 text-2xl" aria-hidden />
                 {t("benefits.ctaButton")}
               </Button>
             </div>

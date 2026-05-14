@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
-import { HiBolt, HiChevronDown } from "react-icons/hi2";
+import { HiChevronDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -162,7 +162,6 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                 className="mt-10 w-full bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-10 py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
                 onClick={onOpenJoinForm ?? (() => window.open("https://laneta-portal.netlify.app/", "_blank", "noopener,noreferrer"))}
               >
-                <HiBolt className="mr-2 text-2xl" aria-hidden />
                 {t("finalCta.ctaButton")}
               </Button>
               <p className="mt-6 text-sm font-semibold text-slate-600 dark:text-elevn-ice/75">
