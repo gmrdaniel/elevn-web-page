@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
-import { HiBolt, HiChevronDown } from "react-icons/hi2";
+import { HiChevronDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -24,6 +24,12 @@ const FAQ_KEYS = [
 export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const faqHeaderOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
+  const faqHeaderY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { t } = useTranslation();
 
@@ -31,7 +37,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
     <section
       id="join"
       ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark scroll-mt-24"
+      className="relative overflow-hidden scroll-mt-24"
       aria-labelledby="final-cta-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-25" aria-hidden />
@@ -47,17 +53,20 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
           transition={{ duration: 0.35, delay: 0.08, ease }}
           className="mx-auto max-w-3xl scroll-mt-24"
         >
-          <div className="mx-auto max-w-3xl text-center">
+          <motion.div
+            style={{ opacity: faqHeaderOpacity, y: faqHeaderY }}
+            className="mx-auto max-w-3xl text-center"
+          >
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
               {t("faq.label")}
             </p>
-            <h3 className="mt-3 text-xl font-bold tracking-tight text-slate-950 sm:text-2xl md:text-3xl dark:text-elevn-ice">
+            <h3 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl dark:text-elevn-ice">
               {t("faq.heading")}
             </h3>
             <p className="mx-auto mt-3 max-w-2xl text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80 md:text-base">
               {t("faq.description")}
             </p>
-          </div>
+          </motion.div>
 
           <div className="mt-8 space-y-3 sm:mt-10">
             {FAQ_KEYS.map((item, index) => {
@@ -68,10 +77,10 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 12 }}
                   transition={{ duration: 0.3, delay: 0.1 + index * 0.04, ease }}
-                  className={`overflow-hidden rounded-2xl border bg-white/95 shadow-sm transition-colors duration-200 dark:bg-elevn-surface/90 ${
+                  className={`overflow-hidden rounded-2xl border bg-gradient-to-br from-white/10 to-white/[0.03] backdrop-blur-sm backdrop-saturate-150 transition-colors duration-200 dark:from-white/[0.02] dark:to-transparent ${
                     isOpen
-                      ? "border-elevn-cyan/70 shadow-[0_0_32px_rgba(34,211,238,0.2)] dark:border-elevn-cyan/80"
-                      : "border-slate-200/80 dark:border-white/10"
+                      ? "border-elevn-cyan/70 shadow-[0_0_32px_rgba(34,211,238,0.2),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-elevn-cyan/80 dark:shadow-[0_0_32px_rgba(34,211,238,0.25),inset_0_1px_0_0_rgba(255,255,255,0.05)]"
+                      : "border-white/20 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)]"
                   }`}
                 >
                   <button
@@ -115,6 +124,30 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
           </div>
         </motion.div>
 
+        <SectionDivider />
+        <motion.div
+          id="about"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 20 }}
+          transition={{ duration: 0.35, delay: 0.1, ease }}
+          className="mx-auto max-w-6xl scroll-mt-24 text-center"
+        >
+          <h3 className="text-5xl font-extrabold tracking-tight max-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
+            <span
+              className="block bg-clip-text text-transparent"
+              style={{
+                background: GRADIENT_TITLE,
+                WebkitBackgroundClip: "text",
+              }}
+            >
+              {t("about.heading")}
+            </span>
+          </h3>
+          <p className="mx-auto mt-6 max-w-5xl text-balance text-base font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 md:text-lg">
+            {t("about.description")}
+          </p>
+        </motion.div>
+        <SectionDivider />
 
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -125,11 +158,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
           transition={{ duration: 0.4, ease }}
           className="relative mx-auto max-w-3xl"
         >
-          <div className="relative overflow-hidden rounded-3xl border-2 border-elevn-cyan/30 bg-white/95 px-6 py-10 shadow-xl dark:border-elevn-cyan/40 dark:bg-elevn-surface/90 dark:shadow-[0_0_50px_-12px_rgba(6,182,212,0.25)] sm:px-10 sm:py-12 md:px-14 md:py-16">
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-elevn-primary/[0.04] via-transparent to-elevn-cyan/[0.06] dark:from-elevn-cyan/10 dark:to-elevn-violet/10"
-              aria-hidden
-            />
+          <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] px-6 py-10 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] sm:px-10 sm:py-12 md:px-14 md:py-16">
             <div className="relative text-center">
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-elevn-cyan">
                 {t("finalCta.label")}
@@ -159,10 +188,9 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
               <Button
                 type="button"
                 size="lg"
-                className="mt-10 w-full bg-elevn-gradient px-10 py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
+                className="mt-10 w-full bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-10 py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
                 onClick={onOpenJoinForm ?? (() => window.open("https://laneta-portal.netlify.app/", "_blank", "noopener,noreferrer"))}
               >
-                <HiBolt className="mr-2 text-2xl" aria-hidden />
                 {t("finalCta.ctaButton")}
               </Button>
               <p className="mt-6 text-sm font-semibold text-slate-600 dark:text-elevn-ice/75">

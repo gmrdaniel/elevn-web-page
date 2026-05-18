@@ -151,7 +151,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             type="button"
             size="lg"
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-            className="bg-elevn-gradient px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+            className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
             {t("forCreators.ctaButton")}

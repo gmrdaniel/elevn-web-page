@@ -73,12 +73,12 @@
   },
   "benefits": {
     "sectionTitle": "Why ELEVN is different",
-    "sectionSubtitle": "Not just another creator marketplace. A system designed to protect your work and unlock better campaigns.",
+    "sectionSubtitle": "More than a creator marketplace: protecting your work and elevating campaigns.",
     "inPlainTerms": "In plain terms",
     "whatYouGet": "What you actually get on ELEVN",
-    "bullet1": "Verified campaigns with real budgets and clear contracts.",
-    "bullet2": "Opportunities delivered to you—no more cold DMs or hunting.",
-    "bullet3": "Training, support, and a serious creator community in one place.",
+    "bullet1": "Verified campaigns and clear contracts.",
+    "bullet2": "Direct opportunities—no more cold DMs.",
+    "bullet3": "Training, support, and community.",
     "campaignsLive": "Campaigns are already live. Apply once, stay in the loop.",
     "diff1Title": "Verified, not volume",
     "diff1Body": "We don't flood you with random briefs. Every campaign is vetted for fit, budget, and timing—quality over quantity.",
@@ -123,7 +123,7 @@
   "opportunities": {
     "topLabel": "Discover what ELEVN has for you—new opportunities every day",
     "heading": "Active opportunities",
-    "description": "These opportunities are already live and waiting for creators like you to make the most of them. Real briefs, real pay, ready to run. Register now and get in.",
+    "description": "Check out the active opportunities at ELEVN and apply for the one that best matches what you're looking for!",
     "viewOpportunity": "View opportunity",
     "moreOpportunities": "More opportunities added regularly. Apply through ELEVN and get access.",
     "ctaButton": "Join for free",
@@ -169,6 +169,10 @@
     "joinMeeting": "Join the meeting in a new tab",
     "openEventLink": "Open event link",
     "joinCommunity": "Join community"
+  },
+  "about": {
+    "heading": "About ELEVN",
+    "description": "ELEVN is a premier talent management and brand agency that connects top-tier creators with global brands. We specialize in strategic partnerships and content innovation to build authentic influence. Our mission is to scale digital voices and create lasting impact within the creator economy."
   },
   "faq": {
     "label": "Frequently Asked Questions",
