@@ -21,7 +21,7 @@ const STEP_KEYS = [
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export function ElevnStudioSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
+export function ElevnStudioSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
   const { scrollYProgress } = useScroll({

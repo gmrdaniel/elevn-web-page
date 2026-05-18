@@ -90,7 +90,7 @@ function App() {
 
       <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
       <ActiveOpportunitiesSection onOpenJoinForm={() => setShowJoinForm(true)} />
-      <ElevnStudioSection onOpenJoinForm={() => setShowJoinForm(true)} />
+      <ElevnStudioSection />
       <FinalCTASection onOpenJoinForm={() => setShowJoinForm(true)} />
       <Footer onOpenJoinForm={() => setShowJoinForm(true)} />
       <AnimatePresence>
