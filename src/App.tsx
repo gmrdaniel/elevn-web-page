@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+
 import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceSection";
-
-
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
-// Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
-
 import { ActiveOpportunitiesSection } from "@/components/sections/ActiveOpportunitiesSection";
+import { CommunitySection } from "@/components/sections/CommunitySection";
+import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Footer } from "@/components/ui/Footer";
 import { Header } from "@/components/ui/Header";
@@ -56,8 +55,10 @@ function App() {
     return () => cancelAnimationFrame(rafId);
   }, []);
 
+  const openJoinForm = () => setShowJoinForm(true);
+
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen font-poppins">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <video
           ref={videoARef}
@@ -82,17 +83,20 @@ function App() {
         </video>
         <div className="absolute inset-0 bg-black/15" aria-hidden />
       </div>
+
       <ScrollNav />
       <ThemeSwitch />
-      <Header onOpenJoinForm={() => setShowJoinForm(true)} />
-      {/* Legacy hero: <HeroSection /> */}
-      <ElevnIsYourSpaceSection onOpenJoinForm={() => setShowJoinForm(true)} />
+      <Header onOpenJoinForm={openJoinForm} />
 
-      <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
-      <ActiveOpportunitiesSection onOpenJoinForm={() => setShowJoinForm(true)} />
+      <ElevnIsYourSpaceSection onOpenJoinForm={openJoinForm} />
+      <BenefitsSectionV2 onOpenJoinForm={openJoinForm} />
+      <ActiveOpportunitiesSection onOpenJoinForm={openJoinForm} />
+      <CommunitySection />
       <ElevnStudioSection />
-      <FinalCTASection onOpenJoinForm={() => setShowJoinForm(true)} />
-      <Footer onOpenJoinForm={() => setShowJoinForm(true)} />
+      <FaqSection />
+      <FinalCTASection onOpenJoinForm={openJoinForm} />
+      <Footer onOpenJoinForm={openJoinForm} />
+
       <AnimatePresence>
         {showJoinForm && (
           <JoinForm key="join-form" onClose={() => setShowJoinForm(false)} />

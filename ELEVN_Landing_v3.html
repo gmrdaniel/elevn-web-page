@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELEVN — Your Space to Grow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ──────────────────────────────────────── */
+:root {
+  --teal:    #5895c0;
+  --indigo:  #3c3e9e;
+  --electric:#493fe2;
+  --lavender:#9183ff;
+  --blue:    #4684ea;
+  --navy:    #124a96;
+  --white:   #ffffff;
+  --off:     #f7f7fc;
+  --dark:    #0d0d1a;
+  --text:    #1a1a2e;
+  --muted:   #6b7280;
+  --r:       18px;
+  --font:    'Poppins', sans-serif;
+}
+
+/* ── RESET ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+
+/* ── NAV ─────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(73,63,226,.1);
+  padding: 0 40px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-size: 22px; font-weight: 900; letter-spacing: -.5px;
+  background: linear-gradient(135deg, var(--electric), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nav-logo span { font-weight: 400; }
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--muted);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--electric); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--electric), var(--blue));
+  color: white !important;
+  padding: 10px 24px; border-radius: 100px;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 20px rgba(73,63,226,.3);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(73,63,226,.4); }
+
+/* ── BLOBS (SVG decorative shapes from brandbook) ── */
+.blob {
+  position: absolute;
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 80px 60px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+/* Blob decorations */
+.hero-blob-1 {
+  width: 420px; height: 420px;
+  background: linear-gradient(135deg, var(--lavender), var(--electric));
+  opacity: .12;
+  top: -80px; right: 30%;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+.hero-blob-2 {
+  width: 300px; height: 300px;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  opacity: .15;
+  bottom: -60px; left: -60px;
+  animation: blobFloat 10s ease-in-out infinite reverse;
+}
+.hero-blob-3 {
+  width: 180px; height: 180px;
+  background: var(--lavender);
+  opacity: .2;
+  top: 20%; right: 5%;
+  border-radius: 50%;
+  animation: blobFloat 7s ease-in-out infinite 2s;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(10px,-15px) scale(1.03); }
+  66% { transform: translate(-8px,10px) scale(.97); }
+}
+
+.hero-left {
+  position: relative; z-index: 2;
+  padding-right: 40px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(73,63,226,.08);
+  border: 1px solid rgba(73,63,226,.2);
+  border-radius: 100px;
+  padding: 7px 18px;
+  font-size: 12px; font-weight: 700;
+  color: var(--electric);
+  letter-spacing: .05em; text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: fadeUp .6s ease both .1s;
+}
+.hero-pill-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .5; transform: scale(1.4); }
+}
+
+.hero-h1 {
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  color: var(--text);
+  margin-bottom: 20px;
+  animation: fadeUp .7s ease both .2s;
+}
+.hero-h1 .gradient-text {
+  background: linear-gradient(135deg, var(--electric) 0%, var(--teal) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-h1 .accent-word {
+  position: relative; display: inline-block;
+}
+.hero-h1 .accent-word::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--lavender), var(--teal));
+  border-radius: 10px;
+  z-index: -1;
+  opacity: .5;
+}
+
+.hero-sub {
+  font-size: 18px; color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 480px;
+  animation: fadeUp .7s ease both .3s;
+}
+
+.hero-ctas {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 44px;
+  animation: fadeUp .7s ease both .4s;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--electric), var(--blue));
+  color: white;
+  font-family: var(--font);
+  font-size: 16px; font-weight: 700;
+  padding: 16px 36px; border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(73,63,226,.35);
+  transition: transform .2s, box-shadow .2s;
+  cursor: pointer; border: none;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(73,63,226,.45); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--indigo); font-size: 15px; font-weight: 600;
+  transition: gap .2s;
+}
+.btn-ghost:hover { gap: 12px; }
+
+.hero-social-proof {
+  display: flex; align-items: center; gap: 14px;
+  animation: fadeUp .7s ease both .5s;
+}
+.hero-avatars {
+  display: flex;
+}
+.avatar-circle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid white;
+  margin-left: -10px;
+  background: linear-gradient(135deg, var(--electric), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: white;
+  overflow: hidden;
+}
+.avatar-circle:first-child { margin-left: 0; }
+.avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+.proof-text {
+  font-size: 13px; color: var(--muted); font-weight: 500;
+}
+.proof-text strong { color: var(--text); }
+
+/* Hero right — visual panel */
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+.hero-visual-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 40px rgba(73,63,226,.1), 0 1px 4px rgba(0,0,0,.05);
+  border: 1px solid rgba(73,63,226,.08);
+  position: relative; overflow: hidden;
+  transition: transform .3s;
+}
+.hero-visual-card:hover { transform: translateY(-4px); }
+
+/* Card 1 — opportunity live */
+.card-opportunity {
+  animation: fadeRight .7s ease both .3s;
+}
+.card-opp-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(73,63,226,.08); color: var(--electric);
+  font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
+  margin-bottom: 12px;
+}
+.card-opp-tag .live-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: #22c55e;
+  animation: pulse 2s infinite;
+}
+.card-opp-title {
+  font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px;
+}
+.card-opp-meta { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.card-opp-bar {
+  height: 4px; background: rgba(73,63,226,.1); border-radius: 10px; overflow: hidden;
+}
+.card-opp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--electric), var(--teal));
+  border-radius: 10px;
+  width: 68%;
+  animation: barGrow 1.5s ease .6s both;
+}
+@keyframes barGrow { from { width: 0 } }
+.card-opp-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--muted); margin-top: 6px;
+}
+
+/* Card 2 — earnings */
+.card-earnings {
+  animation: fadeRight .7s ease both .45s;
+}
+.earnings-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.earnings-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+.earnings-amount {
+  font-size: 28px; font-weight: 900; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--electric), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.earnings-trend {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(34,197,94,.1); color: #15803d;
+  font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px; margin-top: 6px;
+}
+
+/* Card 3 — community */
+.card-community {
+  animation: fadeRight .7s ease both .6s;
+  background: linear-gradient(135deg, var(--electric) 0%, var(--indigo) 100%);
+  color: white;
+}
+.card-community .card-opp-tag {
+  background: rgba(255,255,255,.15); color: rgba(255,255,255,.9);
+}
+.card-community .card-opp-title { color: white; }
+.card-comm-faces {
+  display: flex; align-items: center; gap: 10px; margin-top: 12px;
+}
+.comm-face {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,.25); border: 2px solid rgba(255,255,255,.4);
+  font-size: 14px; display: flex; align-items: center; justify-content: center;
+  margin-left: -8px;
+}
+.comm-face:first-child { margin-left: 0; }
+.comm-text { font-size: 13px; color: rgba(255,255,255,.8); }
+.comm-text strong { color: white; }
+
+/* ── TRUST BAR ───────────────────────────────────── */
+.trust-bar {
+  background: var(--off);
+  padding: 28px 80px;
+  display: flex; align-items: center; gap: 48px;
+  overflow: hidden;
+}
+.trust-label {
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  letter-spacing: .08em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.trust-logos {
+  display: flex; align-items: center; gap: 40px;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.trust-logo {
+  font-size: 14px; font-weight: 800;
+  color: var(--muted); letter-spacing: -.3px;
+  opacity: .6; transition: opacity .2s;
+  white-space: nowrap;
+}
+.trust-logo:hover { opacity: 1; }
+
+/* ── PILLARS ─────────────────────────────────────── */
+.pillars {
+  padding: 100px 80px;
+  position: relative;
+}
+.section-eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--electric); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-eyebrow::before {
+  content: ''; width: 24px; height: 2px;
+  background: var(--electric); border-radius: 2px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 48px); font-weight: 800;
+  letter-spacing: -1px; color: var(--text);
+  line-height: 1.15; margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px; color: var(--muted);
+  max-width: 520px; line-height: 1.7; margin-bottom: 56px;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pillar-card {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 32px;
+  border: 1px solid rgba(73,63,226,.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,.04);
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  position: relative; overflow: hidden;
+}
+.pillar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(73,63,226,.12);
+  border-color: rgba(73,63,226,.2);
+}
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.pillar-card:hover::before { opacity: 1; }
+.pillar-card:nth-child(1)::before { background: linear-gradient(90deg, var(--electric), var(--lavender)); }
+.pillar-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), var(--blue)); }
+.pillar-card:nth-child(3)::before { background: linear-gradient(90deg, var(--lavender), var(--indigo)); }
+
+.pillar-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 22px;
+}
+.pillar-card:nth-child(1) .pillar-icon { background: rgba(73,63,226,.1); }
+.pillar-card:nth-child(2) .pillar-icon { background: rgba(88,149,192,.12); }
+.pillar-card:nth-child(3) .pillar-icon { background: rgba(145,131,255,.12); }
+
+.pillar-title {
+  font-size: 20px; font-weight: 800;
+  color: var(--text); margin-bottom: 10px; letter-spacing: -.3px;
+}
+.pillar-body {
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+  margin-bottom: 22px;
+}
+.pillar-link {
+  font-size: 13px; font-weight: 700;
+  color: var(--electric);
+  display: flex; align-items: center; gap: 6px;
+  transition: gap .2s;
+}
+.pillar-link:hover { gap: 10px; }
+
+/* ── OPPORTUNITIES ───────────────────────────────── */
+.opps {
+  padding: 0 0 100px;
+  overflow: hidden;
+}
+.opps-header {
+  padding: 0 80px 40px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+}
+.opps-scroll {
+  padding: 0 80px;
+  display: flex; gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+}
+.opps-scroll::-webkit-scrollbar { display: none; }
+
+.opp-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid rgba(73,63,226,.1);
+  overflow: hidden;
+  min-width: 300px; max-width: 300px;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  transition: transform .3s, box-shadow .3s;
+  flex-shrink: 0;
+}
+.opp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(73,63,226,.14);
+}
+
+.opp-card-thumb {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+.opp-card-thumb-bg {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+.opp-status {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 10px; font-weight: 800;
+  padding: 4px 10px; border-radius: 100px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.status-open { background: rgba(34,197,94,.15); color: #15803d; }
+.status-closing { background: rgba(245,158,11,.15); color: #92400e; }
+.status-invite { background: rgba(73,63,226,.15); color: var(--electric); }
+
+.opp-card-body { padding: 20px 22px 24px; }
+.opp-platform {
+  font-size: 10px; font-weight: 700; color: var(--muted);
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px;
+}
+.opp-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+.opp-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 18px; }
+.opp-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--electric);
+  transition: gap .2s;
+}
+.opp-cta:hover { gap: 10px; }
+
+/* Thumb colors per card */
+.thumb-1 { background: linear-gradient(135deg, #1877F2, #1a1acc); }
+.thumb-2 { background: linear-gradient(135deg, #FF0000, #cc0000); }
+.thumb-3 { background: linear-gradient(135deg, #7C3AED, #3c3e9e); }
+.thumb-4 { background: linear-gradient(135deg, #00b4d8, #0077b6); }
+.thumb-5 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+/* ── COMMUNITY ───────────────────────────────────── */
+.community {
+  padding: 100px 80px;
+  background: var(--off);
+  position: relative; overflow: hidden;
+}
+.comm-blob-1 {
+  width: 500px; height: 500px;
+  background: linear-gradient(135deg, var(--electric), var(--teal));
+  opacity: .07;
+  top: -100px; right: -100px;
+  animation: blobFloat 12s ease-in-out infinite;
+}
+
+.community-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative; z-index: 2;
+}
+
+.comm-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 12px;
+}
+
+.comm-photo {
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--electric), var(--lavender));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  transition: transform .3s;
+}
+.comm-photo:hover { transform: scale(1.03); }
+.comm-photo-tall { grid-row: span 2; aspect-ratio: 3/4; }
+.comm-photo-wide { grid-column: span 2; aspect-ratio: 16/6; }
+.comm-photo-sq { aspect-ratio: 1; }
+
+/* Different gradients */
+.cp-1 { background: linear-gradient(145deg, var(--electric), var(--navy)); }
+.cp-2 { background: linear-gradient(145deg, var(--teal), var(--electric)); }
+.cp-3 { background: linear-gradient(145deg, var(--lavender), var(--indigo)); }
+.cp-4 { background: linear-gradient(145deg, var(--blue), var(--teal)); }
+
+.comm-content { max-width: 480px; }
+
+.comm-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 44px;
+}
+.comm-stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 2px 12px rgba(73,63,226,.08);
+  border: 1px solid rgba(73,63,226,.07);
+}
+.comm-stat-num {
+  font-size: 32px; font-weight: 900; letter-spacing: -1.5px;
+  background: linear-gradient(135deg, var(--electric), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.comm-stat-label {
+  font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 4px;
+}
+
+/* ── STUDIO ──────────────────────────────────────── */
+.studio {
+  padding: 100px 80px;
+  position: relative; overflow: hidden;
+}
+.studio-blob {
+  width: 400px; height: 400px;
+  background: linear-gradient(135deg, var(--lavender), var(--electric));
+  opacity: .08;
+  bottom: -80px; left: -80px;
+  animation: blobFloat 9s ease-in-out infinite;
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.studio-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(73,63,226,.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,.04);
+  transition: transform .3s, box-shadow .3s;
+}
+.studio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(73,63,226,.14);
+}
+.studio-card-top {
+  height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+  position: relative;
+}
+.studio-card-top-1 { background: linear-gradient(135deg, rgba(73,63,226,.12), rgba(145,131,255,.15)); }
+.studio-card-top-2 { background: linear-gradient(135deg, rgba(88,149,192,.12), rgba(70,132,234,.15)); }
+.studio-card-top-3 { background: linear-gradient(135deg, rgba(60,62,158,.1), rgba(73,63,226,.12)); }
+
+.studio-card-body { padding: 24px; background: white; }
+.studio-tag {
+  font-size: 10px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.tag-1 { color: var(--electric); }
+.tag-2 { color: var(--teal); }
+.tag-3 { color: var(--indigo); }
+.studio-card-title {
+  font-size: 17px; font-weight: 800; color: var(--text);
+  margin-bottom: 8px; letter-spacing: -.3px;
+}
+.studio-card-desc {
+  font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px;
+}
+.studio-card-link {
+  font-size: 13px; font-weight: 700; color: var(--electric);
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: gap .2s;
+}
+.studio-card-link:hover { gap: 10px; }
+
+/* ── FAQ ─────────────────────────────────────────── */
+.faq {
+  padding: 100px 80px;
+  background: var(--off);
+  position: relative; overflow: hidden;
+}
+.faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+  position: relative; z-index: 2;
+}
+.faq-left { position: sticky; top: 100px; }
+
+.faq-list { margin-top: 0; }
+.faq-item {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid rgba(73,63,226,.08);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.faq-item:hover { box-shadow: 0 4px 20px rgba(73,63,226,.1); }
+.faq-q {
+  padding: 18px 22px;
+  font-size: 15px; font-weight: 700; color: var(--text);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+  list-style: none;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '+';
+  font-size: 20px; font-weight: 400; color: var(--electric);
+  transition: transform .3s;
+  flex-shrink: 0;
+}
+details[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 22px 18px;
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+}
+
+/* ── CTA FINAL ───────────────────────────────────── */
+.cta-final {
+  background: linear-gradient(150deg, var(--electric) 0%, var(--indigo) 40%, var(--navy) 100%);
+  padding: 100px 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-blob-1 {
+  width: 400px; height: 400px;
+  background: var(--teal);
+  opacity: .12; top: -100px; left: -80px;
+  animation: blobFloat 10s ease-in-out infinite;
+}
+.cta-blob-2 {
+  width: 300px; height: 300px;
+  background: var(--lavender);
+  opacity: .15; bottom: -80px; right: -60px;
+  border-radius: 50%;
+  animation: blobFloat 8s ease-in-out infinite reverse;
+}
+
+.cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.cta-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,.9);
+  letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.cta-h2 {
+  font-size: clamp(32px, 5vw, 58px); font-weight: 900;
+  color: white; letter-spacing: -1.5px;
+  line-height: 1.1; margin-bottom: 18px;
+}
+.cta-h2 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #7dd3fc, #a5f3fc);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cta-sub {
+  font-size: 17px; color: rgba(255,255,255,.75);
+  line-height: 1.65; margin-bottom: 40px;
+}
+.cta-buttons {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--electric);
+  font-family: var(--font);
+  font-size: 16px; font-weight: 800;
+  padding: 16px 40px; border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  transition: transform .2s, box-shadow .2s;
+  cursor: pointer; border: none;
+}
+.btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+.btn-outline-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.9); font-size: 15px; font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,.3);
+  padding: 15px 30px; border-radius: 100px;
+  transition: background .2s, border-color .2s;
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.5);
+}
+
+.cta-note {
+  margin-top: 20px;
+  font-size: 12px; color: rgba(255,255,255,.5);
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer {
+  background: var(--dark);
+  padding: 40px 80px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo {
+  font-size: 18px; font-weight: 900;
+  background: linear-gradient(135deg, var(--electric), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.footer-links {
+  display: flex; gap: 32px; list-style: none;
+}
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,.4);
+  transition: color .2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,.8); }
+.footer-copy {
+  font-size: 12px; color: rgba(255,255,255,.3);
+}
+
+/* ── ANIMATIONS ──────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Scroll-triggered fade */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; padding: 60px 40px; gap: 40px; }
+  .pillars, .community, .studio, .faq, .cta-final { padding: 70px 40px; }
+  .pillars-grid, .studio-grid { grid-template-columns: 1fr; }
+  .community-inner, .faq-inner { grid-template-columns: 1fr; }
+  .trust-bar { padding: 24px 40px; }
+  .opps-header, .opps-scroll { padding: 0 40px; }
+  .comm-mosaic { max-width: 500px; }
+  footer { flex-direction: column; gap: 20px; text-align: center; }
+  .faq-left { position: static; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 40px 24px; }
+  .hero-h1 { font-size: 36px; }
+  .pillars, .community, .studio, .faq, .cta-final { padding: 60px 24px; }
+  .trust-bar { padding: 20px 24px; flex-direction: column; gap: 16px; }
+  .opps-header, .opps-scroll { padding: 0 24px; }
+  .hero-ctas { flex-direction: column; }
+  footer { padding: 32px 24px; }
+  .comm-stat-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">⚡ ELEVN</div>
+  <ul class="nav-links">
+    <li><a href="#opportunities">Opportunities</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#join" class="nav-cta">Join for free →</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero">
+  <div class="blob hero-blob-1"></div>
+  <div class="blob hero-blob-2"></div>
+  <div class="blob hero-blob-3"></div>
+
+  <div class="hero-left">
+    <div class="hero-pill">
+      <div class="hero-pill-dot"></div>
+      Now open for creators
+    </div>
+
+    <h1 class="hero-h1">
+      Your content<br>
+      deserves <span class="gradient-text accent-word">bigger</span><br>
+      stages.
+    </h1>
+
+    <p class="hero-sub">
+      ELEVN is where creators find real brand deals, learn from industry insiders, and connect with a community that actually gets it.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#join" class="btn-primary">Join for free ✦</a>
+      <a href="#opportunities" class="btn-ghost">See opportunities →</a>
+    </div>
+
+    <div class="hero-social-proof">
+      <div class="hero-avatars">
+        <div class="avatar-circle">J</div>
+        <div class="avatar-circle">S</div>
+        <div class="avatar-circle">M</div>
+        <div class="avatar-circle">A</div>
+        <div class="avatar-circle">+</div>
+      </div>
+      <div class="proof-text">
+        <strong>500+ creators</strong> already inside and growing every week
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Live opportunity card -->
+    <div class="hero-visual-card card-opportunity">
+      <div class="card-opp-tag">
+        <div class="live-dot"></div>
+        Live opportunity
+      </div>
+      <div class="card-opp-title">Get paid by Meta for content you've already made</div>
+      <div class="card-opp-meta">Earn $1,000–$3,000/month as part of the Meta Creator Fast Track, Meta's new official program for creators in the US, Canada, UK &amp; Australia.</div>
+      <div class="card-opp-bar">
+        <div class="card-opp-bar-fill"></div>
+      </div>
+      <div class="card-opp-bar-label">
+        <span>68% spots filled</span>
+        <span>Closes soon</span>
+      </div>
+      <a href="#join" class="btn-primary" style="margin-top:14px;font-size:13px;padding:10px 22px;border-radius:100px;display:inline-flex;align-items:center;gap:6px;">Apply to this opportunity →</a>
+    </div>
+
+    <!-- Community card -->
+    <div class="hero-visual-card card-community">
+      <div class="card-opp-tag">
+        <div class="live-dot"></div>
+        Community
+      </div>
+      <div class="card-opp-title">Have questions? Talk to one of our managers.</div>
+      <div class="card-comm-faces">
+        <div class="comm-face" style="font-size:16px;">💬</div>
+        <div class="comm-text">
+          <strong>Write to us</strong> and we'll get back to you right away
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ─────────────────────────────────── -->
+<div class="trust-bar">
+  <span class="trust-label">Partners &amp; platforms</span>
+  <div style="overflow:hidden;flex:1;">
+    <div class="trust-logos">
+      <span class="trust-logo">⚡ Meta</span>
+      <span class="trust-logo">▶ YouTube</span>
+      <span class="trust-logo">◈ Pinterest</span>
+      <span class="trust-logo">▸ Tubi</span>
+      <span class="trust-logo">♾ TikTok</span>
+      <span class="trust-logo">◎ Dove</span>
+      <span class="trust-logo">◉ L'Oréal</span>
+      <span class="trust-logo">◈ P&amp;G</span>
+      <!-- repeat for marquee -->
+      <span class="trust-logo">⚡ Meta</span>
+      <span class="trust-logo">▶ YouTube</span>
+      <span class="trust-logo">◈ Pinterest</span>
+      <span class="trust-logo">▸ Tubi</span>
+      <span class="trust-logo">♾ TikTok</span>
+      <span class="trust-logo">◎ Dove</span>
+      <span class="trust-logo">◉ L'Oréal</span>
+      <span class="trust-logo">◈ P&amp;G</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── PILLARS ────────────────────────────────────── -->
+<section class="pillars">
+  <div class="section-eyebrow">What you get</div>
+  <h2 class="section-title reveal">Everything a creator<br>actually needs.</h2>
+  <p class="section-sub reveal reveal-delay-1">
+    Apply once and unlock brand deals, education, and a community of creators who share what's actually working.
+  </p>
+
+  <div class="pillars-grid">
+    <div class="pillar-card reveal">
+      <div class="pillar-icon" style="font-size:22px;background:rgba(73,63,226,.1);">✦</div>
+      <h3 class="pillar-title">Real brand deals</h3>
+      <p class="pillar-body">
+        Every opportunity on ELEVN is vetted. Clear scope, real budgets, and timelines so you always know what you're saying yes to.
+      </p>
+      <a href="#join" class="pillar-link">Browse opportunities →</a>
+    </div>
+
+    <div class="pillar-card reveal reveal-delay-1">
+      <div class="pillar-icon" style="font-size:22px;background:rgba(88,149,192,.12);">★</div>
+      <h3 class="pillar-title">Learn from insiders</h3>
+      <p class="pillar-body">
+        Masterclasses, live workshops, and industry events from people who build and run the creator economy. Not just talk about it.
+      </p>
+      <a href="#join" class="pillar-link">Explore ELEVN Studio →</a>
+    </div>
+
+    <div class="pillar-card reveal reveal-delay-2">
+      <div class="pillar-icon" style="font-size:22px;background:rgba(145,131,255,.12);">◎</div>
+      <h3 class="pillar-title">A community that gets it</h3>
+      <p class="pillar-body">
+        Creators from every vertical and region. Connect, collaborate, and share what's working. Growing together is faster.
+      </p>
+      <a href="#join" class="pillar-link">Meet the community →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── OPPORTUNITIES ──────────────────────────────── -->
+<section class="opps" id="opportunities">
+  <div class="opps-header">
+    <div>
+      <div class="section-eyebrow">Active opportunities</div>
+      <h2 class="section-title" style="margin-bottom:0;">New programs,<br>every week.</h2>
+    </div>
+    <a href="#join" class="btn-ghost reveal">See all →</a>
+  </div>
+
+  <div class="opps-scroll">
+    <div class="opp-card reveal">
+      <div class="opp-card-thumb thumb-1">
+        <span style="font-size:40px;filter:brightness(0) invert(1);opacity:.6;">⚡</span>
+      </div>
+      <div class="opp-card-body">
+        <div class="opp-platform">Meta · US &amp; Canada</div>
+        <div class="opp-title">Creator Fast Track</div>
+        <div class="opp-desc">Earn $1K–$3K/month reposting content you've already made. No new videos needed.</div>
+        <div class="opp-status status-closing" style="position:static;margin-bottom:12px;">Closing soon</div>
+        <a href="#join" class="opp-cta">Apply now →</a>
+      </div>
+    </div>
+
+    <div class="opp-card reveal reveal-delay-1">
+      <div class="opp-card-thumb thumb-2">
+        <span style="font-size:40px;filter:brightness(0) invert(1);opacity:.6;">▶</span>
+      </div>
+      <div class="opp-card-body">
+        <div class="opp-platform">YouTube · Global</div>
+        <div class="opp-title">Gyre 24/7 Streaming</div>
+        <div class="opp-desc">Monetize your existing library through pre-recorded 24/7 live streams. Performance-based.</div>
+        <div class="opp-status status-open" style="position:static;margin-bottom:12px;">Open</div>
+      </div>
+    </div>
+
+    <div class="opp-card reveal reveal-delay-2">
+      <div class="opp-card-thumb thumb-3">
+        <span style="font-size:40px;filter:brightness(0) invert(1);opacity:.6;">🎬</span>
+      </div>
+      <div class="opp-card-body">
+        <div class="opp-platform">Tubi · US</div>
+        <div class="opp-title">Mystery &amp; Thriller Content</div>
+        <div class="opp-desc">Exclusive opportunity for storytellers. Bring your series to 78M+ monthly viewers on Tubi.</div>
+        <div class="opp-status status-invite" style="position:static;margin-bottom:12px;">Invite only</div>
+        <a href="#join" class="opp-cta">See details →</a>
+      </div>
+    </div>
+
+    <div class="opp-card reveal reveal-delay-3">
+      <div class="opp-card-thumb thumb-4">
+        <span style="font-size:40px;filter:brightness(0) invert(1);opacity:.6;">🌍</span>
+      </div>
+      <div class="opp-card-body">
+        <div class="opp-platform">Air Media · Global</div>
+        <div class="opp-title">Content Localization</div>
+        <div class="opp-desc">Your content in every language. Expand reach through dubbing, subtitling, and global distribution.</div>
+        <div class="opp-status status-open" style="position:static;margin-bottom:12px;">Open</div>
+        <a href="#join" class="opp-cta">Apply now →</a>
+      </div>
+    </div>
+
+    <div class="opp-card reveal">
+      <div class="opp-card-thumb thumb-5">
+        <span style="font-size:40px;">✦</span>
+      </div>
+      <div class="opp-card-body">
+        <div class="opp-platform">ELEVN · All platforms</div>
+        <div class="opp-title">Brand Deal Network</div>
+        <div class="opp-desc">Ongoing brand partnerships across beauty, tech, lifestyle, and more. Matched to your profile.</div>
+        <div class="opp-status status-open" style="position:static;margin-bottom:12px;">Always open</div>
+        <a href="#join" class="opp-cta">Join to access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY ──────────────────────────────────── -->
+<section class="community" id="community">
+  <div class="blob comm-blob-1"></div>
+
+  <div class="community-inner">
+    <div class="comm-mosaic reveal">
+      <div class="comm-photo comm-photo-tall cp-1"></div>
+      <div class="comm-photo comm-photo-sq cp-2"></div>
+      <div class="comm-photo comm-photo-sq cp-3"></div>
+      <div class="comm-photo comm-photo-wide cp-4"></div>
+    </div>
+
+    <div class="comm-content reveal reveal-delay-1">
+      <div class="section-eyebrow">Community</div>
+      <h2 class="section-title">
+        You're not alone<br>in this.
+      </h2>
+      <p class="section-sub" style="margin-bottom: 0;">
+        ELEVN brings together creators from every vertical and region. Share what's working, connect with talent in other niches, and grow in a space where people actually cheer each other on.
+      </p>
+
+      <div class="comm-stat-grid">
+        <div class="comm-stat-card">
+          <div class="comm-stat-num">500+</div>
+          <div class="comm-stat-label">Creators in the network</div>
+        </div>
+        <div class="comm-stat-card">
+          <div class="comm-stat-num">12+</div>
+          <div class="comm-stat-label">Active opportunities</div>
+        </div>
+        <div class="comm-stat-card">
+          <div class="comm-stat-num">8+</div>
+          <div class="comm-stat-label">Partner platforms</div>
+        </div>
+        <div class="comm-stat-card">
+          <div class="comm-stat-num">Free</div>
+          <div class="comm-stat-label">To apply and join</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STUDIO ─────────────────────────────────────── -->
+<section class="studio" id="studio">
+  <div class="blob studio-blob"></div>
+
+  <div class="section-eyebrow reveal">ELEVN Studio</div>
+  <h2 class="section-title reveal">Courses, workshops and events<br>built for creators like you.</h2>
+  <p class="section-sub reveal reveal-delay-1" style="margin-bottom:0;">
+    Practical training from people who are inside the industry. No fluff, no generic advice.
+  </p>
+
+  <div class="studio-grid">
+    <div class="studio-card reveal">
+      <div class="studio-card-top studio-card-top-1"></div>
+      <div class="studio-card-body">
+        <div class="studio-tag tag-1">Masterclasses</div>
+        <h3 class="studio-card-title">Creator Masterclasses</h3>
+        <p class="studio-card-desc">Step-by-step courses on growth, monetization, UGC scripting, and what brands are actually buying right now.</p>
+        <a href="#join" class="studio-card-link">Join to access →</a>
+      </div>
+    </div>
+
+    <div class="studio-card reveal reveal-delay-1">
+      <div class="studio-card-top studio-card-top-2"></div>
+      <div class="studio-card-body">
+        <div class="studio-tag tag-2">Live Events</div>
+        <h3 class="studio-card-title">Live workshops with industry insiders</h3>
+        <p class="studio-card-desc">Real-time sessions with platform strategists, top creators, and brand decision-makers.</p>
+        <a href="#join" class="studio-card-link">See upcoming →</a>
+      </div>
+    </div>
+
+    <div class="studio-card reveal reveal-delay-2">
+      <div class="studio-card-top studio-card-top-3"></div>
+      <div class="studio-card-body">
+        <div class="studio-tag tag-3">Networking</div>
+        <h3 class="studio-card-title">Events where you meet the right people</h3>
+        <p class="studio-card-desc">Exclusive panels, industry dinners, and creator meetups where the real connections happen.</p>
+        <a href="#join" class="studio-card-link">Get notified →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────── -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-left">
+      <div class="section-eyebrow reveal">FAQ</div>
+      <h2 class="section-title reveal" style="font-size:36px;">Questions?<br>We've got answers.</h2>
+      <p class="section-sub reveal reveal-delay-1" style="font-size:15px;">
+        Anything else? Just reach out. We respond to every message.
+      </p>
+    </div>
+
+    <div class="faq-list reveal reveal-delay-1">
+      <details class="faq-item" open>
+        <summary class="faq-q">What exactly is ELEVN?</summary>
+        <div class="faq-a">ELEVN is a creator ecosystem where you'll find real brand opportunities, paid programs, courses, live events, and a community of creators from different verticals and regions. Apply once and get access to all of it.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Do I need a huge following to join?</summary>
+        <div class="faq-a">No. ELEVN is built specifically for emerging and mid-sized creators. What matters is the quality of your content and your engagement. Not just the number on your profile.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Is it free?</summary>
+        <div class="faq-a">Yes, joining ELEVN is completely free. You only go through a quick profile validation so we can match you with the right opportunities.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What kind of brands will I work with?</summary>
+        <div class="faq-a">We partner with global brands like Dove, L'Oréal, Procter &amp; Gamble, and many others, as well as platforms like Meta, Pinterest, YouTube, and Tubi. Every brand on ELEVN has been vetted by our team.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Do I keep ownership of my content?</summary>
+        <div class="faq-a">Always. Every collaboration on ELEVN has clear terms that protect your rights. You own your content, your brand, and your audience.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ──────────────────────────────────── -->
+<section class="cta-final" id="join">
+  <div class="blob cta-blob-1"></div>
+  <div class="blob cta-blob-2"></div>
+
+  <div class="cta-inner">
+    <div class="cta-pill">✦ Limited early spots</div>
+    <h2 class="cta-h2">
+      Your content is ready.<br>
+      <em>Are you?</em>
+    </h2>
+    <p class="cta-sub">
+      Join ELEVN and get access to brand deals, courses, events, and a community that actually supports your growth. It's free to apply.
+    </p>
+    <div class="cta-buttons">
+      <button class="btn-white" onclick="alert('Redirect to registration')">
+        Join ELEVN for free ✦
+      </button>
+      <a href="#opportunities" class="btn-outline-white">
+        See active opportunities →
+      </a>
+    </div>
+    <div class="cta-note">Free to join · Profile validation required · No credit card</div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">⚡ ELEVN</div>
+  <ul class="footer-links">
+    <li><a href="#opportunities">Opportunities</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 ELEVN · Powered by La Neta</div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// Smooth opacity for trust bar pause on hover
+const trustLogos = document.querySelector('.trust-logos');
+if (trustLogos) {
+  trustLogos.parentElement.addEventListener('mouseenter', () => {
+    trustLogos.style.animationPlayState = 'paused';
+  });
+  trustLogos.parentElement.addEventListener('mouseleave', () => {
+    trustLogos.style.animationPlayState = 'running';
+  });
+}
+</script>
+
+</body>
+</html>

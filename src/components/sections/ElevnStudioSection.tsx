@@ -1,117 +1,104 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-import { HiBookOpen, HiVideoCamera, HiUserGroup } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
-const STEP_ICONS = [HiBookOpen, HiVideoCamera, HiUserGroup] as const;
-const STEP_STYLES = [
-  { number: "01", gradient: "from-elevn-primary to-elevn-cyan" },
-  { number: "02", gradient: "from-elevn-cyan to-elevn-violet" },
-  { number: "03", gradient: "from-elevn-violet to-elevn-magenta" },
+const STUDIO_CARDS = [
+  {
+    tagKey: "studio.c1Tag",
+    titleKey: "studio.c1Title",
+    descKey: "studio.c1Desc",
+    linkKey: "studio.c1Link",
+    tagColor: "text-[#493fe2]",
+    top: "linear-gradient(135deg, rgba(73,63,226,.12), rgba(145,131,255,.15))",
+  },
+  {
+    tagKey: "studio.c2Tag",
+    titleKey: "studio.c2Title",
+    descKey: "studio.c2Desc",
+    linkKey: "studio.c2Link",
+    tagColor: "text-[#5895c0]",
+    top: "linear-gradient(135deg, rgba(88,149,192,.12), rgba(70,132,234,.15))",
+  },
+  {
+    tagKey: "studio.c3Tag",
+    titleKey: "studio.c3Title",
+    descKey: "studio.c3Desc",
+    linkKey: "studio.c3Link",
+    tagColor: "text-[#3c3e9e]",
+    top: "linear-gradient(135deg, rgba(60,62,158,.1), rgba(73,63,226,.12))",
+  },
 ] as const;
-
-const STEP_KEYS = [
-  { titleKey: "studio.step1Title", bodyKey: "studio.step1Body" },
-  { titleKey: "studio.step2Title", bodyKey: "studio.step2Body" },
-  { titleKey: "studio.step3Title", bodyKey: "studio.step3Body" },
-] as const;
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 export function ElevnStudioSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const headerOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
-  const headerY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
   const { t } = useTranslation();
 
   return (
     <section
       id="elevn-studio"
-      ref={sectionRef}
-      className="relative overflow-hidden"
-      aria-labelledby="elevn-studio-heading"
+      className="relative overflow-hidden bg-white px-6 py-24 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
+      aria-labelledby="studio-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionDivider className="mb-0" />
+      <div
+        className="proto-blob animate-proto-blob"
+        style={{
+          width: 400,
+          height: 400,
+          bottom: -80,
+          left: -80,
+          opacity: 0.08,
+          background: "linear-gradient(135deg, #9183ff, #493fe2)",
+        }}
+        aria-hidden
+      />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
-        <motion.div
-          style={{ opacity: headerOpacity, y: headerY }}
-          className="text-center"
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
-            {t("studio.label")}
-          </p>
-          <h2
-            id="elevn-studio-heading"
-            className="mt-4 text-5xl font-bold tracking-tight text-slate-950 md:text-6xl lg:text-7xl dark:text-elevn-ice"
-          >
-            {t("studio.heading")}
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-relaxed text-slate-700 md:text-lg dark:text-elevn-ice/90">
-            {t("studio.description")}
-          </p>
-        </motion.div>
-
-        <div className="mt-10 max-[400px]:mt-8 lg:mt-20">
-          <div className="relative mx-auto w-full max-w-5xl pb-10 pt-2 max-[400px]:pb-8 max-[400px]:pt-1 md:pb-16 md:pt-4 lg:max-w-6xl">
-            <motion.div
-              className="relative mx-auto w-full space-y-4 max-[400px]:space-y-3 md:space-y-5"
-              initial={{ opacity: 0.85 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.45, ease }}
-            >
-              {STEP_STYLES.map((step, i) => {
-                const Icon = STEP_ICONS[i];
-                const keys = STEP_KEYS[i];
-                const stepDelay = 0.2 + i * 0.14;
-                const stairOffsets = ["md:ml-0", "md:ml-24 lg:ml-40", "md:ml-48 lg:ml-80"] as const;
-                return (
-                  <motion.div
-                    key={step.number}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{
-                      opacity: sectionInView ? 1 : 0,
-                      y: sectionInView ? 0 : 24,
-                    }}
-                    whileHover={{ scale: 1.12 }}
-                    transition={{ duration: 0.4, delay: stepDelay * 0.4, ease }}
-                    className={`relative flex w-full max-w-3xl overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] ${stairOffsets[i]}`}
-                  >
-                    <div
-                      className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-4 max-[400px]:w-16 max-[400px]:py-3 md:w-24 md:gap-1 md:py-6`}
-                    >
-                      <span className="text-2xl font-bold tabular-nums text-white/95 drop-shadow-sm max-[400px]:text-xl md:text-3xl">
-                        {step.number}
-                      </span>
-                      <span className="text-white/95 dark:text-elevn-ice/90">
-                        <Icon className="text-lg max-[400px]:text-base md:text-2xl" aria-hidden />
-                      </span>
-                    </div>
-                    <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 max-[400px]:px-3 max-[400px]:py-3 md:px-7 md:py-6">
-                      <h4 className="text-base font-bold tracking-tight text-slate-950 max-[400px]:text-sm md:text-lg dark:text-elevn-ice">
-                        {t(keys.titleKey)}
-                      </h4>
-                      <p className="mt-1.5 min-w-0 max-w-full text-xs font-medium leading-[1.65] text-slate-950 max-[400px]:text-[11px] md:mt-2 md:text-sm md:leading-[1.7] dark:text-elevn-ice/90">
-                        {t(keys.bodyKey)}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
-
+      <div className="relative z-10">
+        <div className="mb-3 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#493fe2]">
+          <span className="inline-block h-0.5 w-6 rounded bg-[#493fe2]" />
+          {t("studio.eyebrow")}
         </div>
+        <h2
+          id="studio-heading"
+          className="mb-4 text-[clamp(28px,4vw,48px)] font-extrabold leading-[1.15] tracking-[-1px] text-[#1a1a2e]"
+        >
+          {t("studio.titleLine1")}
+          <br />
+          {t("studio.titleLine2")}
+        </h2>
+        <p className="max-w-[520px] text-[17px] leading-[1.7] text-[#6b7280]">
+          {t("studio.body")}
+        </p>
 
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {STUDIO_CARDS.map((card) => (
+            <div
+              key={card.titleKey}
+              className="overflow-hidden rounded-[20px] border border-[#493fe2]/10 shadow-[0_2px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(73,63,226,0.14)]"
+            >
+              <div
+                className="h-[120px]"
+                style={{ background: card.top }}
+                aria-hidden
+              />
+              <div className="bg-white px-6 py-6">
+                <div className={`mb-2 text-[10px] font-extrabold uppercase tracking-[0.1em] ${card.tagColor}`}>
+                  {t(card.tagKey)}
+                </div>
+                <h3 className="mb-2 text-[17px] font-extrabold tracking-[-0.3px] text-[#1a1a2e]">
+                  {t(card.titleKey)}
+                </h3>
+                <p className="mb-4 text-[13px] leading-[1.6] text-[#6b7280]">
+                  {t(card.descKey)}
+                </p>
+                <a
+                  href="#join"
+                  className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#493fe2] transition-[gap] duration-200 hover:gap-2.5"
+                >
+                  {t(card.linkKey)} <span aria-hidden>→</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

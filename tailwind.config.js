@@ -23,12 +23,26 @@ export default {
           pale: "#67e8f9",
           white: "#f0f9ff",
         },
+        // Prototype tokens (ELEVN_Landing_v3)
+        proto: {
+          teal: "#5895c0",
+          indigo: "#3c3e9e",
+          electric: "#493fe2",
+          lavender: "#9183ff",
+          blue: "#4684ea",
+          navy: "#124a96",
+          off: "#f7f7fc",
+          dark: "#0d0d1a",
+          text: "#1a1a2e",
+          muted: "#6b7280",
+        },
         border: "var(--border)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
       fontFamily: {
         sans: ["Montserrat", "system-ui", "sans-serif"],
+        poppins: ["Poppins", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "monospace"],
       },
       backgroundImage: {
@@ -46,6 +60,11 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "proto-blob": "proto-blob 8s ease-in-out infinite",
+        "proto-blob-slow": "proto-blob 10s ease-in-out infinite reverse",
+        "proto-pulse": "proto-pulse 2s ease-in-out infinite",
+        "proto-marquee": "proto-marquee 22s linear infinite",
+        "proto-bar": "proto-bar 1.5s ease 0.6s both",
       },
       keyframes: {
         "accordion-down": {
@@ -59,6 +78,23 @@ export default {
         "glow-pulse": {
           "0%, 100%": { opacity: "0.6" },
           "50%": { opacity: "1" },
+        },
+        "proto-blob": {
+          "0%, 100%": { transform: "translate(0,0) scale(1)" },
+          "33%": { transform: "translate(10px,-15px) scale(1.03)" },
+          "66%": { transform: "translate(-8px,10px) scale(0.97)" },
+        },
+        "proto-pulse": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.5", transform: "scale(1.4)" },
+        },
+        "proto-marquee": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "proto-bar": {
+          from: { width: "0%" },
+          to: { width: "68%" },
         },
       },
     },

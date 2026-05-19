@@ -1,24 +1,22 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-import { Button } from "@/components/ui/button";
-import { HiSparkles, HiCheckBadge, HiScale, HiHeart } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+/**
+ * Hero + Trust Bar — faithful port of ELEVN_Landing_v3.html.
+ * Keeps the existing JoinForm modal hook (`onOpenJoinForm`) so the
+ * "Join for free" CTAs still open the registration drawer.
+ */
 
-const GRADIENT_TITLE =
-  "linear-gradient(135deg, #22d3ee 0%, #06b6d4 30%, #8b5cf6 65%, #d946ef 100%)";
-
-const LOGO_URL = "/assets/images/elevn.png";
-
-const PILLAR_ICONS = [HiCheckBadge, HiScale, HiHeart] as const;
-const PILLAR_STYLES = [
-  { gradient: "from-elevn-cyan to-elevn-primary", borderHover: "hover:border-elevn-cyan/50" },
-  { gradient: "from-elevn-violet to-elevn-cyan", borderHover: "hover:border-elevn-violet/50" },
-  { gradient: "from-elevn-magenta to-elevn-violet", borderHover: "hover:border-elevn-magenta/50" },
+const TRUST_LOGOS = [
+  { glyph: "⚡", label: "Meta" },
+  { glyph: "▶", label: "YouTube" },
+  { glyph: "◈", label: "Pinterest" },
+  { glyph: "▸", label: "Tubi" },
+  { glyph: "♾", label: "TikTok" },
+  { glyph: "◎", label: "Dove" },
+  { glyph: "◉", label: "L'Oréal" },
+  { glyph: "◈", label: "P&G" },
 ] as const;
 
 export function ElevnIsYourSpaceSection({
@@ -26,161 +24,193 @@ export function ElevnIsYourSpaceSection({
 }: {
   onOpenJoinForm?: () => void;
 }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, amount: 0.08 });
   const { t } = useTranslation();
-
-  const pillars = [
-    { labelKey: "hero.pillar1Label", titleKey: "hero.pillar1Title", lineKey: "hero.pillar1Line" },
-    { labelKey: "hero.pillar2Label", titleKey: "hero.pillar2Title", lineKey: "hero.pillar2Line" },
-    { labelKey: "hero.pillar3Label", titleKey: "hero.pillar3Title", lineKey: "hero.pillar3Line" },
-  ];
+  const handleJoin = onOpenJoinForm ?? (() => window.location.assign("#join"));
 
   return (
-    <section
-      id="elevn-is-your-space"
-      ref={sectionRef}
-      className="relative overflow-hidden"
-      aria-labelledby="elevn-is-your-space-heading"
-    >
-      <SectionDivider className="mb-0" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-20 max-[400px]:px-3 max-[400px]:py-14 sm:px-6 sm:py-24 md:px-10 md:py-28 lg:flex lg:max-w-[1600px] lg:items-center lg:justify-center lg:gap-16 lg:px-12 lg:py-32 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
-          transition={{ duration: 0.4, ease }}
-          className="mx-auto max-w-2xl text-center lg:mx-0 lg:ml-16 lg:max-w-xl lg:text-left xl:ml-24 2xl:ml-32"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: sectionInView ? 1 : 0, scale: sectionInView ? 1 : 0.96 }}
-            transition={{ duration: 0.35, delay: 0.04, ease }}
-            className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/40 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-elevn-cyan shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-gradient-to-br hover:from-[#1d96c3] hover:to-[#393da3] hover:text-white dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-cyan dark:hover:text-white"
+    <>
+      {/* ── HERO ──────────────────────────────────────── */}
+      <section
+        id="elevn-is-your-space"
+        className="relative grid min-h-screen items-center gap-10 overflow-hidden bg-white px-6 pb-14 pt-20 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:grid-cols-2 lg:gap-12 lg:px-20 lg:pb-16 lg:pt-24 scroll-mt-24"
+        aria-labelledby="hero-heading"
+      >
+        {/* decorative blobs */}
+        <div
+          className="proto-blob animate-proto-blob"
+          style={{
+            width: 420,
+            height: 420,
+            top: -80,
+            right: "30%",
+            opacity: 0.12,
+            background: "linear-gradient(135deg, #9183ff, #493fe2)",
+          }}
+          aria-hidden
+        />
+        <div
+          className="proto-blob animate-proto-blob-slow"
+          style={{
+            width: 300,
+            height: 300,
+            bottom: -60,
+            left: -60,
+            opacity: 0.15,
+            background: "linear-gradient(135deg, #5895c0, #4684ea)",
+          }}
+          aria-hidden
+        />
+        <div
+          className="proto-blob animate-proto-blob"
+          style={{
+            width: 180,
+            height: 180,
+            top: "20%",
+            right: "5%",
+            opacity: 0.2,
+            background: "#9183ff",
+            borderRadius: "50%",
+            animationDelay: "2s",
+          }}
+          aria-hidden
+        />
+
+        {/* Left — copy */}
+        <div className="relative z-10 lg:pr-6">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#493fe2]/20 bg-[#493fe2]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.06em] text-[#493fe2]">
+            <span className="inline-block h-[7px] w-[7px] animate-proto-pulse rounded-full bg-[#5895c0]" />
+            {t("hero.pill")}
+          </div>
+
+          <h1
+            id="hero-heading"
+            className="mb-5 text-[clamp(38px,5.5vw,72px)] font-black leading-[1] tracking-[-2px] text-[#1a1a2e]"
           >
-            <HiSparkles className="text-sm" aria-hidden />
-            {t("hero.comingSoon")}
-          </motion.div>
+            {t("hero.titleLine1")}<br />
+            {t("hero.titleLine2A")}{" "}
+            <span className="proto-gradient-text proto-accent-word">
+              {t("hero.titleAccent")}
+            </span>
+            <br />
+            {t("hero.titleLine3")}
+          </h1>
 
-          <div className="mt-6 flex flex-col items-center gap-5 lg:items-start">
-            <div className="flex items-center gap-4">
-              <img
-                src={LOGO_URL}
-                alt=""
-                className="h-16 w-auto object-contain sm:h-20 lg:h-24"
-                width={128}
-                height={96}
-              />
-              <span className="font-sans text-6xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-7xl lg:text-8xl">
-                ELEVN
-              </span>
-            </div>
-            <h1
-              id="elevn-is-your-space-heading"
-              className="text-5xl font-extrabold tracking-tight text-slate-950 max-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl dark:text-elevn-ice"
-            >
-              <span className="block">
-                {/* gradient applied per-word */}
-                {t("hero.headline").split(" ").map((word, i, arr) => (
-                  <motion.span
-                    key={i}
-                    className="inline-block bg-clip-text"
-                    style={{
-                      background: GRADIENT_TITLE,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      color: "transparent",
-                    }}
-                    initial={{ opacity: 0, y: 16, filter: "blur(3px)" }}
-                    animate={{
-                      opacity: sectionInView ? 1 : 0,
-                      y: sectionInView ? 0 : 16,
-                      filter: sectionInView ? "blur(0px)" : "blur(3px)",
-                    }}
-                    transition={{
-                      duration: 1.1,
-                      delay: 0.25 + i * 0.28,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                  >
-                    {word}
-                    {i < arr.length - 1 ? " " : ""}
-                  </motion.span>
-                ))}
-              </span>
-            </h1>
-          </div>
-
-          <p className="mt-5 text-base font-semibold uppercase tracking-[0.22em] text-slate-600 dark:text-elevn-ice/70 sm:text-sm">
-            {t("hero.tagline")}
+          <p className="mb-9 max-w-[480px] text-[17px] leading-[1.65] text-[#6b7280]">
+            {t("hero.subtitle")}
           </p>
 
-          <p className="mt-5 text-sm font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 sm:text-base">
-            {t("hero.description")}
-          </p>
-
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-center lg:justify-start">
-            <Button
+          <div className="mb-11 flex flex-wrap items-center gap-4">
+            <button
               type="button"
-              size="lg"
-              onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-              className="w-full max-w-xs bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
+              onClick={handleJoin}
+              className="inline-flex items-center gap-2 rounded-full border-0 bg-gradient-to-br from-[#493fe2] to-[#4684ea] px-9 py-4 text-[15px] font-bold text-white shadow-[0_8px_32px_rgba(73,63,226,0.35)] transition-transform duration-200 hover:-translate-y-[3px] hover:shadow-[0_14px_40px_rgba(73,63,226,0.45)]"
             >
-              {t("hero.cta")}
-            </Button>
-            <p className="text-xs font-semibold text-slate-500 dark:text-elevn-ice/70">
-              {t("hero.ctaHelper")}
-            </p>
+              {t("hero.ctaPrimary")} <span aria-hidden>✦</span>
+            </button>
+            <a
+              href="#opportunities"
+              className="inline-flex items-center gap-2 text-[15px] font-semibold text-[#3c3e9e] transition-[gap] duration-200 hover:gap-3"
+            >
+              {t("hero.ctaSecondary")} <span aria-hidden>→</span>
+            </a>
           </div>
-        </motion.div>
 
-        {/* What to expect on ELEVN */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
-          transition={{ duration: 0.35, delay: 0.1, ease }}
-          className="relative mx-auto mt-16 w-full max-w-[725px] overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] p-5 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] sm:mt-12 sm:p-6 lg:p-7 min-h-[220px] sm:min-h-[260px] lg:min-h-[300px]"
-        >
-          <div className="flex flex-col gap-4 border-b border-slate-200/80 pb-4 sm:flex-row sm:items-end sm:justify-between dark:border-white/10">
-            <p className="text-balance text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-elevn-ice/60">
-              {t("hero.expectTitle")}
-            </p>
-            <p className="whitespace-nowrap text-xs font-medium text-slate-500 dark:text-elevn-ice/70">
-              {t("hero.expectSubtitle")}
-            </p>
-          </div>
-          <div className="mt-6 flex flex-col gap-5">
-            {pillars.map((item, i) => {
-              const Icon = PILLAR_ICONS[i];
-              const style = PILLAR_STYLES[i];
-              return (
+          <div className="flex items-center gap-3.5">
+            <div className="flex">
+              {["J", "S", "M", "A", "+"].map((ch, i) => (
                 <div
-                  key={item.labelKey}
-                  className="relative flex h-full flex-col gap-3 rounded-2xl bg-gradient-to-br from-[#1b6afe]/60 to-[#2a12e1]/60 p-4 shadow-sm ring-1 ring-white/20 transition-transform duration-300 ease-out hover:scale-[1.02] dark:from-elevn-surface/40 dark:to-elevn-dark/30 dark:ring-white/10"
+                  key={i}
+                  className={`flex h-9 w-9 items-center justify-center rounded-full border-[2.5px] border-white bg-gradient-to-br from-[#493fe2] to-[#5895c0] text-[13px] font-bold text-white ${i === 0 ? "ml-0" : "-ml-2.5"}`}
                 >
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br sm:h-12 sm:w-12 md:h-14 md:w-14 ${style.gradient} text-white shadow-md dark:text-elevn-ice`}
-                    >
-                      <Icon className="text-2xl sm:text-3xl md:text-4xl" aria-hidden />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-balance text-[12px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-white/80 dark:text-elevn-ice/70">
-                        {t(item.labelKey)}
-                      </p>
-                      <p className="text-balance text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-white dark:text-elevn-ice break-words">
-                        {t(item.titleKey)}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-pretty text-sm font-medium leading-relaxed text-white/90 dark:text-elevn-ice/80 break-words">
-                    {t(item.lineKey)}
-                  </p>
+                  {ch}
                 </div>
-              );
-            })}
+              ))}
+            </div>
+            <p className="text-[13px] font-medium text-[#6b7280]">
+              <strong className="text-[#1a1a2e]">{t("hero.proofStrong")}</strong>{" "}
+              {t("hero.proofRest")}
+            </p>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Right — visual cards */}
+        <div className="relative z-10 flex flex-col gap-3.5">
+          {/* Live opportunity */}
+          <div className="relative overflow-hidden rounded-[20px] border border-[#493fe2]/10 bg-white p-5 shadow-[0_8px_40px_rgba(73,63,226,0.1),_0_1px_4px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:-translate-y-1 sm:px-6">
+            <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[#493fe2]/10 px-2.5 py-[3px] text-[10px] font-bold uppercase tracking-[0.08em] text-[#493fe2]">
+              <span className="inline-block h-[5px] w-[5px] animate-proto-pulse rounded-full bg-[#22c55e]" />
+              {t("hero.cardLiveTag")}
+            </div>
+            <p className="mb-1 text-[15px] font-bold text-[#1a1a2e]">
+              {t("hero.cardLiveTitle")}
+            </p>
+            <p className="mb-3.5 text-xs text-[#6b7280]">
+              {t("hero.cardLiveMeta")}
+            </p>
+            <div className="h-1 overflow-hidden rounded-[10px] bg-[#493fe2]/10">
+              <div
+                className="h-full rounded-[10px] animate-proto-bar"
+                style={{
+                  width: "68%",
+                  background: "linear-gradient(90deg, #493fe2, #5895c0)",
+                }}
+              />
+            </div>
+            <div className="mt-1.5 flex justify-between text-[11px] text-[#6b7280]">
+              <span>{t("hero.cardLiveBarLeft")}</span>
+              <span>{t("hero.cardLiveBarRight")}</span>
+            </div>
+            <button
+              type="button"
+              onClick={handleJoin}
+              className="mt-3.5 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-[#493fe2] to-[#4684ea] px-5 py-2.5 text-[13px] font-bold text-white shadow-[0_8px_32px_rgba(73,63,226,0.35)] transition-transform duration-200 hover:-translate-y-[2px]"
+            >
+              {t("hero.cardLiveCta")} <span aria-hidden>→</span>
+            </button>
+          </div>
+
+          {/* Community */}
+          <div className="relative overflow-hidden rounded-[20px] border border-[#493fe2]/10 p-5 text-white shadow-[0_8px_40px_rgba(73,63,226,0.1),_0_1px_4px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:-translate-y-1 sm:px-6"
+               style={{ background: "linear-gradient(135deg, #493fe2 0%, #3c3e9e 100%)" }}>
+            <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-[3px] text-[10px] font-bold uppercase tracking-[0.08em] text-white/90">
+              <span className="inline-block h-[5px] w-[5px] animate-proto-pulse rounded-full bg-[#22c55e]" />
+              {t("hero.cardCommTag")}
+            </div>
+            <p className="mb-3 text-[15px] font-bold">
+              {t("hero.cardCommTitle")}
+            </p>
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/40 bg-white/25 text-base">
+                💬
+              </div>
+              <p className="text-[13px] text-white/80">
+                <strong className="text-white">{t("hero.cardCommStrong")}</strong>{" "}
+                {t("hero.cardCommRest")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRUST BAR ─────────────────────────────────── */}
+      <div className="relative flex items-center gap-12 overflow-hidden bg-[#f7f7fc] px-6 py-7 font-poppins sm:px-10 md:px-16 lg:px-20">
+        <span className="whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.08em] text-[#6b7280]">
+          {t("hero.trustLabel")}
+        </span>
+        <div className="relative flex-1 overflow-hidden">
+          <div className="flex animate-proto-marquee items-center gap-10 whitespace-nowrap">
+            {[...TRUST_LOGOS, ...TRUST_LOGOS].map((logo, idx) => (
+              <span
+                key={`${logo.label}-${idx}`}
+                className="whitespace-nowrap text-sm font-extrabold tracking-[-0.3px] text-[#6b7280] opacity-60 transition-opacity duration-200 hover:opacity-100"
+              >
+                <span aria-hidden className="mr-1">{logo.glyph}</span>
+                {logo.label}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+    </>
   );
 }

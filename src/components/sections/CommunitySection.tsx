@@ -1,170 +1,108 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-import {
-  HiArrowRight,
-  HiSparkles,
-  HiWrenchScrewdriver,
-  HiCircleStack,
-  HiFilm,
-  HiBolt,
-} from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
-const DISCORD_ONBOARDING_URL = "https://discord.gg/bTUEWVjz";
-
-const COMMUNITY_ITEMS = [
-  { labelKey: "community.beauty", descKey: "community.beautyDesc", href: "#community-beauty", image: "/assets/images/makeup.jpg", imageFocus: "50% 40%", icon: HiSparkles, gradient: "from-elevn-magenta to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.diy", descKey: "community.diyDesc", href: "#community-diy", image: "/assets/images/DIY.jpg", imageFocus: "50% 45%", icon: HiWrenchScrewdriver, gradient: "from-elevn-primary to-elevn-cyan", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.food", descKey: "community.foodDesc", href: "#community-food", image: "/assets/images/cooking.jpg", imageFocus: "50% 35%", icon: HiCircleStack, gradient: "from-elevn-cyan to-elevn-violet", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.entertainment", descKey: "community.entertainmentDesc", href: "#community-entertainment", image: "/assets/images/streaming.jpg", imageFocus: "50% 50%", icon: HiFilm, gradient: "from-elevn-violet to-elevn-magenta", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.sports", descKey: "community.sportsDesc", href: "#community-sports", image: "/assets/images/sports.jpg", imageFocus: "50% 70%", icon: HiBolt, gradient: "from-elevn-cyan to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.fashion", descKey: "community.fashionDesc", href: "#community-fashion", image: "/assets/images/infuencer_male.jpg", imageFocus: "50% 35%", icon: HiSparkles, gradient: "from-elevn-magenta to-elevn-cyan", glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.ugc", descKey: "community.ugcDesc", href: "#community-ugc", image: "/assets/images/dancer.jpg", imageFocus: "50% 45%", icon: HiFilm, gradient: "from-elevn-primary to-elevn-violet", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.travel", descKey: "community.travelDesc", href: "#community-travel", image: "/assets/images/travel.jpg", imageFocus: "50% 50%", icon: HiCircleStack, gradient: "from-elevn-cyan to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+const STATS = [
+  { numKey: "community.stat1Num", labelKey: "community.stat1Label" },
+  { numKey: "community.stat2Num", labelKey: "community.stat2Label" },
+  { numKey: "community.stat3Num", labelKey: "community.stat3Label" },
+  { numKey: "community.stat4Num", labelKey: "community.stat4Label" },
 ] as const;
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export function CommunitySection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: false, amount: 0.4 });
   const { t } = useTranslation();
 
   return (
     <section
       id="community"
-      ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-[#f7f7fc] px-6 py-24 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
       aria-labelledby="community-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <div
-        className="pointer-events-none absolute -left-40 top-1/4 h-72 w-72 rounded-full bg-gradient-to-br from-elevn-cyan/20 via-elevn-violet/10 to-transparent blur-3xl dark:from-elevn-cyan/25 dark:via-elevn-violet/15"
+        className="proto-blob animate-proto-blob"
+        style={{
+          width: 500,
+          height: 500,
+          top: -100,
+          right: -100,
+          opacity: 0.07,
+          background: "linear-gradient(135deg, #493fe2, #5895c0)",
+        }}
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute -right-40 bottom-1/4 h-72 w-72 rounded-full bg-gradient-to-bl from-elevn-magenta/20 via-elevn-primary/10 to-transparent blur-3xl dark:from-elevn-magenta/25 dark:via-elevn-primary/15"
-        aria-hidden
-      />
-      <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
-          transition={{ duration: 0.32, ease }}
-          className="text-center"
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
-            {t("community.label")}
-          </p>
+      <div className="relative z-10 grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        {/* Mosaic of placeholder photos */}
+        <div className="grid grid-cols-2 gap-3">
+          <div
+            className="row-span-2 overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.03]"
+            style={{
+              aspectRatio: "3 / 4",
+              background: "linear-gradient(145deg, #493fe2, #124a96)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.03]"
+            style={{
+              aspectRatio: "1",
+              background: "linear-gradient(145deg, #5895c0, #493fe2)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.03]"
+            style={{
+              aspectRatio: "1",
+              background: "linear-gradient(145deg, #9183ff, #3c3e9e)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="col-span-2 overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.03]"
+            style={{
+              aspectRatio: "16 / 6",
+              background: "linear-gradient(145deg, #4684ea, #5895c0)",
+            }}
+            aria-hidden
+          />
+        </div>
+
+        <div className="max-w-[480px]">
+          <div className="mb-3 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#493fe2]">
+            <span className="inline-block h-0.5 w-6 rounded bg-[#493fe2]" />
+            {t("community.eyebrow")}
+          </div>
           <h2
             id="community-heading"
-            className="mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
+            className="mb-4 text-[clamp(28px,4vw,48px)] font-extrabold leading-[1.15] tracking-[-1px] text-[#1a1a2e]"
           >
-            {t("community.heading")}
+            {t("community.titleLine1")}
+            <br />
+            {t("community.titleLine2")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/85 md:text-lg">
-            {t("community.description")}
+          <p className="text-[17px] leading-[1.7] text-[#6b7280]">
+            {t("community.body")}
           </p>
-          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium text-slate-500 dark:text-elevn-ice/75 md:text-base">
-            {t("community.subDescription")}
-          </p>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 12 }}
-          transition={{ duration: 0.35, delay: 0.25, ease }}
-          className="mt-8 flex flex-col items-center gap-4 sm:mt-10"
-        >
-          <a
-            href={DISCORD_ONBOARDING_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-elevn-cyan via-elevn-violet to-elevn-magenta px-7 py-2.5 text-sm font-semibold text-elevn-ice shadow-lg shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:focus-visible:ring-offset-elevn-dark"
-          >
-            {t("community.discordButton")}
-            <HiArrowRight className="h-4 w-4" aria-hidden />
-          </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
-          transition={{ duration: 0.4, delay: 0.35, ease }}
-          className="mt-10 overflow-hidden sm:mt-12 lg:mt-14"
-        >
-          <div className="relative">
-            <motion.div
-              className="flex gap-4 sm:gap-5 lg:gap-6"
-              animate={sectionInView ? { x: ["0%", "-50%"] } : { x: "0%" }}
-              transition={
-                sectionInView
-                  ? { duration: 35, ease: "linear", repeat: Infinity }
-                  : { duration: 0 }
-              }
-            >
-              {[...COMMUNITY_ITEMS, ...COMMUNITY_ITEMS].map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={`${item.labelKey}-${index}`}
-                    className="relative flex h-[220px] min-w-[170px] max-w-[190px] flex-col overflow-hidden rounded-2xl bg-slate-950/90 text-slate-50 shadow-[0_14px_40px_rgba(15,23,42,0.6)] sm:h-[260px] sm:min-w-[200px] sm:max-w-[220px]"
-                    aria-label={t(item.labelKey)}
-                  >
-                    <div className="relative h-full w-full">
-                      <img
-                        src={item.image}
-                        alt={t(item.labelKey)}
-                        className="h-full w-full object-cover"
-                        style={{ objectPosition: item.imageFocus }}
-                        loading="lazy"
-                      />
-                      <div
-                        className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"
-                        aria-hidden
-                      />
-                      <div className="absolute inset-x-3 bottom-3 flex flex-col gap-1.5">
-                        <span className="inline-flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 text-[10px] font-semibold text-slate-900 shadow-sm">
-                          <Icon className="h-3 w-3" aria-hidden />
-                          {t(item.labelKey)}
-                        </span>
-                        <p className="text-[11px] font-medium leading-snug text-slate-100">
-                          {t(item.descKey)}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </motion.div>
-
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-100 dark:from-elevn-dark via-slate-100/40 dark:via-elevn-dark/40 to-transparent"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-100 dark:from-elevn-dark via-slate-100/40 dark:via-elevn-dark/40 to-transparent"
-              aria-hidden
-            />
+          <div className="mt-11 grid grid-cols-2 gap-4">
+            {STATS.map((stat) => (
+              <div
+                key={stat.labelKey}
+                className="rounded-2xl border border-[#493fe2]/10 bg-white px-5 py-5 shadow-[0_2px_12px_rgba(73,63,226,0.08)]"
+              >
+                <div
+                  className="text-[32px] font-black leading-none tracking-[-1.5px] proto-gradient-text"
+                >
+                  {t(stat.numKey)}
+                </div>
+                <div className="mt-1 text-[13px] font-medium text-[#6b7280]">
+                  {t(stat.labelKey)}
+                </div>
+              </div>
+            ))}
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 8 }}
-          transition={{ duration: 0.3, delay: 0.4, ease }}
-          className="mt-8 text-center text-[11px] font-medium text-slate-500 dark:text-elevn-ice/70 sm:text-xs"
-        >
-          <p>
-            {t("community.footerNote")}
-          </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
