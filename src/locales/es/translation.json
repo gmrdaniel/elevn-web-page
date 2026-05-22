@@ -170,6 +170,10 @@
     "openEventLink": "Abrir enlace del evento",
     "joinCommunity": "Unirse a la comunidad"
   },
+  "about": {
+    "heading": "Acerca de ELEVN",
+    "description": "ELEVN es una plataforma impulsada por La Neta. Ayudamos a los creadores a crecer más rápido, llegar a audiencias más grandes y convertir su contenido en ingresos reales. Trabajamos con más de 50,000 creadores en toda América."
+  },
   "faq": {
     "label": "Preguntas frecuentes",
     "heading": "Respuestas antes de unirte",
