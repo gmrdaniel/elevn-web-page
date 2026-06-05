@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevn · para Creadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ELEVN brand typeface: Neo Vector. Drop the licensed files in /fonts to activate; Exo 2 loads as fallback. */
+@font-face{font-family:'Neo Vector';src:url('fonts/NeoVector-Regular.woff2') format('woff2');font-weight:300 500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Vector';src:url('fonts/NeoVector-SemiBold.woff2') format('woff2');font-weight:600 800;font-style:normal;font-display:swap}
+
+:root{--bg:#0f0e14;--bg-2:#17151f;--card:#1b1924;--paper:#f4f1ea;--muted:#a6a1b4;--line:#2c2937;--accent:#83207f;--on-accent:#fff;--cta:#84a3c4;--on-cta:#0f0e14;--font:'Neo Vector','Exo 2',sans-serif;--maxw:1180px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--paper);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3,.display{font-family:var(--font);font-weight:800;line-height:1.02;letter-spacing:-.025em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.anno{background:var(--accent);color:var(--on-accent);text-align:center;font-family:var(--font);font-weight:700;font-size:13px;letter-spacing:.03em;padding:9px 16px}
+header{position:sticky;top:0;z-index:1000;background:rgba(15,14,20,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1320px;margin:0 auto}
+.logo{display:flex;align-items:baseline;gap:8px}
+.logo b{font-family:var(--font);font-weight:800;font-size:26px;letter-spacing:-.04em}
+.logo b i{color:var(--accent);font-style:normal}
+.logo span{font-family:var(--font);font-size:10px;letter-spacing:.1em;color:var(--muted)}
+.hgroup{display:flex;align-items:center;gap:12px}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg-2)}
+.lang button{font-family:var(--font);font-weight:700;font-size:12px;padding:6px 11px;border:none;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:.2s}
+.lang button[aria-pressed="true"]{background:var(--paper);color:var(--bg)}
+.head-cta{font-family:var(--font);font-weight:700;font-size:14px;padding:11px 20px;border-radius:999px;background:var(--cta);color:var(--on-cta);border:2px solid transparent;transition:.2s}
+.head-cta:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(255,255,255,.15)}
+@media(max-width:600px){.head-cta{display:none}}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font);font-weight:700;font-size:17px;padding:16px 30px;border-radius:999px;cursor:pointer;transition:.18s;border:2px solid transparent}
+.btn-primary{background:var(--cta);color:var(--on-cta)}
+.btn-primary:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 rgba(255,255,255,.15)}
+.btn-ghost{background:transparent;color:var(--paper);border-color:var(--line)}.btn-ghost:hover{border-color:var(--paper)}
+.btn-arrow{transition:.2s}.btn:hover .btn-arrow{transform:translateX(4px)}
+section{padding:90px 0}
+.eyebrow{font-family:var(--font);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:9px;margin-bottom:20px}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--accent)}
+.fade{animation:fade .5s ease}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{position:relative;padding:74px 0 56px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center;position:relative}
+.hero h1{font-size:clamp(42px,6.4vw,82px)}
+.hero h1 .hl{color:var(--accent)}
+.hero .lead{font-size:clamp(17px,2.1vw,21px);color:var(--muted);max-width:560px;margin:26px 0 30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.trust{margin-top:20px;font-family:var(--font);font-weight:600;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.trust .s{color:var(--accent);letter-spacing:1px}
+.hero-note{margin-top:10px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+.hero-art{position:relative;height:430px}
+.cardf{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.c1{width:240px;top:0;right:6px;transform:rotate(3deg);z-index:3}
+.c2{width:220px;bottom:34px;left:0;transform:rotate(-5deg);z-index:2}
+.c3{width:170px;bottom:0;right:30px;transform:rotate(6deg);z-index:1;background:var(--accent);color:var(--on-accent);border:none}
+.cf-h{font-family:var(--font);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;text-transform:uppercase}
+.c3 .cf-h{color:var(--on-accent);opacity:.8}
+.cf-row{display:flex;align-items:center;gap:8px;font-size:12px;margin:7px 0;color:var(--paper)}
+.mini{height:7px;border-radius:6px;background:var(--accent);opacity:.5;flex:1}
+.bignum{font-family:var(--font);font-weight:800;font-size:44px;line-height:1}
+.blob{position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,var(--accent),transparent 60%);opacity:.18;top:-150px;right:-170px;z-index:0;filter:blur(20px)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-art{display:none}}
+.marquee{background:var(--accent);color:var(--on-accent);padding:14px 0;overflow:hidden}
+.mtrack{display:flex;gap:38px;white-space:nowrap;animation:scroll 26s linear infinite;font-family:var(--font);font-weight:700;font-size:18px}
+.mtrack span{display:inline-flex;align-items:center;gap:38px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.why{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-head{max-width:780px;margin-bottom:50px}
+.why-head h2{font-size:clamp(30px,4.6vw,56px)}
+.why-head h2 em{font-style:normal;color:var(--accent)}
+.why-head p{font-size:19px;color:var(--muted);margin-top:18px}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.pillar{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.2s}
+.pillar:hover{border-color:var(--accent);transform:translateY(-5px)}
+.pillar .pn{font-family:var(--font);font-weight:700;font-size:15px;color:var(--accent)}
+.pillar h3{font-size:21px;margin:12px 0 8px}
+.pillar p{font-size:15px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;text-align:center}
+.stat .v{font-family:var(--font);font-weight:800;font-size:clamp(34px,5vw,52px);color:var(--accent);line-height:1}
+.stat .l{font-family:var(--font);font-size:12px;color:var(--muted);margin-top:10px;text-transform:uppercase;letter-spacing:.04em}
+.stats-note{text-align:center;font-size:12px;color:var(--muted);margin-top:18px;font-style:italic}
+@media(max-width:860px){.pillars{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr;gap:30px 18px}}
+.promise{text-align:center;padding:84px 0 26px}
+.promise h2{font-size:clamp(28px,4.2vw,54px);max-width:920px;margin:0 auto}
+.promise h2 em{font-style:normal;color:var(--accent)}
+.promise p{max-width:640px;margin:22px auto 0;color:var(--muted);font-size:18px}
+.sec-head{text-align:center;margin-bottom:54px}
+.sec-head h2{font-size:clamp(30px,4.4vw,56px)}
+.sec-head p{color:var(--muted);font-size:18px;max-width:600px;margin:16px auto 0}
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.pkg{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 26px 28px;display:flex;flex-direction:column;transition:.22s;position:relative}
+.pkg:hover{transform:translateY(-6px);border-color:var(--accent)}
+.pkg.feat{border:2px solid var(--accent);background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,var(--card)),var(--card));transform:scale(1.03)}
+.pkg.feat:hover{transform:scale(1.03) translateY(-6px)}
+.pkg .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);font-family:var(--font);font-weight:800;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
+.pkg .tier{font-family:var(--font);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.pkg h3{font-size:30px;margin:6px 0 4px;letter-spacing:-.03em}
+.pkg .tagline{font-size:14px;color:var(--muted);min-height:40px}
+.pkg .price{font-family:var(--font);font-weight:800;font-size:52px;margin:14px 0 2px;line-height:1}
+.pkg .price small{font-size:17px;font-weight:500;font-family:var(--font);color:var(--muted)}
+.pkg .who{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.pkg ul{list-style:none;margin:16px 0 22px;flex:1}
+.pkg li{display:flex;gap:10px;font-size:14.5px;padding:7px 0;align-items:flex-start;color:#ded9e6}
+.pkg li b{color:var(--paper)}
+.pkg li .ck{flex:0 0 18px;width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px;font-family:var(--font)}
+.pkg .btn{width:100%;justify-content:center;font-size:16px;padding:14px;background:var(--cta);color:var(--on-cta);border-color:transparent}.pkg .btn:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 rgba(255,255,255,.15)}
+@media(max-width:860px){.pkgs{grid-template-columns:1fr;max-width:440px;margin:0 auto}.pkg.feat{transform:none}}
+.guarantee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+.gwrap{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 36px;padding:24px}
+.gitem{display:flex;align-items:center;gap:9px;font-family:var(--font);font-weight:700;font-size:15px;color:var(--paper)}
+.gitem .gck{width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:12px;font-weight:800}
+.how{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px;max-width:920px;margin-left:auto;margin-right:auto}
+.step .n{font-family:var(--font);font-weight:800;font-size:44px;color:var(--accent);line-height:1}
+.step h4{font-family:var(--font);font-weight:700;font-size:19px;margin:10px 0 6px}
+.step p{font-size:15px;color:var(--muted)}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:20px}}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+.tst{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column}
+.tst .stars{color:var(--accent);font-size:15px;letter-spacing:2px;margin-bottom:14px}
+.tst .quote{font-size:19px;line-height:1.45;flex:1;color:var(--paper)}
+.tst .who{display:flex;align-items:center;gap:12px;margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+.tst .av{width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:var(--font);font-weight:800;font-size:16px}
+.tst .nm{font-family:var(--font);font-weight:700;font-size:15px}
+.tst .rl{font-family:var(--font);font-size:12px;color:var(--muted)}
+@media(max-width:860px){.tst-grid{grid-template-columns:1fr;max-width:440px;margin:46px auto 0}}
+.hl-sec{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 16%,var(--bg)),var(--bg))}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.hl-sec h2{font-size:clamp(30px,4.6vw,58px)}
+.hl-sec h2 .hl{color:var(--accent)}
+.hl-sec .lead{font-size:19px;color:#d9d4e2;margin:24px 0 28px;max-width:520px}
+.hl-list{list-style:none;display:grid;gap:14px}
+.hl-list li{display:flex;gap:12px;font-size:16px;align-items:flex-start}
+.hl-list .ck{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-weight:800;font-size:12px;font-family:var(--font);margin-top:2px}
+.form-card{background:var(--card);border-radius:24px;padding:34px;border:2px solid var(--accent)}
+.form-card h3{font-size:24px;margin-bottom:6px}
+.form-card .sub{font-size:14px;color:var(--muted);margin-bottom:22px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--paper)}
+.field input,.field select{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font-family:var(--font);font-size:15px;background:var(--bg-2);color:var(--paper);transition:.18s}
+.field input::placeholder{color:#6f6a7d}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent)}
+.form-card .btn{width:100%;justify-content:center;margin-top:6px}
+.form-ok{display:none;text-align:center;padding:30px 10px}
+.form-ok.show{display:block;animation:fade .4s}
+.bigck{width:64px;height:64px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:30px;font-family:var(--font);font-weight:800;margin:0 auto 16px}
+.form-ok h3{font-size:23px;margin-bottom:8px}.form-ok p{color:var(--muted)}
+.tiny{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+@media(max-width:860px){.hl-grid{grid-template-columns:1fr;gap:34px}}
+.faq{background:var(--bg-2);border-top:1px solid var(--line)}
+.faq-list{max-width:760px;margin:46px auto 0}
+.faq details{border:1px solid var(--line);border-radius:14px;margin-bottom:14px;background:var(--card);overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;font-family:var(--font);font-weight:700;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--accent);font-size:26px;font-weight:800;line-height:1}
+.faq details[open]{border-color:var(--accent)}
+.faq details[open] summary::after{content:'\\2212'}
+.faq .ans{padding:0 24px 20px;color:var(--muted);font-size:15.5px}
+.final{text-align:center}
+.final h2{font-size:clamp(32px,5.2vw,72px);max-width:880px;margin:0 auto}
+.final h2 .hl{color:var(--accent)}
+.final .btn{margin-top:30px}.final .reassure{margin-top:18px;font-size:14px;color:var(--muted)}
+footer{background:var(--bg-2);color:var(--muted);padding:46px 0 80px;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot .logo b{color:var(--paper)}
+.foot small{font-size:12px;width:100%;border-top:1px solid var(--line);padding-top:18px;margin-top:8px}
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:900;display:none;padding:12px 16px;background:rgba(15,14,20,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.sticky-cta .btn{width:100%;justify-content:center}
+@media(max-width:600px){.sticky-cta{display:block}}
+</style>
+</head>
+<body data-lang="es">
+<div class="anno" id="anno"></div>
+<header><div class="bar">
+  <a class="logo" href="#"><b>ELEV<i>N</i></b><span>by La Neta</span></a>
+  <div class="hgroup"><div class="lang">
+    <button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button>
+  </div><a class="head-cta" id="headCta" href="#packages">Suscribirme ahora</a></div>
+</div></header>
+<main id="app"></main>
+<div class="sticky-cta"><a class="btn btn-primary" id="stickyCta" href="#packages"></a></div>
+<footer><div class="wrap foot">
+  <a class="logo" href="#"><b>ELEV<i>N</i></b><span>by La Neta</span></a><small id="footNote"></small>
+</div></footer>
+
+<script>
+const T={
+es:{
+  ui:{seePlans:'Suscribirme ahora',whyEyebrow:'Por qué Elevn',plansEyebrow:'Los planes',howEyebrow:'Cómo funciona',
+    howH:'Tú creas. Nosotros lo hacemos brillar.',howP:'Un equipo real edita y produce tu contenido. Tú tienes la última palabra, siempre.',
+    tstEyebrow:'Validado por la comunidad',faqEyebrow:'Preguntas frecuentes',
+    anno:'★ Precios de lanzamiento · cupos limitados este mes',
+    foot:'© 2026 Elevn · by La Neta · Global Media. La plataforma donde las marcas encuentran creadores. · hola@elevn.media'},
+  steps:[
+    {n:'1',h:'Cuéntanos lo básico',p:'Tu nicho, tu estilo y tus enlaces. Cinco minutos y listo.'},
+    {n:'2',h:'Lo produce el equipo',p:'Editamos y armamos tus piezas con criterio profesional. Tú tienes la última palabra.'},
+    {n:'3',h:'Recibes todo listo',p:'En tu página y en una carpeta, ordenado y listo para publicar.'}],
+  guarantee:['Tu contenido sigue siendo tuyo','Sin contratos ni permanencia','Tú tienes la última palabra','Listo en 72 h'],
+  hero:{eyebrow:'Para creadores que quieren cobrar',
+    h:'Conviértete en un creador pro <span class="hl">con un solo clic</span>',
+    lead:'Tu media kit, el directorio donde las marcas te buscan, las plantillas para cerrar deals y un equipo que edita tu material real a nivel profesional. Tu contenido sigue siendo tuyo.',
+    cta1:'Suscribirme ahora',trust:'+10 mil creadores en el catálogo*',note:'Tu audiencia te sigue a ti. Editamos tu material real, siempre auténtico.'},
+  marquee:['Media kit que se ve caro','Las marcas te buscan aquí','Sabe cuánto cobrar','Edición pro de tu material','Cierra tu primer deal'],
+  why:{h:'El lugar donde las marcas <em>vienen a buscar</em> creadores.',
+    p:'Elevn no es un curso ni una app más. Es la plataforma donde las marcas encuentran creadores y donde un equipo real produce tu contenido.',
+    pillars:[
+      {n:'01',h:'Las marcas te buscan aquí',p:'Tu perfil queda listado en el catálogo que las marcas usan para contratar. Dejas de perseguir; te encuentran.'},
+      {n:'02',h:'Producción de verdad, no plantillas',p:'Un equipo edita TU material real a nivel profesional: cortes, ritmo, subtítulos, marca. Tu contenido, en su mejor versión.'},
+      {n:'03',h:'Sabes a quién escribirle y cuánto cobrar',p:'Estrategia y calculadora de tarifas hechas por gente que cierra deals todos los días.'},
+      {n:'04',h:'Sigues siendo tú',p:'Tu audiencia te sigue a ti, no a un avatar. Nunca reemplazamos tu voz: la potenciamos.'}],
+    stats:[{v:'+10 mil',l:'creadores en el catálogo'},{v:'+200',l:'marcas buscando'},{v:'48 h',l:'a tu media kit en vivo'},{v:'4.8/5',l:'satisfacción'}],
+    note:'*Cifras de ejemplo, reemplázalas con tus datos reales antes de publicar.'},
+  promise:{h:'Deja de improvisar. <em>Cobra como un profesional.</em>',
+    p:'La mayoría de los creadores pequeños no cierran deals porque no saben a qué marca escribirle ni cuánto cobrar. Nosotros te lo resolvemos y te lo dejamos listo.'},
+  pkgHead:{h:'Preparar → Producir → Escalar',p:'El nivel de entrada te da la estrategia. Los de arriba suman volumen de producción para ejecutar.'},
+  pkgs:[
+    {tier:'Starter',key:'get-paid',name:'Get Paid',price:'99',tagline:'Ten todo listo para que las marcas te paguen.',who:'Para el micro-creador al que las marcas todavía no toman en serio.',
+     inc:['<b>Media Kit / Landing en vivo</b>: tu página que se actualiza sola con tus números. Tu carta de presentación ante las marcas.','<b>Kit de Posicionamiento</b>: perfil, competencia, reporte e ideas, cada mes.','<b>Catálogo de Oportunidades</b>: registro en el directorio donde las marcas buscan creadores.','<b>Calculadora de Tarifas + plantillas de pitching</b>: sabes cuánto cobrar y qué escribir.','<b>Calendario de Contenidos</b>: tu mes ordenado.'],cta:'Suscribirme ahora - $99',feat:false},
+    {tier:'Growth',key:'the-machine',name:'The Machine',price:'179',tagline:'Produces sin perder horas editando.',who:'Para quien ya quiere producir contenido constante.',
+     inc:['<b>Todo lo de Get Paid</b>, y además:','<b>Collabs</b>: matchmaking con otros creadores para crecer juntos.','<b>4 portadas</b> de feed diseñadas.','<b>~36 piezas de edición pro</b> de TU material: cortes, subtítulos y marca, en varios formatos.'],cta:'Suscribirme ahora - $179',feat:true},
+    {tier:'Scale',key:'empire',name:'Empire',price:'279',tagline:'Volumen para crecer en serio.',who:'Para quien crece a ritmo profesional.',
+     inc:['<b>Todo lo de The Machine</b>, y además:','<b>~48 piezas de video al mes</b>: el doble de presencia.','<b>8 portadas</b> de feed.','<b>Cobertura multiformato máxima</b> para no parar nunca.'],cta:'Suscribirme ahora - $279',feat:false}],
+  tst:{h:'Lo que dicen los creadores de Elevn',sub:'Comunidad real, deals reales.',
+    items:[
+      {q:'Cerré mi primera colaboración pagada tres semanas después de armar mi media kit. Las marcas por fin me responden.',n:'Sofi',r:'@soficrea · Lifestyle · 28K'},
+      {q:'Antes pasaba la noche editando. Ahora subo el doble y me dedico a crear. Subí mi tarifa un 40%.',n:'Tomás',r:'@tomasmueve · Fitness · 64K'},
+      {q:'Lo que más me gustó: sigue siendo mi contenido, mi voz. Solo que ahora se ve profesional.',n:'Caro',r:'@caro.makes · Beauty · 41K'}]},
+  faq:{h:'Lo que todos preguntan antes de empezar',items:[
+    {q:'¿El contenido sigue siendo mío?',a:'Sí, 100%. Editamos TU material: tu voz, tu cara, tu marca. Nunca te reemplazamos por un avatar; potenciamos lo que ya haces.'},
+    {q:'¿Necesito muchos seguidores?',a:'No. Get Paid está pensado justo para creadores pequeños que quieren empezar a cobrar. Te dejamos listo para que las marcas te tomen en serio.'},
+    {q:'¿Me garantizan deals con marcas?',a:'No prometemos magia. Te dejamos visible donde las marcas buscan y con las herramientas para cerrar. El resto lo potencia tu contenido y tu constancia.'},
+    {q:'¿Hay contrato o permanencia?',a:'No. Cancelas cuando quieras, sin penalización.'},
+    {q:'Ya tengo 100K+, ¿esto me sirve?',a:'Tu lugar es el Kit de Oportunidades, hecho a la medida para diversificar tus ingresos. Agenda una llamada en la sección de abajo.'}]},
+  hl:{eyebrow:'¿Ya tienes 100K+? Esto es para ti',h:'Tienes la audiencia. <span class="hl">Te falta el negocio.</span>',
+    lead:'Las marcas ya tocan tu puerta. Tu próximo salto no es otra colaboración: es convertir tu audiencia en ingresos que no dependen de un solo algoritmo. Te armamos un Kit de Oportunidades personalizado, gratis.',
+    list:['Nuevos mercados: tu mismo contenido ganando en otros idiomas.','Un ingreso tuyo: curso, producto o membresía que no dependa de las marcas.','Expansión a nuevas plataformas para no depender de un solo algoritmo.','Brand deals gestionados: tú creas, nosotros cerramos y gestionamos.'],
+    form:{title:'Recibe tu Kit de Oportunidades gratis',sub:'En la llamada te mostramos, con tus números, las 3 formas más rápidas de diversificar tus ingresos.',
+      fields:[{l:'Tu nombre',t:'text',ph:'Cómo te llamas'},{l:'Teléfono / WhatsApp',t:'tel',ph:'+52 ...'},{l:'Tu @usuario y plataforma principal',t:'text',ph:'@usuario · IG / TikTok / YouTube'},{l:'Seguidores (aprox.)',t:'text',ph:'p. ej. 250 mil'},{l:'Email',t:'text',ph:'tu@email.com'}],
+      cta:'Agenda tu llamada estratégica',okh:'¡Listo! 🎉',okp:'Te contactamos en menos de 24 h con tu Kit de Oportunidades personalizado.'}},
+  final:{h:'Tú creas. <span class="hl">Nosotros conseguimos los sponsors.</span>',cta:'Suscribirme ahora',reassure:'Empieza por el plan recomendado de $179 o agenda tu llamada si ya tienes 100K+.'}
+},
+en:{
+  ui:{seePlans:'Subscribe now',whyEyebrow:'Why Elevn',plansEyebrow:'The plans',howEyebrow:'How it works',
+    howH:'You create. We make it shine.',howP:'A real team edits and produces your content. You always have the final say.',
+    tstEyebrow:'Validated by the community',faqEyebrow:'Frequently asked',
+    anno:'★ Launch pricing · limited spots this month',
+    foot:'© 2026 Elevn · by La Neta · Global Media. The platform where brands find creators. · hello@elevn.media'},
+  steps:[
+    {n:'1',h:'Tell us the basics',p:'Your niche, your style and your links. Five minutes and done.'},
+    {n:'2',h:'The team produces it',p:'We edit and build your pieces with professional judgment. You have the final say.'},
+    {n:'3',h:'You get it all ready',p:'On your page and in a folder, organized and ready to post.'}],
+  guarantee:['Your content stays yours','No contracts, no lock-in','You have the final say','Ready in 72 h'],
+  hero:{eyebrow:'For creators who want to get paid',
+    h:'Become a pro creator <span class="hl">in just one click</span>',
+    lead:'Your media kit, the directory where brands look for you, the templates to close deals and a team that edits your real footage to a professional level. Your content stays yours.',
+    cta1:'Subscribe now',trust:'+10,000 creators in the catalog*',note:'Your audience follows you. We edit your real footage, always authentic.'},
+  marquee:['A media kit that looks expensive','Brands search for you here','Know what to charge','Pro editing of your footage','Close your first deal'],
+  why:{h:'The place where brands <em>come looking</em> for creators.',
+    p:'Elevn is not another course or app. It is the platform where brands find creators and where a real team produces your content.',
+    pillars:[
+      {n:'01',h:'Brands search for you here',p:'Your profile is listed in the catalog brands use to hire. You stop chasing; they find you.'},
+      {n:'02',h:'Real production, not templates',p:'A team edits YOUR real footage to a professional level: cuts, pacing, captions, brand. Your content, at its best.'},
+      {n:'03',h:'Know who to pitch and what to charge',p:'Strategy and a rate calculator built by people who close deals every day.'},
+      {n:'04',h:'You stay you',p:'Your audience follows you, not an avatar. We never replace your voice: we amplify it.'}],
+    stats:[{v:'+10,000',l:'creators in the catalog'},{v:'+200',l:'brands searching'},{v:'48 h',l:'to your live media kit'},{v:'4.8/5',l:'creator satisfaction'}],
+    note:'*Sample figures, replace with your real numbers before going live.'},
+  promise:{h:'Stop winging it. <em>Get paid like a pro.</em>',
+    p:'Most small creators never close deals because they do not know which brand to email or what to charge. We solve that and hand it to you ready to go.'},
+  pkgHead:{h:'Prepare → Produce → Scale',p:'The entry tier gives you the strategy. The higher tiers add production volume to execute.'},
+  pkgs:[
+    {tier:'Starter',key:'get-paid',name:'Get Paid',price:'99',tagline:'Have everything ready for brands to pay you.',who:'For the micro-creator brands do not take seriously yet.',
+     inc:['<b>Live Media Kit / Landing</b>: your page that auto-updates with your numbers. Your calling card to brands.','<b>Positioning Kit</b>: profile, competitors, report and ideas, every month.','<b>Opportunity Catalog</b>: listed where brands search for creators.','<b>Rate Calculator + pitch templates</b>: know what to charge and what to write.','<b>Content Calendar</b>: your month, mapped out.'],cta:'Subscribe now - $99',feat:false},
+    {tier:'Growth',key:'the-machine',name:'The Machine',price:'179',tagline:'Produce without losing hours to editing.',who:'For the creator ready to post consistently.',
+     inc:['<b>Everything in Get Paid</b>, plus:','<b>Collabs</b>: matchmaking with other creators to grow together.','<b>4 feed covers</b>, designed.','<b>~36 pro-edited pieces</b> of YOUR footage: cuts, captions and brand, in multiple formats.'],cta:'Subscribe now - $179',feat:true},
+    {tier:'Scale',key:'empire',name:'Empire',price:'279',tagline:'Volume to grow for real.',who:'For the creator scaling at a professional pace.',
+     inc:['<b>Everything in The Machine</b>, plus:','<b>~48 video pieces a month</b>: double the presence.','<b>8 feed covers</b>.','<b>Maximum multi-format coverage</b> so you never go quiet.'],cta:'Subscribe now - $279',feat:false}],
+  tst:{h:'What Elevn creators say',sub:'Real community, real deals.',
+    items:[
+      {q:'I closed my first paid deal three weeks after building the media kit. Brands finally reply to me.',n:'Sofi',r:'@soficrea · Lifestyle · 28K'},
+      {q:'I used to edit all night. Now I post twice as much and focus on creating. I raised my rate 40%.',n:'Tomás',r:'@tomasmueve · Fitness · 64K'},
+      {q:'What I loved most: it is still my content, my voice. It just looks professional now.',n:'Caro',r:'@caro.makes · Beauty · 41K'}]},
+  faq:{h:'What everyone asks before starting',items:[
+    {q:'Does my content stay mine?',a:'Yes, 100%. We edit YOUR footage: your voice, your face, your brand. We never replace you with an avatar; we amplify what you already do.'},
+    {q:'Do I need a lot of followers?',a:'No. Get Paid is built exactly for small creators who want to start getting paid. We get you ready so brands take you seriously.'},
+    {q:'Do you guarantee brand deals?',a:'We do not promise magic. We make you visible where brands search and give you the tools to close. The rest is powered by your content and consistency.'},
+    {q:'Is there a contract or lock-in?',a:'No. Cancel anytime, no penalty.'},
+    {q:'I am already at 100K+, is this for me?',a:'Your fit is the personalized Opportunity Kit to diversify your income. Book a call in the section below.'}]},
+  hl:{eyebrow:'Already at 100K+? This is for you',h:'You have the audience. <span class="hl">You are missing the business.</span>',
+    lead:'Brands already knock on your door. Your next jump is not another deal: it is turning your audience into income that does not depend on a single algorithm. We will build you a personalized Opportunity Kit, free.',
+    list:['New markets: your same content earning in other languages.','Income of your own: a course, product or membership that does not depend on brands.','Expansion to new platforms so you never rely on one algorithm.','Managed brand deals: you create, we close and manage.'],
+    form:{title:'Get your free Opportunity Kit',sub:'On the call we show you, using your own numbers, the 3 fastest ways to diversify your income.',
+      fields:[{l:'Your name',t:'text',ph:'What we should call you'},{l:'Phone / WhatsApp',t:'tel',ph:'+1 ...'},{l:'Your @handle and main platform',t:'text',ph:'@handle · IG / TikTok / YouTube'},{l:'Followers (approx.)',t:'text',ph:'e.g. 250,000'},{l:'Email',t:'text',ph:'you@email.com'}],
+      cta:'Book your strategy call',okh:'Done! 🎉',okp:'We will reach out within 24 hours with your personalized Opportunity Kit.'}},
+  final:{h:'You create. <span class="hl">We land the sponsors.</span>',cta:'Subscribe now',reassure:'Start with the recommended $179 plan or book your call if you already have 100K+.'}
+}};
+
+let LANG='es';
+function checkoutUrl(key){return 'checkout-creators.html?plan='+key+'&lang='+LANG;}
+function pkgCard(p){return `<article class="pkg ${p.feat?'feat':''}">${p.feat?`<span class="badge">${LANG==='es'?'El más elegido':'Most popular'}</span>`:''}
+  <span class="tier">${p.tier}</span><h3>${p.name}</h3><p class="tagline">${p.tagline}</p>
+  <div class="price">$${p.price}<small> ${LANG==='es'?'/mes':'/mo'}</small></div><p class="who">${p.who}</p>
+  <ul>${p.inc.map(i=>`<li><span class="ck">✓</span><span>${i}</span></li>`).join('')}</ul>
+  <a class="btn ${p.feat?'btn-primary':'btn-ghost'}" href="${checkoutUrl(p.key)}">${p.cta} <span class="btn-arrow">→</span></a></article>`;}
+function render(){
+  const d=T[LANG],u=d.ui;
+  const fields=d.hl.form.fields.map(f=>`<div class="field"><label>${f.l}</label><input type="${f.t}" placeholder="${f.ph}" required></div>`).join('');
+  const app=document.getElementById('app');app.className='fade';
+  app.innerHTML=`
+  <div class="hero"><div class="blob"></div><div class="wrap hero-grid">
+    <div><span class="eyebrow">${d.hero.eyebrow}</span><h1>${d.hero.h}</h1><p class="lead">${d.hero.lead}</p>
+      <div class="hero-cta"><a class="btn btn-primary" href="#packages">${d.hero.cta1} <span class="btn-arrow">→</span></a></div>
+      <div class="trust"><span class="s">★★★★★</span> 4.8/5 · ${d.hero.trust}</div>
+      <p class="hero-note"><span class="dot"></span>${d.hero.note}</p></div>
+    <div class="hero-art">
+      <div class="cardf c1"><div class="cf-h">${LANG==='es'?'Tu Media Kit':'Your Media Kit'}</div><div class="cf-row">${LANG==='es'?'Alcance':'Reach'} <div class="mini"></div></div><div class="cf-row">${LANG==='es'?'Engagement':'Engagement'} <div class="mini"></div></div><div class="cf-row">${LANG==='es'?'Tarifa sugerida':'Suggested rate'} <div class="mini"></div></div></div>
+      <div class="cardf c2"><div class="cf-h">${LANG==='es'?'Esta semana':'This week'}</div><div class="bignum">+18</div><div class="cf-row">${LANG==='es'?'piezas listas':'assets ready'}</div></div>
+      <div class="cardf c3"><div class="cf-h">${LANG==='es'?'Deals':'Deals'}</div><div class="bignum">↑</div></div>
+    </div></div></div>
+  <div class="marquee"><div class="mtrack"><span>${d.marquee.map(m=>`${m} ✦`).join('  ')}</span><span>${d.marquee.map(m=>`${m} ✦`).join('  ')}</span></div></div>
+  <section class="why" id="why"><div class="wrap">
+    <div class="why-head"><span class="eyebrow">${u.whyEyebrow}</span><h2>${d.why.h}</h2><p>${d.why.p}</p></div>
+    <div class="pillars">${d.why.pillars.map(p=>`<div class="pillar"><div class="pn">${p.n}</div><h3>${p.h}</h3><p>${p.p}</p></div>`).join('')}</div>
+    <div class="stats">${d.why.stats.map(s=>`<div class="stat"><div class="v">${s.v}</div><div class="l">${s.l}</div></div>`).join('')}</div>
+    <p class="stats-note">${d.why.note}</p></div></section>
+  <section class="promise"><div class="wrap"><h2>${d.promise.h}</h2><p>${d.promise.p}</p></div></section>
+  <section id="packages" style="padding-bottom:40px"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">${u.plansEyebrow}</span><h2>${d.pkgHead.h}</h2><p>${d.pkgHead.p}</p></div>
+    <div class="pkgs">${d.pkgs.map(pkgCard).join('')}</div></div></section>
+  <div class="guarantee"><div class="gwrap">${d.guarantee.map(g=>`<div class="gitem"><span class="gck">✓</span>${g}</div>`).join('')}</div></div>
+  <section class="how"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">${u.howEyebrow}</span><h2>${u.howH}</h2><p>${u.howP}</p></div>
+    <div class="steps">${d.steps.map(s=>`<div class="step"><div class="n">${s.n}</div><h4>${s.h}</h4><p>${s.p}</p></div>`).join('')}</div></div></section>
+  <section><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">${u.tstEyebrow}</span><h2>${d.tst.h}</h2><p>${d.tst.sub}</p></div>
+    <!-- SAMPLE testimonials: replace with real, verifiable quotes -->
+    <div class="tst-grid">${d.tst.items.map(t=>`<div class="tst"><div class="stars">★★★★★</div><p class="quote">“${t.q}”</p><div class="who"><div class="av">${t.n[0]}</div><div><div class="nm">${t.n}</div><div class="rl">${t.r}</div></div></div></div>`).join('')}</div></div></section>
+  <section class="hl-sec"><div class="wrap hl-grid">
+    <div><span class="eyebrow">${d.hl.eyebrow}</span><h2>${d.hl.h}</h2><p class="lead">${d.hl.lead}</p>
+      <ul class="hl-list">${d.hl.list.map(i=>`<li><span class="ck">✓</span><span>${i}</span></li>`).join('')}</ul></div>
+    <div class="form-card"><form onsubmit="return submitLead(event)" id="leadForm"><h3>${d.hl.form.title}</h3><p class="sub">${d.hl.form.sub}</p>${fields}
+      <button class="btn btn-primary" type="submit">${d.hl.form.cta} <span class="btn-arrow">→</span></button>
+      <p class="tiny">${LANG==='es'?'Sin compromiso. Respondemos en menos de 24 h.':'No strings attached. We reply within 24 hours.'}</p></form>
+      <div class="form-ok" id="leadOk"><div class="bigck">✓</div><h3>${d.hl.form.okh}</h3><p>${d.hl.form.okp}</p></div></div></div></section>
+  <section class="faq"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">${u.faqEyebrow}</span><h2>${d.faq.h}</h2></div>
+    <div class="faq-list">${d.faq.items.map(f=>`<details><summary>${f.q}</summary><div class="ans">${f.a}</div></details>`).join('')}</div></div></section>
+  <section class="final"><div class="wrap"><h2>${d.final.h}</h2>
+    <a class="btn btn-primary" href="${checkoutUrl('the-machine')}">${d.final.cta} <span class="btn-arrow">→</span></a>
+    <p class="reassure">${d.final.reassure}</p></div></section>`;
+  document.getElementById('headCta').textContent=u.seePlans;
+  document.getElementById('anno').textContent=u.anno;
+  document.getElementById('stickyCta').textContent=u.seePlans;
+  document.getElementById('footNote').textContent=u.foot;
+  document.documentElement.lang=LANG;
+}
+function setLang(l){LANG=l;document.body.setAttribute('data-lang',l);
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));render();}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+function submitLead(e){e.preventDefault();
+  document.getElementById('leadForm').style.display='none';document.getElementById('leadOk').classList.add('show');return false;}
+render();
+</script>
+</body>
+</html>

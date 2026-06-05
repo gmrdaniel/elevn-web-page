@@ -1,19 +1,16 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
-import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const OPP_STYLES = [
-  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/META.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
-  { id: "gyre", titleKey: "opportunities.gyreTitle", descKey: "opportunities.gyreDesc", image: "/assets/images/GYRE.png", url: "https://laneta-portal.netlify.app/opportunities/gyre", gradient: "from-elevn-cyan to-elevn-violet" },
-  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/TUBI.png", url: "https://laneta-portal.netlify.app/opportunities/tubi", gradient: "from-elevn-violet to-elevn-magenta" },
-  { id: "air", titleKey: "opportunities.airTitle", descKey: "opportunities.airDesc", image: "/assets/images/AIR.png", url: "https://laneta-portal.netlify.app/opportunities/air-media-msn", gradient: "from-elevn-magenta to-elevn-primary" },
+  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/For-growing-creators.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
+  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/For-professionals,-freelancers,-and-general-public.png", url: "https://laneta-portal.netlify.app/opportunities/tubi", gradient: "from-elevn-violet to-elevn-magenta" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -21,7 +18,6 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
-  const [marqueePaused, setMarqueePaused] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -45,43 +41,26 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           style={{ opacity: blockOpacity, y: blockY }}
           className="text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#397aa7]">
-            <ElevnBrand>{t("opportunities.topLabel")}</ElevnBrand>
-          </p>
           <h2
             id="opportunities-heading"
-            className="mt-4 text-5xl font-bold tracking-tight text-slate-950 md:text-6xl lg:text-7xl dark:text-elevn-ice"
+            className="text-5xl font-bold tracking-tight text-slate-950 md:text-6xl lg:text-7xl dark:text-elevn-ice"
           >
-            {t("opportunities.heading")}
+            <span className="inline-flex items-center justify-center gap-3 md:gap-4">
+              <img
+                src="/assets/images/icono%20eleven%20.png"
+                alt=""
+                aria-hidden
+                className="h-[1.25em] w-auto object-contain"
+              />
+              {t("opportunities.heading")}
+            </span>
           </h2>
-          <p className="mx-auto mt-6 max-w-5xl text-balance text-lg font-semibold leading-relaxed text-slate-950 md:text-xl dark:text-elevn-ice/90">
-            {t("opportunities.description")}
-          </p>
         </motion.div>
 
-        <div
-          className="relative mt-14 overflow-hidden lg:mt-20"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-          }}
-        >
-          <div
-            className="flex w-max gap-4 will-change-transform lg:gap-6"
-            style={{
-              animation: "elevn-marquee-right 60s linear infinite",
-              animationPlayState: marqueePaused ? "paused" : "running",
-            }}
-          >
-            {[...OPP_STYLES, ...OPP_STYLES].map((opp, i) => (
-              <article
-                key={`${opp.id}-${i}`}
-                className="w-72 shrink-0 sm:w-80 lg:w-96"
-                onMouseEnter={() => setMarqueePaused(true)}
-                onMouseLeave={() => setMarqueePaused(false)}
-              >
+        <div className="relative mt-14 lg:mt-20">
+          <div className="mx-auto grid w-full max-w-6xl gap-6 sm:grid-cols-2 lg:gap-10">
+            {OPP_STYLES.map((opp) => (
+              <article key={opp.id} className="w-full">
                 <Card className="group h-full overflow-hidden border-slate-200 bg-white shadow-md transition-shadow hover:shadow-lg hover:shadow-slate-200/50 dark:border-white/10 dark:bg-elevn-surface/50 dark:hover:shadow-elevn-primary/10">
                   <a
                     href={opp.url}

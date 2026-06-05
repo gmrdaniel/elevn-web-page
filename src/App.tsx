@@ -6,6 +6,8 @@ import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceS
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
+import { AudienceBusinessSection } from "@/components/sections/AudienceBusinessSection";
+import { EventsWebinarsSection } from "@/components/sections/EventsWebinarsSection";
 
 import { ActiveOpportunitiesSection } from "@/components/sections/ActiveOpportunitiesSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
@@ -33,6 +35,8 @@ function App() {
       <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
       <ActiveOpportunitiesSection onOpenJoinForm={() => setShowJoinForm(true)} />
       <ElevnStudioSection />
+      <AudienceBusinessSection />
+      <EventsWebinarsSection />
       <FinalCTASection onOpenJoinForm={() => setShowJoinForm(true)} />
       <Footer onOpenJoinForm={() => setShowJoinForm(true)} />
       <AnimatePresence>
