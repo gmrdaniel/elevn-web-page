@@ -6,10 +6,9 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiChevronDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const GRADIENT_TITLE =
-  "linear-gradient(135deg, #22d3ee 0%, #06b6d4 30%, #8b5cf6 65%, #d946ef 100%)";
 
 const FAQ_KEYS = [
   { qKey: "faq.q1", aKey: "faq.a1" },
@@ -57,7 +56,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
             style={{ opacity: faqHeaderOpacity, y: faqHeaderY }}
             className="mx-auto max-w-3xl text-center"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#397aa7] sm:text-sm">
               {t("faq.label")}
             </p>
             <h3 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl dark:text-elevn-ice">
@@ -89,7 +88,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                   >
                     <div className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-elevn-cyan/10 text-[11px] font-bold text-elevn-cyan ring-1 ring-elevn-cyan/40">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-elevn-cyan/10 text-[11px] font-bold text-[#397aa7] ring-1 ring-elevn-cyan/40">
                         {(index + 1).toString().padStart(2, "0")}
                       </span>
                       <span className="text-sm font-semibold text-slate-900 sm:text-base dark:text-elevn-ice">
@@ -98,7 +97,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                     </div>
                     <HiChevronDown
                       className={`h-5 w-5 shrink-0 text-slate-500 transition-transform ${
-                        isOpen ? "rotate-180 text-elevn-cyan" : ""
+                        isOpen ? "rotate-180 text-[#397aa7]" : ""
                       }`}
                       aria-hidden
                     />
@@ -133,14 +132,8 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
           className="mx-auto max-w-6xl scroll-mt-24 text-center"
         >
           <h3 className="text-5xl font-extrabold tracking-tight max-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
-            <span
-              className="block bg-clip-text text-transparent"
-              style={{
-                background: GRADIENT_TITLE,
-                WebkitBackgroundClip: "text",
-              }}
-            >
-              {t("about.heading")}
+            <span className="block bg-gradient-to-t from-[#397aa7] to-[#EBF2EE] bg-clip-text text-transparent">
+              <ElevnBrand>{t("about.heading")}</ElevnBrand>
             </span>
           </h3>
           <p className="mx-auto mt-6 max-w-5xl text-balance text-base font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 md:text-lg">
@@ -160,22 +153,15 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
         >
           <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] px-6 py-10 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] sm:px-10 sm:py-12 md:px-14 md:py-16">
             <div className="relative text-center">
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-elevn-cyan">
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-[#397aa7]">
                 {t("finalCta.label")}
               </p>
               <h2
                 id="final-cta-heading"
                 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl lg:text-5xl dark:text-elevn-ice"
               >
-                {t("finalCta.heading")}{" "}
-                <span
-                  className="bg-clip-text font-extrabold"
-                  style={{
-                    background: GRADIENT_TITLE,
-                    WebkitBackgroundClip: "text",
-                    color: "transparent",
-                  }}
-                >
+                <ElevnBrand>{t("finalCta.heading")}</ElevnBrand>{" "}
+                <span className="bg-gradient-to-t from-[#397aa7] to-[#EBF2EE] bg-clip-text font-extrabold text-transparent">
                   {t("finalCta.headingHighlight")}
                 </span>
               </h2>
@@ -188,7 +174,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
               <Button
                 type="button"
                 size="lg"
-                className="mt-10 w-full bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-10 py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
+                className="mt-10 w-full bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-10 py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
                 onClick={onOpenJoinForm ?? (() => window.open("https://laneta-portal.netlify.app/", "_blank", "noopener,noreferrer"))}
               >
                 {t("finalCta.ctaButton")}

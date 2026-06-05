@@ -1,21 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { animate, stagger } from "animejs";
 import { Button } from "@/components/ui/button";
 //import { InsightsCarousel } from "./InsightsCarousel";
 import { useAnimeTitle } from "@/hooks/useAnimeTitle";
+import { GradientWaveBackground } from "@/components/ui/GradientWaveBackground";
 
-const HERO_VIDEO_SRC = "/assets/videos/domain_the_feed.mp4";
-const HERO_VIDEO_MIN_WIDTH = 500;
-const LOGO_URL = "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
+const LOGO_URL = "/assets/images/logo%20eleven%20negro.png";
 
 const GRADIENT_TITLE =
   "linear-gradient(135deg, #22d3ee 0%, #06b6d4 30%, #8b5cf6 65%, #d946ef 100%)";
 
 export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
-  const [showVideo, setShowVideo] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth >= HERO_VIDEO_MIN_WIDTH : true
-  );
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroTitleRef = useAnimeTitle({
     inView: false,
@@ -24,14 +20,6 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
     gradientLastWords: 0,
   });
   const heroTitleInView = useInView(heroTitleRef, { once: true, amount: 0.12 });
-
-  useEffect(() => {
-    const mql = window.matchMedia(`(min-width: ${HERO_VIDEO_MIN_WIDTH}px)`);
-    const update = () => setShowVideo(mql.matches);
-    update();
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
 
   useEffect(() => {
     const el = heroContentRef.current;
@@ -50,29 +38,10 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
   return (
     <section
       id="hero"
-      className="relative grid min-h-screen w-full overflow-hidden bg-elevn-dark lg:grid-cols-12"
+      className="relative grid min-h-screen w-full overflow-hidden lg:grid-cols-12"
       aria-label="Hero"
     >
-      {/* Background video */}
-      {showVideo && (
-        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-            aria-hidden
-          >
-            <source src={HERO_VIDEO_SRC} type="video/mp4" />
-          </video>
-        </div>
-      )}
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] bg-elevn-mesh"
-        style={{ opacity: showVideo ? 0.4 : 0.9 }}
-        aria-hidden
-      />
+      <GradientWaveBackground className="z-0" />
       <div
         className="pointer-events-none absolute left-0 top-0 bottom-0 z-[1] w-px bg-gradient-to-b from-transparent via-elevn-cyan/60 to-elevn-magenta/40"
         aria-hidden

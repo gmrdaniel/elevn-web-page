@@ -6,19 +6,17 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiSparkles, HiCheckBadge, HiScale, HiHeart } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const GRADIENT_TITLE =
-  "linear-gradient(135deg, #22d3ee 0%, #06b6d4 30%, #8b5cf6 65%, #d946ef 100%)";
-
-const LOGO_URL = "/assets/images/elevn.png";
+const LOGO_URL = "/assets/images/logo%20eleven.png";
 
 const PILLAR_ICONS = [HiCheckBadge, HiScale, HiHeart] as const;
 const PILLAR_STYLES = [
-  { gradient: "from-elevn-cyan to-elevn-primary", borderHover: "hover:border-elevn-cyan/50" },
-  { gradient: "from-elevn-violet to-elevn-cyan", borderHover: "hover:border-elevn-violet/50" },
-  { gradient: "from-elevn-magenta to-elevn-violet", borderHover: "hover:border-elevn-magenta/50" },
+  { gradient: "from-[#83207f] to-[#799cbf]", borderHover: "hover:border-[#83207f]/50" },
+  { gradient: "from-[#83207f] to-[#799cbf]", borderHover: "hover:border-[#83207f]/50" },
+  { gradient: "from-[#83207f] to-[#799cbf]", borderHover: "hover:border-[#83207f]/50" },
 ] as const;
 
 export function ElevnIsYourSpaceSection({
@@ -55,7 +53,7 @@ export function ElevnIsYourSpaceSection({
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: sectionInView ? 1 : 0, scale: sectionInView ? 1 : 0.96 }}
             transition={{ duration: 0.35, delay: 0.04, ease }}
-            className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/40 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-elevn-cyan shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-gradient-to-br hover:from-[#1d96c3] hover:to-[#393da3] hover:text-white dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-cyan dark:hover:text-white"
+            className="inline-flex items-center gap-3 rounded-full border border-[#397aa7]/60 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-[#397aa7] shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-gradient-to-br hover:from-[#397aa7] hover:to-[#84a3c4] hover:text-white dark:border-[#397aa7]/70 dark:bg-elevn-surface/80 dark:text-[#397aa7] dark:hover:text-white"
           >
             <HiSparkles className="text-sm" aria-hidden />
             {t("hero.comingSoon")}
@@ -66,13 +64,10 @@ export function ElevnIsYourSpaceSection({
               <img
                 src={LOGO_URL}
                 alt=""
-                className="h-16 w-auto object-contain sm:h-20 lg:h-24"
-                width={128}
-                height={96}
+                className="h-28 w-auto object-contain sm:h-36 lg:h-44"
+                width={220}
+                height={176}
               />
-              <span className="font-sans text-6xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-7xl lg:text-8xl">
-                ELEVN
-              </span>
             </div>
             <h1
               id="elevn-is-your-space-heading"
@@ -83,13 +78,7 @@ export function ElevnIsYourSpaceSection({
                 {t("hero.headline").split(" ").map((word, i, arr) => (
                   <motion.span
                     key={i}
-                    className="inline-block bg-clip-text"
-                    style={{
-                      background: GRADIENT_TITLE,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      color: "transparent",
-                    }}
+                    className="inline-block text-white"
                     initial={{ opacity: 0, y: 16, filter: "blur(3px)" }}
                     animate={{
                       opacity: sectionInView ? 1 : 0,
@@ -123,7 +112,7 @@ export function ElevnIsYourSpaceSection({
               type="button"
               size="lg"
               onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-              className="w-full max-w-xs bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
+              className="w-full max-w-xs bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
             >
               {t("hero.cta")}
             </Button>
@@ -142,7 +131,7 @@ export function ElevnIsYourSpaceSection({
         >
           <div className="flex flex-col gap-4 border-b border-slate-200/80 pb-4 sm:flex-row sm:items-end sm:justify-between dark:border-white/10">
             <p className="text-balance text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-elevn-ice/60">
-              {t("hero.expectTitle")}
+              <ElevnBrand>{t("hero.expectTitle")}</ElevnBrand>
             </p>
             <p className="whitespace-nowrap text-xs font-medium text-slate-500 dark:text-elevn-ice/70">
               {t("hero.expectSubtitle")}

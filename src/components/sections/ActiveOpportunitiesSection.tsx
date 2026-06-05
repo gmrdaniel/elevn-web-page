@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const OPP_STYLES = [
   { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/META.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
@@ -44,8 +45,8 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           style={{ opacity: blockOpacity, y: blockY }}
           className="text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
-            {t("opportunities.topLabel")}
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#397aa7]">
+            <ElevnBrand>{t("opportunities.topLabel")}</ElevnBrand>
           </p>
           <h2
             id="opportunities-heading"
@@ -135,7 +136,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
             type="button"
             size="lg"
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-            className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+            className="bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             {t("opportunities.ctaButton")}
           </Button>

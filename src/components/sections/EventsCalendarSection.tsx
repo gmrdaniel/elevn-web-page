@@ -117,7 +117,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
           transition={{ duration: 0.32, ease }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#397aa7] sm:text-sm">
             {t("events.label")}
           </p>
           <h2
@@ -138,7 +138,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
         >
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/70 bg-white/60 px-4 py-4 dark:border-white/10 dark:bg-elevn-surface/80 sm:px-6">
             <div className="flex items-center gap-2 text-slate-950 dark:text-elevn-ice">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-elevn-cyan/10 text-elevn-cyan shadow-[0_0_18px_rgba(34,211,238,0.5)]">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-elevn-cyan/10 text-[#397aa7] shadow-[0_0_18px_rgba(34,211,238,0.5)]">
                 <HiCalendarDays className="text-lg" aria-hidden />
               </span>
               <div className="flex flex-col text-left">
@@ -224,7 +224,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                           {dayEvents[0].title}
                         </p>
                         {dayEvents.length > 1 && (
-                          <p className="text-[9px] font-medium text-elevn-cyan dark:text-elevn-cyan/90">
+                          <p className="text-[9px] font-medium text-[#397aa7] dark:text-[#397aa7]/90">
                             {t("events.more", { count: dayEvents.length - 1 })}
                           </p>
                         )}
@@ -287,7 +287,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                           <h3 className="text-lg font-bold tracking-tight text-slate-950 sm:text-xl dark:text-elevn-ice">
                             {event.title}
                           </h3>
-                          <p className="mt-1 text-xs font-semibold text-elevn-cyan dark:text-elevn-cyan/90">
+                          <p className="mt-1 text-xs font-semibold text-[#397aa7] dark:text-[#397aa7]/90">
                             {event.startLabel}{event.endLabel ? ` – ${event.endLabel}` : ""}
                           </p>
                           {event.description && (
@@ -315,7 +315,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                                     href={seg.value}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="break-all font-semibold text-elevn-cyan underline decoration-elevn-cyan/70 underline-offset-2 hover:decoration-elevn-cyan dark:text-elevn-cyan dark:decoration-elevn-cyan/70"
+                                    className="break-all font-semibold text-[#397aa7] underline decoration-elevn-cyan/70 underline-offset-2 hover:decoration-elevn-cyan dark:text-[#397aa7] dark:decoration-elevn-cyan/70"
                                   >
                                     {seg.value}
                                   </a>
@@ -332,7 +332,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                             {event.url && (
                               isGoogleMeetUrl(event.url) ? (
                                 isSameCalendarDay(event.start, new Date()) && isWithinEventTimeRange(event) ? (
-                                  <Button asChild size="sm" className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] text-white shadow-md dark:text-elevn-ice">
+                                  <Button asChild size="sm" className="bg-gradient-to-br from-[#397aa7] to-[#84a3c4] text-white shadow-md dark:text-elevn-ice">
                                     <a href={event.url} target="_blank" rel="noopener noreferrer">
                                       <HiVideoCamera className="mr-2 text-base" aria-hidden />
                                       {t("events.joinMeeting")}
@@ -345,7 +345,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                                   </Button>
                                 )
                               ) : (
-                                <Button asChild size="sm" className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] text-white shadow-md dark:text-elevn-ice">
+                                <Button asChild size="sm" className="bg-gradient-to-br from-[#397aa7] to-[#84a3c4] text-white shadow-md dark:text-elevn-ice">
                                   <a href={event.url} target="_blank" rel="noopener noreferrer">
                                     <HiArrowTopRightOnSquare className="mr-2 text-base" aria-hidden />
                                     {t("events.openEventLink")}
@@ -358,7 +358,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                               size="sm"
                               variant="outline"
                               onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                              className="border-elevn-cyan/60 bg-elevn-cyan/5 text-elevn-cyan hover:bg-elevn-cyan/10 hover:border-elevn-cyan/80 dark:border-elevn-cyan dark:bg-transparent dark:text-elevn-cyan dark:hover:bg-elevn-cyan/10"
+                              className="border-elevn-cyan/60 bg-elevn-cyan/5 text-[#397aa7] hover:bg-elevn-cyan/10 hover:border-elevn-cyan/80 dark:border-elevn-cyan dark:bg-transparent dark:text-[#397aa7] dark:hover:bg-elevn-cyan/10"
                             >
                               <HiBolt className="mr-2 text-base" aria-hidden />
                               {t("events.joinCommunity")}
@@ -376,7 +376,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                   transition={{ duration: 0.3, ease }}
                   className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200/80 bg-white/80 px-6 py-12 text-center dark:border-white/15 dark:bg-elevn-surface/60"
                 >
-                  <HiSparkles className="mb-3 text-3xl text-elevn-cyan" aria-hidden />
+                  <HiSparkles className="mb-3 text-3xl text-[#397aa7]" aria-hidden />
                   <p className="text-base font-bold text-slate-950 dark:text-elevn-ice">
                     {t("events.nothingScheduled")}
                   </p>
@@ -387,7 +387,7 @@ export function EventsCalendarSection({ onOpenJoinForm }: { onOpenJoinForm?: () 
                     type="button"
                     size="lg"
                     onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                    className="mt-6 bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-6 py-5 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+                    className="mt-6 bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-6 py-5 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
                   >
                     <HiBolt className="mr-2 text-xl" aria-hidden />
                     {t("events.joinCreatorCommunity")}

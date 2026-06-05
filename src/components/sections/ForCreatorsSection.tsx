@@ -56,7 +56,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
           viewport={{ once: true, margin: "-80px" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#397aa7] sm:text-sm">
             {t("forCreators.tagline")}
           </p>
           <h2
@@ -134,7 +134,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
                   <p className="text-[11px] font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/75">
                     {t(keys.detailKey)}
                   </p>
-                  <p className="mt-1 text-[11px] font-semibold leading-relaxed text-elevn-cyan dark:text-elevn-cyan/90">
+                  <p className="mt-1 text-[11px] font-semibold leading-relaxed text-[#397aa7] dark:text-[#397aa7]/90">
                     {t(keys.extraKey)}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
             type="button"
             size="lg"
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-            className="bg-gradient-to-br from-[#1d96c3] to-[#393da3] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+            className="bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
             {t("forCreators.ctaButton")}

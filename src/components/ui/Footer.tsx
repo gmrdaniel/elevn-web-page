@@ -1,9 +1,9 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
-const LOGO_URL =
-  "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
+const LOGO_URL = "/assets/images/logo%20eleven%20negro.png";
 
 const FOOTER_LINK_KEYS = [
   { key: "nav.elevn", href: "#elevn-is-your-space" },
@@ -50,21 +50,21 @@ export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 href={item.href}
                 className="text-sm font-medium text-elevn-ice/85 transition-colors hover:text-elevn-ice focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
               >
-                {t(item.key)}
+                <ElevnBrand>{t(item.key)}</ElevnBrand>
               </a>
             ))}
             {onOpenJoinForm ? (
               <button
                 type="button"
                 onClick={onOpenJoinForm}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-elevn-cyan via-elevn-violet to-elevn-magenta px-5 py-2 text-xs font-semibold text-elevn-ice shadow-md shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#397aa7] to-[#84a3c4] px-5 py-2 text-xs font-semibold text-elevn-ice shadow-md shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
               >
                 {t("nav.secureYourSpot")}
               </button>
             ) : (
               <a
                 href="#join"
-                className="text-sm font-semibold text-elevn-cyan transition-colors hover:text-elevn-cyan/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
+                className="text-sm font-semibold text-[#397aa7] transition-colors hover:text-[#397aa7]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
               >
                 {t("nav.secureYourSpot")}
               </a>
@@ -73,7 +73,7 @@ export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
         </div>
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between md:gap-0">
           <p className="text-xs text-elevn-ice/50">
-            {t("footer.copyright", { year: new Date().getFullYear() })}
+            <ElevnBrand>{t("footer.copyright", { year: new Date().getFullYear() })}</ElevnBrand>
           </p>
           <p className="text-xs text-elevn-ice/40">
             {t("footer.disclaimer")}

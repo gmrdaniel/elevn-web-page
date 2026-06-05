@@ -30,6 +30,7 @@ export default {
       fontFamily: {
         sans: ["Montserrat", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "monospace"],
+        eleven: ["ElevenBrand", "Montserrat", "sans-serif"],
       },
       backgroundImage: {
         "elevn-gradient": "linear-gradient(135deg, #2563eb 0%, #0ea5e9 25%, #06b6d4 50%, #8b5cf6 75%, #d946ef 100%)",

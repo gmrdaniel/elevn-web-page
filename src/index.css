@@ -2,9 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "ElevenBrand";
+  src: url("/assets/images/ELEVEN%20FONT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @keyframes elevn-marquee-right {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
+}
+
+@keyframes gradient-wave-flow {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-1440px, 0, 0); }
+}
+
+.gradient-wave {
+  animation: gradient-wave-flow 42s linear infinite;
+  filter: blur(16px);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-wave { animation: none; }
 }
 
 /* ELEVN — Paleta cyberpunk/futurista (azul + cyan, violet, magenta) */
@@ -84,11 +107,16 @@ html {
     @apply border-border;
   }
   body {
-    @apply bg-slate-50 text-slate-900 antialiased;
+    @apply text-slate-900 antialiased;
     font-family: "Montserrat", system-ui, sans-serif;
+    background: linear-gradient(180deg, #120618 0%, #07020b 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
   html.dark body {
-    @apply bg-elevn-dark text-elevn-ice;
+    @apply text-elevn-ice;
+    background: linear-gradient(180deg, #120618 0%, #07020b 100%);
+    background-attachment: fixed;
   }
 }
 

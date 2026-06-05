@@ -110,7 +110,7 @@ export function SocialProofBannerSection() {
 
         {/* Copy + stats */}
         <motion.div variants={itemVariants} className="md:w-[52%]">
-          <p className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/30 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-elevn-cyan shadow-sm dark:border-elevn-cyan/40 dark:bg-elevn-surface/90 dark:text-elevn-cyan">
+          <p className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/30 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#397aa7] shadow-sm dark:border-elevn-cyan/40 dark:bg-elevn-surface/90 dark:text-[#397aa7]">
             <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 shadow-[0_0_12px_rgba(56,189,248,0.9)]" />
             {t("socialProof.badge")}
           </p>

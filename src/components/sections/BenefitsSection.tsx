@@ -139,7 +139,7 @@ export function BenefitsSection() {
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#397aa7] max-[400px]:tracking-[0.15em] sm:text-sm">
             Benefits of being a member
           </p>
           <h2

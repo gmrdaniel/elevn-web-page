@@ -12,6 +12,7 @@ import {
   HiBolt,
 } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const DISCORD_ONBOARDING_URL = "https://discord.gg/bTUEWVjz";
 
@@ -58,7 +59,7 @@ export function CommunitySection() {
           transition={{ duration: 0.32, ease }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-elevn-cyan sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#397aa7] sm:text-sm">
             {t("community.label")}
           </p>
           <h2
@@ -85,9 +86,9 @@ export function CommunitySection() {
             href={DISCORD_ONBOARDING_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-elevn-cyan via-elevn-violet to-elevn-magenta px-7 py-2.5 text-sm font-semibold text-elevn-ice shadow-lg shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:focus-visible:ring-offset-elevn-dark"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#397aa7] to-[#84a3c4] px-7 py-2.5 text-sm font-semibold text-elevn-ice shadow-lg shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:focus-visible:ring-offset-elevn-dark"
           >
-            {t("community.discordButton")}
+            <ElevnBrand>{t("community.discordButton")}</ElevnBrand>
             <HiArrowRight className="h-4 w-4" aria-hidden />
           </a>
         </motion.div>

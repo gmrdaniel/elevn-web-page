@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { HiBars3, HiXMark, HiGlobeAlt } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
-const LOGO_URL =
-  "https://la-neta-videos-ubicacion.s3.us-east-1.amazonaws.com/elevn.png";
+const LOGO_URL = "/assets/images/logo%20eleven%20negro.png";
 
 const NAV_KEYS = [
   { key: "nav.elevn", href: "#elevn-is-your-space", id: "elevn-is-your-space" },
@@ -68,7 +68,7 @@ function LanguageToggle() {
       className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition-colors hover:border-elevn-cyan/60 hover:bg-white dark:border-white/20 dark:bg-elevn-surface/80 dark:text-elevn-ice/80 dark:hover:border-elevn-cyan/60"
       aria-label={currentLang === "en" ? "Cambiar a español" : "Switch to English"}
     >
-      <HiGlobeAlt className="text-sm text-elevn-cyan" aria-hidden />
+      <HiGlobeAlt className="text-sm text-[#397aa7]" aria-hidden />
       <span>{currentLang === "en" ? "EN" : "ES"}</span>
     </button>
   );
@@ -105,7 +105,7 @@ function NavLinks({
             }`}
             aria-current={isActive ? "location" : undefined}
           >
-            {t(item.key)}
+            <ElevnBrand>{t(item.key)}</ElevnBrand>
           </a>
         );
       })}
@@ -137,15 +137,15 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
           <a
             href="#hero"
-            className="flex items-center rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-200/80 dark:bg-white/95 dark:focus-visible:ring-offset-white"
+            className="flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             aria-label="ELEVN – Home"
           >
             <img
               src={LOGO_URL}
               alt="ELEVN"
-              className="h-8 w-auto object-contain md:h-9"
-              width={100}
-              height={36}
+              className="h-12 w-auto object-contain md:h-14"
+              width={150}
+              height={56}
             />
           </a>
 
@@ -157,14 +157,14 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                 size="sm"
                 type="button"
                 onClick={onOpenJoinForm}
-                className="ml-2 font-semibold bg-elevn-primary text-white hover:opacity-95 hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
+                className="ml-2 font-semibold bg-gradient-to-br from-[#397aa7] to-[#84a3c4] text-white hover:opacity-95 dark:text-white"
               >
                 {t("nav.secureYourSpot")}
               </Button>
             ) : (
               <Button
                 size="sm"
-                className="ml-2 font-semibold bg-elevn-primary text-white hover:opacity-95 hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
+                className="ml-2 font-semibold bg-gradient-to-br from-[#397aa7] to-[#84a3c4] text-white hover:opacity-95 dark:text-white"
                 asChild
               >
                 <a href="https://laneta-portal.netlify.app/" target="_blank" rel="noopener noreferrer">
@@ -228,12 +228,12 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                       onClick={closeMobile}
                       className={`rounded-lg px-4 py-3 text-base font-medium ${
                         isActive
-                          ? "bg-elevn-primary/15 text-elevn-primary dark:bg-elevn-primary/25 dark:text-elevn-cyan"
+                          ? "bg-elevn-primary/15 text-elevn-primary dark:bg-elevn-primary/25 dark:text-[#397aa7]"
                           : "text-slate-900 hover:bg-slate-100 dark:text-elevn-ice dark:hover:bg-white/10"
                       }`}
                       aria-current={isActive ? "location" : undefined}
                     >
-                      {t(item.key)}
+                      <ElevnBrand>{t(item.key)}</ElevnBrand>
                     </a>
                   );
                 })}
@@ -241,7 +241,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                   <button
                     type="button"
                     onClick={() => { onOpenJoinForm(); closeMobile(); }}
-                    className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
+                    className="mt-4 block w-full rounded-lg bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-3 text-center font-semibold text-white hover:opacity-95 dark:text-white"
                   >
                     {t("nav.secureYourSpot")}
                   </button>
@@ -251,7 +251,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMobile}
-                    className="mt-4 block w-full rounded-lg bg-elevn-primary py-3 text-center font-semibold text-white hover:bg-elevn-primary/90 dark:bg-elevn-primary dark:text-white"
+                    className="mt-4 block w-full rounded-lg bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-3 text-center font-semibold text-white hover:opacity-95 dark:text-white"
                   >
                     {t("nav.secureYourSpot")}
                   </a>

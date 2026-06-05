@@ -234,7 +234,13 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
         {/* Header sticky — referencia */}
         <header className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-slate-200 bg-gradient-to-r from-white to-elevn-primary/5 px-6 py-4 dark:from-elevn-surface dark:to-elevn-primary/10">
           <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-elevn-ice">
-            {submitted ? "ELEVN" : step === 0 ? "Join ELEVN" : `Step ${step} of 4`}
+            {submitted ? (
+              <span className="font-eleven">ELEVN</span>
+            ) : step === 0 ? (
+              <>Join <span className="font-eleven">ELEVN</span></>
+            ) : (
+              `Step ${step} of 4`
+            )}
           </h3>
           <button
             type="button"
@@ -309,7 +315,7 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
                 >
                   {/* Welcome card */}
                   <div className="rounded-xl bg-gradient-to-br from-elevn-primary/10 via-elevn-primary/5 to-transparent p-5 ring-1 ring-elevn-primary/10 dark:from-elevn-cyan/10 dark:via-elevn-cyan/5 dark:ring-elevn-cyan/10">
-                    <div className="mb-4 flex items-center gap-2 text-elevn-primary dark:text-elevn-cyan">
+                    <div className="mb-4 flex items-center gap-2 text-elevn-primary dark:text-[#397aa7]">
                       <HiBolt className="size-5 shrink-0" aria-hidden />
                       <span className="text-sm font-semibold tracking-wide">What's in it for you</span>
                     </div>
@@ -553,7 +559,7 @@ function StepNiche({
               type="checkbox"
               checked={data.niches.includes(niche)}
               onChange={() => toggle(niche)}
-              className="size-4 shrink-0 rounded text-elevn-primary dark:text-elevn-cyan"
+              className="size-4 shrink-0 rounded text-elevn-primary dark:text-[#397aa7]"
             />
             <span className="min-w-0 truncate text-sm text-slate-900 dark:text-elevn-ice">{niche}</span>
           </label>
@@ -674,7 +680,7 @@ function StepPlatforms({
                           className={cn(
                             "flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
                             data.youtubeMonetized === true
-                              ? "border-elevn-cyan bg-elevn-cyan/15 text-elevn-cyan dark:border-elevn-cyan dark:bg-elevn-cyan/20 dark:text-elevn-cyan"
+                              ? "border-elevn-cyan bg-elevn-cyan/15 text-[#397aa7] dark:border-elevn-cyan dark:bg-elevn-cyan/20 dark:text-[#397aa7]"
                               : "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-elevn-ice/80 dark:hover:bg-white/10"
                           )}
                         >
@@ -686,7 +692,7 @@ function StepPlatforms({
                           className={cn(
                             "flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors",
                             data.youtubeMonetized === false
-                              ? "border-elevn-cyan bg-elevn-cyan/15 text-elevn-cyan dark:border-elevn-cyan dark:bg-elevn-cyan/20 dark:text-elevn-cyan"
+                              ? "border-elevn-cyan bg-elevn-cyan/15 text-[#397aa7] dark:border-elevn-cyan dark:bg-elevn-cyan/20 dark:text-[#397aa7]"
                               : "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-elevn-ice/80 dark:hover:bg-white/10"
                           )}
                         >

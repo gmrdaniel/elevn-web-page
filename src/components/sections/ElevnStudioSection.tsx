@@ -5,12 +5,13 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { HiBookOpen, HiVideoCamera, HiUserGroup } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const STEP_ICONS = [HiBookOpen, HiVideoCamera, HiUserGroup] as const;
 const STEP_STYLES = [
-  { number: "01", gradient: "from-elevn-primary to-elevn-cyan" },
-  { number: "02", gradient: "from-elevn-cyan to-elevn-violet" },
-  { number: "03", gradient: "from-elevn-violet to-elevn-magenta" },
+  { number: "01", gradient: "from-[#83207f] to-[#799cbf]" },
+  { number: "02", gradient: "from-[#83207f] to-[#799cbf]" },
+  { number: "03", gradient: "from-[#83207f] to-[#799cbf]" },
 ] as const;
 
 const STEP_KEYS = [
@@ -47,14 +48,14 @@ export function ElevnStudioSection() {
           style={{ opacity: headerOpacity, y: headerY }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#397aa7] max-[400px]:tracking-[0.15em] sm:text-sm">
             {t("studio.label")}
           </p>
           <h2
             id="elevn-studio-heading"
             className="mt-4 text-5xl font-bold tracking-tight text-slate-950 md:text-6xl lg:text-7xl dark:text-elevn-ice"
           >
-            {t("studio.heading")}
+            <ElevnBrand>{t("studio.heading")}</ElevnBrand>
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-relaxed text-slate-700 md:text-lg dark:text-elevn-ice/90">
             {t("studio.description")}

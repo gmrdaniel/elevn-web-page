@@ -17,11 +17,11 @@ const CREATOR_IMAGES = [
 const DISCOVER_IMAGE = "/assets/images/edition.jpg";
 
 const ROTATING_BEATS = [
-  { slogan: "A curated space", line: "Quality and brand fit come first. For everyone.", sloganClass: "text-elevn-cyan" },
+  { slogan: "A curated space", line: "Quality and brand fit come first. For everyone.", sloganClass: "text-[#397aa7]" },
   { slogan: "The new standard", line: "A complete ecosystem for the digital content industry.", sloganClass: "text-elevn-primary" },
   { slogan: "Professionalize the industry", line: "Creators first—authenticity, impact, measurable results.", sloganClass: "text-elevn-violet" },
   { slogan: "Everything in one place", line: "Verified opportunities, training, and a community that gets it.", sloganClass: "text-elevn-magenta" },
-  { slogan: "Built for creators", line: "UGC, influencers, content creators. One hub, one standard.", sloganClass: "text-elevn-cyan" },
+  { slogan: "Built for creators", line: "UGC, influencers, content creators. One hub, one standard.", sloganClass: "text-[#397aa7]" },
 ];
 
 const ROTATE_INTERVAL_MS = 4500;
@@ -91,7 +91,7 @@ export function AboutSection() {
             About{" "}
           </span>
           <span
-            className="bg-elevn-gradient bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl lg:text-5xl"
+            className="bg-elevn-gradient bg-clip-text font-eleven text-3xl font-bold tracking-tight text-transparent md:text-4xl lg:text-5xl"
           >
             ELEVN
           </span>
@@ -171,7 +171,7 @@ export function AboutSection() {
               y: sectionInView ? 0 : -24,
             }}
             transition={{ duration: 0.32, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="text-base font-semibold uppercase tracking-widest text-elevn-cyan"
+            className="text-base font-semibold uppercase tracking-widest text-[#397aa7]"
           >
             The full picture
           </motion.p>
@@ -257,7 +257,7 @@ export function AboutSection() {
             transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             className="mb-14 text-center md:mb-16"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-elevn-cyan">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#397aa7]">
               Our Vision
             </p>
             <h3 className="mt-4 text-3xl font-bold leading-tight text-slate-950 dark:text-elevn-ice md:text-4xl lg:text-5xl">
@@ -294,7 +294,7 @@ export function AboutSection() {
                     aria-hidden
                   />
                   <div className="relative flex gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-elevn-cyan/25 to-elevn-violet/25 text-elevn-cyan">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-elevn-cyan/25 to-elevn-violet/25 text-[#397aa7]">
                       <Icon className="text-xl" aria-hidden />
                     </span>
                     <div className="min-w-0">

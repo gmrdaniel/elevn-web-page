@@ -6,13 +6,14 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Button } from "@/components/ui/button";
 import { HiBolt, HiCheckCircle } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
 const BULLET_KEYS = ["benefits.bullet1", "benefits.bullet2", "benefits.bullet3"] as const;
 
 const BULLET_ICON_GRADIENTS = [
-  "from-elevn-cyan to-elevn-primary",
-  "from-elevn-violet to-elevn-cyan",
-  "from-elevn-magenta to-elevn-violet",
+  "from-[#83207f] to-[#799cbf]",
+  "from-[#83207f] to-[#799cbf]",
+  "from-[#83207f] to-[#799cbf]",
 ] as const;
 
 export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
@@ -61,7 +62,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
               style={{ opacity: whatYouGetOpacity, y: whatYouGetY }}
               className="mt-4 text-center text-3xl font-bold tracking-tight max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl"
             >
-              <span className="bg-elevn-gradient bg-clip-text text-transparent">{t("benefits.whatYouGet")}</span>
+              <span className="bg-gradient-to-t from-[#397aa7] to-[#EBF2EE] bg-clip-text text-transparent"><ElevnBrand>{t("benefits.whatYouGet")}</ElevnBrand></span>
             </motion.h2>
             <ul className="mx-auto mt-8 grid w-full max-w-5xl grid-cols-1 gap-4 max-[400px]:mt-6 sm:mt-8 sm:grid-cols-3 sm:gap-5 md:gap-6">
               {BULLET_KEYS.map((key, i) => (
@@ -88,11 +89,11 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
             <div className="relative mx-auto flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] p-6 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] sm:p-7">
               <div className="relative flex flex-1 flex-col">
                 <div className="flex items-center gap-4">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-elevn-gradient text-white shadow-lg shadow-elevn-cyan/25 dark:text-elevn-ice dark:shadow-elevn-neon/30">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#83207f] to-[#799cbf] text-white shadow-lg shadow-[#83207f]/25 dark:text-elevn-ice dark:shadow-[#83207f]/30">
                     <HiBolt className="text-3xl" aria-hidden />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-elevn-cyan">{t("benefits.stopChasing")}</p>
+                    <p className="text-sm font-semibold uppercase tracking-wider text-[#397aa7]">{t("benefits.stopChasing")}</p>
                     <h3 className="text-xl font-extrabold tracking-tight text-slate-950 sm:text-2xl dark:text-elevn-ice">
                       {t("benefits.letRightOnes")}
                     </h3>
@@ -111,7 +112,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                 type="button"
                 size="lg"
                 onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                className="relative mt-5 w-full bg-gradient-to-br from-[#1d96c3] to-[#393da3] py-5 text-base font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
+                className="relative mt-5 w-full bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-5 text-base font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
               >
                 {t("benefits.ctaButton")}
               </Button>

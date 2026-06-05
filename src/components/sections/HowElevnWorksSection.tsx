@@ -69,7 +69,7 @@ export function HowElevnWorksSection() {
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-elevn-cyan max-[400px]:tracking-[0.15em] sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#397aa7] max-[400px]:tracking-[0.15em] sm:text-sm">
             How ELEVN works
           </p>
           <h2
@@ -94,7 +94,7 @@ export function HowElevnWorksSection() {
               <HiUserCircle className="text-xl max-[400px]:text-base" aria-hidden />
             </span>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-elevn-cyan max-[400px]:text-[10px] max-[400px]:tracking-[0.2em]">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#397aa7] max-[400px]:text-[10px] max-[400px]:tracking-[0.2em]">
                 As a creator
               </p>
               <h3 className="text-lg font-bold text-slate-950 max-[400px]:text-base md:text-xl dark:text-elevn-ice">
