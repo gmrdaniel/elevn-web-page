@@ -43,7 +43,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
         >
           <h2
             id="opportunities-heading"
-            className="text-[2.6rem] font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl dark:text-elevn-ice"
+            className="text-[2.1rem] font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl dark:text-elevn-ice"
           >
             <span className="inline-flex items-center justify-center gap-3 md:gap-4">
               <img
