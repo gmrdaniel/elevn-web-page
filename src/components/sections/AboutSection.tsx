@@ -76,7 +76,7 @@ export function AboutSection() {
 
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-7 py-16 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.h2
           id="about-section-title"
           initial={{ opacity: 0, y: 16 }}
@@ -152,7 +152,7 @@ export function AboutSection() {
                 y: sectionInView ? 0 : -22,
               }}
               transition={{ duration: 0.35, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-3 max-w-sm text-base font-semibold leading-relaxed text-white/95 dark:text-elevn-ice/90"
+              className="mt-3 max-w-sm text-sm sm:text-base font-semibold leading-relaxed text-white/95 dark:text-elevn-ice/90"
             >
               A curated space where you and brands meet. Quality first—built for you.
             </motion.p>
@@ -198,7 +198,7 @@ export function AboutSection() {
             A complete ecosystem to professionalize the creative content industry—verified opportunities, training, and a community that understands.
           </motion.p>
 
-          <div className="relative mt-8 min-h-[7rem] overflow-hidden border-t border-slate-200 pt-6 dark:border-white/10">
+          <div className="relative mt-6 sm:mt-8 min-h-[7rem] overflow-hidden border-t border-slate-200 pt-6 dark:border-white/10">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={rotatingIndex}
@@ -222,7 +222,7 @@ export function AboutSection() {
 
       {/* Creator grid */}
       <div className="relative border-t border-slate-200 bg-slate-50 px-4 py-12 dark:border-white/10 dark:bg-elevn-surface/60 md:px-8 md:py-16 lg:px-12">
-        <p className="mb-8 text-center text-sm font-bold uppercase tracking-widest text-slate-950 md:mb-10 md:text-base dark:text-elevn-ice/90">
+        <p className="mb-8 text-center text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-950 md:mb-10 md:text-base dark:text-elevn-ice/90">
           Creators like you
         </p>
         <div className="mx-auto grid max-w-5xl grid-cols-3 gap-4 sm:grid-cols-4 sm:gap-6 md:grid-cols-4 md:gap-6 lg:grid-cols-4 lg:gap-8">
@@ -250,7 +250,7 @@ export function AboutSection() {
 
       {/* Our Vision */}
       <div ref={visionRef} className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-elevn-dark">
-        <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+        <div className="relative mx-auto w-full max-w-7xl px-7 py-16 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: visionInView ? 1 : 0, y: visionInView ? 0 : 24 }}
@@ -287,7 +287,7 @@ export function AboutSection() {
                     delay: 0.04 * i,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 p-5 backdrop-blur-sm transition hover:border-elevn-cyan/30 dark:border-white/10 dark:bg-elevn-surface/80 dark:hover:border-elevn-cyan/25 md:p-6"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 p-4 sm:p-5 backdrop-blur-sm transition hover:border-elevn-cyan/30 dark:border-white/10 dark:bg-elevn-surface/80 dark:hover:border-elevn-cyan/25 md:p-6"
                 >
                   <div
                     className="absolute inset-0 bg-gradient-to-br from-elevn-primary/10 via-transparent to-elevn-violet/5 opacity-0 transition group-hover:opacity-100"
@@ -299,7 +299,7 @@ export function AboutSection() {
                     </span>
                     <div className="min-w-0">
                       <p className="font-semibold text-slate-950 dark:text-elevn-ice">{title}</p>
-                      <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-950 dark:text-elevn-ice/90">
+                      <p className="mt-1.5 text-xs sm:text-sm font-medium leading-relaxed text-slate-950 dark:text-elevn-ice/90">
                         {desc}
                       </p>
                     </div>
@@ -326,13 +326,13 @@ export function AboutSection() {
               <p className="relative text-lg font-semibold leading-snug text-slate-950 md:text-xl dark:text-elevn-ice">
                 Creators are not side projects. They are media businesses.
               </p>
-              <p className="relative mt-3 text-base font-medium leading-relaxed text-slate-950 dark:text-elevn-ice/90">
+              <p className="relative mt-3 text-sm sm:text-base font-medium leading-relaxed text-slate-950 dark:text-elevn-ice/90">
                 Creative content is a serious industry—with real economic potential.
               </p>
-              <blockquote className="relative mt-6 border-l-2 border-elevn-cyan/60 pl-5 text-base font-medium italic leading-relaxed text-slate-950 md:text-lg dark:text-elevn-ice/90">
+              <blockquote className="relative mt-6 border-l-2 border-elevn-cyan/60 pl-5 text-sm sm:text-base font-medium italic leading-relaxed text-slate-950 md:text-lg dark:text-elevn-ice/90">
                 Today&apos;s creators aren&apos;t just popular users. They&apos;re digital entrepreneurs, content producers, and brand storytellers—with the same right to tools, resources, and opportunities as any professional.
               </blockquote>
-              <ul className="relative mt-6 space-y-3 text-base font-medium leading-relaxed text-slate-950 md:text-lg dark:text-elevn-ice/90">
+              <ul className="relative mt-6 space-y-3 text-sm sm:text-base font-medium leading-relaxed text-slate-950 md:text-lg dark:text-elevn-ice/90">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-elevn-cyan" aria-hidden />
                   <span>We remove the barriers between creative talent and career opportunities.</span>

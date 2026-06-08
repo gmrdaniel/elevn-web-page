@@ -43,7 +43,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
         {/* CTA block */}
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 pb-20 max-[400px]:px-3 max-[400px]:py-12 max-[400px]:pb-16 sm:px-6 sm:py-20 sm:pb-24 md:px-10 md:py-24 md:pb-28 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20 space-y-14 sm:space-y-16 lg:space-y-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 pb-16 sm:pb-20 max-[400px]:px-5 max-[400px]:py-12 max-[400px]:pb-16 sm:px-6 sm:py-20 sm:pb-24 md:px-10 md:py-24 md:pb-28 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20 space-y-14 sm:space-y-16 lg:space-y-20">
 
         <motion.div
           id="faq"
@@ -62,7 +62,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
             <h3 className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl dark:text-elevn-ice">
               {t("faq.heading")}
             </h3>
-            <p className="mx-auto mt-3 max-w-2xl text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80 md:text-base">
+            <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80 md:text-base">
               {t("faq.description")}
             </p>
           </motion.div>
@@ -84,7 +84,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                 >
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-5 sm:py-4.5"
+                    className="flex w-full items-center justify-between gap-4 px-4 py-3 sm:py-4 text-left sm:px-5 sm:py-4.5"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                   >
                     <div className="flex items-start gap-3">
@@ -111,7 +111,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.24, ease }}
                       >
-                        <div className="px-4 pb-4 text-sm font-medium leading-relaxed text-slate-600 sm:px-5 sm:pb-5 dark:text-elevn-ice/85">
+                        <div className="px-4 pb-4 text-xs sm:text-sm font-medium leading-relaxed text-slate-600 sm:px-5 sm:pb-5 dark:text-elevn-ice/85">
                           {t(item.aKey)}
                         </div>
                       </motion.div>
@@ -136,7 +136,7 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
               <ElevnBrand>{t("about.heading")}</ElevnBrand>
             </span>
           </h3>
-          <p className="mx-auto mt-6 max-w-5xl text-balance text-base font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 md:text-lg">
+          <p className="mx-auto mt-6 max-w-5xl text-balance text-sm sm:text-base font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 md:text-lg">
             {t("about.description")}
           </p>
         </motion.div>
@@ -168,18 +168,18 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
               <p className="mx-auto mt-6 max-w-xl text-lg font-semibold leading-relaxed text-slate-700 dark:text-elevn-ice/90 md:text-xl">
                 {t("finalCta.description")}
               </p>
-              <p className="mt-3 text-base font-bold text-slate-800 dark:text-elevn-ice/95">
+              <p className="mt-3 text-sm sm:text-base font-bold text-slate-800 dark:text-elevn-ice/95">
                 {t("finalCta.boldText")}
               </p>
               <Button
                 type="button"
                 size="lg"
-                className="mt-10 w-full bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-10 py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
+                className="mt-10 w-full bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 sm:px-10 py-6 sm:py-7 text-lg font-bold text-white shadow-xl shadow-elevn-primary/25 transition hover:opacity-95 hover:shadow-2xl hover:shadow-elevn-cyan/20 dark:text-elevn-ice dark:shadow-elevn-cyan/20"
                 onClick={onOpenJoinForm ?? (() => window.open("https://laneta-portal.netlify.app/", "_blank", "noopener,noreferrer"))}
               >
                 {t("finalCta.ctaButton")}
               </Button>
-              <p className="mt-6 text-sm font-semibold text-slate-600 dark:text-elevn-ice/75">
+              <p className="mt-6 text-xs sm:text-sm font-semibold text-slate-600 dark:text-elevn-ice/75">
                 {t("finalCta.ctaFooter")}
               </p>
             </div>

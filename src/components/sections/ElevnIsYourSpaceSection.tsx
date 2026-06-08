@@ -28,7 +28,7 @@ export function ElevnIsYourSpaceSection({
       aria-labelledby="elevn-is-your-space-heading"
     >
       <SectionDivider className="mb-0" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-20 max-[400px]:px-3 max-[400px]:py-14 sm:px-6 sm:py-24 md:px-10 md:py-28 lg:max-w-[1600px] lg:px-12 lg:py-32 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-16 sm:py-20 max-[400px]:px-5 max-[400px]:py-14 sm:px-6 sm:py-24 md:px-10 md:py-28 lg:max-w-[1600px] lg:px-12 lg:py-32 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
@@ -39,25 +39,25 @@ export function ElevnIsYourSpaceSection({
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: sectionInView ? 1 : 0, scale: sectionInView ? 1 : 0.96 }}
             transition={{ duration: 0.35, delay: 0.04, ease }}
-            className="inline-flex items-center gap-3 rounded-full border border-[#397aa7]/60 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.24em] text-[#397aa7] shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-gradient-to-br hover:from-[#397aa7] hover:to-[#84a3c4] hover:text-white dark:border-[#397aa7]/70 dark:bg-elevn-surface/80 dark:text-[#397aa7] dark:hover:text-white"
+            className="hidden items-center gap-3 rounded-full border border-[#397aa7]/60 bg-white/90 px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#397aa7] shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-gradient-to-br hover:from-[#397aa7] hover:to-[#84a3c4] hover:text-white sm:inline-flex dark:border-[#397aa7]/70 dark:bg-elevn-surface/80 dark:text-[#397aa7] dark:hover:text-white"
           >
             <HiSparkles className="text-sm" aria-hidden />
             {t("hero.comingSoon")}
           </motion.div>
 
-          <div className="mt-6 flex flex-col items-center gap-5">
+          <div className="mt-6 flex flex-col items-center gap-4 sm:gap-5">
             <div className="flex items-center gap-4">
               <img
                 src={LOGO_URL}
                 alt=""
-                className="h-28 w-auto object-contain sm:h-36 lg:h-44"
+                className="h-36 w-auto object-contain sm:h-40 lg:h-44"
                 width={220}
                 height={176}
               />
             </div>
             <h1
               id="elevn-is-your-space-heading"
-              className="whitespace-nowrap text-[2.6rem] font-extrabold tracking-tight text-slate-950 max-[400px]:text-[2rem] sm:text-[3.3rem] md:text-[4.2rem] lg:text-[5.5rem] xl:text-[6.5rem] dark:text-elevn-ice"
+              className="whitespace-nowrap text-[2rem] font-extrabold tracking-tight text-slate-950 max-[400px]:text-[1.7rem] sm:text-[3.3rem] md:text-[4.2rem] lg:text-[5.5rem] xl:text-[6.5rem] dark:text-elevn-ice"
             >
               <span className="block">
                 {t("hero.headline").split(" ").map((word, i, arr) => (
@@ -84,24 +84,24 @@ export function ElevnIsYourSpaceSection({
             </h1>
           </div>
 
-          <p className="mt-5 max-w-xl text-base font-semibold uppercase tracking-[0.22em] text-slate-600 dark:text-elevn-ice/70 sm:text-sm">
+          <p className="mt-5 max-w-xl text-xs font-semibold uppercase tracking-[0.22em] text-slate-600 dark:text-elevn-ice/70 sm:text-sm">
             {t("hero.tagline")}
           </p>
 
-          <p className="mt-5 max-w-xl text-balance text-sm font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 sm:text-base lg:max-w-6xl">
+          <p className="mt-5 max-w-xl text-balance text-[10px] font-medium leading-relaxed text-slate-700 dark:text-elevn-ice/85 sm:text-base lg:max-w-6xl">
             {t("hero.description")}
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-5">
+          <div className="mt-8 flex flex-col items-center gap-4 sm:gap-5">
             <Button
               type="button"
               size="lg"
               onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-              className="w-full max-w-xs bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
+              className="w-full max-w-xs bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice sm:w-auto"
             >
               {t("hero.cta")}
             </Button>
-            <p className="text-center text-xs font-semibold text-slate-500 dark:text-elevn-ice/70">
+            <p className="text-center text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-elevn-ice/70">
               {t("hero.ctaHelper")}
             </p>
           </div>

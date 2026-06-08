@@ -129,7 +129,7 @@ export function InsightsCarousel() {
       transition={{ duration: 0.35, delay: 0.12 }}
     >
       <div className="flex flex-col gap-3 border-b border-slate-200 px-4 py-3 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-6 sm:py-4 md:px-8 md:py-5">
-        <h2 className="min-w-0 shrink-0 text-base font-bold text-slate-900 dark:text-elevn-ice sm:text-lg md:text-xl lg:text-2xl">
+        <h2 className="min-w-0 shrink-0 text-sm sm:text-base font-bold text-slate-900 dark:text-elevn-ice sm:text-lg md:text-xl lg:text-2xl">
           What you get with ELEVN
         </h2>
         <div className="flex shrink-0 items-center gap-2">
@@ -141,7 +141,7 @@ export function InsightsCarousel() {
           >
             <span className="text-lg sm:text-xl">←</span>
           </button>
-          <span className="min-w-[3ch] text-center text-xs font-medium text-slate-600 dark:text-elevn-ice/80 sm:min-w-[3.5ch] sm:text-sm">
+          <span className="min-w-[3ch] text-center text-[11px] sm:text-xs font-medium text-slate-600 dark:text-elevn-ice/80 sm:min-w-[3.5ch] sm:text-sm">
             {index + 1}/{total}
           </span>
           <button
@@ -202,7 +202,7 @@ export function InsightsCarousel() {
                 </span>
               </motion.div>
               <motion.p
-                className="mt-2 text-sm font-semibold text-slate-800 dark:text-elevn-ice/95 sm:mt-3 sm:text-base md:text-lg"
+                className="mt-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-elevn-ice/95 sm:mt-3 sm:text-base md:text-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1 }}
@@ -210,7 +210,7 @@ export function InsightsCarousel() {
                 {slide.impact}
               </motion.p>
               <motion.p
-                className="mt-1.5 text-sm leading-relaxed text-slate-600 break-words dark:text-elevn-ice/75 sm:mt-2 sm:text-base md:text-lg"
+                className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-600 break-words dark:text-elevn-ice/75 sm:mt-2 sm:text-base md:text-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.12 }}

@@ -48,7 +48,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
       />
 
       {/* Left: content */}
-      <div className="relative z-20 flex flex-col justify-between px-6 pt-24 pb-10 lg:col-span-5 lg:min-h-screen lg:px-12 lg:pt-36 lg:pb-14 xl:px-16 xl:pt-40">
+      <div className="relative z-20 flex flex-col justify-between px-7 pt-24 pb-10 lg:col-span-5 lg:min-h-screen lg:px-12 lg:pt-36 lg:pb-14 xl:px-16 xl:pt-40">
         <div
           className="absolute inset-0 z-0 bg-gradient-to-b from-[#0a0e1a]/95 to-[#0a0e1a]/90 backdrop-blur-sm"
           aria-hidden
@@ -60,7 +60,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
 
         <motion.div
           ref={heroContentRef}
-          className="relative z-10 flex flex-col gap-8 lg:gap-10"
+          className="relative z-10 flex flex-col gap-6 sm:gap-8 lg:gap-10"
         >
           <div className="hero-anime-el inline-flex opacity-0">
             <span className="rounded-lg border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md">
@@ -97,7 +97,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
                 professional creators
               </motion.span>
             </h1>
-            <p className="hero-anime-el max-w-md text-base font-semibold leading-relaxed text-elevn-ice/95 opacity-0 md:text-lg">
+            <p className="hero-anime-el max-w-md text-sm sm:text-base font-semibold leading-relaxed text-elevn-ice/95 opacity-0 md:text-lg">
             ELEVN is your direct access to premium campaigns, elite training, and the most powerful creator community in the region. If you take your content seriously, you belong here.
             </p>
             <p className="hero-anime-el max-w-lg opacity-0">
@@ -118,7 +118,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
           </div>
 
           <div className="hero-anime-el flex flex-wrap items-center gap-3 opacity-0">
-            <span className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/40 bg-elevn-surface/80 px-5 py-2.5 text-sm font-semibold backdrop-blur-md shadow-[0_0_20px_-5px_rgba(6,182,212,0.25)] dark:border-elevn-cyan/50 dark:bg-elevn-surface/70 dark:shadow-[0_0_24px_-4px_rgba(6,182,212,0.35)]">
+            <span className="inline-flex items-center gap-3 rounded-full border border-elevn-cyan/40 bg-elevn-surface/80 px-5 py-2.5 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-[0_0_20px_-5px_rgba(6,182,212,0.25)] dark:border-elevn-cyan/50 dark:bg-elevn-surface/70 dark:shadow-[0_0_24px_-4px_rgba(6,182,212,0.35)]">
               <span className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-elevn-cyan opacity-80" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-elevn-cyan shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
@@ -145,7 +145,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
                 type="button"
                 size="lg"
                 onClick={onOpenJoinForm}
-                className="group relative w-full max-w-sm overflow-hidden rounded-xl border border-elevn-primary/30 bg-elevn-primary py-6 text-base font-semibold text-white shadow-lg transition hover:bg-elevn-primary/90 hover:shadow-elevn-glow lg:w-auto lg:px-10 dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-ice dark:shadow-elevn-neon dark:hover:border-elevn-cyan dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
+                className="group relative w-full max-w-sm overflow-hidden rounded-xl border border-elevn-primary/30 bg-elevn-primary py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg transition hover:bg-elevn-primary/90 hover:shadow-elevn-glow lg:w-auto lg:px-10 dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-ice dark:shadow-elevn-neon dark:hover:border-elevn-cyan dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-100 dark:from-elevn-primary/20 dark:via-elevn-cyan/20 dark:to-elevn-violet/20" />
                 <span className="relative">Join Our Creator Community</span>
@@ -154,7 +154,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
               <Button
                 asChild
                 size="lg"
-                className="group relative w-full max-w-sm overflow-hidden rounded-xl border border-elevn-primary/30 bg-elevn-primary py-6 text-base font-semibold text-white shadow-lg transition hover:bg-elevn-primary/90 hover:shadow-elevn-glow lg:w-auto lg:px-10 dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-ice dark:shadow-elevn-neon dark:hover:border-elevn-cyan dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
+                className="group relative w-full max-w-sm overflow-hidden rounded-xl border border-elevn-primary/30 bg-elevn-primary py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg transition hover:bg-elevn-primary/90 hover:shadow-elevn-glow lg:w-auto lg:px-10 dark:border-elevn-cyan/50 dark:bg-elevn-surface/80 dark:text-elevn-ice dark:shadow-elevn-neon dark:hover:border-elevn-cyan dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
               >
                 <a href="#join">
                   <span className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/10 opacity-0 transition group-hover:opacity-100 dark:from-elevn-primary/20 dark:via-elevn-cyan/20 dark:to-elevn-violet/20" />
@@ -163,7 +163,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
               </Button>
             )}
             <p className="text-xs font-semibold text-elevn-ice/85">Free to join. Pre-register and get early access.</p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-white/20 pt-4 text-xs font-semibold text-elevn-ice/80">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-white/20 pt-4 text-[11px] sm:text-xs font-semibold text-elevn-ice/80">
               <span>Verified opportunities</span>
               <span className="font-bold text-elevn-ice/50">·</span>
               <span>Clear briefs</span>
@@ -173,7 +173,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
           </div>
         </motion.div>
 
-        <div className="hero-anime-el relative z-10 mt-8 hidden border-l-2 border-white/30 pl-4 opacity-0 lg:block dark:border-elevn-cyan/50">
+        <div className="hero-anime-el relative z-10 mt-6 sm:mt-8 hidden border-l-2 border-white/30 pl-4 opacity-0 lg:block dark:border-elevn-cyan/50">
           <p className="text-xs font-medium uppercase tracking-widest text-elevn-ice/60">
             For you: creators & UGC who take it seriously
           </p>
@@ -192,7 +192,7 @@ export function HeroSection({ onOpenJoinForm }: { onOpenJoinForm?: () => void })
             aria-hidden
           />
         </div>
-        <div className="relative z-20 mt-auto flex w-full flex-col justify-end p-4 md:p-5 lg:p-6">
+        <div className="relative z-20 mt-auto flex w-full flex-col justify-end p-3 sm:p-4 md:p-5 lg:p-6">
           <div className="mx-auto w-full max-w-[57rem] lg:max-w-[67rem]">
             <InsightsCarousel />
           </div>

@@ -45,7 +45,7 @@ export function SocialProofBannerSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="relative mx-auto flex w-full max-w-6xl flex-col-reverse items-stretch gap-8 px-4 py-10 sm:px-6 sm:py-12 md:flex-row md:flex-row-reverse md:items-center md:gap-10 md:px-8 lg:max-w-7xl lg:py-14 lg:px-12 xl:max-w-[1500px] xl:px-16 2xl:max-w-[1800px] 2xl:px-20"
+        className="relative mx-auto flex w-full max-w-6xl flex-col-reverse items-stretch gap-6 sm:gap-8 px-4 py-10 sm:px-6 sm:py-12 md:flex-row md:flex-row-reverse md:items-center md:gap-10 md:px-8 lg:max-w-7xl lg:py-14 lg:px-12 xl:max-w-[1500px] xl:px-16 2xl:max-w-[1800px] 2xl:px-20"
       >
         {/* Image banner */}
         <motion.div
@@ -124,7 +124,7 @@ export function SocialProofBannerSection() {
             </span>
           </h2>
 
-          <p className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-slate-700 sm:text-[15px] dark:text-elevn-ice/85">
+          <p className="mt-3 max-w-xl text-xs sm:text-sm font-medium leading-relaxed text-slate-700 sm:text-[15px] dark:text-elevn-ice/85">
             {t("socialProof.description")}
           </p>
 

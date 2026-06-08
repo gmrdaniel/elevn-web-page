@@ -48,7 +48,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
       className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
       aria-labelledby="for-creators-heading"
     >
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-18 md:px-10 md:py-22 lg:py-24 xl:max-w-[1600px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 sm:px-6 sm:py-18 md:px-10 md:py-22 lg:py-24 xl:max-w-[1600px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -67,7 +67,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
               {t("forCreators.heading")}
             </span>
           </h2>
-          <p className="mt-4 text-sm font-medium leading-relaxed text-slate-700 sm:text-base dark:text-elevn-ice/85">
+          <p className="mt-4 text-xs sm:text-sm font-medium leading-relaxed text-slate-700 sm:text-base dark:text-elevn-ice/85">
             {t("forCreators.description")}
           </p>
         </motion.div>
@@ -77,7 +77,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-10 grid gap-6 sm:mt-12 md:grid-cols-2 lg:mt-14 lg:gap-8 xl:grid-cols-3 2xl:grid-cols-4"
+          className="mt-10 grid gap-5 sm:gap-6 sm:mt-12 md:grid-cols-2 lg:mt-14 lg:gap-8 xl:grid-cols-3 2xl:grid-cols-4"
         >
           {BEAT_STYLES.map((beat, index) => {
             const Icon = BEAT_ICONS[index];
@@ -119,7 +119,7 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
                   </div>
                 </div>
 
-                <div className="relative flex flex-1 flex-col gap-3 p-5">
+                <div className="relative flex flex-1 flex-col gap-3 p-4 sm:p-5">
                   <span
                     className={`inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${beat.gradient} text-white shadow-elevn-neon ring-1 ring-white/40 dark:text-elevn-ice dark:ring-elevn-dark/60`}
                   >
@@ -144,14 +144,14 @@ export function ForCreatorsSection({ onOpenJoinForm }: { onOpenJoinForm?: () => 
         </motion.div>
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 text-center sm:mt-14">
-          <p className="mx-auto max-w-xl text-base font-semibold text-slate-700 dark:text-elevn-ice/90">
+          <p className="mx-auto max-w-xl text-sm sm:text-base font-semibold text-slate-700 dark:text-elevn-ice/90">
             {t("forCreators.ctaText")}
           </p>
           <Button
             type="button"
             size="lg"
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-            className="bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+            className="w-full max-w-sm sm:w-auto sm:max-w-none bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             <HiBolt className="mr-2 text-xl" aria-hidden />
             {t("forCreators.ctaButton")}

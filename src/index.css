@@ -94,11 +94,25 @@
 /* Navegación por scroll */
 html {
   scroll-behavior: smooth;
+  /* Compensa el header fijo (h-16 = 64px) para que los anclajes no queden ocultos */
+  scroll-padding-top: 5rem;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Optimización táctil: tap inmediato (sin delay de 300ms) y sin zoom por doble toque */
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
 }
 
 /* Tema claro por defecto; tema oscuro guardado bajo .dark */

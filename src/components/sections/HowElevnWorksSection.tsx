@@ -59,7 +59,7 @@ export function HowElevnWorksSection() {
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 max-[400px]:px-5 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{
@@ -105,7 +105,7 @@ export function HowElevnWorksSection() {
 
           {/* Camera 2.5D + global tilt */}
           <div
-            className="relative mx-auto w-full max-w-4xl pb-16 pt-2 max-[400px]:pb-12 max-[400px]:pt-1 max-[650px]:pb-20 md:max-w-5xl md:pb-32 md:pt-4 lg:max-w-6xl xl:max-w-[1400px]"
+            className="relative mx-auto w-full max-w-4xl pb-12 sm:pb-16 pt-2 max-[400px]:pb-12 max-[400px]:pt-1 max-[650px]:pb-20 md:max-w-5xl md:pb-32 md:pt-4 lg:max-w-6xl xl:max-w-[1400px]"
             style={{ perspective: "1400px" }}
           >
             {/* Background to reinforce depth */}
@@ -163,7 +163,7 @@ export function HowElevnWorksSection() {
                   >
                     {/* Riser (riser) of the step */}
                     <div
-                      className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-4 max-[400px]:w-16 max-[400px]:py-3 max-[650px]:py-5 md:w-28 md:gap-1 md:py-9`}
+                      className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-3 sm:py-4 max-[400px]:w-16 max-[400px]:py-3 max-[650px]:py-5 md:w-28 md:gap-1 md:py-9`}
                     >
                       <span className="text-2xl font-bold tabular-nums text-white/95 drop-shadow-sm max-[400px]:text-xl max-[650px]:text-3xl md:text-4xl">
                         {step.number}
@@ -173,11 +173,11 @@ export function HowElevnWorksSection() {
                       </span>
                     </div>
                     {/* Tread (tread): content of the step */}
-                    <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 max-[400px]:px-3 max-[400px]:py-3 max-[650px]:px-5 max-[650px]:py-5 md:px-8 md:py-7">
+                    <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-3 sm:py-4 max-[400px]:px-5 max-[400px]:py-3 max-[650px]:px-5 max-[650px]:py-5 md:px-8 md:py-7">
                       <h4 className="text-base font-bold tracking-tight text-slate-950 max-[400px]:text-sm max-[650px]:text-lg md:text-xl dark:text-elevn-ice">
                         {step.title}
                       </h4>
-                      <p className="mt-1.5 min-w-0 max-w-full text-xs font-medium leading-[1.65] text-slate-950 max-[400px]:mt-1 max-[400px]:leading-[1.6] max-[650px]:mt-2 max-[650px]:text-sm max-[650px]:leading-[1.7] md:text-base md:leading-[1.75] dark:text-elevn-ice/90">
+                      <p className="mt-1.5 min-w-0 max-w-full text-[11px] sm:text-xs font-medium leading-[1.65] text-slate-950 max-[400px]:mt-1 max-[400px]:leading-[1.6] max-[650px]:mt-2 max-[650px]:text-sm max-[650px]:leading-[1.7] md:text-base md:leading-[1.75] dark:text-elevn-ice/90">
                         {step.body}
                       </p>
                     </div>

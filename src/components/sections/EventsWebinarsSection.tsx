@@ -42,16 +42,16 @@ export function EventsWebinarsSection() {
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 max-[400px]:px-5 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           style={{ opacity: headerOpacity, y: headerY }}
           className="text-center"
         >
           <h2
             id="events-webinars-heading"
-            className="text-5xl font-bold tracking-tight text-slate-950 md:text-6xl lg:text-7xl dark:text-elevn-ice"
+            className="whitespace-nowrap text-[1.9rem] font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl dark:text-elevn-ice"
           >
-            <span className="inline-flex items-center justify-center gap-3 md:gap-4">
+            <span className="inline-flex flex-nowrap items-center justify-center gap-1.5 sm:gap-3 md:gap-4">
               <img
                 src="/assets/images/icono%20eleven%20.png"
                 alt=""
@@ -89,7 +89,7 @@ export function EventsWebinarsSection() {
                     className={`relative flex w-full max-w-3xl overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] ${stairOffsets[i]}`}
                   >
                     <div
-                      className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-4 max-[400px]:w-16 max-[400px]:py-3 md:w-24 md:gap-1 md:py-6`}
+                      className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-3 sm:py-4 max-[400px]:w-16 max-[400px]:py-3 md:w-24 md:gap-1 md:py-6`}
                     >
                       <span className="text-2xl font-bold tabular-nums text-white/95 drop-shadow-sm max-[400px]:text-xl md:text-3xl">
                         {step.number}
@@ -98,11 +98,11 @@ export function EventsWebinarsSection() {
                         <Icon className="text-lg max-[400px]:text-base md:text-2xl" aria-hidden />
                       </span>
                     </div>
-                    <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 max-[400px]:px-3 max-[400px]:py-3 md:px-7 md:py-6">
+                    <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-3 sm:py-4 max-[400px]:px-5 max-[400px]:py-3 md:px-7 md:py-6">
                       <h4 className="text-base font-bold tracking-tight text-slate-950 max-[400px]:text-sm md:text-lg dark:text-elevn-ice">
                         {t(keys.titleKey)}
                       </h4>
-                      <p className="mt-1.5 min-w-0 max-w-full text-xs font-medium leading-[1.65] text-slate-950 max-[400px]:text-[11px] md:mt-2 md:text-sm md:leading-[1.7] dark:text-elevn-ice/90">
+                      <p className="mt-1.5 min-w-0 max-w-full text-[11px] sm:text-xs font-medium leading-[1.65] text-slate-950 max-[400px]:text-[11px] md:mt-2 md:text-sm md:leading-[1.7] dark:text-elevn-ice/90">
                         {t(keys.bodyKey)}
                       </p>
                     </div>

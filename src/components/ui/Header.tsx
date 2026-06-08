@@ -179,7 +179,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
             <button
               type="button"
               onClick={() => setMobileOpen((o) => !o)}
-              className="flex h-10 w-10 items-center justify-center rounded-md text-slate-900 hover:bg-slate-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan dark:text-slate-900 dark:hover:bg-slate-200/70"
+              className="flex h-11 w-11 items-center justify-center rounded-md text-slate-900 hover:bg-slate-200/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan dark:text-slate-900 dark:hover:bg-slate-200/70"
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               aria-label="Toggle menu"
@@ -226,7 +226,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                       key={item.href}
                       href={item.href}
                       onClick={closeMobile}
-                      className={`rounded-lg px-4 py-3 text-base font-medium ${
+                      className={`flex min-h-[52px] items-center rounded-lg px-4 py-3.5 text-base font-semibold ${
                         isActive
                           ? "bg-elevn-primary/15 text-elevn-primary dark:bg-elevn-primary/25 dark:text-[#397aa7]"
                           : "text-slate-900 hover:bg-slate-100 dark:text-elevn-ice dark:hover:bg-white/10"
@@ -241,7 +241,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                   <button
                     type="button"
                     onClick={() => { onOpenJoinForm(); closeMobile(); }}
-                    className="mt-4 block w-full rounded-lg bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-3 text-center font-semibold text-white hover:opacity-95 dark:text-white"
+                    className="mt-4 flex min-h-[56px] w-full items-center justify-center rounded-xl bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-4 text-center text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-white"
                   >
                     {t("nav.secureYourSpot")}
                   </button>
@@ -251,7 +251,7 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMobile}
-                    className="mt-4 block w-full rounded-lg bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-3 text-center font-semibold text-white hover:opacity-95 dark:text-white"
+                    className="mt-4 flex min-h-[56px] w-full items-center justify-center rounded-xl bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-4 text-center text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-white"
                   >
                     {t("nav.secureYourSpot")}
                   </a>

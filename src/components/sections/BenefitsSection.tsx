@@ -70,7 +70,7 @@ function BenefitSlide({
       style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
       className="absolute inset-0 flex origin-center items-stretch justify-center"
     >
-      <Card className="group relative flex w-full flex-1 overflow-hidden border-slate-200 bg-white p-4 shadow-md dark:border-white/10 dark:bg-elevn-surface max-[400px]:p-3 max-[650px]:p-6 sm:p-8 md:p-14 lg:p-16 xl:p-20">
+      <Card className="group relative flex w-full flex-1 overflow-hidden border-slate-200 bg-white p-3 sm:p-4 shadow-md dark:border-white/10 dark:bg-elevn-surface max-[400px]:p-3 max-[650px]:p-6 sm:p-8 md:p-14 lg:p-16 xl:p-20">
         <div
           className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${benefit.gradient} opacity-80`}
           aria-hidden
@@ -94,7 +94,7 @@ function BenefitSlide({
             <h3 className="mt-2 text-xl font-bold tracking-tight text-slate-950 max-[400px]:mt-1.5 max-[400px]:text-lg max-[650px]:mt-3 max-[650px]:text-3xl sm:mt-4 sm:text-4xl md:text-5xl dark:text-elevn-ice">
               {benefit.title}
             </h3>
-            <p className="mt-3 max-w-3xl text-sm font-medium leading-relaxed text-slate-950 max-[400px]:mt-2 max-[400px]:text-xs max-[400px]:leading-[1.6] max-[650px]:mt-4 max-[650px]:text-lg sm:mt-6 sm:text-xl md:text-2xl md:leading-relaxed dark:text-elevn-ice/90">
+            <p className="mt-3 max-w-3xl text-xs sm:text-sm font-medium leading-relaxed text-slate-950 max-[400px]:mt-2 max-[400px]:text-xs max-[400px]:leading-[1.6] max-[650px]:mt-4 max-[650px]:text-lg sm:mt-6 sm:text-xl md:text-2xl md:leading-relaxed dark:text-elevn-ice/90">
               {benefit.body}
             </p>
           </div>
@@ -129,7 +129,7 @@ export function BenefitsSection() {
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pt-10 pb-16 max-[400px]:px-3 max-[400px]:pt-8 max-[400px]:pb-12 sm:px-6 sm:pt-12 sm:pb-20 md:px-10 md:pt-14 md:pb-24 lg:max-w-[1600px] lg:px-12 lg:pt-16 lg:pb-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 pt-8 sm:pt-10 pb-12 sm:pb-16 max-[400px]:px-5 max-[400px]:pt-8 max-[400px]:pb-12 sm:px-6 sm:pt-12 sm:pb-20 md:px-10 md:pt-14 md:pb-24 lg:max-w-[1600px] lg:px-12 lg:pt-16 lg:pb-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{
@@ -150,7 +150,7 @@ export function BenefitsSection() {
           </h2>
         </motion.div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 max-[400px]:mt-6 max-[400px]:gap-5 lg:mt-12 lg:grid-cols-[1fr_4fr] lg:items-stretch lg:gap-12">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 max-[400px]:mt-6 max-[400px]:gap-5 lg:mt-12 lg:grid-cols-[1fr_4fr] lg:items-stretch lg:gap-12">
           <div className="flex flex-col justify-center lg:pr-4">
             <div className="relative border-l-2 border-elevn-cyan/50 pl-4 max-[400px]:pl-3 sm:pl-6 md:pl-8">
               <p className="text-sm font-medium leading-[1.7] text-slate-950 max-[400px]:text-xs max-[400px]:leading-[1.65] sm:text-base sm:leading-[1.75] md:text-lg md:leading-[1.8] dark:text-elevn-ice/90">

@@ -52,7 +52,7 @@ export function CommunitySection() {
       />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 max-[400px]:px-3 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 max-[400px]:px-5 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
@@ -68,10 +68,10 @@ export function CommunitySection() {
           >
             {t("community.heading")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/85 md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-sm sm:text-base font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/85 md:text-lg">
             {t("community.description")}
           </p>
-          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium text-slate-500 dark:text-elevn-ice/75 md:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-xs sm:text-sm font-medium text-slate-500 dark:text-elevn-ice/75 md:text-base">
             {t("community.subDescription")}
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export function CommunitySection() {
             href={DISCORD_ONBOARDING_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#397aa7] to-[#84a3c4] px-7 py-2.5 text-sm font-semibold text-elevn-ice shadow-lg shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:focus-visible:ring-offset-elevn-dark"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#397aa7] to-[#84a3c4] px-7 py-2.5 text-xs sm:text-sm font-semibold text-elevn-ice shadow-lg shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:focus-visible:ring-offset-elevn-dark"
           >
             <ElevnBrand>{t("community.discordButton")}</ElevnBrand>
             <HiArrowRight className="h-4 w-4" aria-hidden />

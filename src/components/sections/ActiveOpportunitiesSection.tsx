@@ -36,14 +36,14 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:px-8 md:py-24 lg:max-w-[1600px] lg:px-8 lg:py-28 xl:max-w-[1800px] xl:px-10 2xl:max-w-[1920px] 2xl:px-12">
+      <div className="relative mx-auto w-full max-w-7xl px-7 py-16 sm:py-20 md:px-8 md:py-24 lg:max-w-[1600px] lg:px-8 lg:py-28 xl:max-w-[1800px] xl:px-10 2xl:max-w-[1920px] 2xl:px-12">
         <motion.div
           style={{ opacity: blockOpacity, y: blockY }}
           className="text-center"
         >
           <h2
             id="opportunities-heading"
-            className="text-5xl font-bold tracking-tight text-slate-950 md:text-6xl lg:text-7xl dark:text-elevn-ice"
+            className="text-[2.6rem] font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl dark:text-elevn-ice"
           >
             <span className="inline-flex items-center justify-center gap-3 md:gap-4">
               <img
@@ -57,8 +57,8 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           </h2>
         </motion.div>
 
-        <div className="relative mt-14 lg:mt-20">
-          <div className="mx-auto grid w-full max-w-6xl gap-6 sm:grid-cols-2 lg:gap-10">
+        <div className="relative mt-10 sm:mt-14 lg:mt-20">
+          <div className="mx-auto grid w-full max-w-6xl gap-5 sm:gap-6 sm:grid-cols-2 lg:gap-10">
             {OPP_STYLES.map((opp) => (
               <article key={opp.id} className="w-full">
                 <Card className="group h-full overflow-hidden border-slate-200 bg-white shadow-md transition-shadow hover:shadow-lg hover:shadow-slate-200/50 dark:border-white/10 dark:bg-elevn-surface/50 dark:hover:shadow-elevn-primary/10">
@@ -83,14 +83,14 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
                         aria-hidden
                       />
                     </div>
-                    <CardContent className="flex flex-1 flex-col p-4 md:p-5">
+                    <CardContent className="flex flex-1 flex-col p-3 sm:p-4 md:p-5">
                       <h3 className="text-base font-bold tracking-tight text-slate-950 md:text-lg dark:text-elevn-ice">
                         {t(opp.titleKey)}
                       </h3>
-                      <p className="mt-2 flex-1 text-xs font-medium leading-relaxed text-slate-950 md:text-sm dark:text-elevn-ice/90">
+                      <p className="mt-2 flex-1 text-[11px] sm:text-xs font-medium leading-relaxed text-slate-950 md:text-sm dark:text-elevn-ice/90">
                         {t(opp.descKey)}
                       </p>
-                      <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-md border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-950 transition-colors group-hover:bg-slate-200 group-hover:text-slate-950 dark:border-white/20 dark:bg-white/5 dark:text-elevn-ice dark:group-hover:bg-white/10 dark:group-hover:text-elevn-ice">
+                      <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-md border border-slate-200 bg-slate-100 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-slate-950 transition-colors group-hover:bg-slate-200 group-hover:text-slate-950 dark:border-white/20 dark:bg-white/5 dark:text-elevn-ice dark:group-hover:bg-white/10 dark:group-hover:text-elevn-ice">
                         {t("opportunities.viewOpportunity")}
                         <HiArrowTopRightOnSquare className="text-sm" aria-hidden />
                       </span>
@@ -106,7 +106,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
           initial={{ opacity: 0 }}
           animate={{ opacity: sectionInView ? 1 : 0 }}
           transition={{ duration: 0.32, delay: 0.12, ease }}
-          className="mt-10 flex flex-col items-center gap-6 text-center"
+          className="mt-10 flex flex-col items-center gap-5 sm:gap-6 text-center"
         >
           <p className="text-sm font-semibold text-slate-950 dark:text-elevn-ice/80">
             {t("opportunities.moreOpportunities")}
@@ -115,7 +115,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
             type="button"
             size="lg"
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-            className="bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-8 py-6 text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
+            className="w-full max-w-sm sm:w-auto sm:max-w-none bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
             {t("opportunities.ctaButton")}
           </Button>
