@@ -9,8 +9,8 @@ import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
 const OPP_STYLES = [
-  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/For-growing-creators.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
-  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/For-professionals,-freelancers,-and-general-public.png", url: "https://laneta-portal.netlify.app/opportunities/tubi", gradient: "from-elevn-violet to-elevn-magenta" },
+  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/For-professionals,-freelancers,-and-general-public.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
+  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/For-growing-creators.png", url: "https://laneta-portal.netlify.app/opportunities/tubi", gradient: "from-elevn-violet to-elevn-magenta" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
