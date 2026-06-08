@@ -230,14 +230,14 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
         className="relative flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-elevn-surface"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 id="join-form-title" className="sr-only">Join ELEVN</h2>
+        <h2 id="join-form-title" className="sr-only">Join ELEVEN</h2>
         {/* Header sticky — referencia */}
         <header className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-slate-200 bg-gradient-to-r from-white to-elevn-primary/5 px-6 py-4 dark:from-elevn-surface dark:to-elevn-primary/10">
           <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-elevn-ice">
             {submitted ? (
-              <span className="font-eleven">ELEVN</span>
+              <span className="font-eleven">ELEVEN</span>
             ) : step === 0 ? (
-              <>Join <span className="font-eleven">ELEVN</span></>
+              <>Join <span className="font-eleven">ELEVEN</span></>
             ) : (
               `Step ${step} of 4`
             )}
@@ -293,7 +293,7 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
                       If there's a fit, we'll get in touch soon via the contact details you provided.
                     </p>
                     <p className="text-sm font-semibold">
-                      The ELEVN Team
+                      The ELEVEN Team
                     </p>
                   </div>
                   <Button
@@ -321,7 +321,7 @@ export function JoinForm({ onClose, onSubmit }: JoinFormProps) {
                     </div>
                     <div className="space-y-4 text-slate-700 dark:text-elevn-ice/90">
                       <p className="leading-relaxed">
-                        At ELEVN we connect creators with{" "}
+                        At ELEVEN we connect creators with{" "}
                         <span className="font-medium text-slate-900 dark:text-elevn-ice">real opportunities</span>
                         : brand briefs, collaborations, and a professional ecosystem with clear standards. To match you
                         with what fits your profile best, we need to know a bit more about you.
@@ -757,7 +757,7 @@ function StepMessage({
     <motion.div {...slide} className="space-y-6">
       <StepHead
         title="Message for the team (optional)"
-        description="If you'd like to share something with us—a goal, a question, or why you're interested in ELEVN—write it here. Maximum 500 characters."
+        description="If you'd like to share something with us—a goal, a question, or why you're interested in ELEVEN—write it here. Maximum 500 characters."
       />
       <div>
         <textarea

@@ -53,7 +53,7 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
           <div className="flex flex-col">
             <motion.p
               style={{ opacity: plainTermsOpacity, y: plainTermsY }}
-              className="text-center text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white sm:text-base"
+              className="text-center text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-black dark:text-white sm:text-base"
             >
               {t("benefits.inPlainTerms")}
             </motion.p>

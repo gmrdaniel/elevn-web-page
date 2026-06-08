@@ -63,6 +63,15 @@
   --input: #1e293b;
   --ring: var(--elevn-cyan);
   --radius: 0.5rem;
+
+  /* Fondo y ola — modo día (claro) */
+  --wave-bg: #ebf2ee;
+  --wave-stop0: #799cbf;
+  --wave-stop0-o: 0;
+  --wave-stop1: #799cbf;
+  --wave-stop1-o: 0.27;
+  --wave-stop2: #799cbf;
+  --wave-stop2-o: 0.50;
 }
 
 .dark {
@@ -76,7 +85,21 @@
   --accent-foreground: var(--elevn-ice);
   --border: rgba(255, 255, 255, 0.08);
   --ring: var(--elevn-violet);
+
+  /* Fondo y ola — modo noche (oscuro) */
+  --wave-bg: linear-gradient(180deg, #120618 0%, #07020b 100%);
+  --wave-stop0: #712f89;
+  --wave-stop0-o: 0;
+  --wave-stop1: #83207f;
+  --wave-stop1-o: 0.55;
+  --wave-stop2: #4a154e;
+  --wave-stop2-o: 0.85;
 }
+
+/* Stops de la ola (color/opacidad por tema vía variables) */
+.gwave-stop0 { stop-color: var(--wave-stop0); stop-opacity: var(--wave-stop0-o); }
+.gwave-stop1 { stop-color: var(--wave-stop1); stop-opacity: var(--wave-stop1-o); }
+.gwave-stop2 { stop-color: var(--wave-stop2); stop-opacity: var(--wave-stop2-o); }
 
 /* Títulos con splitText (Anime.js) */
 .anime-title [data-word] {
@@ -89,6 +112,16 @@
   background: var(--elevn-gradient-text);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+/* Modo día: los textos con degradado se muestran como color plano #397aa7 */
+html:not(.dark) .bg-clip-text.text-transparent,
+html:not(.dark) .anime-title .title-gradient {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: #397aa7;
+  color: #397aa7;
 }
 
 /* Navegación por scroll */
@@ -123,7 +156,7 @@ textarea {
   body {
     @apply text-slate-900 antialiased;
     font-family: "Montserrat", system-ui, sans-serif;
-    background: linear-gradient(180deg, #120618 0%, #07020b 100%);
+    background: #ebf2ee;
     background-attachment: fixed;
     min-height: 100vh;
   }

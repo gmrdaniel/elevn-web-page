@@ -9,7 +9,8 @@ import { useTranslation } from "react-i18next";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const LOGO_URL = "/assets/images/logo%20eleven.png";
+const LOGO_LIGHT = "/assets/images/logo%20eleven%20negro.png"; // logo negro — modo día
+const LOGO_DARK = "/assets/images/logo%20eleven.png"; // logo blanco — modo noche
 
 export function ElevnIsYourSpaceSection({
   onOpenJoinForm,
@@ -48,9 +49,16 @@ export function ElevnIsYourSpaceSection({
           <div className="mt-6 flex flex-col items-center gap-4 sm:gap-5">
             <div className="flex items-center gap-4">
               <img
-                src={LOGO_URL}
+                src={LOGO_LIGHT}
                 alt=""
-                className="h-36 w-auto object-contain sm:h-40 lg:h-44"
+                className="h-36 w-auto object-contain sm:h-40 lg:h-44 dark:hidden"
+                width={220}
+                height={176}
+              />
+              <img
+                src={LOGO_DARK}
+                alt=""
+                className="hidden h-36 w-auto object-contain sm:h-40 lg:h-44 dark:block"
                 width={220}
                 height={176}
               />
@@ -63,7 +71,7 @@ export function ElevnIsYourSpaceSection({
                 {t("hero.headline").split(" ").map((word, i, arr) => (
                   <motion.span
                     key={i}
-                    className="inline-block font-eleven text-white"
+                    className="inline-block font-eleven text-black dark:text-white"
                     initial={{ opacity: 0, y: 16, filter: "blur(3px)" }}
                     animate={{
                       opacity: sectionInView ? 1 : 0,

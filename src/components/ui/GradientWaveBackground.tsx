@@ -5,9 +5,9 @@ function WaveContent({ gradId }: { gradId: string }) {
     <>
       <defs>
         <linearGradient id={gradId} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#712f89" stopOpacity="0" />
-          <stop offset="35%" stopColor="#83207f" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#4a154e" stopOpacity="0.85" />
+          <stop offset="0%" className="gwave-stop0" />
+          <stop offset="35%" className="gwave-stop1" />
+          <stop offset="100%" className="gwave-stop2" />
         </linearGradient>
       </defs>
 
@@ -34,7 +34,7 @@ export function GradientWaveBackground({ className = "" }: { className?: string 
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
       aria-hidden
       style={{
-        background: "linear-gradient(180deg, #120618 0%, #07020b 100%)",
+        background: "var(--wave-bg)",
       }}
     >
       {/* Móvil: preserva la proporción para que la ola no se vea apretada */}

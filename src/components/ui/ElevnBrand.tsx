@@ -1,10 +1,10 @@
 import { Fragment, type ReactNode } from "react";
 
 function highlightString(text: string): ReactNode[] {
-  return text.split(/(ELEVN)/g).map((part, i) =>
-    part === "ELEVN" ? (
+  return text.split(/(ELEVEN)/g).map((part, i) =>
+    part === "ELEVEN" ? (
       <span key={i} className="font-eleven">
-        ELEVN
+        ELEVEN
       </span>
     ) : (
       <Fragment key={i}>{part}</Fragment>
