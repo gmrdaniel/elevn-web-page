@@ -29,11 +29,11 @@ export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
             <a
               href="#hero"
               className="inline-flex w-fit items-center rounded-lg border border-white/15 bg-elevn-ice px-2.5 py-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
-              aria-label="ELEVEN – Home"
+              aria-label="ELEVN – Home"
             >
               <img
                 src={LOGO_URL}
-                alt="ELEVEN"
+                alt="ELEVN"
                 className="h-8 w-auto object-contain md:h-9"
                 width={100}
                 height={36}

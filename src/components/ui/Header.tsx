@@ -138,11 +138,11 @@ export function Header({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
           <a
             href="#hero"
             className="flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            aria-label="ELEVEN – Home"
+            aria-label="ELEVN – Home"
           >
             <img
               src={LOGO_URL}
-              alt="ELEVEN"
+              alt="ELEVN"
               className="h-12 w-auto object-contain md:h-14"
               width={150}
               height={56}

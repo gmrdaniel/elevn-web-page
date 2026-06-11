@@ -55,7 +55,7 @@ export function SocialProofBannerSection() {
           <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] md:aspect-[5/3]">
             <img
               src={BANNER_IMAGE_SRC}
-              alt="Creator collaborating with brands under ELEVEN's safety guarantee"
+              alt="Creator collaborating with brands under ELEVN's safety guarantee"
               loading="lazy"
               decoding="async"
               className="h-full w-full object-cover object-center"
@@ -68,7 +68,7 @@ export function SocialProofBannerSection() {
             <div
               className="pointer-events-none absolute inset-x-3 bottom-3 flex flex-col items-start gap-2 sm:inset-x-5 sm:bottom-5"
               role="group"
-              aria-label="ELEVEN safety, guarantee, and payment protection snapshot"
+              aria-label="ELEVN safety, guarantee, and payment protection snapshot"
             >
               <div className="pointer-events-auto flex max-w-[260px] flex-col gap-2 rounded-2xl bg-slate-950/85 px-3 py-2 text-[10px] text-slate-100 shadow-[0_12px_30px_rgba(15,23,42,0.85)] ring-1 ring-slate-800/80 backdrop-blur-2xl sm:max-w-sm sm:px-4 sm:py-3 sm:text-[11px] sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3">

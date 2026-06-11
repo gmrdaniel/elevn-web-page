@@ -1,10 +1,10 @@
 {
   "nav": {
-    "elevn": "ELEVEN",
+    "elevn": "ELEVN",
     "benefits": "Beneficios",
     "community": "Comunidad",
     "opportunities": "Oportunidades",
-    "elevnStudio": "ELEVEN Studio",
+    "elevnStudio": "ELEVN Studio",
     "events": "Eventos",
     "faqs": "Preguntas frecuentes",
     "secureYourSpot": "Únete gratis"
@@ -13,14 +13,14 @@
     "comingSoon": "Muy pronto",
     "headline": "Postula. Crea. Gana.",
     "tagline": "La plataforma donde los creadores conectan con marcas, escalan r\u00e1pido y lideran la industria.",
-    "description": "ELEVEN es tu puerta de entrada a acuerdos verificados con marcas, formaci\u00f3n real y una comunidad creada para creadores profesionales. Postula una vez, desbloquea oportunidades continuas y construye una carrera donde tu trabajo y tu tiempo sean respetados.",
+    "description": "ELEVN es tu puerta de entrada a acuerdos verificados con marcas, formaci\u00f3n real y una comunidad creada para creadores profesionales. Postula una vez, desbloquea oportunidades continuas y construye una carrera donde tu trabajo y tu tiempo sean respetados.",
     "cta": "\u00danete gratis",
     "ctaHelper": "Cupos limitados para creadores serios.",
-    "expectTitle": "Qu\u00e9 puedes esperar en ELEVEN",
+    "expectTitle": "Qu\u00e9 puedes esperar en ELEVN",
     "expectSubtitle": "Dise\u00f1ado para creadores que tratan el contenido como un negocio serio.",
     "pillar1Label": "Oportunidades verificadas",
     "pillar1Title": "Postula con confianza",
-    "pillar1Line": "Cada brief en ELEVEN est\u00e1 verificado. Alcance claro, presupuestos y plazos para que sepas exactamente a qu\u00e9 est\u00e1s diciendo que s\u00ed.",
+    "pillar1Line": "Cada brief en ELEVN est\u00e1 verificado. Alcance claro, presupuestos y plazos para que sepas exactamente a qu\u00e9 est\u00e1s diciendo que s\u00ed.",
     "pillar2Label": "Crecimiento profesional",
     "pillar2Title": "Crea a otro nivel",
     "pillar2Line": "Formaci\u00f3n, herramientas y retroalimentaci\u00f3n dise\u00f1adas para creadores serios que quieren convertir el contenido en un negocio real.",
@@ -32,14 +32,14 @@
     "badge": "Con la confianza de creadores en toda Am\u00e9rica",
     "heading": "Prueba social que protege",
     "headingHighlight": "tu trabajo.",
-    "description": "Sin m\u00e9tricas de vanidad. ELEVEN prioriza campa\u00f1as verificadas, pagos puntuales y relaciones a largo plazo entre creadores y marcas. Cada oportunidad est\u00e1 dise\u00f1ada para proteger tu trabajo y tu tiempo.",
+    "description": "Sin m\u00e9tricas de vanidad. ELEVN prioriza campa\u00f1as verificadas, pagos puntuales y relaciones a largo plazo entre creadores y marcas. Cada oportunidad est\u00e1 dise\u00f1ada para proteger tu trabajo y tu tiempo.",
     "stat1Value": "15+",
     "stat1Label": "Pa\u00edses activos",
     "stat2Value": "0",
     "stat2Label": "Pagos atrasados",
     "stat3Value": "100%",
     "stat3Label": "Briefs verificados",
-    "safetyGuarantee": "Garant\u00eda de seguridad ELEVEN",
+    "safetyGuarantee": "Garant\u00eda de seguridad ELEVN",
     "safetyDescription": "T\u00e9rminos claros, trabajo protegido y pagos seguros en todo momento.",
     "onTimePayments": "Pagos puntuales",
     "guaranteed": "100% garantizado",
@@ -72,10 +72,10 @@
     "ctaButton": "\u00danete gratis"
   },
   "benefits": {
-    "sectionTitle": "Por qu\u00e9 ELEVEN es diferente",
+    "sectionTitle": "Por qu\u00e9 ELEVN es diferente",
     "sectionSubtitle": "No es solo otro marketplace de creadores. Un sistema dise\u00f1ado para proteger tu trabajo y desbloquear mejores campa\u00f1as.",
     "inPlainTerms": "En palabras simples",
-    "whatYouGet": "Lo que realmente obtienes en ELEVEN",
+    "whatYouGet": "Lo que realmente obtienes en ELEVN",
     "bullet1": "Campa\u00f1as verificadas con presupuestos reales y contratos claros.",
     "bullet2": "Oportunidades que llegan a ti: no m\u00e1s DMs fr\u00edos ni b\u00fasquedas.",
     "bullet3": "Formaci\u00f3n, soporte y una comunidad seria de creadores en un solo lugar.",
@@ -88,23 +88,23 @@
     "diff3Body": "Detr\u00e1s de la plataforma hay un equipo que responde, negocia y te ayuda a crecer. No solo una bandeja de mensajes automatizados.",
     "stopChasing": "Deja de perseguir briefs",
     "letRightOnes": "Deja que los correctos te encuentren",
-    "ctaDescription": "ELEVEN te conecta con campa\u00f1as que se ajustan a tu nicho, tama\u00f1o de audiencia y tarifas, para que pases menos tiempo proponiendo y m\u00e1s tiempo creando. Registro gratuito.",
+    "ctaDescription": "ELEVN te conecta con campa\u00f1as que se ajustan a tu nicho, tama\u00f1o de audiencia y tarifas, para que pases menos tiempo proponiendo y m\u00e1s tiempo creando. Registro gratuito.",
     "checkItem1": "Un perfil, m\u00faltiples campa\u00f1as a lo largo del tiempo",
     "checkItem2": "Sin contacto en fr\u00edo. Sin adivinar si un brief es real",
     "whyDifferent": "Por qu\u00e9 es diferente",
-    "whyDifferentP1": "Otras plataformas optimizan por volumen. ELEVEN optimiza por ajuste: menos campa\u00f1as, mejores, donde ambas partes est\u00e1n protegidas.",
+    "whyDifferentP1": "Otras plataformas optimizan por volumen. ELEVN optimiza por ajuste: menos campa\u00f1as, mejores, donde ambas partes est\u00e1n protegidas.",
     "whyDifferentP2": "T\u00fa mantienes el control de tus tarifas, tu marca y tu tiempo. Nosotros nos encargamos de la verificaci\u00f3n, el contexto y el soporte.",
     "ctaButton": "Únete gratis"
   },
   "community": {
     "label": "Comunidad",
     "heading": "Encuentra tu comunidad",
-    "description": "Tu nicho tiene su propio espacio en Discord. Con\u00e9ctate, conoce a otros creadores y ent\u00e9rate primero de nuevas oportunidades, colaboraciones y todo lo que pasa en ELEVEN.",
+    "description": "Tu nicho tiene su propio espacio en Discord. Con\u00e9ctate, conoce a otros creadores y ent\u00e9rate primero de nuevas oportunidades, colaboraciones y todo lo que pasa en ELEVN.",
     "subDescription": "Cada comunidad tiene su canal: oportunidades exclusivas, soporte entre pares y anuncios tempranos. Elige la tuya y \u00fanete con un clic.",
-    "discordButton": "\u00danete a ELEVEN en Discord",
-    "footerNote": "Completa tu onboarding y elige tu espacio dentro de la comunidad ELEVEN.",
+    "discordButton": "\u00danete a ELEVN en Discord",
+    "footerNote": "Completa tu onboarding y elige tu espacio dentro de la comunidad ELEVN.",
     "beauty": "\u00bfCreador de belleza?",
-    "beautyDesc": "\u00danete a creadores de belleza que est\u00e1n marcando tendencia con la comunidad de ELEVEN.",
+    "beautyDesc": "\u00danete a creadores de belleza que est\u00e1n marcando tendencia con la comunidad de ELEVN.",
     "diy": "\u00bfCreador DIY?",
     "diyDesc": "Comparte proyectos y tutoriales con creadores y marcas enfocados en DIY.",
     "food": "\u00bfCreador de comida?",
@@ -121,11 +121,11 @@
     "travelDesc": "Comparte viajes, estad\u00edas y experiencias con amantes de los viajes y marcas tur\u00edsticas."
   },
   "opportunities": {
-    "topLabel": "Descubre lo que ELEVEN tiene para ti: nuevas oportunidades cada d\u00eda",
+    "topLabel": "Descubre lo que ELEVN tiene para ti: nuevas oportunidades cada d\u00eda",
     "heading": "Oportunidades",
     "description": "Estas oportunidades ya est\u00e1n activas y esperando creadores como t\u00fa para aprovecharlas al m\u00e1ximo. Briefs reales, pago real, listos para empezar. Reg\u00edstrate ahora.",
     "viewOpportunity": "Más info",
-    "moreOpportunities": "Se agregan m\u00e1s oportunidades regularmente. Postula a trav\u00e9s de ELEVEN y obt\u00e9n acceso.",
+    "moreOpportunities": "Se agregan m\u00e1s oportunidades regularmente. Postula a trav\u00e9s de ELEVN y obt\u00e9n acceso.",
     "ctaButton": "Únete gratis",
     "metaTitle": "Para creadores en crecimiento",
     "metaDesc": "Para creadores que buscan cerrar deals con marcas, convertir su imagen en pro y acceder a un cat\u00e1logo de oportunidades.",
@@ -138,8 +138,8 @@
   },
   "studio": {
     "label": "Aprendizaje continuo y aceleraci\u00f3n de rendimiento",
-    "heading": "ELEVEN Studio",
-    "description": "Desbloquea acceso exclusivo a nuestro hub educativo. \u00danete a la Red de Creadores ELEVEN para un calendario actualizado de talleres, eventos en vivo y formaci\u00f3n estrat\u00e9gica. Domina nuevos formatos, optimiza tus m\u00e9tricas y mantente a la vanguardia.",
+    "heading": "ELEVN Studio",
+    "description": "Desbloquea acceso exclusivo a nuestro hub educativo. \u00danete a la Red de Creadores ELEVN para un calendario actualizado de talleres, eventos en vivo y formaci\u00f3n estrat\u00e9gica. Domina nuevos formatos, optimiza tus m\u00e9tricas y mantente a la vanguardia.",
     "forCreators": "Para creadores",
     "learnGrowAccelerate": "Aprende, crece y acelera",
     "step1Title": "Masterclasses estrat\u00e9gicas",
@@ -149,7 +149,7 @@
     "step3Title": "Pulso de la industria y eventos de networking",
     "step3Body": "Paneles exclusivos y networking comunitario. Mantente actualizado sobre tendencias digitales, actualizaciones de plataformas y cambios de monetizaci\u00f3n.",
     "ctaButton": "Únete gratis",
-    "ctaHelper": "\u00danete a la Red de Creadores ELEVEN para obtener acceso"
+    "ctaHelper": "\u00danete a la Red de Creadores ELEVN para obtener acceso"
   },
   "events": {
     "label": "Eventos",
@@ -171,8 +171,8 @@
     "joinCommunity": "Unirse a la comunidad"
   },
   "about": {
-    "heading": "Acerca de ELEVEN",
-    "description": "ELEVEN es una plataforma impulsada por La Neta. Ayudamos a los creadores a crecer más rápido, llegar a audiencias más grandes y convertir su contenido en ingresos reales. Trabajamos con más de 50,000 creadores en toda América."
+    "heading": "Acerca de ELEVN",
+    "description": "ELEVN es una plataforma impulsada por La Neta. Ayudamos a los creadores a crecer más rápido, llegar a audiencias más grandes y convertir su contenido en ingresos reales. Trabajamos con más de 50,000 creadores en toda América."
   },
   "eventsWebinars": {
     "heading": "Eventos y Webinars"
@@ -206,25 +206,25 @@
   "faq": {
     "label": "Preguntas frecuentes",
     "heading": "Respuestas antes de unirte",
-    "description": "Si te preguntas c\u00f3mo funciona ELEVEN, empieza aqu\u00ed. Respuestas cortas ahora, producto completo muy pronto.",
-    "q1": "\u00bfQu\u00e9 es exactamente ELEVEN?",
-    "a1": "ELEVEN ser\u00e1 el marketplace definitivo que conecta creadores con las mejores marcas globales. Muy pronto, ser\u00e1 tu centro principal para acceder directamente a campa\u00f1as pagadas, herramientas de optimizaci\u00f3n con IA y programas exclusivos de monetizaci\u00f3n para escalar tu negocio.",
-    "q2": "\u00bfCu\u00e1ntos seguidores necesito para unirme a ELEVEN?",
+    "description": "Si te preguntas c\u00f3mo funciona ELEVN, empieza aqu\u00ed. Respuestas cortas ahora, producto completo muy pronto.",
+    "q1": "\u00bfQu\u00e9 es exactamente ELEVN?",
+    "a1": "ELEVN ser\u00e1 el marketplace definitivo que conecta creadores con las mejores marcas globales. Muy pronto, ser\u00e1 tu centro principal para acceder directamente a campa\u00f1as pagadas, herramientas de optimizaci\u00f3n con IA y programas exclusivos de monetizaci\u00f3n para escalar tu negocio.",
+    "q2": "\u00bfCu\u00e1ntos seguidores necesito para unirme a ELEVN?",
     "a2": "Necesitas al menos 1,000 seguidores en una de tus cuentas (Instagram, TikTok, YouTube, etc.). M\u00e1s all\u00e1 de eso, nos importa tu talento y la calidad de tu contenido: cualquier creador que cumpla ese m\u00ednimo puede unirse, escalar y desbloquear oportunidades reales.",
-    "q3": "\u00bfEs gratis unirse a ELEVEN?",
+    "q3": "\u00bfEs gratis unirse a ELEVN?",
     "a3": "S\u00ed. Crear tu perfil y acceder a oportunidades es 100% gratis.",
     "q4": "\u00bfCon qu\u00e9 tipo de marcas trabajar\u00e9?",
     "a4": "Tendr\u00e1s acceso a un portafolio premium. Esto incluye socios tecnol\u00f3gicos globales y grandes marcas de consumo.",
-    "q5": "\u00bfC\u00f3mo me conecta ELEVEN con campa\u00f1as?",
+    "q5": "\u00bfC\u00f3mo me conecta ELEVN con campa\u00f1as?",
     "a5": "Las campa\u00f1as se asignan seg\u00fan tu nicho, estilo de contenido, audiencia objetivo y afinidad con la marca, no solo tu n\u00famero de seguidores. El objetivo es emparejarte con briefs donde puedas rendir genuinamente y construir relaciones a largo plazo.",
     "q6": "\u00bfMantengo la propiedad de mi contenido?",
-    "a6": "S\u00ed. A menos que un brief espec\u00edfico diga lo contrario, mantienes la propiedad de tu contenido y otorgas a las marcas derechos de uso solo por el per\u00edodo y canales acordados. ELEVEN est\u00e1 dise\u00f1ado para proteger a los creadores y hacer que los t\u00e9rminos sean claros.",
-    "q7": "\u00bfEn qu\u00e9 plataformas se enfoca ELEVEN?",
-    "a7": "ELEVEN est\u00e1 optimizado para video corto y social primero: TikTok, Instagram Reels, YouTube Shorts y contenido estilo UGC para medios pagados. Con el tiempo, nos expandiremos a m\u00e1s formatos y plataformas donde los creadores puedan monetizar."
+    "a6": "S\u00ed. A menos que un brief espec\u00edfico diga lo contrario, mantienes la propiedad de tu contenido y otorgas a las marcas derechos de uso solo por el per\u00edodo y canales acordados. ELEVN est\u00e1 dise\u00f1ado para proteger a los creadores y hacer que los t\u00e9rminos sean claros.",
+    "q7": "\u00bfEn qu\u00e9 plataformas se enfoca ELEVN?",
+    "a7": "ELEVN est\u00e1 optimizado para video corto y social primero: TikTok, Instagram Reels, YouTube Shorts y contenido estilo UGC para medios pagados. Con el tiempo, nos expandiremos a m\u00e1s formatos y plataformas donde los creadores puedan monetizar."
   },
   "finalCta": {
     "label": "Reserva tu lugar",
-    "heading": "ELEVEN est\u00e1 casi listo.",
+    "heading": "ELEVN est\u00e1 casi listo.",
     "headingHighlight": "Reserva tu lugar.",
     "description": "Los primeros en llegar, los primeros en elegir. Los miembros tempranos obtienen acceso prioritario a las primeras campa\u00f1as de marcas de 2026.",
     "boldText": "Acuerdos reales, personas reales, crecimiento real. Un solo lugar para construir lo que sigue.",
@@ -233,7 +233,7 @@
   },
   "footer": {
     "description": "El ecosistema profesional para creadores. Oportunidades, comunidad y crecimiento en un solo lugar.",
-    "copyright": "\u00a9 {{year}} ELEVEN. Parte del ecosistema La Neta.",
+    "copyright": "\u00a9 {{year}} ELEVN. Parte del ecosistema La Neta.",
     "disclaimer": "Registro gratuito. El acceso est\u00e1 sujeto a validaci\u00f3n de perfil."
   },
   "dayNames": ["Dom", "Lun", "Mar", "Mi\u00e9", "Jue", "Vie", "S\u00e1b"]
