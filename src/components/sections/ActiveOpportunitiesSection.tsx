@@ -9,8 +9,8 @@ import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
 const OPP_STYLES = [
-  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/For-professionals,-freelancers,-and-general-public.png", url: "https://laneta-portal.netlify.app/opportunities/meta-fast-track", gradient: "from-elevn-primary to-elevn-cyan" },
-  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/For-growing-creators.png", url: "https://laneta-portal.netlify.app/opportunities/tubi", gradient: "from-elevn-violet to-elevn-magenta" },
+  { id: "meta", titleKey: "opportunities.metaTitle", descKey: "opportunities.metaDesc", image: "/assets/images/For-professionals,-freelancers,-and-general-public.png", gradient: "from-elevn-primary to-elevn-cyan" },
+  { id: "tubi", titleKey: "opportunities.tubiTitle", descKey: "opportunities.tubiDesc", image: "/assets/images/For-growing-creators.png", gradient: "from-elevn-violet to-elevn-magenta" },
 ] as const;
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -62,12 +62,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
             {OPP_STYLES.map((opp) => (
               <article key={opp.id} className="w-full">
                 <Card className="group h-full overflow-hidden border-slate-200 bg-white shadow-md transition-shadow hover:shadow-lg hover:shadow-slate-200/50 dark:border-white/10 dark:bg-elevn-surface/50 dark:hover:shadow-elevn-primary/10">
-                  <a
-                    href={opp.url}
-                    target={opp.url.startsWith("http") ? "_blank" : undefined}
-                    rel={opp.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex h-full flex-col"
-                  >
+                  <div className="flex h-full flex-col">
                     <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-elevn-surface">
                       <img
                         src={opp.image}
@@ -95,7 +90,7 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
                         <HiArrowTopRightOnSquare className="text-sm" aria-hidden />
                       </span>
                     </CardContent>
-                  </a>
+                  </div>
                 </Card>
               </article>
             ))}
