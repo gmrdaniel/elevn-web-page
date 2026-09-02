@@ -1,10 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-import { Button } from "@/components/ui/button";
-import { HiBolt, HiCheckCircle } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
@@ -16,29 +11,35 @@ const BULLET_ICON_GRADIENTS = [
   "from-[#83207f] to-[#799cbf]",
 ] as const;
 
-export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, amount: 0.02 });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const plainTermsOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
-  const plainTermsY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
-  const whatYouGetOpacity = useTransform(scrollYProgress, [0.08, 0.24], [0, 1]);
-  const whatYouGetY = useTransform(scrollYProgress, [0.08, 0.24], [30, 0]);
+export function BenefitsSectionV2({
+  onOpenJoinForm,
+}: {
+  onOpenJoinForm?: () => void;
+}) {
   const { t } = useTranslation();
+  const handleJoin = onOpenJoinForm ?? (() => window.location.assign("#join"));
 
   return (
     <section
       id="benefits"
-      ref={sectionRef}
-      className="relative overflow-hidden"
-      aria-labelledby="benefits-heading"
+      className="relative bg-white px-6 py-24 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
+      aria-labelledby="pillars-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
-      <SectionDivider className="mb-0" />
+      <div className="mb-3 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#493fe2]">
+        <span className="inline-block h-0.5 w-6 rounded bg-[#493fe2]" />
+        {t("pillars.eyebrow")}
+      </div>
+      <h2
+        id="pillars-heading"
+        className="mb-4 text-[clamp(28px,4vw,48px)] font-extrabold leading-[1.15] tracking-[-1px] text-[#1a1a2e]"
+      >
+        {t("pillars.titleLine1")}
+        <br />
+        {t("pillars.titleLine2")}
+      </h2>
+      <p className="mb-14 max-w-[520px] text-[17px] leading-[1.7] text-[#6b7280]">
+        {t("pillars.subtitle")}
+      </p>
 
       <motion.div
         style={{ y: parallaxY }}
@@ -117,10 +118,22 @@ export function BenefitsSectionV2({ onOpenJoinForm }: { onOpenJoinForm?: () => v
                 {t("benefits.ctaButton")}
               </Button>
             </div>
+            <h3 className="mb-2.5 text-xl font-extrabold tracking-[-0.3px] text-[#1a1a2e]">
+              {t(pillar.titleKey)}
+            </h3>
+            <p className="mb-5 text-sm leading-[1.7] text-[#6b7280]">
+              {t(pillar.bodyKey)}
+            </p>
+            <button
+              type="button"
+              onClick={handleJoin}
+              className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#493fe2] transition-[gap] duration-200 hover:gap-2.5"
+            >
+              {t(pillar.linkKey)} <span aria-hidden>→</span>
+            </button>
           </div>
-        </motion.div>
-
-      </motion.div>
+        ))}
+      </div>
     </section>
   );
 }

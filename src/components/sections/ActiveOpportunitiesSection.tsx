@@ -25,12 +25,12 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
   const blockOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1]);
   const blockY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
   const { t } = useTranslation();
+  const handleJoin = onOpenJoinForm ?? (() => window.location.assign("#join"));
 
   return (
     <section
       id="opportunities"
-      ref={sectionRef}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden bg-white pb-24 pt-2 font-poppins text-[#1a1a2e] scroll-mt-24"
       aria-labelledby="opportunities-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
@@ -112,9 +112,43 @@ export function ActiveOpportunitiesSection({ onOpenJoinForm }: { onOpenJoinForm?
             onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
             className="w-full max-w-sm sm:w-auto sm:max-w-none bg-gradient-to-br from-[#397aa7] to-[#84a3c4] px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg transition hover:opacity-95 dark:text-elevn-ice"
           >
-            {t("opportunities.ctaButton")}
-          </Button>
-        </motion.div>
+            <div
+              className="relative flex h-[140px] items-center justify-center overflow-hidden"
+              style={{ background: opp.thumb }}
+            >
+              <span
+                aria-hidden
+                className="text-[40px] text-white/60"
+                style={{ filter: "brightness(0) invert(1)" }}
+              >
+                {opp.glyph}
+              </span>
+              <span
+                className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.06em] ${STATUS_STYLES[opp.status]}`}
+              >
+                {t(`opportunities.status.${opp.status}`)}
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col px-5 py-6">
+              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.1em] text-[#6b7280]">
+                {t(opp.platformKey)}
+              </p>
+              <h3 className="mb-1.5 text-base font-extrabold text-[#1a1a2e]">
+                {t(opp.titleKey)}
+              </h3>
+              <p className="mb-4 flex-1 text-[13px] leading-[1.5] text-[#6b7280]">
+                {t(opp.descKey)}
+              </p>
+              <button
+                type="button"
+                onClick={handleJoin}
+                className="inline-flex items-center gap-1.5 self-start text-[13px] font-bold text-[#493fe2] transition-[gap] duration-200 hover:gap-2.5"
+              >
+                {t("opportunities.applyNow")} <span aria-hidden>→</span>
+              </button>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

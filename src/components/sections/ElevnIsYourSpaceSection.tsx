@@ -7,7 +7,11 @@ import { Button } from "@/components/ui/button";
 import { HiSparkles } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+/**
+ * Hero + Trust Bar — faithful port of ELEVN_Landing_v3.html.
+ * Keeps the existing JoinForm modal hook (`onOpenJoinForm`) so the
+ * "Join for free" CTAs still open the registration drawer.
+ */
 
 const LOGO_LIGHT = "/assets/images/logo%20eleven%20negro.png"; // logo negro — modo día
 const LOGO_DARK = "/assets/images/logo%20eleven.png"; // logo blanco — modo noche
@@ -17,8 +21,6 @@ export function ElevnIsYourSpaceSection({
 }: {
   onOpenJoinForm?: () => void;
 }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: true, amount: 0.08 });
   const { t } = useTranslation();
 
   return (
@@ -42,9 +44,14 @@ export function ElevnIsYourSpaceSection({
             transition={{ duration: 0.35, delay: 0.04, ease }}
             className="hidden items-center gap-3 rounded-full border border-[#397aa7]/60 bg-white/90 px-4 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#397aa7] shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-gradient-to-br hover:from-[#397aa7] hover:to-[#84a3c4] hover:text-white sm:inline-flex dark:border-[#397aa7]/70 dark:bg-elevn-surface/80 dark:text-[#397aa7] dark:hover:text-white"
           >
-            <HiSparkles className="text-sm" aria-hidden />
-            {t("hero.comingSoon")}
-          </motion.div>
+            {t("hero.titleLine1")}<br />
+            {t("hero.titleLine2A")}{" "}
+            <span className="proto-gradient-text proto-accent-word">
+              {t("hero.titleAccent")}
+            </span>
+            <br />
+            {t("hero.titleLine3")}
+          </h1>
 
           <div className="mt-6 flex flex-col items-center gap-4 sm:gap-5">
             <div className="flex items-center gap-4">
@@ -113,9 +120,8 @@ export function ElevnIsYourSpaceSection({
               {t("hero.ctaHelper")}
             </p>
           </div>
-        </motion.div>
 
       </div>
-    </section>
+    </>
   );
 }

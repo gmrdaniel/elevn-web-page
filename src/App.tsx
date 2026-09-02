@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+
 import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceSection";
-
-
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
@@ -10,6 +9,9 @@ import { AudienceBusinessSection } from "@/components/sections/AudienceBusinessS
 import { EventsWebinarsSection } from "@/components/sections/EventsWebinarsSection";
 
 import { ActiveOpportunitiesSection } from "@/components/sections/ActiveOpportunitiesSection";
+import { CommunitySection } from "@/components/sections/CommunitySection";
+import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Footer } from "@/components/ui/Footer";
 import { Header } from "@/components/ui/Header";
@@ -21,19 +23,22 @@ import { GradientWaveBackground } from "@/components/ui/GradientWaveBackground";
 function App() {
   const [showJoinForm, setShowJoinForm] = useState(false);
 
+  const openJoinForm = () => setShowJoinForm(true);
+
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen font-poppins">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <GradientWaveBackground />
       </div>
+
       <ScrollNav />
       <ThemeSwitch />
-      <Header onOpenJoinForm={() => setShowJoinForm(true)} />
-      {/* Legacy hero: <HeroSection /> */}
-      <ElevnIsYourSpaceSection onOpenJoinForm={() => setShowJoinForm(true)} />
+      <Header onOpenJoinForm={openJoinForm} />
 
-      <BenefitsSectionV2 onOpenJoinForm={() => setShowJoinForm(true)} />
-      <ActiveOpportunitiesSection onOpenJoinForm={() => setShowJoinForm(true)} />
+      <ElevnIsYourSpaceSection onOpenJoinForm={openJoinForm} />
+      <BenefitsSectionV2 onOpenJoinForm={openJoinForm} />
+      <ActiveOpportunitiesSection onOpenJoinForm={openJoinForm} />
+      <CommunitySection />
       <ElevnStudioSection />
       <AudienceBusinessSection />
       <EventsWebinarsSection />

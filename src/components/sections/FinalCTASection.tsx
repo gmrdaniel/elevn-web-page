@@ -1,10 +1,5 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-import { Button } from "@/components/ui/button";
-import { HiChevronDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
@@ -31,17 +26,43 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
   const faqHeaderY = useTransform(scrollYProgress, [0.05, 0.2], [30, 0]);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { t } = useTranslation();
+  const handleJoin = onOpenJoinForm ?? (() => window.location.assign("#join"));
 
   return (
     <section
       id="join"
-      ref={sectionRef}
-      className="relative overflow-hidden scroll-mt-24"
+      className="relative overflow-hidden px-6 py-24 text-center font-poppins sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
+      style={{
+        background:
+          "linear-gradient(150deg, #493fe2 0%, #3c3e9e 40%, #124a96 100%)",
+      }}
       aria-labelledby="final-cta-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-25" aria-hidden />
-        {/* CTA block */}
-      <SectionDivider className="mb-0" />
+      <div
+        className="proto-blob animate-proto-blob"
+        style={{
+          width: 400,
+          height: 400,
+          top: -100,
+          left: -80,
+          opacity: 0.12,
+          background: "#5895c0",
+        }}
+        aria-hidden
+      />
+      <div
+        className="proto-blob animate-proto-blob-slow"
+        style={{
+          width: 300,
+          height: 300,
+          bottom: -80,
+          right: -60,
+          opacity: 0.15,
+          background: "#9183ff",
+          borderRadius: "50%",
+        }}
+        aria-hidden
+      />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 pb-16 sm:pb-20 max-[400px]:px-5 max-[400px]:py-12 max-[400px]:pb-16 sm:px-6 sm:py-20 sm:pb-24 md:px-10 md:py-24 md:pb-28 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20 space-y-14 sm:space-y-16 lg:space-y-20">
 
@@ -52,9 +73,17 @@ export function FinalCTASection({ onOpenJoinForm }: { onOpenJoinForm?: () => voi
           transition={{ duration: 0.35, delay: 0.08, ease }}
           className="mx-auto max-w-3xl scroll-mt-24"
         >
-          <motion.div
-            style={{ opacity: faqHeaderOpacity, y: faqHeaderY }}
-            className="mx-auto max-w-3xl text-center"
+          {t("finalCta.titleLine1")}
+          <br />
+          <em
+            className="not-italic"
+            style={{
+              background: "linear-gradient(135deg, #7dd3fc, #a5f3fc)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#397aa7] sm:text-sm">
               {t("faq.label")}

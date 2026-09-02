@@ -19,9 +19,8 @@ export function ElevnStudioSection() {
   return (
     <section
       id="elevn-studio"
-      ref={sectionRef}
-      className="relative overflow-hidden"
-      aria-labelledby="elevn-studio-heading"
+      className="relative overflow-hidden bg-white px-6 py-24 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
+      aria-labelledby="studio-heading"
     >
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />

@@ -1,56 +1,36 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-import {
-  HiArrowRight,
-  HiSparkles,
-  HiWrenchScrewdriver,
-  HiCircleStack,
-  HiFilm,
-  HiBolt,
-} from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 import { ElevnBrand } from "@/components/ui/ElevnBrand";
 
-const DISCORD_ONBOARDING_URL = "https://discord.gg/bTUEWVjz";
-
-const COMMUNITY_ITEMS = [
-  { labelKey: "community.beauty", descKey: "community.beautyDesc", href: "#community-beauty", image: "/assets/images/makeup.jpg", imageFocus: "50% 40%", icon: HiSparkles, gradient: "from-elevn-magenta to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.diy", descKey: "community.diyDesc", href: "#community-diy", image: "/assets/images/DIY.jpg", imageFocus: "50% 45%", icon: HiWrenchScrewdriver, gradient: "from-elevn-primary to-elevn-cyan", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.food", descKey: "community.foodDesc", href: "#community-food", image: "/assets/images/cooking.jpg", imageFocus: "50% 35%", icon: HiCircleStack, gradient: "from-elevn-cyan to-elevn-violet", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.entertainment", descKey: "community.entertainmentDesc", href: "#community-entertainment", image: "/assets/images/streaming.jpg", imageFocus: "50% 50%", icon: HiFilm, gradient: "from-elevn-violet to-elevn-magenta", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.sports", descKey: "community.sportsDesc", href: "#community-sports", image: "/assets/images/sports.jpg", imageFocus: "50% 70%", icon: HiBolt, gradient: "from-elevn-cyan to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.fashion", descKey: "community.fashionDesc", href: "#community-fashion", image: "/assets/images/infuencer_male.jpg", imageFocus: "50% 35%", icon: HiSparkles, gradient: "from-elevn-magenta to-elevn-cyan", glow: "group-hover:shadow-[0_0_40px_rgba(217,70,239,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.ugc", descKey: "community.ugcDesc", href: "#community-ugc", image: "/assets/images/dancer.jpg", imageFocus: "50% 45%", icon: HiFilm, gradient: "from-elevn-primary to-elevn-violet", glow: "group-hover:shadow-[0_0_40px_rgba(34,211,238,0.25)] dark:group-hover:shadow-elevn-neon/20" },
-  { labelKey: "community.travel", descKey: "community.travelDesc", href: "#community-travel", image: "/assets/images/travel.jpg", imageFocus: "50% 50%", icon: HiCircleStack, gradient: "from-elevn-cyan to-elevn-primary", glow: "group-hover:shadow-[0_0_40px_rgba(139,92,246,0.25)] dark:group-hover:shadow-elevn-neon/20" },
+const STATS = [
+  { numKey: "community.stat1Num", labelKey: "community.stat1Label" },
+  { numKey: "community.stat2Num", labelKey: "community.stat2Label" },
+  { numKey: "community.stat3Num", labelKey: "community.stat3Label" },
+  { numKey: "community.stat4Num", labelKey: "community.stat4Label" },
 ] as const;
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export function CommunitySection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const sectionInView = useInView(sectionRef, { once: false, amount: 0.4 });
   const { t } = useTranslation();
 
   return (
     <section
       id="community"
-      ref={sectionRef}
-      className="relative overflow-hidden bg-slate-100 dark:bg-elevn-dark"
+      className="relative overflow-hidden bg-[#f7f7fc] px-6 py-24 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
       aria-labelledby="community-heading"
     >
-      <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <div
-        className="pointer-events-none absolute -left-40 top-1/4 h-72 w-72 rounded-full bg-gradient-to-br from-elevn-cyan/20 via-elevn-violet/10 to-transparent blur-3xl dark:from-elevn-cyan/25 dark:via-elevn-violet/15"
+        className="proto-blob animate-proto-blob"
+        style={{
+          width: 500,
+          height: 500,
+          top: -100,
+          right: -100,
+          opacity: 0.07,
+          background: "linear-gradient(135deg, #493fe2, #5895c0)",
+        }}
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute -right-40 bottom-1/4 h-72 w-72 rounded-full bg-gradient-to-bl from-elevn-magenta/20 via-elevn-primary/10 to-transparent blur-3xl dark:from-elevn-magenta/25 dark:via-elevn-primary/15"
-        aria-hidden
-      />
-      <SectionDivider className="mb-0" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 max-[400px]:px-5 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
         <motion.div
@@ -64,9 +44,11 @@ export function CommunitySection() {
           </p>
           <h2
             id="community-heading"
-            className="mt-3 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.1] dark:text-elevn-ice"
+            className="mb-4 text-[clamp(28px,4vw,48px)] font-extrabold leading-[1.15] tracking-[-1px] text-[#1a1a2e]"
           >
-            {t("community.heading")}
+            {t("community.titleLine1")}
+            <br />
+            {t("community.titleLine2")}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-sm sm:text-base font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/85 md:text-lg">
             {t("community.description")}
@@ -154,18 +136,7 @@ export function CommunitySection() {
               aria-hidden
             />
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 8 }}
-          transition={{ duration: 0.3, delay: 0.4, ease }}
-          className="mt-8 text-center text-[11px] font-medium text-slate-500 dark:text-elevn-ice/70 sm:text-xs"
-        >
-          <p>
-            {t("community.footerNote")}
-          </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

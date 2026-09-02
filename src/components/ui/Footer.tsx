@@ -6,15 +6,17 @@ import { ElevnBrand } from "@/components/ui/ElevnBrand";
 const LOGO_URL = "/assets/images/logo%20eleven%20negro.png";
 
 const FOOTER_LINK_KEYS = [
-  { key: "nav.elevn", href: "#elevn-is-your-space" },
-  { key: "nav.benefits", href: "#benefits" },
-  { key: "nav.community", href: "#community" },
   { key: "nav.opportunities", href: "#opportunities" },
+  { key: "nav.community", href: "#community" },
   { key: "nav.elevnStudio", href: "#elevn-studio" },
-  { key: "nav.events", href: "#events-calendar" },
+  { key: "nav.faqs", href: "#faq" },
 ] as const;
 
-export function Footer({ onOpenJoinForm }: { onOpenJoinForm?: () => void }) {
+export function Footer({
+  onOpenJoinForm,
+}: {
+  onOpenJoinForm?: () => void;
+}) {
   const { t } = useTranslation();
 
   return (
