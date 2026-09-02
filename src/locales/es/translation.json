@@ -100,7 +100,32 @@
     "c3Tag": "Networking",
     "c3Title": "Eventos donde conoces a la gente correcta",
     "c3Desc": "Paneles exclusivos, cenas de industria y meetups de creadores donde se hacen las conexiones reales.",
-    "c3Link": "Quiero enterarme"
+    "c3Link": "Quiero enterarme",
+    "step1Title": "Masterclasses estratégicas",
+    "step1Body": "Cursos paso a paso sobre crecimiento algorítmico, tácticas de retención y scripting UGC avanzado. Aprende qué están comprando las marcas ahora mismo.",
+    "step2Title": "Workshops interactivos en vivo",
+    "step2Body": "Sesiones virtuales en tiempo real con expertos de la industria, strategists de plataforma y top creators. Afina tus habilidades de producción.",
+    "step3Title": "Pulso de industria y eventos de networking",
+    "step3Body": "Paneles exclusivos y networking con la comunidad. Mantente al día en tendencias digitales, cambios de plataforma y nuevas formas de monetizar."
+  },
+  "events": {
+    "label": "Eventos",
+    "heading": "Workshops y oportunidades",
+    "description": "Sesiones en vivo, masterclasses y ventanas de postulación. Elige un día para ver qué hay.",
+    "creatorAgenda": "Agenda del creador",
+    "today": "Hoy",
+    "previousMonth": "Mes anterior",
+    "nextMonth": "Mes siguiente",
+    "more": "+{{count}} más",
+    "loadingEvents": "Cargando eventos...",
+    "nothingScheduled": "Nada programado este día",
+    "nothingScheduledDesc": "Agregamos nuevos workshops y oportunidades constantemente. Únete para no perdértelos.",
+    "joinCreatorCommunity": "Únete a nuestra comunidad de creadores",
+    "clickDay": "Haz clic en un día para ver los eventos",
+    "applicationLink": "Enlace de postulación (ábrelo en tu teléfono para mejor experiencia):",
+    "joinMeeting": "Únete a la reunión en una pestaña nueva",
+    "openEventLink": "Abrir enlace del evento",
+    "joinCommunity": "Únete a la comunidad"
   },
   "about": {
     "heading": "Acerca de ELEVN",
