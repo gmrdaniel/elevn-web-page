@@ -5,6 +5,7 @@
     "community": "Comunidad",
     "opportunities": "Oportunidades",
     "elevnStudio": "Studio",
+    "growBusiness": "Haz crecer tu negocio",
     "events": "Eventos",
     "faqs": "FAQ",
     "secureYourSpot": "Únete gratis"
@@ -42,6 +43,30 @@
     "p3Title": "Una comunidad que sí te entiende",
     "p3Body": "Creadores de todos los nichos y regiones. Conecta, colabora y comparte lo que está funcionando. Crecer juntos es más rápido.",
     "p3Link": "Conoce a la comunidad"
+  },
+  "community": {
+    "label": "Comunidad",
+    "titleLine1": "Creadores de cada nicho,",
+    "titleLine2": "construyendo juntos.",
+    "description": "ELEVN reúne a creadores de todos los verticales — moda, gaming, fitness, comida, viajes y más — en una sola red profesional.",
+    "subDescription": "Conecta, colabora y crece junto a personas que ya hablan tu idioma.",
+    "ctaButton": "Únete gratis",
+    "niche1": "Moda y belleza",
+    "niche1Desc": "Outfits, rutinas y contenido listo para marcas.",
+    "niche2": "Deporte y fitness",
+    "niche2Desc": "Entrenamiento, equipo y contenido de alto rendimiento.",
+    "niche3": "Viajes y lifestyle",
+    "niche3Desc": "Destinos, vida diaria e historias aspiracionales.",
+    "niche4": "Comida y cocina",
+    "niche4Desc": "Recetas, reseñas y creatividad en la cocina.",
+    "niche5": "Gaming y streaming",
+    "niche5Desc": "Juego en vivo, guías y comunidad activa.",
+    "niche6": "Baile y entretenimiento",
+    "niche6Desc": "Coreografías, tendencias y contenido de performance.",
+    "niche7": "Blogging y contenido",
+    "niche7Desc": "Historias largas, tips y expertise de nicho.",
+    "niche8": "Influencers y UGC",
+    "niche8Desc": "Rostros listos para campañas de cualquier tamaño."
   },
   "opportunities": {
     "topLabel": "Descubre lo que ELEVN tiene para ti: nuevas oportunidades cada d\u00eda",

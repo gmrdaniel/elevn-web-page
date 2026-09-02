@@ -5,12 +5,13 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { HiBookOpen, HiVideoCamera, HiUserGroup } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { CARD_CLASS } from "@/lib/motion";
 
 const STEP_ICONS = [HiBookOpen, HiVideoCamera, HiUserGroup] as const;
 const STEP_STYLES = [
-  { number: "01", gradient: "from-[#83207f] to-[#799cbf]" },
-  { number: "02", gradient: "from-[#83207f] to-[#799cbf]" },
-  { number: "03", gradient: "from-[#83207f] to-[#799cbf]" },
+  { number: "01", gradient: "from-elevn-primary to-elevn-violet" },
+  { number: "02", gradient: "from-elevn-violet to-elevn-magenta" },
+  { number: "03", gradient: "from-elevn-cyan to-elevn-primary" },
 ] as const;
 
 const STEP_KEYS = [
@@ -42,16 +43,16 @@ export function EventsWebinarsSection() {
       <div className="absolute inset-0 bg-elevn-mesh-light opacity-30 dark:bg-elevn-mesh dark:opacity-20" aria-hidden />
       <SectionDivider className="mb-0" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 sm:py-16 max-[400px]:px-5 max-[400px]:py-12 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:max-w-[1600px] lg:px-12 lg:py-28 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
+      <div className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:px-10 sm:py-24 lg:px-12 lg:py-28">
         <motion.div
           style={{ opacity: headerOpacity, y: headerY }}
           className="text-center"
         >
           <h2
             id="events-webinars-heading"
-            className="whitespace-nowrap text-[1.9rem] font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl dark:text-elevn-ice"
+            className="text-[1.9rem] font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl dark:text-elevn-ice"
           >
-            <span className="inline-flex flex-nowrap items-center justify-center gap-1.5 sm:gap-3 md:gap-4">
+            <span className="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 md:gap-4">
               <img
                 src="/assets/images/icono%20eleven%20.png"
                 alt=""
@@ -63,7 +64,7 @@ export function EventsWebinarsSection() {
           </h2>
         </motion.div>
 
-        <div className="mt-10 max-[400px]:mt-8 lg:mt-20">
+        <div className="mt-10 lg:mt-16">
           <div className="relative mx-auto w-full max-w-5xl pb-10 pt-2 max-[400px]:pb-8 max-[400px]:pt-1 md:pb-16 md:pt-4 lg:max-w-6xl">
             <motion.div
               className="relative mx-auto w-full space-y-4 max-[400px]:space-y-3 md:space-y-5"
@@ -84,9 +85,9 @@ export function EventsWebinarsSection() {
                       opacity: sectionInView ? 1 : 0,
                       y: sectionInView ? 0 : 24,
                     }}
-                    whileHover={{ scale: 1.12 }}
+                    whileHover={{ y: -4 }}
                     transition={{ duration: 0.4, delay: stepDelay * 0.4, ease }}
-                    className={`relative flex w-full max-w-3xl overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] ${stairOffsets[i]}`}
+                    className={`group relative flex w-full max-w-3xl overflow-hidden ${CARD_CLASS} ${stairOffsets[i]}`}
                   >
                     <div
                       className={`flex w-20 shrink-0 flex-col items-center justify-center gap-0.5 bg-gradient-to-b ${step.gradient} py-3 sm:py-4 max-[400px]:w-16 max-[400px]:py-3 md:w-24 md:gap-1 md:py-6`}

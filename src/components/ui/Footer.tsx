@@ -6,10 +6,10 @@ import { ElevnBrand } from "@/components/ui/ElevnBrand";
 const LOGO_URL = "/assets/images/logo%20eleven%20negro.png";
 
 const FOOTER_LINK_KEYS = [
-  { key: "nav.opportunities", href: "#opportunities" },
+  { key: "nav.benefits", href: "#benefits" },
   { key: "nav.community", href: "#community" },
-  { key: "nav.elevnStudio", href: "#elevn-studio" },
-  { key: "nav.faqs", href: "#faq" },
+  { key: "nav.growBusiness", href: "#audience-business" },
+  { key: "nav.events", href: "#events-webinars" },
 ] as const;
 
 export function Footer({
@@ -29,7 +29,7 @@ export function Footer({
         <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-8">
           <div className="flex flex-col gap-4">
             <a
-              href="#hero"
+              href="#elevn-is-your-space"
               className="inline-flex w-fit items-center rounded-lg border border-white/15 bg-elevn-ice px-2.5 py-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
               aria-label="ELEVN – Home"
             >
@@ -59,14 +59,14 @@ export function Footer({
               <button
                 type="button"
                 onClick={onOpenJoinForm}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#397aa7] to-[#84a3c4] px-5 py-2 text-xs font-semibold text-elevn-ice shadow-md shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-elevn-primary to-elevn-cyan px-5 py-2 text-xs font-semibold text-elevn-ice shadow-md shadow-elevn-primary/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-elevn-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface"
               >
                 {t("nav.secureYourSpot")}
               </button>
             ) : (
               <a
                 href="#join"
-                className="text-sm font-semibold text-[#397aa7] transition-colors hover:text-[#397aa7]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
+                className="text-sm font-semibold text-elevn-primary transition-colors hover:text-elevn-primary/90 dark:text-elevn-cyan dark:hover:text-elevn-cyan/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevn-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-elevn-surface rounded-sm"
               >
                 {t("nav.secureYourSpot")}
               </a>

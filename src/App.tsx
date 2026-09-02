@@ -1,24 +1,25 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import { ElevnIsYourSpaceSection } from "@/components/sections/ElevnIsYourSpaceSection";
 import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
 import { AudienceBusinessSection } from "@/components/sections/AudienceBusinessSection";
 import { EventsWebinarsSection } from "@/components/sections/EventsWebinarsSection";
 
-import { ActiveOpportunitiesSection } from "@/components/sections/ActiveOpportunitiesSection";
 import { CommunitySection } from "@/components/sections/CommunitySection";
-import { ElevnStudioSection } from "@/components/sections/ElevnStudioSection";
-import { FaqSection } from "@/components/sections/FaqSection";
-import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { Footer } from "@/components/ui/Footer";
 import { Header } from "@/components/ui/Header";
-import { JoinForm } from "@/components/join/JoinForm";
 import { ScrollNav } from "@/components/ui/ScrollNav";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ThemeSwitch } from "@/components/ui/ThemeSwitch";
 import { GradientWaveBackground } from "@/components/ui/GradientWaveBackground";
+
+// Deferred: only needed once the visitor opens the join modal — keeps
+// libphonenumber-js and the multi-step form logic out of the initial bundle.
+const JoinForm = lazy(() =>
+  import("@/components/join/JoinForm").then((m) => ({ default: m.JoinForm }))
+);
 
 function App() {
   const [showJoinForm, setShowJoinForm] = useState(false);
@@ -36,17 +37,20 @@ function App() {
       <Header onOpenJoinForm={openJoinForm} />
 
       <ElevnIsYourSpaceSection onOpenJoinForm={openJoinForm} />
+      <SectionDivider />
       <BenefitsSectionV2 onOpenJoinForm={openJoinForm} />
-      <ActiveOpportunitiesSection onOpenJoinForm={openJoinForm} />
-      <CommunitySection />
-      <ElevnStudioSection />
+      <SectionDivider />
+      <CommunitySection onOpenJoinForm={openJoinForm} />
+      <SectionDivider />
       <AudienceBusinessSection />
+      <SectionDivider />
       <EventsWebinarsSection />
-      <FinalCTASection onOpenJoinForm={() => setShowJoinForm(true)} />
       <Footer onOpenJoinForm={() => setShowJoinForm(true)} />
       <AnimatePresence>
         {showJoinForm && (
-          <JoinForm key="join-form" onClose={() => setShowJoinForm(false)} />
+          <Suspense fallback={null}>
+            <JoinForm key="join-form" onClose={() => setShowJoinForm(false)} />
+          </Suspense>
         )}
       </AnimatePresence>
     </main>

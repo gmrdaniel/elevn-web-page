@@ -1,14 +1,33 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { HiArrowRight } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
-import { ElevnBrand } from "@/components/ui/ElevnBrand";
+import { staggerContainer, fadeUp, fadeUpCard, CARD_CLASS } from "@/lib/motion";
 
-const BULLET_KEYS = ["benefits.bullet1", "benefits.bullet2", "benefits.bullet3"] as const;
-
-const BULLET_ICON_GRADIENTS = [
-  "from-[#83207f] to-[#799cbf]",
-  "from-[#83207f] to-[#799cbf]",
-  "from-[#83207f] to-[#799cbf]",
+const PILLARS = [
+  {
+    number: "01",
+    titleKey: "pillars.p1Title",
+    bodyKey: "pillars.p1Body",
+    linkKey: "pillars.p1Link",
+    href: "#join",
+  },
+  {
+    number: "02",
+    titleKey: "pillars.p2Title",
+    bodyKey: "pillars.p2Body",
+    linkKey: "pillars.p2Link",
+    href: "#events-webinars",
+  },
+  {
+    number: "03",
+    titleKey: "pillars.p3Title",
+    bodyKey: "pillars.p3Body",
+    linkKey: "pillars.p3Link",
+    href: "#community",
+  },
 ] as const;
 
 export function BenefitsSectionV2({
@@ -17,122 +36,88 @@ export function BenefitsSectionV2({
   onOpenJoinForm?: () => void;
 }) {
   const { t } = useTranslation();
-  const handleJoin = onOpenJoinForm ?? (() => window.location.assign("#join"));
+  const sectionRef = useRef<HTMLElement>(null);
+  const sectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
+  const handlePillarClick = (href: string) => (e: React.MouseEvent) => {
+    if (href === "#join" && onOpenJoinForm) {
+      e.preventDefault();
+      onOpenJoinForm();
+    }
+  };
 
   return (
     <section
+      ref={sectionRef}
       id="benefits"
-      className="relative bg-white px-6 py-24 font-poppins text-[#1a1a2e] sm:px-10 md:px-16 lg:px-20 lg:py-28 scroll-mt-24"
-      aria-labelledby="pillars-heading"
+      className="relative overflow-hidden py-20 sm:py-24 lg:py-28 scroll-mt-24"
+      aria-labelledby="benefits-heading"
     >
-      <div className="mb-3 flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#493fe2]">
-        <span className="inline-block h-0.5 w-6 rounded bg-[#493fe2]" />
-        {t("pillars.eyebrow")}
-      </div>
-      <h2
-        id="pillars-heading"
-        className="mb-4 text-[clamp(28px,4vw,48px)] font-extrabold leading-[1.15] tracking-[-1px] text-[#1a1a2e]"
-      >
-        {t("pillars.titleLine1")}
-        <br />
-        {t("pillars.titleLine2")}
-      </h2>
-      <p className="mb-14 max-w-[520px] text-[17px] leading-[1.7] text-[#6b7280]">
-        {t("pillars.subtitle")}
-      </p>
-
-      <motion.div
-        style={{ y: parallaxY }}
-        className="relative mx-auto w-full max-w-7xl px-6 pt-16 pb-16 sm:pb-20 max-[400px]:px-5 max-[400px]:pt-12 max-[400px]:pb-14 sm:px-6 sm:pt-18 sm:pb-24 md:px-10 md:pt-20 md:pb-26 lg:max-w-[1600px] lg:px-12 lg:pt-22 lg:pb-30 xl:max-w-[1800px] xl:px-16 2xl:max-w-[1920px] 2xl:px-20">
-        {/* Condensed value prop + CTA */}
+      <div className="relative mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 24 }}
-          transition={{ duration: 0.32, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:gap-12 xl:gap-16"
+          variants={staggerContainer}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+          className="mx-auto max-w-2xl text-center"
         >
-          <div className="flex flex-col">
-            <motion.p
-              style={{ opacity: plainTermsOpacity, y: plainTermsY }}
-              className="text-center text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-black dark:text-white sm:text-base"
-            >
-              {t("benefits.inPlainTerms")}
-            </motion.p>
-            <motion.h2
-              id="benefits-heading"
-              style={{ opacity: whatYouGetOpacity, y: whatYouGetY }}
-              className="mt-4 text-center text-3xl font-bold tracking-tight max-[400px]:text-2xl sm:mt-5 sm:text-4xl md:text-5xl lg:text-5xl"
-            >
-              <span className="bg-gradient-to-t from-[#397aa7] to-[#EBF2EE] bg-clip-text text-transparent"><ElevnBrand>{t("benefits.whatYouGet")}</ElevnBrand></span>
-            </motion.h2>
-            <ul className="mx-auto mt-6 sm:mt-8 grid w-full max-w-5xl grid-cols-1 gap-4 max-[400px]:mt-6 sm:mt-8 sm:grid-cols-3 sm:gap-5 md:gap-6">
-              {BULLET_KEYS.map((key, i) => (
-                <li
-                  key={i}
-                  className="relative flex items-center justify-start gap-4 overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] p-4 sm:p-5 text-left text-slate-950 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] transition-[transform,box-shadow] duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_40px_-2px_rgba(64,49,175,0.55),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:text-elevn-ice/95 dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] dark:hover:shadow-[0_0_40px_-2px_rgba(105,47,201,0.6),inset_0_1px_0_0_rgba(255,255,255,0.05)]"
-                >
-                  <span
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br sm:h-12 sm:w-12 ${BULLET_ICON_GRADIENTS[i]} text-white shadow-md dark:text-elevn-ice`}
-                  >
-                    <HiCheckCircle className="text-2xl sm:text-3xl" aria-hidden />
-                  </span>
-                  <span className="text-base font-semibold leading-snug sm:text-lg md:text-xl">{t(key)}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-7 text-center text-sm sm:text-base font-semibold text-slate-800 dark:text-elevn-ice/85 sm:mt-9 md:text-lg">
-              {t("benefits.campaignsLive")}
-            </p>
-          </div>
+          <motion.div
+            variants={fadeUp}
+            className="mb-4 flex items-center justify-center gap-2.5 text-xs font-bold uppercase tracking-[0.22em] text-elevn-primary dark:text-elevn-cyan"
+          >
+            <span className="inline-block h-0.5 w-6 rounded bg-elevn-primary dark:bg-elevn-cyan" />
+            {t("pillars.eyebrow")}
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
+            id="benefits-heading"
+            className="text-[clamp(28px,4vw,44px)] font-extrabold leading-[1.15] tracking-tight text-slate-950 dark:text-elevn-ice"
+          >
+            {t("pillars.titleLine1")}
+            <br />
+            <span className="bg-gradient-to-r from-elevn-primary via-elevn-cyan to-elevn-violet bg-clip-text text-transparent">
+              {t("pillars.titleLine2")}
+            </span>
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-slate-600 dark:text-elevn-ice/75 sm:text-base"
+          >
+            {t("pillars.subtitle")}
+          </motion.p>
+        </motion.div>
 
-          {/* CTA: Get opportunities instantly */}
-          <div className="flex flex-col">
-            <div className="relative mx-auto flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 to-white/[0.03] p-6 backdrop-blur-sm backdrop-saturate-150 shadow-[0_8px_32px_-4px_rgba(31,38,135,0.1),inset_0_1px_0_0_rgba(255,255,255,0.35)] dark:border-white/[0.06] dark:from-white/[0.02] dark:to-transparent dark:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.05)] sm:p-7">
-              <div className="relative flex flex-1 flex-col">
-                <div className="flex items-center gap-4">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#83207f] to-[#799cbf] text-white shadow-lg shadow-[#83207f]/25 dark:text-elevn-ice dark:shadow-[#83207f]/30">
-                    <HiBolt className="text-3xl" aria-hidden />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-[#397aa7]">{t("benefits.stopChasing")}</p>
-                    <h3 className="text-xl font-extrabold tracking-tight text-slate-950 sm:text-2xl dark:text-elevn-ice">
-                      {t("benefits.letRightOnes")}
-                    </h3>
-                  </div>
-                </div>
-                <p className="relative mt-4 text-xs sm:text-sm font-medium leading-snug text-slate-700 dark:text-elevn-ice/90">
-                  {t("benefits.ctaDescription")}
-                </p>
-                <div className="relative mt-5 border-t border-slate-200/80 pt-4 dark:border-white/15">
-                  <p className="text-sm font-medium leading-relaxed text-slate-600 dark:text-elevn-ice/80">
-                    {t("benefits.whyDifferentP2")}
-                  </p>
-                </div>
-              </div>
-              <Button
-                type="button"
-                size="lg"
-                onClick={onOpenJoinForm ?? (() => window.location.assign("#join"))}
-                className="relative mt-5 w-full bg-gradient-to-br from-[#397aa7] to-[#84a3c4] py-5 text-sm sm:text-base font-bold text-white shadow-xl shadow-elevn-primary/20 transition hover:opacity-95 hover:shadow-2xl dark:text-elevn-ice dark:shadow-elevn-cyan/20"
-              >
-                {t("benefits.ctaButton")}
-              </Button>
-            </div>
-            <h3 className="mb-2.5 text-xl font-extrabold tracking-[-0.3px] text-[#1a1a2e]">
-              {t(pillar.titleKey)}
-            </h3>
-            <p className="mb-5 text-sm leading-[1.7] text-[#6b7280]">
-              {t(pillar.bodyKey)}
-            </p>
-            <button
-              type="button"
-              onClick={handleJoin}
-              className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#493fe2] transition-[gap] duration-200 hover:gap-2.5"
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+          className="mt-14 grid grid-cols-1 gap-5 sm:mt-16 md:grid-cols-3 md:gap-6"
+        >
+          {PILLARS.map((pillar) => (
+            <motion.div
+              key={pillar.number}
+              variants={fadeUpCard}
+              className={`group relative flex flex-col overflow-hidden p-6 sm:p-7 ${CARD_CLASS}`}
             >
-              {t(pillar.linkKey)} <span aria-hidden>→</span>
-            </button>
-          </div>
-        ))}
+              <span className="mb-5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-elevn-primary to-elevn-violet text-base font-bold text-white shadow-md">
+                {pillar.number}
+              </span>
+              <h3 className="text-lg font-bold tracking-tight text-slate-950 dark:text-elevn-ice sm:text-xl">
+                {t(pillar.titleKey)}
+              </h3>
+              <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 dark:text-elevn-ice/75">
+                {t(pillar.bodyKey)}
+              </p>
+              <a
+                href={pillar.href}
+                onClick={handlePillarClick(pillar.href)}
+                className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-elevn-primary transition-[gap] duration-200 hover:gap-2.5 dark:text-elevn-cyan"
+              >
+                {t(pillar.linkKey)}
+                <HiArrowRight className="h-4 w-4" aria-hidden />
+              </a>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
