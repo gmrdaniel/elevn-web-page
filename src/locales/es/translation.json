@@ -14,7 +14,7 @@
     "comingSoon": "Muy pronto",
     "headline": "Postula. Crea. Gana.",
     "tagline": "La plataforma donde los creadores conectan con marcas, escalan r\u00e1pido y lideran la industria.",
-    "description": "ELEVN es tu puerta de entrada a acuerdos verificados con marcas, formaci\u00f3n real y una comunidad creada para creadores profesionales. Postula una vez, desbloquea oportunidades continuas y construye una carrera donde tu trabajo y tu tiempo sean respetados.",
+    "description": "ELEVN es tu puerta de entrada a acuerdos verificados con marcas, formaci\u00f3n real y una comunidad creada para creadores profesionales. Postula una vez, desbloquea oportunidades continuas y construye una carrera donde tu trabajo y tu tiempo sean respetados. Impulsado por La Neta, partner oficial de Meta Business.",
     "cta": "\u00danete gratis",
     "ctaHelper": "Cupos limitados para creadores serios.",
     "expectTitle": "Qu\u00e9 puedes esperar en ELEVN",
@@ -43,6 +43,11 @@
     "p3Title": "Una comunidad que sí te entiende",
     "p3Body": "Creadores de todos los nichos y regiones. Conecta, colabora y comparte lo que está funcionando. Crecer juntos es más rápido.",
     "p3Link": "Conoce a la comunidad"
+  },
+  "creatorsVideos": {
+    "label": "En sus propias palabras",
+    "titleLine1": "Creadores reales,",
+    "titleLine2": "contenido real, momentum real."
   },
   "community": {
     "label": "Comunidad",
@@ -179,6 +184,13 @@
     "a6": "Las campañas se emparejan según tu nicho, estilo de contenido, audiencia y fit con la marca, no solo el número de seguidores. El objetivo es ponerte en briefs donde realmente puedas brillar y construir relaciones de largo plazo.",
     "q7": "¿En qué plataformas se enfoca ELEVN?",
     "a7": "ELEVN está optimizado para video corto y social: TikTok, Instagram Reels, YouTube Shorts y UGC para medios pagados. Con el tiempo iremos sumando más formatos y plataformas donde los creadores puedan monetizar."
+  },
+  "poweredBy": {
+    "eyebrow": "En alianza con",
+    "metaBadge": "Partner oficial de Meta",
+    "heading": "Impulsado por La Neta",
+    "body": "ELEVN funciona sobre la infraestructura de La Neta, partner oficial de Meta Business. Eso significa pagos reales, oportunidades verificadas y un equipo que ya trabaja directamente con Meta.",
+    "cta": "Visitar La Neta"
   },
   "finalCta": {
     "pill": "Cupos iniciales limitados",

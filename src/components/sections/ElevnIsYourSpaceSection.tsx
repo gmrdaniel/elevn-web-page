@@ -24,10 +24,10 @@ export function ElevnIsYourSpaceSection({
     <section
       id="elevn-is-your-space"
       ref={sectionRef}
-      className="relative flex min-h-screen items-center overflow-hidden pt-16"
+      className="relative flex items-center overflow-hidden"
       aria-labelledby="elevn-is-your-space-heading"
     >
-      <div className="relative mx-auto w-full max-w-5xl px-6 py-20 sm:py-24 md:py-28">
+      <div className="relative mx-auto w-full max-w-5xl px-6 pb-16 pt-28 sm:pb-20 sm:pt-32 md:pb-24 md:pt-36">
         <motion.div
           variants={staggerContainer}
           initial="hidden"

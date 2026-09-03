@@ -6,6 +6,9 @@ import { BenefitsSectionV2 } from "@/components/sections/BenefitsSectionV2";
 // Legacy: import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { AudienceBusinessSection } from "@/components/sections/AudienceBusinessSection";
 import { EventsWebinarsSection } from "@/components/sections/EventsWebinarsSection";
+import { PoweredBySection } from "@/components/sections/PoweredBySection";
+import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
+import { CreatorsVideoCarousel } from "@/components/sections/CreatorsVideoCarousel";
 
 import { CommunitySection } from "@/components/sections/CommunitySection";
 import { Footer } from "@/components/ui/Footer";
@@ -40,11 +43,17 @@ function App() {
       <SectionDivider />
       <BenefitsSectionV2 onOpenJoinForm={openJoinForm} />
       <SectionDivider />
+      <CreatorsVideoCarousel />
+      <SectionDivider />
       <CommunitySection onOpenJoinForm={openJoinForm} />
       <SectionDivider />
       <AudienceBusinessSection />
       <SectionDivider />
       <EventsWebinarsSection />
+      <SectionDivider />
+      <PoweredBySection />
+      <SectionDivider />
+      <FinalCtaSection onOpenJoinForm={openJoinForm} />
       <Footer onOpenJoinForm={() => setShowJoinForm(true)} />
       <AnimatePresence>
         {showJoinForm && (
