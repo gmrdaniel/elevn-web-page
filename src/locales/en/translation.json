@@ -14,7 +14,7 @@
     "comingSoon": "Coming Soon",
     "headline": "Apply. Create. Earn.",
     "tagline": "The platform where creators meet brands, scale fast, and own the industry.",
-    "description": "ELEVN is your gateway to vetted brand deals, real training, and a community built for professional creators. Apply once, unlock ongoing opportunities, and grow a career where your work and time are respected.",
+    "description": "ELEVN is your gateway to vetted brand deals, real training, and a community built for professional creators. Apply once, unlock ongoing opportunities, and grow a career where your work and time are respected. Powered by La Neta, an official Meta Business Partner.",
     "cta": "Join for free",
     "ctaHelper": "Limited early spots for serious creators.",
     "expectTitle": "What you can expect on ELEVN",
@@ -43,6 +43,11 @@
     "p3Title": "A community that gets it",
     "p3Body": "Creators from every vertical and region. Connect, collaborate, and share what's working. Growing together is faster.",
     "p3Link": "Meet the community"
+  },
+  "creatorsVideos": {
+    "label": "In their own words",
+    "titleLine1": "Real creators,",
+    "titleLine2": "real content, real momentum."
   },
   "community": {
     "label": "Community",
@@ -170,6 +175,13 @@
     "a6": "Campaigns are matched based on your niche, content style, target audience, and brand fit—not just your follower count. The goal is to pair you with briefs where you can genuinely perform and build long-term relationships.",
     "q7": "Which platforms does ELEVN focus on?",
     "a7": "ELEVN is optimized for short-form and social video first: TikTok, Instagram Reels, YouTube Shorts, and UGC-style content for paid media. Over time, we'll expand into more formats and platforms where creators can monetize."
+  },
+  "poweredBy": {
+    "eyebrow": "In partnership with",
+    "metaBadge": "Official Meta Business Partner",
+    "heading": "Powered by La Neta",
+    "body": "ELEVN runs on La Neta's infrastructure — an official Meta Business Partner. That means real payouts, verified opportunities, and a team that already works directly with Meta.",
+    "cta": "Visit La Neta"
   },
   "finalCta": {
     "pill": "Limited early spots",
