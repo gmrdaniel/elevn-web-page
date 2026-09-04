@@ -17,11 +17,16 @@ const RAW_VIDEOS = [
   "SUBIDO 04_Yordanis_CKEMPIEZA_LAN.mp4",
 ] as const;
 
-const CREATOR_VIDEOS = RAW_VIDEOS.map((file) => encodeURI(`/assets/videos/${file}`));
+/** Each clip ships with a first-frame JPG so the card shows the creator
+ * instead of an empty black box while the (large) video streams in. */
+const CREATOR_VIDEOS = RAW_VIDEOS.map((file) => ({
+  src: encodeURI(`/assets/videos/${file}`),
+  poster: encodeURI(`/assets/videos/posters/${file.replace(/\.mp4$/i, ".jpg")}`),
+}));
 
 /** Plays/pauses a muted video as it scrolls in and out of the viewport,
  * so the marquee doesn't keep every clip decoding at once. */
-function CreatorVideoCard({ src }: { src: string }) {
+function CreatorVideoCard({ src, poster }: { src: string; poster: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -46,6 +51,7 @@ function CreatorVideoCard({ src }: { src: string }) {
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         muted
         loop
         playsInline
@@ -119,8 +125,12 @@ export function CreatorsVideoCarousel() {
               : { duration: 0 }
           }
         >
-          {[...CREATOR_VIDEOS, ...CREATOR_VIDEOS].map((src, index) => (
-            <CreatorVideoCard key={`${src}-${index}`} src={src} />
+          {[...CREATOR_VIDEOS, ...CREATOR_VIDEOS].map((video, index) => (
+            <CreatorVideoCard
+              key={`${video.src}-${index}`}
+              src={video.src}
+              poster={video.poster}
+            />
           ))}
         </motion.div>
       </motion.div>
