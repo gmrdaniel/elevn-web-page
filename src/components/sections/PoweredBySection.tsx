@@ -6,7 +6,7 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 
-const LANETA_URL = "https://laneta-portal.netlify.app/";
+const LANETA_URL = "https://www.laneta.com";
 
 export function PoweredBySection() {
   const { t } = useTranslation();
